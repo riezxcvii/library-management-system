@@ -251,7 +251,40 @@
                             <div>
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Book Title</label>
                                 <input type="text" name="employeeID"
-                                    class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
+                                    class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    maxlength="70" required>
+                            </div>
+
+                            <label class="block text-sm font-medium text-gray-900">Publication Details</label>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <input type="text" name="lastName"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-[-1rem]" placeholder="Publisher"
+                                        maxlength="20" required>
+                                </div>
+                                <div>
+                                    <input type="text" name="firstName"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-[-1rem]" placeholder="Year of publication"
+                                        maxlength="25" required>
+                                </div>
+                                <div>
+                                    <input type="text" name="firstName"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Place of publication"
+                                        maxlength="25" required>
+                                </div>
+                                <div>
+                                    <input type="text" name="firstName"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Copyright"
+                                        maxlength="25" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Book ISBN</label>
+                                <input type="number" name="employeeID"
+                                    class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    onKeyPress="if(this.value.length==13) return false;" required>
                             </div>
 
                             <div class="grid grid-cols-3 gap-4">
