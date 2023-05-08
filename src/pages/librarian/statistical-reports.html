@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>Statistical Reports</title>
     <link href="../../assets/logo.png" type="image/x-icon" rel="shortcut icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,7 +13,7 @@
 <body>
     <div class="h-screen flex flex-col bg-gradient-to-b from-blue-400 to-white">
         <!--navigation bar-->
-        <nav class="sticky top-0 bg-black border-gray-200 dark:border-black">
+        <nav class="sticky top-0 z-40 bg-black border-gray-200 dark:border-black">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                 <a href="./dashboard.html" class="flex items-center">
                     <img src="../../assets/logo.png" class="h-12 mr-3" alt="ANS Logo" />
@@ -36,12 +36,12 @@
                         class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700">
                         <li>
                             <a href="./dashboard.html"
-                                class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent text-blue-400 md:p-0"
+                                class="block py-2 pl-3 pr-4 text-white bg-blue-400 rounded md:bg-transparent hover:text-blue-400 md:p-0"
                                 aria-current="page">Home</a>
                         </li>
                         <li>
                             <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded md:border-0 hover:text-blue-400 md:p-0 md:w-auto">Rieza
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0 md:w-auto ">Rieza
                                 Marie Banquillo <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor"
                                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -104,61 +104,52 @@
             </div>
         </div>
 
-        <!--cards-->
-        <div class="flex justify-center items-center flex-1">
-            <div class="inline-flex flex-wrap gap-4 sm:gap-12">
-                <!--book management card-->
-                <div
-                    class="w-full sm:w-72 p-4 bg-black border border-gray-200 rounded-lg shadow sm:p-8 dark:border-gray-700">
-                    <h5 class="mb-4 text-xl text-center font-semibold text-white">Book Management</h5>
-                    <div
-                        class="mb-8 w-full flex items-baseline justify-center text-gray-900 dark:text-white text-center">
-                        <span class="text-md text-gray-400 font-semiabold">View and add books.</span>
-                    </div>
-                    <a href="./all-books.html">
-                        <button type="button"
-                            class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-1 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full sm:text-center">Open</button>
-                    </a>
-                </div>
-                <!--book transaction card-->
-                <div
-                    class="w-full sm:w-72 p-4 bg-black border border-gray-200 rounded-lg shadow sm:p-8 dark:border-gray-700">
-                    <h5 class="mb-4 text-xl text-center font-semibold text-white">Book Transaction</h5>
-                    <div
-                        class="mb-8 w-full flex items-baseline justify-center text-gray-900 dark:text-white text-center">
-                        <span class="text-md text-gray-400 font-semiabold">Borrow and return books.</span>
-                    </div>
-                    <div class="flex gap-4 justify-center">
-                        <a href="">
-                            <button type="button"
-                                class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-1 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full sm:text-center">Borrow</button>
-                        </a>
-                        <a href="">
-                            <button type="button"
-                                class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-1 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full sm:text-center">Return</button>
-                        </a>
-                    </div>
-                </div>
-                <!--boook reports card-->
-                <div
-                    class="w-full sm:w-72 p-4 bg-black border border-gray-200 rounded-lg shadow sm:p-8 dark:border-gray-700">
-                    <h5 class="mb-4 text-xl text-center font-semibold text-white">Reports</h5>
-                    <div
-                        class="mb-8 w-full flex items-baseline justify-center text-gray-900 dark:text-white text-center">
-                        <span class="text-md text-gray-400 font-semiabold">View reports.</span>
-                    </div>
-                    <div class="flex gap-4 justify-center">
-                        <a href="">
-                            <button type="button"
-                                class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-1 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full sm:text-center">Inventory</button>
-                        </a>
-                        <a href="./statistical-reports.html">
-                            <button type="button"
-                                class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-1 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full sm:text-center">Statistical</button>
-                        </a>
-                    </div>
-                </div>
+        <!--table-->
+        <div class="h-screen overflow-y-auto px-8 py-8">
+            <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="sticky top-0 text-xs text-white uppercase bg-black">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-center">
+                                No.
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center">
+                                Top Borrowers
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center">
+                                Top Borrowed Books
+                            </th>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b text-black font-semibold">
+                            <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+
+                            </th>
+                            <td class="px-6 py-2">
+
+                            </td>
+                            <td class="px-6 py-2">
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
+
+        <div class="flex justify-end pr-4 pb-2">
+            <a href="#">
+                <button type="button"
+                    class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
+                    Print
+                </button>
+            </a>
+            <a href="./dashboard.html">
+                <button type="button"
+                    class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+                    Back
+                </button>
+            </a>
         </div>
     </div>
 
