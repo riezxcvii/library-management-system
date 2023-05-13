@@ -220,7 +220,7 @@
             </div>
         </div>
 
-        <!--register modal-->
+        <!--register borrower modal-->
         <div id="register-modal" tabindex="-1" aria-hidden="true"
             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
@@ -240,11 +240,25 @@
                     <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
                         <form class="space-y-6" action="#" autocomplete="off">
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                <input type="number" name="employeeID"
-                                    class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    onKeyPress="if(this.value.length==15) return false;" required>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
+                                    <input type="number" name="employeeID"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        onKeyPress="if(this.value.length==15) return false;" required>
+                                </div>
+
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                    <select id="nameExtension"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        required>
+                                        <option value="" selected>Select Role</option>
+                                        <option value="Student">Student</option>
+                                        <option value="Borrower">Borrower</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-3 gap-4">
@@ -314,7 +328,7 @@
             </div>
         </div>
 
-        <!--edit form modal-->
+        <!--edit borrower form modal-->
         <div id="edit-modal" tabindex="-1" aria-hidden="true"
             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
@@ -334,11 +348,24 @@
                     <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Edit Registration Details</h3>
                         <form class="space-y-6" action="#" autocomplete="off">
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                <input type="number" name="employeeID"
-                                    class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    onKeyPress="if(this.value.length==15) return false;" onscroll="" required>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
+                                    <input type="number" name="employeeID"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        onKeyPress="if(this.value.length==15) return false;" required>
+                                </div>
+
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                    <select id="nameExtension"
+                                        class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        required>
+                                        <option value="" selected>Select Role</option>
+                                        <option value="Student">Student</option>
+                                        <option value="Borrower">Borrower</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-3 gap-4">
