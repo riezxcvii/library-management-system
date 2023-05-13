@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ".././db/conDB.php";
+include "../db/conDB.php";
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     function validate($data)
@@ -16,10 +16,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = validate($_POST['password']);
 
     if (empty($username)) {
-        header("Location: ../../client/src/index.php?error=Username is required.");
+        header("Location: ../../client/index.php");
         exit();
     } else if (empty($password)) {
-        header("Location: ../../client/src/index.php?error=Password is required.");
+        header("Location: ../../client/index.php");
         exit();
     } else {
         $sql = "SELECT * FROM library_admin WHERE username='$username' AND password='$password' AND status='Active'";
@@ -28,29 +28,30 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
 
-            if ($row['username'] === $username && $row['password'] === $password && $row['role'] ==='Admin') {
-                echo "Logged in!";
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['admin_ID'] = $row['admin_ID'];
-                header("Location: ../../client/src/pages/admin/dashboard.html");
-                exit();
-            }if ($row['username'] === $username && $row['password'] === $password && $row['role'] ==='librarian') {
+            if ($row['username'] === $username && $row['password'] === $password) {
+                if ($row['role'] == 'Admin') {
                     echo "Logged in!";
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['admin_ID'] = $row['admin_ID'];
-                    header("Location: ../../client/src/pages/librarian/dashboard.html");
+                    header("Location: ../../client/admin/dashboard.php");
                     exit();
-                } 
-            else {
-                header("Location: ../../client/src/index.php?error=Incorrect username or password.");
+                } else {
+                    echo "Logged in!";
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['admin_ID'] = $row['admin_ID'];
+                    header("Location: ../../client/librarian/dashboard.php");
+                    exit();
+                }
+            } else {
+                header("Location: ../../client/index.php");
                 exit();
             }
         } else {
-            header("Location: ../../client/src/index.php?error=Incorrect username or password.");
+            header("Location: ../../client/index.php");
             exit();
         }
     }
 } else {
-    header("Location: ../../client/src/index.php");
+    header("Location: ../../client/index.php");
     exit();
 }

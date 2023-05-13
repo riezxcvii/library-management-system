@@ -1,5 +1,5 @@
 <?php
-include "./conDB.php";
+include "../server/db/conDB.php";
 session_start();
 ?>
 
@@ -18,7 +18,7 @@ session_start();
 <body>
     <div class="h-screen flex flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
         <div class="bg-gray-100 shadow-md w-2/5 rounded-lg p-8">
-            <form autocomplete="off" action="../../server/admin/login.php">
+            <form autocomplete="off" action="../server/admin/login.php" method="POST">
                 <div class="flex items-center justify-center mb-4">
                     <img src="./assets/logo.png" class="h-16 mr-3" alt="ANS Logo" />
                     <h1 class="font-extrabold text-2xl">ANS Library Management System</h1>
@@ -45,7 +45,7 @@ session_start();
                     </p>
                 <?php } ?>
 
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-center items-center mx-auto">Sign
+                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-center items-center mx-auto">Sign
                     in</button>
             </form>
         </div>
