@@ -10,7 +10,7 @@ include('navigation-bar.php');
     </button>
 
     <?php
-    $pending = mysqli_query($conn, "SELECT COUNT(status) as total FROM borrowers where status='0' ;");
+    $pending = mysqli_query($conn, "SELECT COUNT(status) AS total FROM borrowers WHERE status = '0' ;");
     $p = mysqli_fetch_assoc($pending)
     ?>
 
@@ -21,7 +21,7 @@ include('navigation-bar.php');
         </button>
     </a>
     <!--search bar-->
-    <form>
+    <form autocomplete="off">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
         <div class="relative w-96">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -29,8 +29,7 @@ include('navigation-bar.php');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <input type="search" id="default-search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-500" placeholder="Search" required>
-            <button type="submit" class="text-white absolute right-2.5 bottom-2 bg-blue-600 hover:bg-blue-500 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:focus:ring-blue-800">Search</button>
+            <input onkeyup="mySearch()" type="search" id="default-search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-500" placeholder="Search">
         </div>
     </form>
 </div>
@@ -38,7 +37,7 @@ include('navigation-bar.php');
 <!--table-->
 <div class="p-4 h-screen overflow-y-auto ">
     <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="sticky top-0 text-xs text-white uppercase bg-black">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -77,28 +76,40 @@ include('navigation-bar.php');
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
-                        Student
-                    </th>
-                    <td class="px-6 py-2">
-                        Banquillo
-                    </td>
-                    <td class="px-6 py-2">
-                        Rieza Marie
-                    </td>
-                    <td class="px-6 py-2">
-                        J
-                    </td>
-                    <td class="px-6 py-2">
 
-                    </td>
-                    <td class="px-6 py-2 justify-center flex">
-                        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-500" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
-                            Edit
-                        </button>
-                    </td>
-                </tr>
+                <?php
+                $i = 0;
+                $user = $conn->query("SELECT * FROM `borrowers` WHERE status = '1'") or die(mysqli_error($conn));
+                while ($borrower = $user->fetch_array()) {
+                ?>
+
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                            <?php echo $borrower['role'] ?>
+                        </th>
+                        <td class="px-6 py-2">
+                            <?php echo $borrower['last_name'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $borrower['first_name'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $borrower['middle_initial'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $borrower['name_extension'] ?>
+                        </td>
+                        <td class="px-6 py-2 justify-center flex">
+                            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-500" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
+                                Edit
+                            </button>
+                        </td>
+                    </tr>
+
+                <?php
+                }
+                ?>
+
             </tbody>
         </table>
     </div>
@@ -289,6 +300,36 @@ include('navigation-bar.php');
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script>
+    function mySearch() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("default-search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table");
+        tr = table.getElementsByTagName("tr");
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 1; i < tr.length; i++) {
+            column1 = tr[i].getElementsByTagName("td")[0];
+            column2 = tr[i].getElementsByTagName("td")[1];
+            column3 = tr[i].getElementsByTagName("td")[2];
+            column4 = tr[i].getElementsByTagName("td")[3];
+            column5 = tr[i].getElementsByTagName("td")[4];
+            if (column1 && column2 && column3 && column4 && column5) {
+                column1 = column1.textContent || column1.innerText;
+                column2 = column2.textContent || column2.innerText;
+                column3 = column3.textContent || column3.innerText;
+                column4 = column4.textContent || column4.innerText;
+                column5 = column5.textContent || column5.innerText;
+                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 </body>
 
 </html>
