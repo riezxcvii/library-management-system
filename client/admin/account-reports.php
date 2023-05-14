@@ -1,5 +1,5 @@
 <?php
-    include('navigation-bar.php');
+include('navigation-bar.php');
 ?>
 
 <!--button and search bar-->

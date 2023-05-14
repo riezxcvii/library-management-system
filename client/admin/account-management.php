@@ -1,10 +1,5 @@
 <?php
-    session_start();
-    include "../../server/db/conDB.php";
-?>
-
-<?php
-    include('navigation-bar.php');
+include('navigation-bar.php');
 ?>
 
 <!--search bar-->
