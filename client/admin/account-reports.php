@@ -286,8 +286,8 @@ include('navigation-bar.php');
 </div>
 
 <div class="flex justify-end pr-4 pb-2">
-    <a href="#">
-        <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
+    <a href="../../server/print/borrower-accounts.php" target="_blank">
+        <button id="print" type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
             Print
         </button>
     </a>
