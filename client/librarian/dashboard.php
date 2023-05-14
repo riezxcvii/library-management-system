@@ -42,8 +42,8 @@
                                     <li>
                                         <a href="#" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Profile</a>
                                     </li>
-                                    <div class="py-1">
-                                        <a href="../index.php" class="block px-4 py-2 text-sm text-black hover:bg-blue-100 hover:text-black">Sign
+                                    <div class="py-1" data-modal-target="popup-modal" data-modal-toggle="popup-modal">
+                                        <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-blue-100 hover:text-black">Sign
                                             out</a>
                                     </div>
                             </div>
@@ -69,9 +69,11 @@
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-900">Are you sure you want to
                             sign out?</h3>
-                        <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                            Yes, I'm sure
-                        </button>
+                        <a href="../index.php">
+                            <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                Yes, I'm sure
+                            </button>
+                        </a>
                         <button data-modal-hide="popup-modal" type="button" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-white focus:z-10">No,
                             cancel</button>
                     </div>
