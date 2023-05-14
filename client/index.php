@@ -35,7 +35,7 @@ session_start();
                     <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30" required>
                 </div>
                 <div class="text-right mb-4 text-xs text-blue-600 underline">
-                    <a href="./pages/admin/forgot-password.html" class="text-left">Forgot password?</a href="./forgot-password.html">
+                    <a href="./pages/admin/forgot-password.html" class="text-left">Change password?</a href="forgot-password.php">
                 </div>
 
 
