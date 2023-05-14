@@ -13,7 +13,7 @@
 <body>
     <div class="h-screen flex flex-col bg-gradient-to-b from-blue-400 to-white">
         <!--navigation bar-->
-        <nav class="z-40 sticky top-0 bg-black border-gray-200 dark:border-black">
+        <nav class="z-10 sticky top-0 bg-black border-gray-200 dark:border-black">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                 <a href="dashboard.php" class="flex items-center">
                     <img src="../assets/logo.png" class="h-12 mr-3" alt="ANS Logo" />
@@ -26,30 +26,18 @@
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-
-                <?php
-                session_start();
-                include "../../server/db/conDB.php";
-                $admin_ID = $_SESSION['admin_ID'];
-
-                $res = mysqli_query($conn, "select * from library_admin where username='" . $_SESSION['username'] . "'");
-                while ($row = mysqli_fetch_array($res)) {
-                    $last  =  $row["last_name"];
-                    $first  =  $row["first_name"];
-                }
-                ?>
-
                 <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700">
                         <li>
                             <a href="dashboard.php" class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent text-blue-400 md:p-0" aria-current="page">Home</a>
                         </li>
                         <li>
-                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded md:border-0 hover:text-blue-400 md:p-0 md:w-auto"><span><?php echo $first; ?> <?php echo $last; ?></span> <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded md:border-0 hover:text-blue-400 md:p-0 md:w-auto">Rieza
+                                Marie Banquillo <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar" class="z-40 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:divide-gray-600">
+                            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-black" aria-labelledby="dropdownLargeButton">
                                     <li>
                                         <a href="#" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Profile</a>
@@ -66,7 +54,7 @@
         </nav>
 
         <!--modal for sign out link-->
-        <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-40 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div class="relative bg-white rounded-lg shadow">
                     <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal">
