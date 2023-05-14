@@ -67,23 +67,44 @@ include('navigation-bar.php');
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
-                        Banquillo, Rieza Marie J
-                    </th>
-                    <td class="px-6 py-2">
-                        Student
-                    </td>
-                    <td class="px-6 py-2">
-                        5-1-2023
-                    </td>
-                    <td class="px-6 py-2">
-                        9:50 AM
-                    </td>
-                    <td class="px-6 py-2">
-                        11:45 AM
-                    </td>
-                </tr>
+                <?php
+                $sql = "SELECT * FROM `log_history` WHERE date = CURDATE() ORDER BY time_in DESC";
+                $res = mysqli_query($conn, $sql);
+                $sn = 1;
+                while ($row = mysqli_fetch_assoc($res)) {
+                ?>
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                            <?php
+                            $sql1 = "SELECT * FROM `library_admin` WHERE admin_ID = $row[admin_ID]";
+                            $res1 = mysqli_query($conn, $sql1);
+                            $row1 = mysqli_fetch_assoc($res1);
+                            echo $row1['last_name'];
+                            ?>
+                        </th>
+                        <td class="px-6 py-2">
+                            Student
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $row['date']; ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $row['time_in']; ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php
+                            if ($row['time_out'] == '') {
+                                echo "-----";
+                            } else {
+
+                                echo $row['time_out'];
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>
