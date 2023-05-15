@@ -38,7 +38,7 @@ include('navigation-bar.php');
 <!--table-->
 <div class="p-4 h-screen overflow-y-auto ">
     <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="sticky top-0 text-xs text-white uppercase bg-black">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-center">
@@ -123,7 +123,7 @@ include('navigation-bar.php');
 </div>
 
 <div class="flex justify-end pr-4 pb-2">
-    <a href="#">
+    <a href="../../server/print/borrowed-books.php" target="_blank">
         <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
             Print
         </button>
