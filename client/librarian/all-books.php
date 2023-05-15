@@ -104,9 +104,11 @@ include('navigation-bar.php');
                             <?php echo $copies; ?>
                         </td>
                         <td class="px-6 py-2 flex">
-                            <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
-                                Archive
-                            </button>
+                            <a href="#" id="<?php echo $result->book_ID; ?>" class="delbutton">
+                                <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+                                    Archive
+                                </button>
+                            </a>
                             <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-400" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
                                 Edit
                             </button>
