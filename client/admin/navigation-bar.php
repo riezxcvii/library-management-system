@@ -8,6 +8,44 @@
     <link href="../assets/logo.png" type="image/x-icon" rel="shortcut icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".delbutton").click(function() {
+                //Save the link in a variable called element
+                var element = $(this);
+                //Find the id of the link that was clicked
+                var del_id = element.attr("id");
+                //Built a url to send
+                var info = 'id=' + del_id;
+                if (confirm("Are you sure you want to deactivate this account? You can't undo this action.")) {
+                    $.ajax({
+                        type: "GET",
+                        url: "deactivate.php",
+                        data: info,
+                        success: function(data) {
+                            alert(data);
+                        }
+                    });
+                    $(this).parents(".record").animate({
+                            backgroundColor: "#fbc7c7"
+                        }, "fast")
+                        .animate({
+                            opacity: "hide"
+                        }, "slow");
+                    $.ajax({
+                        type: "GET",
+                        url: "deactivate.php",
+                        data: info,
+                        success: function(data) {
+                            // Handle the response if needed
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
 </head>
 
 <body>
