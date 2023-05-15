@@ -73,31 +73,46 @@ include('navigation-bar.php');
                     </th>
             </thead>
             <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
-                        13-5454-726-8423
-                    </th>
-                    <td class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
-                        Noli Me Tangere
-                    </td>
-                    <td class="px-6 py-2 select-none">
-                        Jose Rizal
-                    </td>
-                    <td class="px-6 py-2 select-none">
-                        Filipiniana
-                    </td>
-                    <td class="px-6 py-2 select-none">
-                        6
-                    </td>
-                    <td class="px-6 py-2 flex">
-                        <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
-                            Archive
-                        </button>
-                        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-400" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
-                            Edit
-                        </button>
-                    </td>
-                </tr>
+
+                <?php
+                include("../../server/db/conDB.php");
+                $query = $conn->query("SELECT * FROM books WHERE archive = 0 ");
+                while ($result = $query->fetch_object()) {
+                    $isbn = stripslashes($result->isbn);
+                    $ID = stripslashes($result->book_ID);
+                    $title = stripslashes($result->title);
+                    $author_firstname = stripslashes($result->author_firstname);
+                    $author_lastname = stripslashes($result->author_lastname);
+                    $category = stripslashes($result->category);
+                    $copies = stripslashes($result->copies);
+                ?>
+
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
+                            <?php echo $isbn; ?>
+                        </th>
+                        <td class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                            <?php echo $title; ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+                            <?php echo $author_firstname; ?> <?php echo $author_lastname; ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+                            <?php echo $category; ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+                            <?php echo $copies; ?>
+                        </td>
+                        <td class="px-6 py-2 flex">
+                            <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+                                Archive
+                            </button>
+                            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-400" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
+                                Edit
+                            </button>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
