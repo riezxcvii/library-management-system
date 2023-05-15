@@ -7,7 +7,7 @@ include('navigation-bar.php');
     <!--button-->
     <a href="borrow-book.php" class="flex mr-8">
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
-            Borrow
+            Borrow a book
         </button>
     </a>
     <!--search bar-->
