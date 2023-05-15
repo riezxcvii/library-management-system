@@ -1,37 +1,59 @@
 <?php
 include('navigation-bar.php');
 ?>
+<div class="flex flex-row mx-auto">
+    <!--table for top borrwers-->
+    <div class="h-[32rem] px-8 py-8">
+        <div class=" flex-shrink-0 w-[35rem] relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="sticky top-0 text-xs text-white uppercase bg-black">
+                    <tr>
+                        <th scope="col" class="px-6 py- text-center">
+                            No.
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Top Borrowers
+                        </th>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
+                            1
+                        </th>
+                        <td class="px-6 py-2">
+                            Rieza Marie Banquillo
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<!--table-->
-<div class="h-screen overflow-y-auto px-8 py-8">
-    <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="sticky top-0 text-xs text-white uppercase bg-black">
-                <tr>
-                    <th scope="col" class="px-6 py- text-center">
-                        No.
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Top Borrowers
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Top Borrowed Books
-                    </th>
-            </thead>
-            <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                        1
-                    </th>
-                    <td class="px-6 py-2">
-                        Rieza Marie Banquillo
-                    </td>
-                    <td class="px-6 py-2">
-                        Alice in the Wonderland
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <!--table for most borrowed books-->
+    <div class="h-[32rem] px-8 py-8">
+        <div class=" flex-shrink-0 w-[35rem] relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="sticky top-0 text-xs text-white uppercase bg-black">
+                    <tr>
+                        <th scope="col" class="px-6 py- text-center">
+                            No.
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Top Borrowed Books
+                        </th>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
+                            1
+                        </th>
+                        <td class="px-6 py-2">
+                            Alice in the Wonderland
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
