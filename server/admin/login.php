@@ -33,12 +33,22 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     echo "Logged in!";
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['admin_ID'] = $row['admin_ID'];
-                    header("Location: ../../client/admin/dashboard.php");
-                    exit();
+                    $id = $row['admin_ID'];
+                    $sql1 = "INSERT INTO `log_history` (admin_ID, date,time_in)VALUES('$id',NOW(),NOW())";
+                    $res = mysqli_query($conn, $sql1);
+                    if ($res) {
+                        header("Location: ../../client/admin/dashboard.php");
+                        exit();
+                    } else {
+                        echo "rrdee";
+                    }
                 } else {
                     echo "Logged in!";
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['admin_ID'] = $row['admin_ID'];
+                    $id = $row['admin_ID'];
+                    $sql1 = "INSERT INTO `log_history` (admin_ID, date,time_in)VALUES('$id',NOW(),NOW())";
+                    $res = mysqli_query($conn, $sql1);
                     header("Location: ../../client/librarian/dashboard.php");
                     exit();
                 }
