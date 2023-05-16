@@ -66,29 +66,63 @@ include('navigation-bar.php');
                                 </svg></a>
                         </div>
                     </th>
+                    <th class="px-6 py-3">
+                        Archived
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                        1
-                    </th>
-                    <td class="px-6 py-2">
-                        Alice in the Wonderland
-                    </td>
-                    <td class="px-6 py-2">
-                        02-15-2022
-                    </td>
-                    <td class="px-6 py-2">
-                        Available
-                    </td>
-                    <td class="px-6 py-2">
-                        8
-                    </td>
-                    <td class="px-6 py-2">
-                        5
-                    </td>
-                </tr>
+
+                <?php
+                $i = 0;
+                $books = $conn->query("SELECT * FROM `books`") or die(mysqli_error($conn));
+                while ($book = $books->fetch_array()) {
+                    $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$book[book_ID]' && `status` = 'Borrowed'") or die(mysqli_error($conn));
+                    $new_qty = $q_borrow->fetch_array();
+                    $total = $book['copies'] - $new_qty['total'];
+                ?>
+
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
+                            <?php echo $book['book_ID'] ?>
+                        </th>
+                        <td class="px-6 py-2">
+                            <?php echo $book['title'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $book['date_receive'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php
+                            if ($total == 0) {
+                                echo "<center><label id='na6_1' class = 'text-danger'>Not Available</label></center>";
+                            } else {
+                                echo '<input id="statusInventory" name = "bk_status[' . $i . ']" value = "' . $book['status'] . '" disabled>';
+                            }
+                            ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $book['copies'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $total ?>
+                        </td>
+                        <?php if ($book['archive'] == 1) {
+                        ?>
+                            <td>Yes</td>
+                        <?php
+                        } else {
+                        ?>
+                            <td>No</td>
+                        <?php
+                        }
+
+                        ?>
+                    </tr>
+                <?php
+                    $i++;
+                }
+                ?>
             </tbody>
         </table>
     </div>
