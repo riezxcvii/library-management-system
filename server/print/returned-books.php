@@ -5,7 +5,7 @@ require '../db/conDB.php';
 <html lang="en">
 
 <head>
-    <title>ALMS: Print Report</title>
+    <title>Print: Borrowed Books</title>
     <link href="../../client/assets/logo.png" type="image/x-icon" rel="shortcut icon">
 </head>
 
@@ -51,7 +51,7 @@ require '../db/conDB.php';
         <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
         <br>
         <h4 style="text-align:center; margin-top:-1.5%">ANS LIBRARY REPORT</h4>
-        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">LIST OF BOOKS RETURNED</h4>
+        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">LIST OF BORROWED BOOKS</h4>
     </div>
 
     <br>
@@ -65,12 +65,13 @@ require '../db/conDB.php';
     <table id="table" class="tableHeader6" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tbody class="alert-success">
             <tr>
-                <td id="colBorrower6" onselectstart="return false" scope="col" style="font-weight:bold; text-align:center; width:20%; border:1px solid black"><a class="sort-by" onclick="sortTable(0)"></a>BORROWER</td>
-                <td id="colTitle6" style="font-weight:bold; text-align:center; width:23%; border:1px solid black">TITLE</td>
-                <td id="colAuthor6" style="font-weight:bold; text-align:center; width:15%; border:1px solid black">AUTHOR</td>
-                <td id="colEdition6" style="font-weight:bold; text-align:center; width:12%; border:1px solid black">STATUS</td>
-                <td id="colDateR6" onselectstart="return false" scope="col" style="font-weight:bold; text-align:center; width:16%; border:1px solid black"><a id="twoLine" class="sort-by" onclick="sortTable(1)"></a>DATE BORROWED</td>
-                <td id="colDateR6" onselectstart="return false" scope="col" style="font-weight:bold; text-align:center; width:16%; border:1px solid black"><a id="twoLine" class="sort-by" onclick="sortTable(1)"></a>DATE RETURNED</td>
+                <td onselectstart="return false" scope="col" style="font-weight:bold; text-align:center; width:20%; border:1px solid black; padding:6px">BORROWER</td>
+                <td style="font-weight:bold; text-align:center; width:23%; border:1px solid black; padding:6px">TITLE</td>
+                <td style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">AUTHOR</td>
+                <td style="font-weight:bold; text-align:center; width:12%; border:1px solid black; padding:6px">STATUS</td>
+                <td style="font-weight:bold; text-align:center; width:16%; border:1px solid black; padding:6px">DATE BORROWED</td>
+                <td style="font-weight:bold; text-align:center; width:16%; border:1px solid black; padding:6px"></a>DUE DATE</td>
+                <td style="font-weight:bold; text-align:center; width:16%; border:1px solid black; padding:6px"></a>DATE RETURNED</td>
             </tr>
 
             <?php
@@ -80,28 +81,29 @@ require '../db/conDB.php';
                 <tr>
                     <td id="title6" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px">
                         <?php
-                        $qstudent = $conn->query("SELECT * FROM `teacher_account` WHERE `tchr_username` = '$freturn[tchr_username]'") or die(mysqli_error($conn));
+                        $qstudent = $conn->query("SELECT * FROM `borrowers` WHERE `borrower_ID` = '$freturn[borrower_ID]'") or die(mysqli_error($conn));
                         $fstudent = $qstudent->fetch_array();
-                        echo $fstudent['tchr_lastName'] . ", " . $fstudent['tchr_firstName'];
+                        echo $fstudent['lastname'] . ", " . $fstudent['firstname'];
                         ?>
                     </td>
                     <td id="title6" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px">
                         <?php
-                        $qbook = $conn->query("SELECT * FROM `book` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
+                        $qbook = $conn->query("SELECT * FROM `books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
                         $fbook = $qbook->fetch_array();
-                        echo $fbook['bk_title'];
+                        echo $fbook['title'];
                         ?>
                     </td>
                     <td id="title6" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px">
                         <?php
-                        $qbook = $conn->query("SELECT * FROM `book` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
+                        $qbook = $conn->query("SELECT * FROM `books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
                         $fbook = $qbook->fetch_array();
-                        echo $fbook['bk_authorFir'] . " " . $fbook['bk_authorSur'];
+                        echo $fbook['author_firstname'] . " " . $fbook['author_lastname'];
                         ?>
                     </td>
-                    <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $freturn['status'] ?></td>
-                    <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo date("m-d-Y", strtotime($freturn['bk_issue'])) ?></td>
-                    <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo date("m-d-Y", strtotime($freturn['bk_return'])) ?></td>
+                    <td style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $freturn['status'] ?></td>
+                    <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo date("m-d-Y", strtotime($freturn['date_issued'])) ?></td>
+                    <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo date("m-d-Y", strtotime($freturn['due_date'])) ?></td>
+                    <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo date("m-d-Y", strtotime($freturn['returned_date'])) ?></td>
                 </tr>
             <?php
             }

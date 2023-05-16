@@ -5,7 +5,7 @@ require '../db/conDB.php';
 <html lang="en">
 
 <head>
-    <title>ALMS: Print Report</title>
+    <title>Print: Book Inventory</title>
     <link href="../../client/assets/logo.png" type="image/x-icon" rel="shortcut icon">
 </head>
 
@@ -52,7 +52,7 @@ require '../db/conDB.php';
         <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
         <br>
         <h4 style="text-align:center; margin-top:-1.5%">ANS LIBRARY REPORT</h4>
-        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">BOOK INVENTORY</h4>
+        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">INVENTORY OF BOOKS</h4>
     </div>
 
     <br>
@@ -65,12 +65,19 @@ require '../db/conDB.php';
 
     <table class="sum12" id="table" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tr>
-            <td id="noC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black">ID</td>
-            <td id="tdbC14" style="font-weight:bold; text-align:center; width:15%; border:1px solid black">TITLE</td>
-            <td id="tdbD14" style="font-weight:bold; text-align:center; width:5%; border:1px solid black">DATE RECEIVED</td>
-            <td id="lbC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black">STATUS</td>
-            <td id="tabC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black">ACQUIRED BOOKS []</td>
-            <td id="CA14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black">COPIES BORROWED</td>
+            <td id="noC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">ID</td>
+            <td id="tdbC14" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">TITLE</td>
+            <td id="tdbD14" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">DATE RECEIVED</td>
+            <td id="lbC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">STATUS</td>
+            <td id="tabC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">TOTAL COPIES [<?php
+                                                                                                                                        $sql = "SELECT SUM(copies) as sum FROM `books`";
+                                                                                                                                        $res = mysqli_query($conn, $sql);
+                                                                                                                                        $row = mysqli_fetch_assoc($res);
+                                                                                                                                        $sum = $row['sum'];
+                                                                                                                                        echo $sum;
+                                                                                                                                        ?>]</td>
+            <td id="CA14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">COPIES BORROWED</td>
+            <td id="CA14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">Archive (0 no, 1 yes)</td>
         </tr>
 
         <?php
@@ -84,11 +91,12 @@ require '../db/conDB.php';
 
             <tr>
                 <td id="no14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['book_ID'] ?></td>
-                <td id="tdb14" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $f_book['bk_title'] ?></td>
-                <td id="Dtdb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['bk_dateReceived'] ?> </td>
-                <td id="author6" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['bk_status'] ?></td>
-                <td id="tab14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['bk_copies'] ?></td>
+                <td id="tdb14" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $f_book['title'] ?></td>
+                <td id="Dtdb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['date_receive'] ?> </td>
+                <td id="author6" style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px"><?php echo $f_book['status'] ?></td>
+                <td id="tab14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['copies'] ?></td>
                 <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $total ?></td>
+                <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['archive'] ?></td>
             </tr>
 
         <?php

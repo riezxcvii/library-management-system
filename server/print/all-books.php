@@ -5,7 +5,7 @@ require '../db/conDB.php';
 <html lang="en">
 
 <head>
-	<title>ALMS: Print Report</title>
+	<title>Print: All Books</title>
 	<link href="../../client/assets/logo.png" type="image/x-icon" rel="shortcut icon">
 </head>
 
@@ -65,24 +65,24 @@ require '../db/conDB.php';
 
 	<table id="table" class="result10" style="border:1px solid black; border-collapse:collapse; width:100%">
 		<tr>
-			<td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:8%; border:1px solid black">ISBN</td>
-			<td id="title10" id="colNo12" style="font-weight:bold; text-align:center; width:15%; border:1px solid black">TITLE</td>
-			<td id="author10" id="colNo12" style="font-weight:bold; text-align:center; width:12%; border:1px solid black">AUTHOR</td>
-			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black">CATEGORY</td>
-			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black">AVAILABLE COPIES</td>
+			<td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:8%; border:1px solid black; padding:6px">ISBN</td>
+			<td id="title10" id="colNo12" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">TITLE</td>
+			<td id="author10" id="colNo12" style="font-weight:bold; text-align:center; width:12%; border:1px solid black; padding:6px">AUTHOR</td>
+			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">CATEGORY</td>
+			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">AVAILABLE COPIES</td>
 		</tr>
 
 		<?php
 		require '../db/conDB.php';
-		$query = $conn->query("SELECT * FROM `books`");
+		$query = $conn->query("SELECT * FROM `books` WHERE archive = 0");
 		while ($fetch = $query->fetch_array()) {
 		?>
 
 			<tr>
-				<td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['isbn'] ?></td>
+				<td style="border:1px solid black; padding:10px; padding-top:3px"><?php echo $fetch['isbn'] ?></td>
 				<td style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['title'] ?></td>
 				<td style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['author_firstname'] ?> <?php echo $fetch['author_lastname'] ?></td>
-				<td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['category'] ?></td>
+				<td style="border:1px solid black; padding:10px; padding-top:3px"><?php echo $fetch['category'] ?></td>
 				<td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['copies'] ?></td>
 			</tr>
 
