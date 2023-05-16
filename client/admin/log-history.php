@@ -67,7 +67,7 @@ include('navigation-bar.php');
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM `log_history` ORDER BY time_in DESC";
+                $sql = "SELECT l.*, la.role as role FROM `log_history` l INNER JOIN `library_admin` la ON l.admin_ID = la.admin_ID ORDER BY l.time_in DESC";
                 $res = mysqli_query($conn, $sql);
                 $sn = 1;
                 while ($row = mysqli_fetch_assoc($res)) {
@@ -82,7 +82,7 @@ include('navigation-bar.php');
                             ?>
                         </th>
                         <td class="px-6 py-2">
-                            Student
+                            <?php echo $row['role']; ?>
                         </td>
                         <td class="px-6 py-2">
                             <?php echo $row['date']; ?>
