@@ -85,7 +85,7 @@ include('navigation-bar.php');
                         <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
                             <?php echo $isbn; ?>
                         </th>
-                        <td class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                        <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
                             <?php echo $title; ?>
                         </td>
                         <td class="px-6 py-2 select-none">
@@ -340,49 +340,54 @@ include('navigation-bar.php');
                 <form class="space-y-6" action="#" autocomplete="off">
                     <table>
                         <tr>
-                            <td id="category" class="text-center px-8 py-1">F</td>
+                            <td id="category" class="text-center px-8 py-1"></td>
                             <td></td>
                         </tr>
 
                         <tr>
-                            <td id="authorNumber" class="text-center px-8 py-1">F692</td>
+                            <td id="authorNumber" class="text-center px-8 py-1"></td>
                             <td></td>
                         </tr>
 
 
                         <tr>
                             <td></td>
-                            <td id="author" class="px-8 py-1">Mitchell, Laine</td>
+                            <td id="author" class="px-8 py-1"></td>
                         </tr>
 
                         <tr>
                             <td></td>
-                            <td id="title" class="pl-16 px-8 py-1">Mummy you're special to me / Laine Fleming;</td>
+                            <td id="title" class="pl-16 px-8 py-1"></td>
                         </tr>
 
                         <tr>
                             <td></td>
-                            <td id="publication" class="px-8 py-1">Kim Fleming. -- Singapore : Scholastic Singapore, C 2014</td>
+                            <td id="publication" class="px-8 py-1"></td>
                         </tr>
 
                         <tr>
                             <td></td>
-                            <td id="publication10" class="px-8 py-1">20 p. : col. ill.</td>
+                            <td id="physical" class="px-8 py-1">20 p. : col. ill.</td>
                         </tr>
 
                         <tr>
                             <td></td>
-                            <td id="isbn" class="px-8 py-1">ISBN 978-981-09-4979-2</td>
+                            <td id="isbn" class="px-8 py-1"></td>
                         </tr>
 
                         <tr>
-                            <td id="accessionNumber" class="px-8 py-1">010,2021</td>
+                            <td id="accessionNumber" class="px-8 py-1"></td>
                             <td></td>
                         </tr>
 
                         <tr>
                             <td></td>
-                            <td id="tracing" class="px-8 py-1">I. Fleming, Kim, illustrator. I-Title.</td>
+                            <td id="subject" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="tracing" class="px-8 py-1"></td>
                         </tr>
                     </table>
                 </form>
@@ -435,6 +440,49 @@ include('navigation-bar.php');
                 }
             }
         }
+    }
+</script>
+<script>
+    // Function to open the modal
+    function openModal(id) {
+        document.getElementById('card-modal').style.display = 'block';
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'get-data.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+
+                // Update the modal content with the retrieved data
+                document.getElementById('category').textContent = data.category;
+                document.getElementById('authorNumber').textContent = data.author_number
+                document.getElementById('author').textContent = data.author_lastname + ', ' + data.author_firstname;
+                document.getElementById('accessionNumber').textContent = data.accession_number;
+                document.getElementById('title').textContent = data.title + ' / ' + data.author_firstname + ' ' + data.author_lastname;
+                document.getElementById('publication').textContent = data.publisher + ' -- ' + data.publication_place + ', C ' + data.copyright_year;
+                document.getElementById('physical').textContent = data.physical_description;
+                document.getElementById('isbn').textContent = 'ISBN ' + data.isbn;
+                document.getElementById('subject').textContent = data.subject;
+                document.getElementById('tracing').textContent = data.tracing;
+            } else {
+                console.error('Request failed. Status: ' + xhr.status);
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('Request failed. Network error.');
+        };
+
+        xhr.send('id=' + id);
+
+
+
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('card-modal').style.display = 'none';
     }
 </script>
 </body>
