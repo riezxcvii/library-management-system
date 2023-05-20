@@ -12,7 +12,7 @@ include('navigation-bar.php');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <input type="search" id="search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-900" placeholder="Search" onkeyup="mySearch()" maxlength="70">
+            <input type="search" id="default-search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-900" placeholder="Search" onkeyup="mySearch()" maxlength="70">
         </div>
     </form>
 </div>
@@ -73,14 +73,14 @@ include('navigation-bar.php');
                 while ($row = mysqli_fetch_assoc($res)) {
                 ?>
                     <tr class="bg-white border-b text-black font-semibold">
-                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                        <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
                             <?php
                             $sql1 = "SELECT * FROM `library_admin` WHERE admin_ID = $row[admin_ID]";
                             $res1 = mysqli_query($conn, $sql1);
                             $row1 = mysqli_fetch_assoc($res1);
                             echo $row1['last_name'];
                             ?>
-                        </th>
+                        </td>
                         <td class="px-6 py-2">
                             <?php echo $row['role']; ?>
                         </td>

@@ -78,12 +78,7 @@ require '../db/conDB.php';
         ?>
 
             <tr>
-                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php
-                                                                                                        $sql1 = "SELECT * FROM `library_admin` WHERE admin_ID = $row[admin_ID]";
-                                                                                                        $res1 = mysqli_query($conn, $sql1);
-                                                                                                        $row1 = mysqli_fetch_assoc($res1);
-                                                                                                        echo $row1['last_name'];
-                                                                                                        ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['admin_ID'] ?></td>
                 <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $fetch['date'] ?></td>
                 <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $fetch['time_in'] ?></td>
                 <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['time_out'] ?></td>
