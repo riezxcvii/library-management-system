@@ -67,7 +67,8 @@ require '../db/conDB.php';
         <tbody>
             <tr>
                 <td id="colNo13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ID</td>
-                <td id="colLRN13" style="font-weight:bold; text-align:center; width:7%; border:1px solid black; padding:6px">LRN</td>
+                <td id="colLRN13" style="font-weight:bold; text-align:center; width:7%; border:1px solid black; padding:6px">ID Number</td>
+                <td id="colNo13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ROLE</td>
                 <td id="colSur13" style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">LAST NAME</td>
                 <td id="colFirst13" style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">FIRST NAME</td>
                 <td id="colMid13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">MIDDLE INITIAL</td>
@@ -84,6 +85,7 @@ require '../db/conDB.php';
                 <tr>
                     <td id="lrn13" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['borrower_ID'] ?></td>
                     <td id="sur13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['id_number'] ?></td>
+                    <td id="sur13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['role'] ?></td>
                     <td id="first13" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['last_name'] ?></td>
                     <td id="mid13" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['first_name'] ?></td>
                     <td id="ext13" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['middle_initial'] ?></td>
