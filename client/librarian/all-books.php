@@ -445,7 +445,6 @@ include('navigation-bar.php');
 <script>
     // Function to open the modal
     function openModal(id) {
-        document.getElementById('card-modal').style.display = 'block';
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'get-data.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -475,14 +474,6 @@ include('navigation-bar.php');
         };
 
         xhr.send('id=' + id);
-
-
-
-    }
-
-    // Function to close the modal
-    function closeModal() {
-        document.getElementById('card-modal').style.display = 'none';
     }
 </script>
 </body>
