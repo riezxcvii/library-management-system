@@ -69,7 +69,7 @@ require '../db/conDB.php';
 			<td id="title10" id="colNo12" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">TITLE</td>
 			<td id="author10" id="colNo12" style="font-weight:bold; text-align:center; width:12%; border:1px solid black; padding:6px">AUTHOR</td>
 			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">CATEGORY</td>
-			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">AVAILABLE COPIES</td>
+			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">COPIES</td>
 		</tr>
 
 		<?php

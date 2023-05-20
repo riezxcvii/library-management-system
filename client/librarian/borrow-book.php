@@ -28,12 +28,15 @@ include('navigation-bar.php');
     <div class="flex items-center">
         <select name="" id="" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
             <option value="">Select borrower</option>
+            <?php $result =  mysqli_query($conn, "SELECT * FROM borrowers WHERE status=1") or die(mysqli_error($conn));
+            while ($row = mysqli_fetch_array($result)) { ?>
+                <option value="<?php echo $row['borrower_ID']; ?>"><?php echo $row['first_name'] . " " . $row['last_name']; ?></option>
+            <?php } ?>
         </select>
     </div>
 
     <button class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-center flex border-none mt-4">Lend Book</button>
 </form>
-
 
 <!--table-->
 <div class="p-4 h-screen overflow-y-auto ">
@@ -94,31 +97,118 @@ include('navigation-bar.php');
                     </th>
             </thead>
             <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                        <input type="checkbox">
-                    </th>
-                    <td class="px-6 py-2">
-                        13-2546-5858-889
-                    </td>
-                    <td class="px-6 py-2">
-                        Noli Me Tangere
-                    </td>
-                    <td class="px-6 py-2">
-                        Jose Rizal
-                    </td>
-                    <td class="px-6 py-2">
-                        Filipiniana
-                    </td>
-                    <td class="px-6 py-2">
-                        5
-                    </td>
-                    <td class="px-6 py-2">
-                        3
-                    </td>
-                </tr>
+
+                <?php
+                include("../../server/db/conDB.php");
+                $query = $conn->query("SELECT * FROM books WHERE archive = 0 ");
+                while ($result = $query->fetch_object()) {
+                    $isbn = stripslashes($result->isbn);
+                    $ID = stripslashes($result->book_ID);
+                    $title = stripslashes($result->title);
+                    $author_firstname = stripslashes($result->author_firstname);
+                    $author_lastname = stripslashes($result->author_lastname);
+                    $category = stripslashes($result->category);
+                    $copies = stripslashes($result->copies);
+                ?>
+
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
+                            <input type="checkbox">
+                        </th>
+                        <td class="px-6 py-2">
+                            <?php echo $isbn; ?>
+                        </td>
+                        <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                            <?php echo $title; ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $author_firstname; ?> <?php echo $author_lastname; ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $category; ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $copies; ?>
+                        </td>
+                        <td class="px-6 py-2">
+
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
+    </div>
+</div>
+
+<!--card modal-->
+<div id="card-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative max-h-full mx-auto flex items-center justify-center w-[55rem]">
+        <!--card modal content-->
+        <div class="relative bg-gray-200 rounded-lg shadow">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="card-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="px-6 py-6 lg:px-8">
+                <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Card Catalog</h3>
+                <form class="space-y-6" action="#" autocomplete="off">
+                    <table>
+                        <tr>
+                            <td id="category" class="text-center px-8 py-1"></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td id="authorNumber" class="text-center px-8 py-1"></td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td></td>
+                            <td id="author" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="title" class="pl-16 px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="publication" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="physical" class="px-8 py-1">20 p. : col. ill.</td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="isbn" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="accessionNumber" class="px-8 py-1"></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="subject" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="tracing" class="px-8 py-1"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -168,6 +258,40 @@ include('navigation-bar.php');
                 }
             }
         }
+    }
+</script>
+<script>
+    // Function to open the modal
+    function openModal(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'get-data.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+
+                // Update the modal content with the retrieved data
+                document.getElementById('category').textContent = data.category;
+                document.getElementById('authorNumber').textContent = data.author_number
+                document.getElementById('author').textContent = data.author_lastname + ', ' + data.author_firstname;
+                document.getElementById('accessionNumber').textContent = data.accession_number;
+                document.getElementById('title').textContent = data.title + ' / ' + data.author_firstname + ' ' + data.author_lastname;
+                document.getElementById('publication').textContent = data.publisher + ' -- ' + data.publication_place + ', C ' + data.copyright_year;
+                document.getElementById('physical').textContent = data.physical_description;
+                document.getElementById('isbn').textContent = 'ISBN ' + data.isbn;
+                document.getElementById('subject').textContent = data.subject;
+                document.getElementById('tracing').textContent = data.tracing;
+            } else {
+                console.error('Request failed. Status: ' + xhr.status);
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('Request failed. Network error.');
+        };
+
+        xhr.send('id=' + id);
     }
 </script>
 </body>

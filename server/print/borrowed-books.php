@@ -70,7 +70,7 @@ require '../db/conDB.php';
                 <td id="colTitle6" style="font-weight:bold; text-align:center; width:30%; border:1px solid black; padding:6px">TITLE</td>
                 <td id="colEdition6" style="font-weight:bold; text-align:center; width:20%; border:1px solid black; padding:6px">AUTHOR</td>
                 <td id="colAuthor6" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">CATEGORY</td>
-                <td id="colStat6" style="font-weight:bold; text-align:center; width:13%; border:1px solid black; padding:6px">QUANTITY</td>
+                <td id="colStat6" style="font-weight:bold; text-align:center; width:13%; border:1px solid black; padding:6px">COPIES</td>
             </tr>
 
             <?php
