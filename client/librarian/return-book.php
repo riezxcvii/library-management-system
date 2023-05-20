@@ -212,7 +212,7 @@ include('navigation-bar.php');
 
                         <tr>
                             <td></td>
-                            <td id="physical" class="px-8 py-1">20 p. : col. ill.</td>
+                            <td id="physical" class="px-8 py-1"></td>
                         </tr>
 
                         <tr>
