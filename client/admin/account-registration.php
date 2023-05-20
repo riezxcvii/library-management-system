@@ -104,12 +104,25 @@ include('navigation-bar.php');
                                 <div class="px-6 py-6 lg:px-8">
                                     <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
 
-                                    <div>
-                                        <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                        <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" value="<?php echo $idNumber ?>" disabled>
+                                    <div class="grid grid-cols-2 gap-4 mb-[-0.2rem]">
+                                        <div>
+                                            <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
+                                            <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
+                                        </div>
+
+                                        <div>
+                                            <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                            <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled>
+                                                <option value="" selected><?php echo $role ?></option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="Librarian">Librarian</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Teacher">Teacher</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div class="grid grid-cols-3 gap-4">
+                                    <div class="grid grid-cols-3 gap-4 mb-[1.5rem]">
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                                             <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $last ?>">
@@ -125,6 +138,7 @@ include('navigation-bar.php');
                                             <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $middle ?>">
                                         </div>
                                     </div>
+
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
@@ -142,7 +156,6 @@ include('navigation-bar.php');
                                                 <option value="VIII">VIII</option>
                                             </select>
                                         </div>
-
 
                                         <div class="flex">
                                             <label class="block text-sm font-medium text-gray-900">Sex</label>
@@ -168,8 +181,7 @@ include('navigation-bar.php');
 
 
                                             <button name="approve" class="w-full text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Approve
-                                                Request <?php echo $id; ?></button>
-
+                                                Request</button>
                                         </div>
                                     </form>
 
@@ -193,9 +205,6 @@ include('navigation-bar.php');
         ?>
         </table>
     </div>
-</div>
-
-
 </div>
 
 <div class="flex justify-end pr-4 pb-2">
