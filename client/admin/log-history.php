@@ -67,7 +67,7 @@ include('navigation-bar.php');
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT l.*, la.role as role FROM `log_history` l INNER JOIN `library_admin` la ON l.admin_ID = la.admin_ID ORDER BY l.time_in DESC";
+                $sql = "SELECT l.*, la.role as role FROM `log_history` l INNER JOIN `library_admin` la ON l.admin_ID = la.admin_ID ORDER BY l.date DESC";
                 $res = mysqli_query($conn, $sql);
                 $sn = 1;
                 while ($row = mysqli_fetch_assoc($res)) {

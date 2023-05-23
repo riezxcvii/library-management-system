@@ -73,7 +73,7 @@ require '../db/conDB.php';
 
         <?php
         require '../db/conDB.php';
-        $query = $conn->query("SELECT * FROM `log_history`");
+        $query = $conn->query("SELECT * FROM `log_history` ORDER BY `date` DESC");
         while ($fetch = $query->fetch_array()) {
         ?>
 
