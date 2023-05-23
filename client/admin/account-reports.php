@@ -5,7 +5,7 @@ include('navigation-bar.php');
 <!--button and search bar-->
 <div class="p-4 flex justify-end">
     <!--button-->
-    <a href="./add-user-account.php">
+    <a href="./add-borrower-account.php">
         <button type="button" class="h-full mr-8 inline-flex items-center px-5 py-2.5 text-m font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300" data-modal-target="register-modal" data-modal-toggle="register-modal">
             Register a borrower
         </button>
@@ -95,9 +95,9 @@ include('navigation-bar.php');
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
-                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                        <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
                             <?php echo $borrower['role'] ?>
-                        </th>
+                        </td>
                         <td class="px-6 py-2">
                             <?php echo $borrower['last_name'] ?>
                         </td>
@@ -111,7 +111,7 @@ include('navigation-bar.php');
                             <?php echo $borrower['name_extension'] ?>
                         </td>
                         <td class="px-6 py-2 justify-center flex">
-                            <a href="./update-details-form.php">
+                            <a href="./update-details-form.php?id=<?php echo $id ?>">
                                 <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-500">
                                     Edit
                                 </button>

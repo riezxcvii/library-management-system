@@ -84,9 +84,9 @@ include('navigation-bar.php');
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
-                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
+                        <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
                             <?php echo $isbn; ?>
-                        </th>
+                        </td>
                         <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
                             <?php echo $title; ?>
                         </td>

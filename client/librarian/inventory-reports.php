@@ -24,7 +24,12 @@ include('navigation-bar.php');
             <thead class="sticky top-0 text-xs text-white uppercase bg-black">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-center">
-                        ID
+                        <div class="flex items-center">
+                            ID
+                            <a href="#" onclick="sortTable(0)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
@@ -231,13 +236,17 @@ include('navigation-bar.php');
             column3 = tr[i].getElementsByTagName("td")[2];
             column4 = tr[i].getElementsByTagName("td")[3];
             column5 = tr[i].getElementsByTagName("td")[4];
-            if (column1 && column2 && column3 && column4 && column5) {
+            column5 = tr[i].getElementsByTagName("td")[5];
+            column5 = tr[i].getElementsByTagName("td")[6];
+            if (column1 && column2 && column3 && column4 && column5 && column6 && column7) {
                 column1 = column1.textContent || column1.innerText;
                 column2 = column2.textContent || column2.innerText;
                 column3 = column3.textContent || column3.innerText;
                 column4 = column4.textContent || column4.innerText;
                 column5 = column5.textContent || column5.innerText;
-                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1) {
+                column6 = column6.textContent || column6.innerText;
+                column7 = column7.textContent || column7.innerText;
+                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1 || column7.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";

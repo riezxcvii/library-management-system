@@ -75,9 +75,9 @@ include('navigation-bar.php');
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
-                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                        <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
                             <?php echo $name['last_name'] ?>
-                        </th>
+                        </td>
                         <td class="px-6 py-2">
                             <?php echo $name['first_name'] ?>
                         </td>
@@ -85,7 +85,7 @@ include('navigation-bar.php');
                             <?php echo $name['role'] ?>
                         </td>
                         <td class="px-6 py-2 justify-center flex">
-                            <a href="./approve-decline.php">
+                            <a href="./approve-decline.php?id=<?php echo $id ?>">
                                 <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
                                     Details
                                 </button>

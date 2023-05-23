@@ -65,7 +65,7 @@ require '../db/conDB.php';
 
     <table id="table" class="result10" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tr>
-            <td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:8%; border:1px solid black">NAME</td>
+            <td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:20%; border:1px solid black">NAME</td>
             <td id="title10" id="colNo12" style="font-weight:bold; text-align:center; width:15%; border:1px solid black">LOG DATE</td>
             <td id="author10" id="colNo12" style="font-weight:bold; text-align:center; width:12%; border:1px solid black">TIME IN</td>
             <td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black">TIME OUT</td>
@@ -73,12 +73,12 @@ require '../db/conDB.php';
 
         <?php
         require '../db/conDB.php';
-        $query = $conn->query("SELECT * FROM `log_history` ORDER BY `date` DESC");
+        $query = $conn->query("SELECT * FROM `log_history` JOIN `library_admin` ON log_history.admin_ID = library_admin.admin_ID ORDER BY `date` DESC");
         while ($fetch = $query->fetch_array()) {
         ?>
 
             <tr>
-                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['admin_ID'] ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px"><?php echo $fetch['first_name'] . " " . $fetch['last_name'] ?></td>
                 <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $fetch['date'] ?></td>
                 <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $fetch['time_in'] ?></td>
                 <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['time_out'] ?></td>
