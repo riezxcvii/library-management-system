@@ -236,8 +236,8 @@ include('navigation-bar.php');
             column3 = tr[i].getElementsByTagName("td")[2];
             column4 = tr[i].getElementsByTagName("td")[3];
             column5 = tr[i].getElementsByTagName("td")[4];
-            column5 = tr[i].getElementsByTagName("td")[5];
-            column5 = tr[i].getElementsByTagName("td")[6];
+            column6 = tr[i].getElementsByTagName("td")[5];
+            column7 = tr[i].getElementsByTagName("td")[6];
             if (column1 && column2 && column3 && column4 && column5 && column6 && column7) {
                 column1 = column1.textContent || column1.innerText;
                 column2 = column2.textContent || column2.innerText;
