@@ -69,9 +69,9 @@ include('navigation-bar.php');
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
-                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                        <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
                             <?php echo $name['last_name'] ?>
-                        </th>
+                        </td>
                         <td class="px-6 py-2">
                             <?php echo $name['first_name'] ?>
                         </td>
