@@ -8,44 +8,6 @@
     <link href="../assets/logo.png" type="image/x-icon" rel="shortcut icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".delbutton").click(function() {
-                //Save the link in a variable called element
-                var element = $(this);
-                //Find the id of the link that was clicked
-                var del_id = element.attr("id");
-                //Built a url to send
-                var info = 'id=' + del_id;
-                if (confirm("Are you sure you want to deactivate this account? You can't undo this action.")) {
-                    $.ajax({
-                        type: "GET",
-                        url: "deactivate.php",
-                        data: info,
-                        success: function(data) {
-                            alert(data);
-                        }
-                    });
-                    $(this).parents(".record").animate({
-                            backgroundColor: "#fbc7c7"
-                        }, "fast")
-                        .animate({
-                            opacity: "hide"
-                        }, "slow");
-                    $.ajax({
-                        type: "GET",
-                        url: "deactivate.php",
-                        data: info,
-                        success: function(data) {
-                            // Handle the response if needed
-                        }
-                    });
-                }
-                return false;
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -53,7 +15,7 @@
         <!--navigation bar-->
         <nav class="z-10 sticky top-0 bg-black border-gray-200 dark:border-black">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
-                <a href="dashboard.php" class="flex items-center">
+                <a href="search-book.php" class="flex items-center">
                     <img src="../assets/logo.png" class="h-12 mr-3" alt="ANS Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">ANS Library
                         Management System</span>
@@ -119,7 +81,7 @@
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-900">Are you sure you want to
                             sign out?</h3>
-                        <a href="../../server/admin/logout.php?id=<?php echo $admin_ID; ?>">
+                        <a href="../index2.php">
                             <button type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                 Yes, I'm sure
                             </button>
