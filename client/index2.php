@@ -25,7 +25,7 @@ session_start();
                 <h1 class="font-extrabold text-2xl">ANS Library Management System</h1>
             </div>
             <h1 class="font-semibold text-xl text-center mb-4">Scan your QR Code here!</h1>
-            <form action="" method="POST">
+            <form action="../client/borrower/qr-login.php" method="POST">
                 <div class="w-[20rem] flex justify-center items-center mx-auto">
                     <div>
                         <video id="preview"></video>
