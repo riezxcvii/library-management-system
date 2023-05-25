@@ -105,9 +105,11 @@ include('navigation-bar.php');
                                     Archive
                                 </button>
                             </a>
-                            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-400" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
-                                Edit
-                            </button>
+                            <a href="./update-book-details.php?id=<?php echo $ID; ?>">
+                                <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-400" data-modal-target="edit-modal" data-modal-toggle="edit-modal">
+                                    Edit
+                                </button>
+                            </a>
                         </td>
                     </tr>
                 <?php } ?>
