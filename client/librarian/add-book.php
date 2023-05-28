@@ -2,100 +2,104 @@
 include('navigation-bar.php');
 ?>
 
-<div class="flex justify-center items-center mt-[-0.3rem]">
-    <div class="w-80 bg-gray-50 rounded-md m-12 my-8 w-[65rem]">
+<div class="flex justify-center items-center mt-[-2rem]">
+    <div class="bg-gray-50 rounded-md m-12 my-8 w-[55rem]">
         <div class="px-6 py-6 lg:px-8">
             <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Add Book</h3>
             <form class="space-y-6" action="" autocomplete="off" method="POST">
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Book Title</label>
-                    <input type="text" name="book_title" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
-                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Book Title</label>
+                            <input type="text" name="book_title" class="mb-4 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
+                        </div>
 
-                <label class="block text-sm font-medium text-gray-900">Publication Details</label>
+                        <label class="block text-sm font-medium text-gray-900 mb-6">Publication Details</label>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <input type="text" name="publisher" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-[-1rem]" placeholder="Publisher" maxlength="20" required>
-                    </div>
-                    <div>
-                        <input type="text" name="year_of_publication" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-[-1rem]" placeholder="Year of publication" maxlength="25" required>
-                    </div>
-                    <div>
-                        <input type="text" name="place_of_publication" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Place of publication" maxlength="25" required>
-                    </div>
-                    <div>
-                        <input type="text" name="copyright" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Copyright" maxlength="25" required>
-                    </div>
-                </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <input type="text" name="publisher" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-[-1rem]" placeholder="Publisher" maxlength="20" required>
+                            </div>
+                            <div>
+                                <input type="text" name="year_of_publication" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-[-1rem]" placeholder="Year of publication" maxlength="25" required>
+                            </div>
+                            <div>
+                                <input type="text" name="place_of_publication" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Place of publication" maxlength="25" required>
+                            </div>
+                            <div>
+                                <input type="text" name="copyright" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Copyright" maxlength="25" required>
+                            </div>
+                        </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Book ISBN</label>
-                        <input type="number" name="isbn" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==13) return false;" required>
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Scan Barcode</label>
-                        <div class="w-full border-gray-900 border-2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Book ISBN</label>
+                                <input type="number" name="isbn" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==13) return false;" required>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Scan Barcode</label>
+                                <div class="w-full border-gray-900 border-2">
 
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Edition</label>
+                                <input type="text" name="edition" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10" required>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Volume</label>
+                                <input type="text" name="volume" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15" required>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Edition</label>
-                        <input type="text" name="edition" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10" required>
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Volume</label>
-                        <input type="text" name="volume" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15" required>
-                    </div>
-                </div>
 
-                <label class="block text-sm font-medium text-gray-900">Book Details</label>
+                    <div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Date Received</label>
+                                <input type="date" name="received" class="mb-4 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Number of copies</label>
+                                <input type="number" name="number_of_copies" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required>
+                            </div>
+                        </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Date Received</label>
-                        <input type="date" name="received" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Number of copies</label>
-                        <input type="number" name="number_of_copies" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required>
-                    </div>
-                </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Author's Number</label>
+                                <input type="number" name="author_number" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Author's First Name</label>
+                                <input type="text" name="author_first" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Author's Last Name</label>
+                                <input type="text" name="author_last" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Accession Number</label>
+                                <input type="number" name="accession_number" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required>
+                            </div>
+                        </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Author's Number</label>
-                        <input type="number" name="author_number" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Author's First Name</label>
-                        <input type="text" name="author_first" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Author's Last Name</label>
-                        <input type="text" name="author_last" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
-                    </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Accession Number</label>
-                        <input type="number" name="accession_number" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required>
-                    </div>
-                </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="mt-4 block mb-2 text-sm font-medium text-gray-900">Source of Fund</label>
+                                <input type="text" name="source_of_fund" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30" required>
+                            </div>
+                            <div>
+                                <label class="mt-4 block mb-2 text-sm font-medium text-gray-900">Cost</label>
+                                <input type="number" name="cost" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            </div>
+                        </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Source of Fund</label>
-                        <input type="text" name="source_of_fund" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30" required>
+                        <div>
+                            <label class="mt-4 block mb-2 text-sm font-medium text-gray-900">Tracing</label>
+                            <input type="text" name="tracing" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Cost</label>
-                        <input type="number" name="cost" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Tracing</label>
-                    <input type="text" name="tracing" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
                 </div>
 
                 <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
