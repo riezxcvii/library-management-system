@@ -101,7 +101,7 @@ include('navigation-bar.php');
                         <td class="px-6 py-2">
                             <?php
                             if ($total == 0) {
-                                echo "<center><label class = 'text-danger'>Not Available</label></center>";
+                                echo "<label class = 'text-red-600'>Not Available</label>";
                             } else {
                                 echo '<input class="bg-white" name = "status[' . $i . ']" value = "' . $book['status'] . '" disabled>';
                             }

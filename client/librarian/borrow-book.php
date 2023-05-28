@@ -11,7 +11,7 @@ include('navigation-bar.php');
         </button>
     </a>
     <!--search bar-->
-    <form autocomplete="off">
+    <form autocomplete="off" method="POST" action="./borrow.php" enctype="multipart/form-data">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
         <div class="relative w-96">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -24,7 +24,7 @@ include('navigation-bar.php');
     </form>
 </div>
 
-<form action="" class="flex flex-col items-center">
+<form action="../../server/librarian/borrow.php" class="flex flex-col items-center">
     <div class="flex items-center">
         <select name="" id="" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
             <option value="">Select borrower</option>
@@ -35,7 +35,7 @@ include('navigation-bar.php');
         </select>
     </div>
 
-    <button class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-center flex border-none mt-4">Lend Book</button>
+    <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-center flex border-none mt-4">Lend Book</button>
 </form>
 
 <!--table-->
@@ -95,41 +95,48 @@ include('navigation-bar.php');
 
                 <?php
                 include("../../server/db/conDB.php");
-                $query = $conn->query("SELECT * FROM books WHERE archive = 0 ");
-                while ($result = $query->fetch_object()) {
-                    $isbn = stripslashes($result->isbn);
-                    $ID = stripslashes($result->book_ID);
-                    $title = stripslashes($result->title);
-                    $author_firstname = stripslashes($result->author_firstname);
-                    $author_lastname = stripslashes($result->author_lastname);
-                    $category = stripslashes($result->category);
-                    $copies = stripslashes($result->copies);
+
+                $i = 0;
+                $query = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
+                while ($books = mysqli_fetch_assoc($query)) {
+                    $borrow = $conn->query("SELECT SUM(copies) as 'total' FROM `borrowed_books` WHERE `book_ID` = '$books[book_ID]'") or die(mysqli_error($conn));
+                    $new_qty = $borrow->fetch_array();
+                    $total = $books['copies'] - $new_qty['total'];
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
                         <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                            <input type="checkbox">
+                            <?php
+                            if ($total == 0) {
+                                echo "<center><label class = 'text-red-600'>Not Available</label></center>";
+                            } else {
+                                echo '<input type = "hidden" name = "book_ID[' . $i . ']" value = "' . $books['book_ID'] . '"><center><input type = "checkbox" name = "selector[' . $i . ']" value = "1"></center>';
+                            }
+                            ?>
                         </th>
                         <td class="px-6 py-2">
-                            <?php echo $isbn; ?>
+                            <?php echo $books['isbn'] ?>
                         </td>
-                        <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
-                            <?php echo $title; ?>
-                        </td>
-                        <td class="px-6 py-2">
-                            <?php echo $author_firstname; ?> <?php echo $author_lastname; ?>
+                        <td onclick="openModal(<?php echo $books['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                            <?php echo $books['title'] ?>
                         </td>
                         <td class="px-6 py-2">
-                            <?php echo $category; ?>
+                            <?php echo $books['author_firstname'] ?> <?php echo $books['author_lastname'] ?>
                         </td>
                         <td class="px-6 py-2">
-                            <?php echo $copies; ?>
+                            <?php echo $books['category'] ?>
                         </td>
                         <td class="px-6 py-2">
-
+                            <?php echo $books['copies'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $total ?>
                         </td>
                     </tr>
-                <?php } ?>
+                <?php
+                    $i++;
+                }
+                ?>
             </tbody>
         </table>
     </div>
