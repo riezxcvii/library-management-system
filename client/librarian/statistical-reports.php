@@ -68,32 +68,29 @@ include('navigation-bar.php');
                 </thead>
                 <tbody>
 
-                    <?php
+                <?php
                     $sql = "SELECT book_ID, COUNT(*) AS count
-    FROM borrowed_books
-    GROUP BY book_ID
-    ORDER BY count DESC, book_ID DESC
-    LIMIT 10";
+                    FROM borrowed_books
+                    GROUP BY book_ID
+                    ORDER BY count DESC, book_ID DESC
+                    LIMIT 10";
                     $res = mysqli_query($conn, $sql);
                     $sn = 1;
                     while ($row = mysqli_fetch_assoc($res)) {
-                    ?>
+                ?>
 
-                        <tr class="bg-white border-b text-black font-semibold">
-                            <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                                <?php echo $sn++; ?>
-                            </th>
-                            <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal"><?php $id = $row['book_ID'];
-                                                                                                                                                                                        $sql1 = "SELECT * FROM `books` WHERE book_ID = $id";
-                                                                                                                                                                                        $res1 = mysqli_query($conn, $sql1);
-                                                                                                                                                                                        $row1 = mysqli_fetch_assoc($res1);
-
-                                                                                                                                                                                        $title = $row1['title'];
-
-                                                                                                                                                                                        echo $title;
-
-                                                                                                                                                                                        ?></td>
-                        </tr>
+                <tr class="bg-white border-b text-black font-semibold">
+                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
+                        <?php echo $sn++; ?>
+                    </th>
+                    <td onclick="openModal(<?php echo $row['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal"><?php $id = $row['book_ID'];
+                    $sql1 = "SELECT * FROM `books` WHERE book_ID = $id";
+                    $res1 = mysqli_query($conn, $sql1);
+                    $row1 = mysqli_fetch_assoc($res1);
+                    $title = $row1['title'];
+                    echo $title;
+                    ?></td>
+                </tr>
                     <?php
                     }
                     ?>
