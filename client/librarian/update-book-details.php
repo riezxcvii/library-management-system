@@ -170,9 +170,15 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
 
-                        <div>
-                            <label class="block mb-1 text-sm font-medium text-gray-900">Tracing</label>
-                            <input type="text" name="tracing" value="<?php echo $row['tracing']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Physical Description</label>
+                                <input type="text" name="physical" value="<?php echo $row['physical_description']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Tracing</label>
+                                <input type="text" name="tracing" value="<?php echo $row['tracing']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,6 +214,7 @@ if (isset($_GET['id'])) {
                     $source_of_fund = $_POST['source_of_fund'];
                     $cost = $_POST['cost'];
                     $tracing = $_POST['tracing'];
+                    $physical = $_POST['physical'];
 
                     $sql = "UPDATE `books` SET isbn='$isbn',
                     accession_number='$accession_number',
@@ -226,7 +233,8 @@ if (isset($_GET['id'])) {
                     publication_place='$place_of_publication',
                     copyright_year='$copyright',
                     year_published='$year_of_publication',
-                    tracing='$tracing'
+                    tracing='$tracing',
+                    physical_description='$physical'
                     WHERE book_ID=$id";
 
                     $result = mysqli_query($conn, $sql);

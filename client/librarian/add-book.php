@@ -130,18 +130,24 @@ include('navigation-bar.php');
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Cost</label>
-                                <input type="text" name="cost" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="6">
+                                <input type="text" name="cost" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="6" value="0.00">
                             </div>
                         </div>
 
-                        <div>
-                            <label class="block mb-1 text-sm font-medium text-gray-900">Tracing</label>
-                            <input type="text" name="tracing" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Physical Description</label>
+                                <input type="text" name="physical" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Tracing</label>
+                                <input type="text" name="tracing" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="flex gap-8 pr-4 pb-2 mt-[-0.5rem]">
-                    <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update
+                    <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                         Book</button>
                     <a href="./all-books.php" class="w-full">
                         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 w-full items-center justify-center flex">
@@ -172,8 +178,9 @@ include('navigation-bar.php');
                     $source_of_fund = $_POST['source_of_fund'];
                     $cost = $_POST['cost'];
                     $tracing = $_POST['tracing'];
+                    $physical = $_POST['physical'];
 
-                    $sql = "INSERT INTO `books` (category,isbn,accession_number,date_receive,author_number,author_lastname,author_firstname,title,copies,edition,volume,source_fund,cost,publisher,publication_place,copyright_year,year_published,tracing)
+                    $sql = "INSERT INTO `books` (category,isbn,accession_number,date_receive,author_number,author_lastname,author_firstname,title,copies,edition,volume,source_fund,cost,publisher,publication_place,copyright_year,year_published,tracing,physical_description)
             VALUES('$book_category',
             '$isbn',
             '$accession_number',
@@ -191,7 +198,8 @@ include('navigation-bar.php');
             '$place_of_publication',
             '$copyright',
             '$year_of_publication',
-            '$tracing'
+            '$tracing',
+            '$physical'
             )";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
@@ -200,6 +208,7 @@ include('navigation-bar.php');
                 </script>";
                     } else {
                         echo "Failed to add book!";
+                        mysqli_error($conn);
                     }
                 }
                 ?>
