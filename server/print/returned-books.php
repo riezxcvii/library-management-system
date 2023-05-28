@@ -83,7 +83,7 @@ require '../db/conDB.php';
                         <?php
                         $qstudent = $conn->query("SELECT * FROM `borrowers` WHERE `borrower_ID` = '$freturn[borrower_ID]'") or die(mysqli_error($conn));
                         $fstudent = $qstudent->fetch_array();
-                        echo $fstudent['last_name'] . ", " . $fstudent['first_name'];
+                        echo $fstudent['first_name'] . " " . $fstudent['last_name'];
                         ?>
                     </td>
                     <td id="title6" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px">
