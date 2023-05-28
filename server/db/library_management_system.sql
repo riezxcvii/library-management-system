@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 01:27 PM
+-- Generation Time: May 28, 2023 at 04:32 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -32,7 +32,7 @@ CREATE TABLE `books` (
   `isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `accession_number` varchar(10) NOT NULL,
   `date_receive` date NOT NULL,
-  `author_number` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_number` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_lastname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_firstname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -40,17 +40,17 @@ CREATE TABLE `books` (
   `edition` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `volume` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pages` int(5) NOT NULL,
-  `source_fund` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `source_fund` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cost` decimal(7,2) DEFAULT NULL,
   `publisher` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `publication_place` varchar(50) NOT NULL,
   `copyright_year` varchar(4) NOT NULL,
   `year_published` varchar(4) NOT NULL,
   `category` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `physical_description` varchar(50) NOT NULL,
-  `subject` varchar(50) NOT NULL,
+  `physical_description` varchar(50) DEFAULT NULL,
+  `subject` varchar(50) DEFAULT NULL,
   `status` varchar(10) NOT NULL DEFAULT '0',
-  `tracing` varchar(50) NOT NULL,
+  `tracing` varchar(50) DEFAULT NULL,
   `archive` smallint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,8 +59,10 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`book_ID`, `isbn`, `accession_number`, `date_receive`, `author_number`, `author_lastname`, `author_firstname`, `title`, `copies`, `edition`, `volume`, `pages`, `source_fund`, `cost`, `publisher`, `publication_place`, `copyright_year`, `year_published`, `category`, `physical_description`, `subject`, `status`, `tracing`, `archive`) VALUES
-(17, '134', '3432', '2023-05-25', '34534', 'dfsfsd', 'gdfxfds', 'jdfg', 3432, 'fdfedsg', 'dgfgd', 0, 'dfsdf', '23432.00', 'gfd', 'fddxf', '232', '323', '', '', '', '0', 'esrdwe', 1),
-(18, '2342347823', '3243', '2023-05-25', '334', 'sgdfd', 'dffs', 'ALice', 3, 'djfxgjkfdf', 'fgdfdxf', 0, 'hjsefd', '3.00', 'erd', 'ddfhsfd', '1234', '1234', '', '', '', '0', 'sdszfds', 0);
+(1, '978-1420968095', '546,2019', '2019-02-21', 'R546', 'Rizal', 'Jose', 'Noli Me Tangere', 6, 'I Edition', '', 0, 'Donation', '0.00', 'Berliner Buchdruckerei-Aktieng', 'Berlin, Germany', '1887', '1887', 'Filipiniana', '', NULL, '0', '', 0),
+(2, '978-1451552058', '851,2016', '2016-09-07', 'S851', 'Shakespeare', 'William', 'Romeo and Juliet', 4, 'IV Edition', '', 0, 'Donation', '0.00', 'Simon & Schuster', 'CreateSpace Independent Publishing Platform', '1596', '1596', 'Fiction', '', NULL, '0', '', 0),
+(3, '978-1510761384', '758,2021', '2021-04-13', 'J758', 'Janssen', 'Sarrah', 'The World Almanac and Book of Facts 2021', 1, 'IX Edition', '', 0, 'Donation', '0.00', 'World Almanac', 'United States', '2020', '2020', 'Reference', NULL, NULL, '0', '', 0),
+(4, '978-0824831325', '364,2014', '2014-10-24', 'R364', 'Rizal', 'Jose', 'El Filibusterismo', 7, 'VI Edition', '', 0, 'Donation', '0.00', 'University of Hawaii Press', 'Ghent, Belgium', '1891', '1891', 'Filipiniana', '', NULL, '0', '', 0);
 
 -- --------------------------------------------------------
 
@@ -107,7 +109,11 @@ INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, 
 (1, '115218060036', 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Student', 1, 0),
 (2, '546139921556', 'Barbaza', 'John Vincent', 'N', '', 'Male', 'Teacher', 1, 0),
 (3, '361224985723', 'Hiponia', 'Roneilita', 'H', '', 'Female', 'Teacher', 1, 0),
-(4, '115218060054', 'Miguel', 'Edvenson Jay', 'M', '', 'Male', 'Student', 1, 0);
+(4, '115218060054', 'Miguel', 'Edvenson Jay', 'M', '', 'Male', 'Student', 1, 0),
+(5, '201926584', 'Garfin', 'April Jane', 'A', '', 'Female', 'Student', 1, 0),
+(6, '1568468896', 'Secugal', 'Kenrick Agustin', 'S', '', 'Male', 'Teacher', 1, 0),
+(7, '548921321', 'Alison', 'Ramon', '', 'Jr', 'Male', 'Teacher', 1, 0),
+(8, '54684071', 'Sabino', 'Rustia', 'B', '', 'Female', 'Student', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -184,7 +190,19 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (4, 0, '2023-05-24', '13:35:10', '14:32:44'),
 (1, 0, '2023-05-24', '14:32:51', NULL),
 (1, 0, '2023-05-25', '09:36:03', NULL),
-(1, 0, '2023-05-25', '09:49:35', NULL);
+(1, 0, '2023-05-25', '09:49:35', NULL),
+(4, 0, '2023-05-28', '08:07:46', '08:09:54'),
+(1, 0, '2023-05-28', '08:10:28', '13:20:23'),
+(4, 0, '2023-05-28', '13:20:36', '13:31:49'),
+(1, 0, '2023-05-28', '13:39:13', '13:54:30'),
+(4, 0, '2023-05-28', '13:54:34', '13:55:39'),
+(1, 0, '2023-05-28', '13:55:45', '15:56:20'),
+(0, 8, '2023-05-28', '16:29:23', NULL),
+(0, 8, '2023-05-28', '16:30:39', NULL),
+(4, 0, '2023-05-28', '16:31:17', '16:34:59'),
+(0, 5, '2023-05-28', '16:38:00', '16:38:20'),
+(4, 0, '2023-05-28', '16:39:22', '16:53:26'),
+(1, 0, '2023-05-28', '16:53:32', NULL);
 
 --
 -- Indexes for dumped tables
@@ -223,7 +241,7 @@ ALTER TABLE `library_admin`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `book_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `borrowed_books`
@@ -235,7 +253,7 @@ ALTER TABLE `borrowed_books`
 -- AUTO_INCREMENT for table `borrowers`
 --
 ALTER TABLE `borrowers`
-  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `library_admin`
