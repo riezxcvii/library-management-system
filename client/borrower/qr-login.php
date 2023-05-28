@@ -30,7 +30,7 @@ if (isset($_POST['qrcode_text'])) {
                 header("Location: search-book.php");
                 exit();
             } else {
-                header("Location: ../index2.php?error=Incorrect username or password.");
+                header("Location: ../index2.php?error=Incorrect credentials.");
                 exit();
             }
         } else {

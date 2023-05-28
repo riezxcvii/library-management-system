@@ -30,9 +30,9 @@
                 <?php
                 session_start();
                 include "../../server/db/conDB.php";
-                $admin_ID = $_SESSION['admin_ID'];
+                $borrower_ID = $_SESSION['borrower_ID'];
 
-                $res = mysqli_query($conn, "SELECT * FROM library_admin where username='" . $_SESSION['username'] . "'");
+                $res = mysqli_query($conn, "SELECT * FROM borrowers where id_number='" . $_SESSION['id_number'] . "'");
                 while ($row = mysqli_fetch_array($res)) {
                     $first  =  $row["first_name"];
                     $last  =  $row["last_name"];
@@ -52,7 +52,7 @@
                             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-black" aria-labelledby="dropdownLargeButton">
                                     <li>
-                                        <a href="./user-account.php" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Profile</a>
+                                        <a href="./user-account.php?id=<?php echo $borrower_ID; ?>" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Profile</a>
                                     </li>
                                     <div class="py-1" data-modal-target="popup-modal" data-modal-toggle="popup-modal">
                                         <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-blue-100 hover:text-black">Sign

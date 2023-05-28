@@ -45,6 +45,14 @@ include('navigation-bar.php');
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
+                            Due Date
+                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
                             Return Date
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
@@ -61,23 +69,43 @@ include('navigation-bar.php');
                     </th>
             </thead>
             <tbody>
-                <tr class="bg-white border-b text-black font-semibold">
-                    <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
-                        1
-                    </th>
-                    <td class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
-                        Noli Me Tangere
-                    </td>
-                    <td class="px-6 py-2 select-none">
-                        03-28-2023
-                    </td>
-                    <td class="px-6 py-2 select-none">
-                        04.01-2023
-                    </td>
-                    <td class="px-6 py-2 select-none">
 
-                    </td>
-                </tr>
+                <?php
+                $qreturn = $conn->query("SELECT b.*, u.*, br.* FROM borrowed_books AS br
+        INNER JOIN books AS b ON br.book_ID = b.book_ID
+        INNER JOIN borrowers AS u ON br.borrower_ID = u.borrower_ID") or die(mysqli_error($con));
+                while ($freturn = $qreturn->fetch_array()) {
+                    $id = $freturn['borrow_ID'];
+                    $dueDate = $freturn['due_date'];
+                ?>
+
+                    <tr class="bg-white border-b text-black font-semibold">
+                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
+                            <?php echo $freturn['borrow_ID'] ?>
+                        </th>
+                        <td class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                            <?php
+                            $qbook = $conn->query("SELECT * FROM `books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
+                            $fbook = $qbook->fetch_array();
+                            echo $fbook['title'];
+                            ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+                            <?php echo $freturn['date_issued'] ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+                            <?php echo $freturn['due_date'] ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+                            <?php echo $freturn['returned_date'] ?>
+                        </td>
+                        <td class="px-6 py-2 select-none">
+
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>
