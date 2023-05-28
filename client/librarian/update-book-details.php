@@ -73,8 +73,7 @@ if (isset($_GET['id'])) {
 
                                 </div>
                             </div>
-
-                            <div class=" mt-[-1rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Edition</label>
                                 <select id="edition" name="edition" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
                                     <option value="<?php if ($row['edition'] == "") {
@@ -150,11 +149,11 @@ if (isset($_GET['id'])) {
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Accession Number</label>
                                 <input type="text" name="accession_number" value="<?php echo $row['accession_number']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
                             </div>
-                            <div class=" mt-[-1rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's First Name</label>
                                 <input type="text" name="author_first" value="<?php echo $row['author_firstname']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20">
                             </div>
-                            <div class=" mt-[-1rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's Last Name</label>
                                 <input type="text" name="author_last" value="<?php echo $row['author_lastname']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20">
                             </div>
