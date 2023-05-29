@@ -35,12 +35,11 @@ session_start();
                     <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30" minlength="8" required>
                 </div>
                 <div class="text-right mb-4 text-xs text-blue-600 underline">
-                    <a href="./admin//forgot-password.php" class="text-left">Change password?</a>
+                    <a href="./admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
 
-
                 <?php if (isset($_GET['error'])) { ?>
-                    <p class="error text-red-500 text-center w-full font-semibold">
+                    <p class="error text-red-600 font-bold text-center mb-4">
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
@@ -52,6 +51,9 @@ session_start();
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script>
+        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
+    </script>
 </body>
 
 </html>

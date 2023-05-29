@@ -1,5 +1,5 @@
 <?php
-include "./server/db/conDB.php";
+include "../db/conDB.php";
 
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['newPassword'])) {
     function validate($data)
@@ -31,14 +31,14 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['newP
         if (mysqli_num_rows($result) === 1) {
             $sql_2 = "UPDATE library_admin SET password='$_POST[newPassword]' WHERE username='$_POST[username]'";
             mysqli_query($conn, $sql_2);
-            header("Location: ../../client/index.php");
+            header("Location: ../../client/admin/forgot-password.php?success=Password changed successfully.");
             exit();
         } else {
-            header("../../client/admin/forgot-password.php");
+            header("Location: ../../client/admin/forgot-password.php?error=Invalid credentails!");
             exit();
         }
     }
 } else {
-    header("Location: ../../client/admin/forgot-password.php");
+    header("Location: ../../client/admin/forgot-password.php?error=All fields are required!");
     exit();
 }

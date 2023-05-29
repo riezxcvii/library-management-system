@@ -34,8 +34,21 @@
                         new password</labxel>
                         <input type="password" name="newPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
                 </div>
+
+                <?php if (isset($_GET['error'])) { ?>
+                    <p class="error text-red-600 font-bold text-center mb-4">
+                        <?php echo $_GET['error']; ?>
+                    </p>
+                <?php } ?>
+
+                <?php if (isset($_GET['success'])) { ?>
+                    <p class="success text-green-700 font-bold text-center mb-4">
+                        <?php echo $_GET['success']; ?>
+                    </p>
+                <?php } ?>
+
                 <div class="flex gap-4">
-                    <a href="../../index.php" class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <a href="../index.php" class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <button type="button">Return to Login</button>
                     </a>
                     <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Change
@@ -46,6 +59,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script>
+        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
+    </script>
 </body>
 
 </html>
