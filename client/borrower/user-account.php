@@ -77,6 +77,20 @@ include('navigation-bar.php');
                 while ($freturn = $qreturn->fetch_array()) {
                     $id = $freturn['borrow_ID'];
                     $dueDate = $freturn['due_date'];
+                    $date = date('y-m-d');
+
+                    $borrow = $conn->query("SELECT '$date' AS penalty FROM `borrowed_books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
+                    $new_qty = $borrow->fetch_array();
+
+                    // Calculate the penalty based on the number of days overdue
+                    $dueDateTimestamp = strtotime($dueDate);
+                    $currentDateTimestamp = strtotime($date);
+                    $daysOverdue = floor(($currentDateTimestamp - $dueDateTimestamp) / (60 * 60 * 24));
+                    $penalty = $daysOverdue * 5;
+
+                    if (is_numeric($new_qty['penalty']) && is_numeric($freturn['due_date'])) {
+                        $penalty = $penalty;
+                    }
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
@@ -99,8 +113,8 @@ include('navigation-bar.php');
                         <td class="px-6 py-2 select-none">
                             <?php echo $freturn['returned_date'] ?>
                         </td>
-                        <td class="px-6 py-2 select-none">
-
+                        <td class="px-6 py-2 select-none text-red-600">
+                            Php. <?php echo $penalty ?>.00
                         </td>
                     </tr>
                 <?php
