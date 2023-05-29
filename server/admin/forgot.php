@@ -1,5 +1,5 @@
 <?php
-include "../db/conDB.php";
+include "./server/db/conDB.php";
 
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['newPassword'])) {
     function validate($data)

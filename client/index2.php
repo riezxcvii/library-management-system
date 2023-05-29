@@ -18,7 +18,7 @@ session_start();
 </head>
 
 <body>
-    <div class="h-screen flex flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
+    <div class="h-screenflex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
         <div class="bg-gray-100 shadow-md w-2/5 rounded-lg p-8">
             <div class="flex items-center justify-center">
                 <img src="./assets/logo.png" class="h-16 mr-3" alt="ANS Logo" />

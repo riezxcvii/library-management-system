@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <div class="flex justify-center items-center mt-4">
-    <div class="w-80 bg-gray-50 rounded-md m-12 my-8 w-[30rem]">
+    <div class="bg-gray-50 rounded-md m-12 my-8 w-[30rem]">
         <?php
         $sql = "SELECT * FROM borrowers WHERE borrower_ID = $id";
         $res = mysqli_query($conn, $sql);

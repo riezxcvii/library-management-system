@@ -2,8 +2,8 @@
 include('navigation-bar.php');
 ?>
 
-<div class="mt-8 mb-4 flex justify-center items-center mt-[-0.3rem]">
-    <div class="w-80 bg-gray-50 rounded-md m-12 my-8 w-[30rem]">
+<div class="mb-4 flex justify-center items-center mt-[-0.3rem]">
+    <div class="bg-gray-50 rounded-md m-12 my-8 w-[30rem]">
         <div class="px-6 py-6 lg:px-8">
             <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
             <form class="space-y-6" action="#" autocomplete="off" method="POST">
