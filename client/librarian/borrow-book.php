@@ -26,7 +26,7 @@ include('navigation-bar.php');
 
 <form action="../../server/librarian/borrow.php" class="flex flex-col items-center">
     <div class="flex items-center">
-        <select name="" id="" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
+        <select name="borrower_ID" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
             <option value="">Select borrower</option>
             <?php $result =  mysqli_query($conn, "SELECT * FROM borrowers WHERE status=1") or die(mysqli_error($conn));
             while ($row = mysqli_fetch_array($result)) { ?>
@@ -35,7 +35,7 @@ include('navigation-bar.php');
         </select>
     </div>
 
-    <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-center flex border-none mt-4">Lend Book</button>
+    <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 items-center justify-center flex border-none mt-4">Lend Book</button>
 </form>
 
 <!--table-->

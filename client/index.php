@@ -16,7 +16,7 @@ session_start();
 </head>
 
 <body>
-    <div class="h-screen flex flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
+    <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
         <div class="bg-gray-100 shadow-md w-2/5 rounded-lg p-8">
             <form autocomplete="off" action="../server/admin/login.php" method="POST">
                 <div class="flex items-center justify-center mb-4">
@@ -35,7 +35,7 @@ session_start();
                     <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30" minlength="8" required>
                 </div>
                 <div class="text-right mb-4 text-xs text-blue-600 underline">
-                    <a href="./pages/admin/forgot-password.html" class="text-left">Change password?</a href="forgot-password.php">
+                    <a href="./admin//forgot-password.php" class="text-left">Change password?</a>
                 </div>
 
 

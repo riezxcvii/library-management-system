@@ -11,27 +11,32 @@
 </head>
 
 <body>
-    <div class="h-screen flex flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
+    <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
         <div class="bg-gray-100 shadow-md w-2/5 rounded-lg p-8">
-            <form autocomplete="off">
+            <form autocomplete="off" method="POST" action="../../server/admin/forgot.php">
                 <div class="flex items-center justify-center mb-4">
                     <img src="../assets/logo.png" class="h-16 mr-3" alt="ANS Logo" />
                     <h1 class="font-extrabold text-2xl">ANS Library Management System</h1>
                 </div>
                 <h1 class="font-semibold text-xl mb-4 text-center text-gray-900">Change your password</h1 class="font-semibold text-lg">
                 <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</labxel>
-                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                        <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
                 </div>
                 <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Enter
+                        current password</labxel>
+                        <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Enter
                         new password</labxel>
-                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                        <input type="password" name="newPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
                 </div>
                 <div class="flex gap-4">
-                    <a href="../../index.php" class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" F>
-                        <button type="submit">Return to Login</button>
+                    <a href="../../index.php" class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        <button type="button">Return to Login</button>
                     </a>
                     <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Change
                         Password</button>
