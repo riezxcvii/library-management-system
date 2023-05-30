@@ -73,15 +73,43 @@ require '../db/conDB.php';
 
         <?php
         require '../db/conDB.php';
-        $query = $conn->query("SELECT * FROM `log_history` JOIN `library_admin` ON log_history.admin_ID = library_admin.admin_ID ORDER BY `date` DESC");
-        while ($fetch = $query->fetch_array()) {
+        $sql = "SELECT * FROM `log_history` ORDER BY date && 'time_in' ASC";
+        $res = mysqli_query($conn, $sql);
+        $sn = 1;
+        while ($row = mysqli_fetch_assoc($res)) {
         ?>
 
             <tr>
-                <td style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px"><?php echo $fetch['first_name'] . " " . $fetch['last_name'] ?></td>
-                <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $fetch['date'] ?></td>
-                <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $fetch['time_in'] ?></td>
-                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['time_out'] ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px">
+                    <?php
+                    if ($row['admin_ID'] == 0) {
+                        $sql1 = "SELECT * FROM `borrowers` WHERE borrower_ID = $row[borrower_ID]";
+                        $res1 = mysqli_query($conn, $sql1);
+                        $row1 = mysqli_fetch_assoc($res1);
+                        echo $row1['first_name'] . " " . $row1['last_name'];
+                    } else {
+                        $sql1 = "SELECT * FROM `library_admin` WHERE admin_ID = $row[admin_ID]";
+                        $res1 = mysqli_query($conn, $sql1);
+                        $row1 = mysqli_fetch_assoc($res1);
+                        echo $row1['first_name'] . " " . $row1['last_name'];
+                    }
+
+                    ?>
+                </td>
+                <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px">
+                    <?php echo $row['date']; ?>
+                </td>
+                <td style="border:1px solid black; padding:1.5px; text-align:center; padding-top:3px"><?php echo $row['time_in']; ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center">
+                    <?php
+                    if ($row['time_out'] == '') {
+                        echo "-----";
+                    } else {
+
+                        echo $row['time_out'];
+                    }
+                    ?>
+                </td>
             </tr>
 
         <?php

@@ -53,7 +53,7 @@
                             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-black" aria-labelledby="dropdownLargeButton">
                                     <li>
-                                        <a href="./user-account.php?id=<?php echo $id; ?>" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Profile</a>
+                                        <a href="./user-account.php?id=<?php echo $id; ?>" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Account</a>
                                     </li>
                                     <div class="py-1" data-modal-target="popup-modal" data-modal-toggle="popup-modal">
                                         <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-blue-100 hover:text-black">Sign

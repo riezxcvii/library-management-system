@@ -116,9 +116,22 @@ if (isset($_GET['id'])) {
                         <td class="px-6 py-2 select-none">
                             <?php echo $freturn['returned_date'] ?>
                         </td>
-                        <td class="px-6 py-2 select-none text-red-600">
-                            Php. <?php echo $penalty ?>.00
-                        </td>
+                        <?php
+                        if ($dueDateTimestamp <= $currentDateTimestamp) {
+                        ?>
+                            <td class="px-6 py-2 select-none text-red-600">
+                                Php. <?php echo $penalty ?>.00
+                            </td>
+                        <?php
+
+                        } else {
+                        ?>
+                            <td class="px-6 py-2 select-none">
+                                No penalty
+                            </td>
+                        <?php
+                        }
+                        ?>
                     </tr>
                 <?php
                 }
