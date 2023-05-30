@@ -25,7 +25,6 @@ if (isset($_POST['qrcode_text'])) {
             $row = mysqli_fetch_assoc($result);
 
             if ($row['id_number'] === $qrcode_text) {
-
                 echo "Logged in!";
                 $_SESSION['id_number'] = $row['id_number'];
                 $_SESSION['borrower_ID'] = $row['borrower_ID'];
