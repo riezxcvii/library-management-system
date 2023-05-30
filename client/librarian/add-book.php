@@ -52,10 +52,10 @@ include('navigation-bar.php');
                                 <input type="text" name="isbn" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
                             </div>
                             <div>
-                                <label class="block mb-1 text-sm font-medium text-gray-900">Scan Barcode</label>
-                                <div class="w-full border-gray-900 border-2">
-
+                                <div id="reader" class="h-full">
+                                    <video class="h-10 w-full object-cover" id="video"></video>
                                 </div>
+                                <div id="result" class="h-0"></div>
                             </div>
                             <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Edition</label>
@@ -219,6 +219,28 @@ include('navigation-bar.php');
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const scanner = new Html5QrcodeScanner('reader', {
+        qrbox: {
+            width: 250,
+            height: 50,
+        },
+        fps: 20,
+    });
+    scanner.render(success, error);
+
+    function success(result) {
+        const isbnInput = document.querySelector('input[name="isbn"]');
+        isbnInput.value = result;
+        scanner.clear();
+        document.getElementById('reader').remove();
+    }
+
+    function error(err) {
+        console.error(err);
+    }
+</script>
 </body>
 
 </html>
