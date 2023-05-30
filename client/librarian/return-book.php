@@ -259,7 +259,7 @@
                                     <?php echo $freturn['returned_date'] ?>
                                 </td>
                                 <?php
-                                if ($dueDate <= $date) {
+                                if ($dueDate >= $date) {
                                 ?>
                                     <td onselectstart="return false"><?php echo $freturn['due_date']; ?></td>
 
@@ -385,7 +385,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script src="../js/sort"></script>
+    <script src="../js/sort.js"></script>
     <script>
         function mySearch() {
             // Declare variables

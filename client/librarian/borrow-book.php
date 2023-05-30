@@ -24,7 +24,7 @@ include('navigation-bar.php');
     </form>
 </div>
 
-<form action="../../server/librarian/borrow.php" class="flex flex-col items-center">
+<form action="../../server/librarian/borrow.php" class="flex flex-col items-center" method="POST" enctype="multipart/form-data">
     <div class="flex items-center">
         <select name="borrower_ID" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
             <option value="">Select borrower</option>
@@ -34,6 +34,12 @@ include('navigation-bar.php');
             <?php } ?>
         </select>
     </div>
+
+    <?php if (isset($_GET['error'])) { ?>
+        <p class="error text-red-600 font-bold text-center mb-4">
+            <?php echo $_GET['error']; ?>
+        </p>
+    <?php } ?>
 
     <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 items-center justify-center flex border-none mt-4">Lend Book</button>
 </form>
@@ -97,37 +103,37 @@ include('navigation-bar.php');
                 include("../../server/db/conDB.php");
 
                 $i = 0;
-                $query = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
-                while ($books = mysqli_fetch_assoc($query)) {
-                    $borrow = $conn->query("SELECT SUM(copies) as 'total' FROM `borrowed_books` WHERE `book_ID` = '$books[book_ID]'") or die(mysqli_error($conn));
-                    $new_qty = $borrow->fetch_array();
-                    $total = $books['copies'] - $new_qty['total'];
+                    $q_book = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
+                    while ($f_book = mysqli_fetch_assoc($q_book)) {
+                        $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$f_book[book_ID]'") or die(mysqli_error($conn));
+                        $new_qty = $q_borrow->fetch_array();
+                        $total = $f_book['copies'] - $new_qty['total'];
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
                         <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                            <?php
+                        <?php
                             if ($total == 0) {
-                                echo "<center><label class = 'text-red-600'>Not Available</label></center>";
+                                echo "<center><label id='na6_1' class = 'text-red-600   '>Not Available</label></center>";
                             } else {
-                                echo '<input type = "hidden" name = "book_ID[' . $i . ']" value = "' . $books['book_ID'] . '"><center><input type = "checkbox" name = "selector[' . $i . ']" value = "1"></center>';
+                                echo '<input type = "hidden" name = "book_ID[' . $i . ']" value = "' . $f_book['book_ID'] . '"><center><input type = "checkbox" name = "selector[' . $i . ']" value = "1"></center>';
                             }
                             ?>
                         </th>
                         <td class="px-6 py-2">
-                            <?php echo $books['isbn'] ?>
+                            <?php echo $f_book['isbn'] ?>
                         </td>
-                        <td onclick="openModal(<?php echo $books['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
-                            <?php echo $books['title'] ?>
-                        </td>
-                        <td class="px-6 py-2">
-                            <?php echo $books['author_firstname'] ?> <?php echo $books['author_lastname'] ?>
+                        <td onclick="openModal(<?php echo $f_book['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                            <?php echo $f_book['title'] ?>
                         </td>
                         <td class="px-6 py-2">
-                            <?php echo $books['category'] ?>
+                            <?php echo $f_book['author_firstname'] ?> <?php echo $f_book['author_lastname'] ?>
                         </td>
                         <td class="px-6 py-2">
-                            <?php echo $books['copies'] ?>
+                            <?php echo $f_book['category'] ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php echo $f_book['copies'] ?>
                         </td>
                         <td class="px-6 py-2">
                             <?php echo $total ?>
