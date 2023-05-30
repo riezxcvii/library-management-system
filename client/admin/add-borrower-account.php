@@ -75,21 +75,19 @@ include('navigation-bar.php');
                     Borrower</button>
             </form>
             <?php
-            if(isset($_POST['submit']))
-            {
-                $id=$_POST['employeeID'];
-                $role=$_POST['role'];
-                $last_name=$_POST['lastName'];
-                $first_name=$_POST['firstName'];
-                $middle_initial=$_POST['middleInitial'];
-                $extension=$_POST['extension'];
-                $sex=$_POST['sex'];
-                
-                $sql="INSERT INTO `borrowers` (id_number, first_name,last_name, middle_initial,name_extension,sex,role,status)VALUES('$id', '$first_name','$last_name','$middle_initial','$extension','$sex','$role',1)";
-                $result=mysqli_query($conn,$sql);
-                if($result)
-                {
-                    echo"<script>
+            if (isset($_POST['submit'])) {
+                $id = $_POST['employeeID'];
+                $role = $_POST['role'];
+                $last_name = $_POST['lastName'];
+                $first_name = $_POST['firstName'];
+                $middle_initial = $_POST['middleInitial'];
+                $extension = $_POST['extension'];
+                $sex = $_POST['sex'];
+
+                $sql = "INSERT INTO `borrowers` (id_number, first_name,last_name, middle_initial,name_extension,sex,role,status)VALUES('$id', '$first_name','$last_name','$middle_initial','$extension','$sex','$role',1)";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>
                         window.location.href='account-reports.php'
                         </script>";
                 }

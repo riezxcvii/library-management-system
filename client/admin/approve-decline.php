@@ -59,8 +59,8 @@ if (isset($_GET['id'])) {
                     <label class="block text-sm font-medium text-gray-900">Sex</label>
                     <div class="flex items-center mb-4 mr-4">
                         <input id="female" type="radio" <?php if ($row['sex'] == 'Female') {
-                        echo 'checked';
-                        } ?> value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                            echo 'checked';
+                                                        } ?> value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
                     </div>
                     <div class="flex items-center mb-4">

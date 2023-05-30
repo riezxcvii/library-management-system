@@ -86,6 +86,12 @@ include('navigation-bar.php');
                                 $row1 = mysqli_fetch_assoc($res1);
                                 echo $row1['first_name'] . " " . $row1['last_name'];
                             }
+
+                            ?>
+                        </td>
+                        <td class="px-6 py-2">
+                            <?php
+                            if ($row['admin_ID'] == 0) {
                                 $sql1 = "SELECT * FROM `borrowers` WHERE borrower_ID = $row[borrower_ID]";
                                 $res1 = mysqli_query($conn, $sql1);
                                 $row1 = mysqli_fetch_assoc($res1);
@@ -96,6 +102,7 @@ include('navigation-bar.php');
                                 $row1 = mysqli_fetch_assoc($res1);
                                 echo $row1['role'];
                             }
+
                             ?>
                         </td>
                         <td class="px-6 py-2">

@@ -1,11 +1,10 @@
 <?php
 include('navigation-bar.php');
-if(isset($_GET['id']))
-{
-    $id=$_GET['id'];
-    $sql="SELECT * FROM `borrowers` WHERE borrower_ID = $id";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM `borrowers` WHERE borrower_ID = $id";
     $result = mysqli_query($conn, $sql);
-    $row=mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_assoc($result);
 }
 ?>
 
@@ -49,20 +48,16 @@ if(isset($_GET['id']))
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                        <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" >
-                            <option value="<?php if($row['name_extension'] == ""){
-                                echo "";
-                            } 
-                            else
-                            {
-                                echo $row['name_extension']; 
-                            }?>"selected><?php if($row['name_extension'] == ""){
-                                echo "Select Extension";
-                            } 
-                            else
-                            {
-                                echo $row['name_extension']; 
-                            }?></option>
+                        <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
+                            <option value="<?php if ($row['name_extension'] == "") {
+                                                echo "";
+                                            } else {
+                                                echo $row['name_extension'];
+                                            } ?>" selected><?php if ($row['name_extension'] == "") {
+                                                echo "Select Extension";
+                                            } else {
+                                                echo $row['name_extension'];
+                                            } ?></option>
                             <option value="Jr">Jr</option>
                             <option value="Sr">Sr</option>
                             <option value="I">I</option>
@@ -78,15 +73,15 @@ if(isset($_GET['id']))
                     <div class="flex">
                         <label class="block text-sm font-medium text-gray-900">Sex</label>
                         <div class="flex items-center mb-4 mr-4">
-                            <input id="female" type="radio"<?php if ($row['sex'] == 'Female') {
-                                                echo 'checked';
-                                            } ?> value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" required>
+                            <input id="female" type="radio" <?php if ($row['sex'] == 'Female') {
+                                                                echo 'checked';
+                                                            } ?> value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" required>
                             <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
                         </div>
                         <div class="flex items-center mb-4">
                             <input id="male" type="radio" <?php if ($row['sex'] == 'Male') {
-                                                echo 'checked';
-                                            } ?> value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" required>
+                                                                echo 'checked';
+                                                            } ?> value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" required>
                             <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
                         </div>
                     </div>
@@ -95,21 +90,19 @@ if(isset($_GET['id']))
                     Details</button>
             </form>
             <?php
-            if(isset($_POST['submit']))
-            {
-                $empId=$_POST['employeeID'];
-                $role=$_POST['role'];
-                $last_name=$_POST['lastName'];
-                $first_name=$_POST['firstName'];
-                $middle_initial=$_POST['middleInitial'];
-                $extension=$_POST['extension'];
-                $sex=$_POST['sex'];
-                
-                $sql="UPDATE `borrowers` SET id_number='$empId', first_name = '$first_name',last_name='$last_name', middle_initial='$middle_initial',name_extension='$extension',sex='$sex',role='$role' WHERE borrower_ID ='$id'";
-                $result=mysqli_query($conn,$sql);
-                if($result)
-                {
-                    echo"<script>
+            if (isset($_POST['submit'])) {
+                $empId = $_POST['employeeID'];
+                $role = $_POST['role'];
+                $last_name = $_POST['lastName'];
+                $first_name = $_POST['firstName'];
+                $middle_initial = $_POST['middleInitial'];
+                $extension = $_POST['extension'];
+                $sex = $_POST['sex'];
+
+                $sql = "UPDATE `borrowers` SET id_number='$empId', first_name = '$first_name',last_name='$last_name', middle_initial='$middle_initial',name_extension='$extension',sex='$sex',role='$role' WHERE borrower_ID ='$id'";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>
                         window.location.href='account-reports.php'
                         </script>";
                 }
