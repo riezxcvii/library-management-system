@@ -40,9 +40,14 @@ include('navigation-bar.php');
             <?php echo $_GET['error']; ?>
         </p>
     <?php } ?>
+    <div class="flex items-center">
+        <input type="date" name="due" required class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
+      <label for="due">Due Date</label>
+    </div>
+
 
     <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 items-center justify-center flex border-none mt-4">Lend Book</button>
-</form>
+
 
 <!--table-->
 <div class="p-4 h-screen overflow-y-auto ">
@@ -147,6 +152,7 @@ include('navigation-bar.php');
         </table>
     </div>
 </div>
+</form>
 
 <!--card modal-->
 <div id="card-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
