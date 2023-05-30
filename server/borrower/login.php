@@ -25,7 +25,7 @@ if (isset($_POST['qrcode_text'])) {
             $row = mysqli_fetch_assoc($result);
 
             if ($row['id_number'] === $qrcode_text) {
-                if ($row['role'] == 'Student') {
+               
                     echo "Logged in!";
                     $_SESSION['id_number'] = $row['id_number'];
                     $_SESSION['borrower_ID'] = $row['borrower_ID'];
@@ -38,9 +38,7 @@ if (isset($_POST['qrcode_text'])) {
                     } else {
                         echo "Error!";
                     }
-                } else {
-                   header("Location: ../../client/index2.php?error=You are not a student!");
-                }
+           
             } else {
                 header("Location: ../../client/index2.php?error=Invalid credentials!");
                 exit();
