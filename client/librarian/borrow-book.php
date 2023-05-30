@@ -24,7 +24,7 @@ include('navigation-bar.php');
     </form>
 </div>
 
-<form action="../../server/librarian/borrow.php" class="flex flex-col items-center" method="POST" enctype="multipart/form-data">
+<form action="../../server/librarian/borrow.php" class="flex flex-col items-center h-full" method="POST" enctype="multipart/form-data">
     <div class="flex items-center">
         <select name="borrower_ID" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
             <option value="">Select borrower</option>
@@ -34,124 +34,116 @@ include('navigation-bar.php');
             <?php } ?>
         </select>
     </div>
-
-    <?php if (isset($_GET['error'])) { ?>
-        <p class="error text-red-600 font-bold text-center mb-4">
-            <?php echo $_GET['error']; ?>
-        </p>
-    <?php } ?>
-    <div class="flex items-center">
-        <input type="date" name="due" required class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
-      <label for="due">Due Date</label>
+    <div class="flex items-center mt-2">
+        <input type="date" name="due" required class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none" placeholder="Select Due Date">
     </div>
-
 
     <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 items-center justify-center flex border-none mt-4">Lend Book</button>
 
 
-<!--table-->
-<div class="p-4 h-screen overflow-y-auto ">
-    <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
-        <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="sticky top-0 text-xs text-white uppercase bg-black">
-                <tr>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Select
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        ISBN
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center">
-                            Title
-                            <a href="#" onclick="sortTable(1)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center">
-                            Author
-                            <a href="#" onclick="sortTable(2)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center">
-                            Category
-                            <a href="#" onclick="sortTable(3)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3 justify-center">
-                        <div class="flex items-center">
-                            Total Copies
-                            <a href="#" onclick="sortTable(4)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3 flex">
-                        <div class="flex items-center">
-                            Copies Available
-                            <a href="#" onclick="sortTable(5)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
-            </thead>
-            <tbody>
+    <!--table-->
+    <div class="p-4 h-full overflow-y-auto w-full">
+        <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
+            <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="sticky top-0 text-xs text-white uppercase bg-black">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-center">
+                            Select
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            ISBN
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Title
+                                <a href="#" onclick="sortTable(1)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Author
+                                <a href="#" onclick="sortTable(2)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Category
+                                <a href="#" onclick="sortTable(3)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3 justify-center">
+                            <div class="flex items-center">
+                                Total Copies
+                                <a href="#" onclick="sortTable(4)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3 flex">
+                            <div class="flex items-center">
+                                Copies Available
+                                <a href="#" onclick="sortTable(5)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                </thead>
+                <tbody>
 
-                <?php
-                include("../../server/db/conDB.php");
+                    <?php
+                    include("../../server/db/conDB.php");
 
-                $i = 0;
+                    $i = 0;
                     $q_book = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
                     while ($f_book = mysqli_fetch_assoc($q_book)) {
                         $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$f_book[book_ID]'") or die(mysqli_error($conn));
                         $new_qty = $q_borrow->fetch_array();
                         $total = $f_book['copies'] - $new_qty['total'];
-                ?>
+                    ?>
 
-                    <tr class="bg-white border-b text-black font-semibold">
-                        <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
-                        <?php
-                            if ($total == 0) {
-                                echo "<center><label id='na6_1' class = 'text-red-600   '>Not Available</label></center>";
-                            } else {
-                                echo '<input type = "hidden" name = "book_ID[' . $i . ']" value = "' . $f_book['book_ID'] . '"><center><input type = "checkbox" name = "selector[' . $i . ']" value = "1"></center>';
-                            }
-                            ?>
-                        </th>
-                        <td class="px-6 py-2">
-                            <?php echo $f_book['isbn'] ?>
-                        </td>
-                        <td onclick="openModal(<?php echo $f_book['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
-                            <?php echo $f_book['title'] ?>
-                        </td>
-                        <td class="px-6 py-2">
-                            <?php echo $f_book['author_firstname'] ?> <?php echo $f_book['author_lastname'] ?>
-                        </td>
-                        <td class="px-6 py-2">
-                            <?php echo $f_book['category'] ?>
-                        </td>
-                        <td class="px-6 py-2">
-                            <?php echo $f_book['copies'] ?>
-                        </td>
-                        <td class="px-6 py-2">
-                            <?php echo $total ?>
-                        </td>
-                    </tr>
-                <?php
-                    $i++;
-                }
-                ?>
-            </tbody>
-        </table>
+                        <tr class="bg-white border-b text-black font-semibold">
+                            <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
+                                <?php
+                                if ($total == 0) {
+                                    echo "<center><label id='na6_1' class = 'text-red-600   '>Not Available</label></center>";
+                                } else {
+                                    echo '<input type = "hidden" name = "book_ID[' . $i . ']" value = "' . $f_book['book_ID'] . '"><center><input type = "checkbox" name = "selector[' . $i . ']" value = "1"></center>';
+                                }
+                                ?>
+                            </th>
+                            <td class="px-6 py-2">
+                                <?php echo $f_book['isbn'] ?>
+                            </td>
+                            <td onclick="openModal(<?php echo $f_book['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                                <?php echo $f_book['title'] ?>
+                            </td>
+                            <td class="px-6 py-2">
+                                <?php echo $f_book['author_firstname'] ?> <?php echo $f_book['author_lastname'] ?>
+                            </td>
+                            <td class="px-6 py-2">
+                                <?php echo $f_book['category'] ?>
+                            </td>
+                            <td class="px-6 py-2">
+                                <?php echo $f_book['copies'] ?>
+                            </td>
+                            <td class="px-6 py-2">
+                                <?php echo $total ?>
+                            </td>
+                        </tr>
+                    <?php
+                        $i++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 </form>
 
 <!--card modal-->

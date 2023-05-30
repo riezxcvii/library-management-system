@@ -223,9 +223,11 @@
                     <tbody>
 
                         <?php
-                        $qreturn = $conn->query("SELECT b.*, u.*, br.* FROM borrowed_books AS br
-        INNER JOIN books AS b ON br.book_ID = b.book_ID
-        INNER JOIN borrowers AS u ON br.borrower_ID = u.borrower_ID") or die(mysqli_error($con));
+                        $qreturn = $conn->query("SELECT b.*, u.*, br.* 
+                        FROM borrowed_books AS br
+                        INNER JOIN books AS b ON br.book_ID = b.book_ID
+                        INNER JOIN borrowers AS u ON br.borrower_ID = u.borrower_ID
+                        ORDER BY borrow_ID DESC") or die(mysqli_error($con));
                         while ($freturn = $qreturn->fetch_array()) {
                             $id = $freturn['borrow_ID'];
                             $dueDate = $freturn['due_date'];

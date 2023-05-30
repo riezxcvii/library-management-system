@@ -67,7 +67,7 @@ include('navigation-bar.php');
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM `log_history` ORDER BY date DESC";
+                $sql = "SELECT * FROM `log_history` ORDER BY date && 'time_in' DESC";
                 $res = mysqli_query($conn, $sql);
                 $sn = 1;
                 while ($row = mysqli_fetch_assoc($res)) {
@@ -75,40 +75,27 @@ include('navigation-bar.php');
                     <tr class="bg-white border-b text-black font-semibold">
                         <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
                             <?php
-                            if($row['admin_ID']==0)
-                            {
+                            if ($row['admin_ID'] == 0) {
                                 $sql1 = "SELECT * FROM `borrowers` WHERE borrower_ID = $row[borrower_ID]";
                                 $res1 = mysqli_query($conn, $sql1);
                                 $row1 = mysqli_fetch_assoc($res1);
                                 echo $row1['first_name'] . " " . $row1['last_name'];
-                            }
-                            else
-                            {
+                            } else {
                                 $sql1 = "SELECT * FROM `library_admin` WHERE admin_ID = $row[admin_ID]";
                                 $res1 = mysqli_query($conn, $sql1);
                                 $row1 = mysqli_fetch_assoc($res1);
                                 echo $row1['first_name'] . " " . $row1['last_name'];
                             }
-                        
-                            ?>
-                        </td>
-                        <td class="px-6 py-2">
-                        <?php
-                            if($row['admin_ID']==0)
-                            {
                                 $sql1 = "SELECT * FROM `borrowers` WHERE borrower_ID = $row[borrower_ID]";
                                 $res1 = mysqli_query($conn, $sql1);
                                 $row1 = mysqli_fetch_assoc($res1);
                                 echo $row1['role'];
-                            }
-                            else
-                            {
+                            } else {
                                 $sql1 = "SELECT * FROM `library_admin` WHERE admin_ID = $row[admin_ID]";
                                 $res1 = mysqli_query($conn, $sql1);
                                 $row1 = mysqli_fetch_assoc($res1);
                                 echo $row1['role'];
                             }
-                        
                             ?>
                         </td>
                         <td class="px-6 py-2">

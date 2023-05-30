@@ -25,20 +25,18 @@ if (isset($_POST['qrcode_text'])) {
             $row = mysqli_fetch_assoc($result);
 
             if ($row['id_number'] === $qrcode_text) {
-               
-                    echo "Logged in!";
-                    $_SESSION['id_number'] = $row['id_number'];
-                    $_SESSION['borrower_ID'] = $row['borrower_ID'];
-                    $id = $row['borrower_ID'];
-                    $sql1 = "INSERT INTO `log_history` (borrower_ID, date,time_in)VALUES('$id',NOW(),NOW())";
-                    $res = mysqli_query($conn, $sql1);
-                    if ($res) {
-                        header("Location: ../../client/borrower/search-book.php");
-                        exit();
-                    } else {
-                        echo "Error!";
-                    }
-           
+                echo "Logged in!";
+                $_SESSION['id_number'] = $row['id_number'];
+                $_SESSION['borrower_ID'] = $row['borrower_ID'];
+                $id = $row['borrower_ID'];
+                $sql1 = "INSERT INTO `log_history` (borrower_ID, date,time_in)VALUES('$id',NOW(),NOW())";
+                $res = mysqli_query($conn, $sql1);
+                if ($res) {
+                    header("Location: ../../client/borrower/search-book.php");
+                    exit();
+                } else {
+                    echo "Error!";
+                }
             } else {
                 header("Location: ../../client/index2.php?error=Invalid credentials!");
                 exit();

@@ -32,9 +32,7 @@ session_start();
                     </div>
 
                     <div>
-                 
-                            <input type="text" name="qrcode_text" id="text" readonyy="" class="hidden">
-                   
+                        <input type="text" name="qrcode_text" id="text" readonyy="" class="hidden">
                     </div>
                 </div>
 
