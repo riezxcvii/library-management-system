@@ -70,7 +70,8 @@
                 include "../../server/db/conDB.php";
                 $admin_ID = $_SESSION['admin_ID'];
 
-                $res = mysqli_query($conn, "SELECT * FROM library_admin where username='" . $_SESSION['username'] . "'");
+                $res = mysqli_query($conn, "SELECT * FROM library_admin 
+                WHERE username='" . $_SESSION['username'] . "'");
                 while ($row = mysqli_fetch_array($res)) {
                     $first  =  $row["first_name"];
                     $last  =  $row["last_name"];
@@ -146,13 +147,6 @@
 
         <!--button and search bar-->
         <div class="p-4 flex justify-end">
-            <!--button-->
-            <a href="./add-borrower-account.php">
-                <button type="button" class="h-full mr-8 inline-flex items-center px-5 py-2.5 text-m font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300" data-modal-target="register-modal" data-modal-toggle="register-modal">
-                    Register a borrower
-                </button>
-            </a>
-
             <?php
             $pending = mysqli_query($conn, "SELECT COUNT(status) AS total FROM borrowers WHERE status = '0' ;");
             $p = mysqli_fetch_assoc($pending)
@@ -223,7 +217,9 @@
 
                         <?php
                         $i = 0;
-                        $user = $conn->query("SELECT * FROM `borrowers` WHERE status = '1'") or die(mysqli_error($conn));
+                        $user = $conn->query("SELECT * FROM `borrowers` 
+                        WHERE status = '1'
+                        ORDER BY last_name ASC") or die(mysqli_error($conn));
                         while ($borrower = $user->fetch_array()) {
                             $id = $borrower['borrower_ID'];
                             $idNumber = $borrower['id_number'];

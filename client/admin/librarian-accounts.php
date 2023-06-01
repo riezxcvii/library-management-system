@@ -5,14 +5,9 @@ include('navigation-bar.php');
 <!--button and search bar-->
 <div class="p-4 flex justify-end">
     <!--button-->
-    <a href="./add-borrower-account.php">
+    <a href="./add-librarian.php">
         <button type="button" class="h-full mr-8 inline-flex items-center px-5 py-2.5 text-m font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300" data-modal-target="register-modal" data-modal-toggle="register-modal">
-            Register a borrower
-        </button>
-    </a>
-    <a href="account-management.php" class="flex mr-8">
-        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
-            Approved Registration
+            Add Account
         </button>
     </a>
     <!--search bar-->
@@ -66,15 +61,15 @@ include('navigation-bar.php');
             <tbody>
 
                 <?php
-                $borrower = $conn->query("SELECT * FROM `borrowers` WHERE status=0") or die(mysqli_error($conn));
+                $borrower = $conn->query("SELECT * FROM `library_admin` 
+                WHERE status=1 
+                ORDER BY last_name ASC") or die(mysqli_error($conn));
                 while ($name = $borrower->fetch_array()) {
-                    $id = $name['borrower_ID'];
-                    $idNumber = $name['id_number'];
+                    $id = $name['admin_ID'];
                     $last = $name['last_name'];
                     $first = $name['first_name'];
                     $middle = $name['middle_initial'];
                     $extension = $name['name_extension'];
-                    $idNumber = $name['id_number'];
                     $sex = $name['sex'];
                     $role = $name['role'];
                 ?>
@@ -90,7 +85,7 @@ include('navigation-bar.php');
                             <?php echo $name['role'] ?>
                         </td>
                         <td class="px-6 py-2 justify-center flex">
-                            <a href="./approve-decline.php?id=<?php echo $id ?>">
+                            <a href="./view-details.php?id=<?php echo $id ?>">
                                 <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
                                     Details
                                 </button>

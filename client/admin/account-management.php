@@ -54,7 +54,9 @@ include('navigation-bar.php');
             <tbody>
 
                 <?php
-                $query = "SELECT * FROM `borrowers` WHERE status=1 and deactivate = 0" or die(mysqli_error($conn));
+                $query = "SELECT * FROM `borrowers` 
+                WHERE status=1 and deactivate = 0
+                ORDER BY last_name ASC" or die(mysqli_error($conn));
                 $result = mysqli_query($conn, $query);
                 while ($name = mysqli_fetch_assoc($result)) {
                     $id = $name['borrower_ID'];
