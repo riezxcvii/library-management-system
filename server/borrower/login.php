@@ -18,7 +18,7 @@ if (isset($_POST['qrcode_text'])) {
         header("Location: ../../client/index2.php?error=ID number is required!");
         exit();
     } else {
-        $sql = "SELECT * FROM borrowers WHERE id_number='$qrcode_text' AND status='1'";
+        $sql = "SELECT * FROM borrowers WHERE id_number='$qrcode_text' AND status='1' AND deactivate='0'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) === 1) {

@@ -37,7 +37,7 @@ session_start();
                 </div>
 
                 <?php if (isset($_GET['error'])) { ?>
-                    <p class="error text-red-600 font-bold text-center mb-4">
+                    <p class="error text-red-600 font-bold text-center mt-4">
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
