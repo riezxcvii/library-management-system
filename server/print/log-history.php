@@ -73,7 +73,7 @@ require '../db/conDB.php';
 
         <?php
         require '../db/conDB.php';
-        $sql = "SELECT * FROM `log_history` ORDER BY date && 'time_in' ASC";
+        $sql = "SELECT * FROM `log_history` ORDER BY date DESC";
         $res = mysqli_query($conn, $sql);
         $sn = 1;
         while ($row = mysqli_fetch_assoc($res)) {

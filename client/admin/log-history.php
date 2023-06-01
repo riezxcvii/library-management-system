@@ -67,7 +67,7 @@ include('navigation-bar.php');
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM `log_history` ORDER BY date && 'time_in' DESC";
+                $sql = "SELECT * FROM `log_history` ORDER BY date DESC";
                 $res = mysqli_query($conn, $sql);
                 $sn = 1;
                 while ($row = mysqli_fetch_assoc($res)) {
