@@ -77,7 +77,7 @@ require '../db/conDB.php';
                                                                                                                                         echo $sum;
                                                                                                                                         ?>]</td>
             <td id="CA14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">COPIES BORROWED</td>
-            <td id="CA14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">Archive (0 no, 1 yes)</td>
+            <td id="CA14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">Archive</td>
         </tr>
 
         <?php
@@ -96,7 +96,17 @@ require '../db/conDB.php';
                 <td id="author6" style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px"><?php echo $f_book['status'] ?></td>
                 <td id="tab14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['copies'] ?></td>
                 <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $total ?></td>
-                <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['archive'] ?></td>
+                <?php if ($book['archive'] == 1) {
+                        ?>
+                            <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center; color:brown">Yes</td>
+                        <?php
+                        } else {
+                        ?>
+                            <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center">No</td>
+                        <?php
+                        }
+
+                        ?>
             </tr>
 
         <?php
