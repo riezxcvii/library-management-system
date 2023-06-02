@@ -1,5 +1,5 @@
 <?php
-include("../../server/db/conDB.php");
+include("../db/conDB.php");
 
 if (isset($_POST['id'])) {
     $id = $_POST['id'];

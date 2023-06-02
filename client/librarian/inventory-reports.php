@@ -115,7 +115,7 @@ include('navigation-bar.php');
                         </td>
                         <?php if ($book['archive'] == 1) {
                         ?>
-                            <td class="px-6 py-2">Yes</td>
+                            <td class="px-6 py-2 text-red-600">Yes</td>
                         <?php
                         } else {
                         ?>
@@ -260,7 +260,7 @@ include('navigation-bar.php');
     // Function to open the modal
     function openModal(id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'get-data.php', true);
+        xhr.open('POST', '../../server/librarian/card-catalog.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function() {

@@ -1,6 +1,6 @@
 <?php
 
-include("../../server/db/conDB.php");
+include("../db/conDB.php");
 
 if (isset($_GET['id'])) {
     $bookId = $_GET['id'];

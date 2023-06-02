@@ -9,43 +9,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".delbutton").click(function() {
-                //Save the link in a variable called element
-                var element = $(this);
-                //Find the id of the link that was clicked
-                var del_id = element.attr("id");
-                //Built a url to send
-                var info = 'id=' + del_id;
-                if (confirm("Are you sure you want to archive this book? You can't undo this action.")) {
-                    $.ajax({
-                        type: "GET",
-                        url: "archive.php",
-                        data: info,
-                        success: function(data) {
-                            alert(data);
-                        }
-                    });
-                    $(this).parents(".record").animate({
-                            backgroundColor: "#fbc7c7"
-                        }, "fast")
-                        .animate({
-                            opacity: "hide"
-                        }, "slow");
-                    $.ajax({
-                        type: "GET",
-                        url: "archive.php",
-                        data: info,
-                        success: function(data) {
-                            // Handle the response if needed
-                        }
-                    });
-                }
-                return false;
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -296,7 +259,7 @@
                                         echo '<center><button disabled = "disabled" class = "btn btn-primary my-3" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>RETURNED</button></center>';
                                     } else {
                                     ?>
-                                        <a href="return.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
+                                        <a href="../../server/librarian/return.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
                                             <button class="flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">RETURN</button>
                                         </a>
                                     <?php
@@ -436,7 +399,7 @@
         // Function to open the modal
         function openModal(id) {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'get-data.php', true);
+            xhr.open('POST', '../../server/librarian/card-catalog.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             xhr.onload = function() {

@@ -187,7 +187,7 @@ include('navigation-bar.php');
     // Function to open the modal
     function openModal(id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'get-data.php', true);
+        xhr.open('POST', '../../server/librarian/card-catalog.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function() {

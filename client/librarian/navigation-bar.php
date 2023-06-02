@@ -23,7 +23,7 @@
                 if (confirm("Are you sure you want to archive this book? You can't undo this action.")) {
                     $.ajax({
                         type: "GET",
-                        url: "archive.php",
+                        url: "../../server/librarian/archive.php",
                         data: info,
                         success: function(data) {
                             alert(data);
@@ -37,7 +37,7 @@
                         }, "slow");
                     $.ajax({
                         type: "GET",
-                        url: "archive.php",
+                        url: "../../server/librarian/archive.php",
                         data: info,
                         success: function(data) {
                             // Handle the response if needed
