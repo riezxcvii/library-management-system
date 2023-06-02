@@ -81,7 +81,19 @@
                 <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700">
                         <li>
-                            <a href="dashboard.php" class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent text-blue-400 md:p-0" aria-current="page">Home</a>
+                            <a href="dashboard.php" class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent text-white md:p-0">Home</a>
+                        </li>
+                        <!--notifications-->
+                        <li>
+                            <button id="dropdownNavbarLink1" data-dropdown-toggle="dropdownNavbar1" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded md:border-0 hover:text-blue-400 md:p-0 md:w-auto">Notifications</button>
+                            <!-- Dropdown menu -->
+                            <div id="dropdownNavbar1" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-96 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-black" aria-labelledby="dropdownLargeButton1">
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-blue-100 hover:text-black">Content Here</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li>
                             <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded md:border-0 hover:text-blue-400 md:p-0 md:w-auto"><span><?php echo $first; ?> <?php echo $last; ?></span> <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -281,11 +293,11 @@
 
                                     <?php
                                     if ($freturn['status'] == 'Returned') {
-                                        echo '<center><button disabled = "disabled" class = "btn btn-primary" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>RETURNED</button></center>';
+                                        echo '<center><button disabled = "disabled" class = "btn btn-primary my-3" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>RETURNED</button></center>';
                                     } else {
                                     ?>
-                                        <a href="return.php?id=<?php echo $id; ?>">
-                                            <button class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">RETURN</button>
+                                        <a href="return.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
+                                            <button class="flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">RETURN</button>
                                         </a>
                                     <?php
                                     }
