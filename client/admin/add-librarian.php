@@ -2,12 +2,25 @@
 include('navigation-bar.php');
 ?>
 
-<div class="mb-4 flex justify-center items-center mt-[-0.3rem]">
+<div class="mb-4 flex justify-center items-center mt-[-1.5rem]">
     <div class="bg-gray-50 rounded-md m-12 my-8 w-[30rem]">
         <div class="px-6 py-6 lg:px-8">
             <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
-            <form class="space-y-6" action="#" autocomplete="off" method="POST">
-                <div>
+            <form class="space-y-4" action="#" autocomplete="off" method="POST">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+                        <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="5" required>
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                        <input type="password" name="password" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="8" required>
+                    </div>
+                </div>
+
+                <div class="mt-[-1rem]">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                     <select id="role" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         <option value="" selected>Select Role</option>
@@ -64,18 +77,6 @@ include('navigation-bar.php');
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-[-4rem]">
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                        <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="5" required>
-                    </div>
-
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                        <input type="password" name="password" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="8" required>
-                    </div>
-                </div>
-
                 <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register
                     Account</button>
             </form>
@@ -103,8 +104,8 @@ include('navigation-bar.php');
     </div>
 </div>
 
-<div class="flex justify-end pr-4 pb-2 mt-[-1.5rem]">
-    <a href="./account-registration.php">
+<div class="flex justify-end pr-4 pb-2 mt-[-3.2rem]">
+    <a href="./librarian-accounts.php">
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
         </button>

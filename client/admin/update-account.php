@@ -2,7 +2,7 @@
 include('navigation-bar.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM `borrowers` WHERE borrower_ID = $id";
+    $sql = "SELECT * FROM `library_admin` WHERE admin_ID = $id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 }
@@ -15,15 +15,15 @@ if (isset($_GET['id'])) {
             <form class="space-y-6" action="#" autocomplete="off" method="POST">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                        <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['id_number'] ?>">
+                        <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+                        <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['username'] ?>">
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                        <select id="nameExtension" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled>
+                        <select id="nameExtension" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="<?php echo $row['role'] ?>" selected><?php echo $row['role'] ?></option>
-                            <option value="Student">Student</option>
-                            <option value="Borrower">Borrower</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Librarian">Librarian</option>
                         </select>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
             </form>
             <?php
             if (isset($_POST['submit'])) {
-                $empId = $_POST['employeeID'];
+                $username = $_POST['username'];
                 $role = $_POST['role'];
                 $last_name = $_POST['lastName'];
                 $first_name = $_POST['firstName'];
@@ -99,11 +99,11 @@ if (isset($_GET['id'])) {
                 $extension = $_POST['extension'];
                 $sex = $_POST['sex'];
 
-                $sql = "UPDATE `borrowers` SET id_number='$empId', first_name = '$first_name',last_name='$last_name', middle_initial='$middle_initial',name_extension='$extension',sex='$sex',role='$role' WHERE borrower_ID ='$id'";
+                $sql = "UPDATE `library_admin` SET username='$username', first_name = '$first_name',last_name='$last_name', middle_initial='$middle_initial',name_extension='$extension',sex='$sex',role='$role' WHERE admin_ID ='$id'";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo "<script>
-                        window.location.href='account-reports.php'
+                        window.location.href='librarian-accounts.php'
                         </script>";
                 }
             }
@@ -113,7 +113,7 @@ if (isset($_GET['id'])) {
 </div>
 
 <div class="flex justify-end pr-4 pb-2 mt-[-0.5rem]">
-    <a href="./account-reports.php">
+    <a href="./librarian-accounts.php">
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
         </button>
