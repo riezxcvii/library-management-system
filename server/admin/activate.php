@@ -5,8 +5,8 @@ if (isset($_GET['id'])) {
     $sql = "UPDATE borrowers SET deactivate = 0 WHERE borrower_ID = '$id'";
     $res = mysqli_query($conn, $sql);
     if ($res) {
-        echo "Account deactivated successfully.";
+        echo "Account activated successfully.";
     } else {
-        echo "Failed to deactivate borrower account.";
+        echo "Failed to activate borrower account.";
     }
 }
