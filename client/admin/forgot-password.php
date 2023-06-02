@@ -8,6 +8,8 @@
     <link href="../assets/logo.png" type="image/x-icon" rel="shortcut icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -27,12 +29,22 @@
                 <div class="mb-6">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Enter
                         current password</labxel>
-                        <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                        <div class="flex">
+                            <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                            <div class="w-4 mt-[1.15rem] ml-[-2rem]">
+                                <i class="fa fa-eye" id="eye" aria-hidden="true" onClick="viewPassword()"></i>
+                            </div>
+                        </div>
                 </div>
                 <div class="mb-6">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Enter
                         new password</labxel>
-                        <input type="password" name="newPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                        <div class="flex">
+                            <input type="password" id="newPassword" name="newPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                            <div class="w-4 mt-[1.15rem] ml-[-2rem]">
+                                <i class="fa fa-eye" id="eye" aria-hidden="true" onClick="viewNewPassword()"></i>
+                            </div>
+                        </div>
                 </div>
 
                 <?php if (isset($_GET['error'])) { ?>
@@ -59,6 +71,8 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="../js//show-hide-password.js"></script>
+    <script src="../js//show-hide-newPassword.js"></script>
     <script>
         window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
     </script>
