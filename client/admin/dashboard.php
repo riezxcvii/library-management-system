@@ -19,7 +19,7 @@ include('navigation-bar.php');
         <div class="w-full sm:w-72 p-4 bg-black border border-gray-200 rounded-lg shadow sm:p-8 dark:border-gray-700">
             <h5 class="mb-4 text-xl text-center font-semibold text-white">Account Management</h5>
             <div class="mb-8 w-full flex items-baseline justify-center text-gray-900 dark:text-white text-center">
-                <span class="text-md text-gray-400 font-semiabold">Manage pending registrations.</span>
+                <span class="text-md text-gray-400 font-semiabold">Manage registrations.</span>
             </div>
             <div class="flex gap-4 justify-center">
                 <a href="librarian-registration.php">
