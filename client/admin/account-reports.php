@@ -9,43 +9,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".actbutton").click(function() {
-                //Save the link in a variable called element
-                var element = $(this);
-                //Find the id of the link that was clicked
-                var del_id = element.attr("id");
-                //Built a url to send
-                var info = 'id=' + del_id;
-                if (confirm("Are you sure you want to activate this account? You can't undo this action.")) {
-                    $.ajax({
-                        type: "GET",
-                        url: "../../server/admin/deactivate.php",
-                        data: info,
-                        success: function(data) {
-                            alert(data);
-                        }
-                    });
-                    $(this).parents(".record").animate({
-                            backgroundColor: "#fbc7c7"
-                        }, "fast")
-                        .animate({
-                            opacity: "hide"
-                        }, "slow");
-                    $.ajax({
-                        type: "GET",
-                        url: "../../server/admin/activate.php",
-                        data: info,
-                        success: function(data) {
-                            // Handle the response if needed
-                        }
-                    });
-                }
-                return false;
-            });
-        });
-    </script>
+    <script type="text/javascript" src="../js/activate.js"></script>
+    <script type="text/javascript" src="../js/deactivate.js"></script>
 </head>
 
 <body>
@@ -255,7 +220,7 @@
                                 ?>
                                     <td class="px-6 py-2 justify-center">
                                         <a href="#" id="<?php echo $id; ?>" class="actbutton">
-                                            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-500 mr-4">
+                                            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-500 ">
                                                 Activate
                                             </button>
                                         </a>
@@ -264,17 +229,186 @@
                                                 Edit
                                             </button>
                                         </a>
+                                        <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300" data-modal-target="view-modal_<?php echo $id; ?>" data-modal-toggle="view-modal_<?php echo $id; ?>">
+                                            Details
+                                        </button>
+                                        <div id="view-modal_<?php echo $id; ?>" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!--view form modal content-->
+                                                <div class="relative bg-gray-200 rounded-lg shadow">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="view-modal_<?php echo $id; ?>">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 py-6 lg:px-8">
+                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
+                                                        <form class="space-y-6" action="#" autocomplete="off">
+
+                                                            <div class="grid grid-cols-2 gap-4 mb-[-1.4rem]">
+                                                                <div>
+                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
+                                                                    <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
+                                                                </div>
+
+                                                                <div>
+                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                                                    <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                                                        <option value="" selected><?php echo $role ?></option>
+                                                                        <option value="Admin">Admin</option>
+                                                                        <option value="Librarian">Librarian</option>
+                                                                        <option value="Student">Student</option>
+                                                                        <option value="Teacher">Teacher</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="grid grid-cols-3 gap-4 mt-[1.5rem]">
+                                                                <div>
+                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
+                                                                    <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $last ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">First
+                                                                        Name</label>
+                                                                    <input type="text" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" disabled value="<?php echo $first ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Middle
+                                                                        Initial</label>
+                                                                    <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $middle ?>">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="grid grid-cols-2 gap-4">
+                                                                <div>
+                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
+                                                                    <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                                                        <option value="" selected><?php echo $extension ?></option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="flex">
+                                                                    <label class="block text-sm font-medium text-gray-900">Sex</label>
+                                                                    <div class="flex items-center mb-4 mr-4">
+                                                                        <input id="female" <?php if ($sex == 'Female') {
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
+                                                                    </div>
+                                                                    <div class="flex items-center mb-4">
+                                                                        <input id="male" <?php if ($sex == 'Male') {
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
+                                                                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 <?php
 
                                 } else {
                                 ?>
                                     <td class="px-6 py-2 justify-center flex">
-                                        <a href="./update-details-form.php?id=<?php echo $id ?>">
-                                            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-500">
-                                                Edit
+
+                                        <a href="#" id="<?php echo $id; ?>" class="delbutton">
+                                            <button type="button" class=" inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+                                                Deactivate
                                             </button>
                                         </a>
+                                        <a href="#" id="<?php echo $id; ?>" class="delbutton">
+                                            <a href="./update-details-form.php?id=<?php echo $id ?>">
+                                                <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-500">
+                                                    Edit
+                                                </button>
+                                            </a>
+                                            <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300" data-modal-target="view-modal_<?php echo $id; ?>" data-modal-toggle="view-modal_<?php echo $id; ?>">
+                                                Details
+                                            </button>
+                                            <div id="view-modal_<?php echo $id; ?>" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <!--view form modal content-->
+                                                    <div class="relative bg-gray-200 rounded-lg shadow">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="view-modal_<?php echo $id; ?>">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="px-6 py-6 lg:px-8">
+                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
+                                                            <form class="space-y-6" action="#" autocomplete="off">
+
+                                                                <div class="grid grid-cols-2 gap-4 mb-[-1.4rem]">
+                                                                    <div>
+                                                                        <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
+                                                                        <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                                                        <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                                                            <option value="" selected><?php echo $role ?></option>
+                                                                            <option value="Admin">Admin</option>
+                                                                            <option value="Librarian">Librarian</option>
+                                                                            <option value="Student">Student</option>
+                                                                            <option value="Teacher">Teacher</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="grid grid-cols-3 gap-4 mt-[1.5rem]">
+                                                                    <div>
+                                                                        <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
+                                                                        <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $last ?>">
+                                                                    </div>
+                                                                    <div>
+                                                                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">First
+                                                                            Name</label>
+                                                                        <input type="text" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" disabled value="<?php echo $first ?>">
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block mb-2 text-sm font-medium text-gray-900">Middle
+                                                                            Initial</label>
+                                                                        <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $middle ?>">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="grid grid-cols-2 gap-4">
+                                                                    <div>
+                                                                        <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
+                                                                        <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                                                            <option value="" selected><?php echo $extension ?></option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="flex">
+                                                                        <label class="block text-sm font-medium text-gray-900">Sex</label>
+                                                                        <div class="flex items-center mb-4 mr-4">
+                                                                            <input id="female" <?php if ($sex == 'Female') {
+                                                                                                    echo 'checked';
+                                                                                                } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                                            <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
+                                                                        </div>
+                                                                        <div class="flex items-center mb-4">
+                                                                            <input id="male" <?php if ($sex == 'Male') {
+                                                                                                    echo 'checked';
+                                                                                                } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
+                                                                            <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </td>
                                 <?php
                                 }

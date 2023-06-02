@@ -10,7 +10,7 @@ include('navigation-bar.php');
             Register a borrower
         </button>
     </a>
-    <a href="account-management.php" class="flex mr-8">
+    <a href="account-reports.php" class="flex mr-8">
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
             Approved Registration
         </button>
