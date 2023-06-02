@@ -280,8 +280,6 @@
                                                                     <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                                                                     <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                                                                         <option value="" selected><?php echo $role ?></option>
-                                                                        <option value="Admin">Admin</option>
-                                                                        <option value="Librarian">Librarian</option>
                                                                         <option value="Student">Student</option>
                                                                         <option value="Teacher">Teacher</option>
                                                                     </select>
@@ -379,8 +377,6 @@
                                                                     <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                                                                     <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                                                                         <option value="" selected><?php echo $role ?></option>
-                                                                        <option value="Admin">Admin</option>
-                                                                        <option value="Librarian">Librarian</option>
                                                                         <option value="Student">Student</option>
                                                                         <option value="Teacher">Teacher</option>
                                                                     </select>
