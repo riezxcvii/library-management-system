@@ -13,7 +13,7 @@ A capstone project from the University of Antique.
     Antique National School
     San Jose, Antique, Philippines
 
-# 📖**Set-up the system**
+# 📖**Set-up the Library Management System**
 
 ## 🧰**Necessary Tools**
 
@@ -21,7 +21,21 @@ A capstone project from the University of Antique.
 
 >[Visual Studio Code](https://code.visualstudio.com/download)
 
-## 📁**Access the system file**
+## 📁**Set-up the database**
+
+- Go to phpMyAdmin
+
+        http://localhost/phpmyadmin/
+
+- Create a new database and name it as
+
+>library_management_system
+
+- Access the .sql database file in ***library-management-system>server>db*** and select all then copy
+
+- In the SQL tab in phpMyAdmin, paste the copied text then select ***Go***
+
+## 📁**Set-up the system**
 
 - Download the zip file of the system through this link
 
