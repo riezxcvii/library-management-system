@@ -43,7 +43,7 @@
                 }
                 ?>
 
-                <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+                <div class="w-full md:block md:w-auto" id="navbar-dropdown">
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700">
                         <li>
                             <a href="dashboard.php" class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent text-white md:p-0" aria-current="page">Home</a>
@@ -223,20 +223,20 @@
                                     <?php echo $borrower['name_extension'] ?>
                                 </td>
                                 <?php
-                                if  ($status=='0'){
+                                if ($status == '0') {
                                 ?>
                                     <td class="px-6 py-2">
-                                    Active
+                                        Active
                                     </td>
                                 <?php
                                 } else {
                                 ?>
-                                <td class="px-6 py-2 text-red-600">
-                                    Deactivated
+                                    <td class="px-6 py-2 text-red-600">
+                                        Deactivated
                                     </td>
-                                    <?php
-                                    }
-                                    ?>
+                                <?php
+                                }
+                                ?>
 
                                 <?php
                                 if ($status == '1') {
@@ -273,7 +273,7 @@
                                                             <div class="grid grid-cols-2 gap-4 mb-[-1.4rem]">
                                                                 <div>
                                                                     <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                                                    <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
+                                                                    <input type="number" name="employeeID" id="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
                                                                 </div>
 
                                                                 <div>
@@ -315,13 +315,13 @@
                                                                     <label class="block text-sm font-medium text-gray-900">Sex</label>
                                                                     <div class="flex items-center mb-4 mr-4">
                                                                         <input id="female" <?php if ($sex == 'Female') {
-                                                                                   echo 'checked';
-                                                                                } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                                                     echo 'checked';
+                                                                                  } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
                                                                     </div>
                                                                     <div class="flex items-center mb-4">
                                                                         <input id="male" <?php if ($sex == 'Male') {
-                                                                                 echo 'checked';
+                                                                                  echo 'checked';
                                                                                 } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
                                                                     </div>
@@ -365,12 +365,29 @@
                                                     </button>
                                                     <div class="px-6 py-6 lg:px-8">
                                                         <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
-                                                        <form class="space-y-6" action="#" autocomplete="off">
+                                                        <form class="space-y-6" action="" autocomplete="off" method="POST">
+
+                                                            <?php
+                                                            // Check if the form is submitted
+                                                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                                // Get the ID number from the input field
+                                                                $employeeID = $_POST["employeeID"];
+
+                                                                // Set the QR code content (in this example, it's the ID number)
+                                                                $content = $employeeID;
+
+                                                                // Generate the QR code URL
+                                                                $qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?data=' . urlencode($content) . '&size=150x150';
+
+                                                                // Print the QR code on the page
+                                                                echo '<h1 id="qr_code" class="hidden" style="font-size:20px; text-align:center; margin-top:15%; margin-bottom:15%; font-family:Arial,sans-serif; font-weight:900;">ANS Library Management System</h1><img class="hidden" src="' . $qrCodeUrl . '" alt="QR Code" id="qr_code">';
+                                                            }
+                                                            ?>
 
                                                             <div class="grid grid-cols-2 gap-4 mb-[-1.4rem]">
                                                                 <div>
                                                                     <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                                                    <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
+                                                                    <input type="text" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
                                                                 </div>
 
                                                                 <div>
@@ -412,17 +429,21 @@
                                                                     <label class="block text-sm font-medium text-gray-900">Sex</label>
                                                                     <div class="flex items-center mb-4 mr-4">
                                                                         <input id="female" <?php if ($sex == 'Female') {
-                                                                                                echo 'checked';
-                                                                                            } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                                                    echo 'checked';
+                                                                                  } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
                                                                     </div>
                                                                     <div class="flex items-center mb-4">
                                                                         <input id="male" <?php if ($sex == 'Male') {
-                                                                                                echo 'checked';
-                                                                                            } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
+                                                                                  echo 'checked';
+                                                                                } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                            <div class="flex gap-4">
+                                                                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center decline-btn" data-borrower-id="<?php echo $id; ?>">Generate QR Code</button>
+                                                                <button onclick="printQRCode()" class="w-full text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Print QR Code</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -458,6 +479,40 @@
         </div>
     </div>
 
+    <!-- CSS for print styles -->
+    <style>
+        /* Styles for printing */
+        @media print {
+            body {
+                margin: 1;
+                padding: 5;
+            }
+
+            @page {
+                margin: 0;
+                /* Set margin to 0 to remove header and footer */
+                size: 2.125in 3.375in;
+            }
+
+            #qr_code {
+                width: 70%;
+                height: auto;
+                display: block;
+                margin: auto;
+            }
+
+            /* Hide unnecessary elements in print */
+            body>*:not(#qr_code) {
+                display: none;
+            }
+        }
+
+        /* Hide the image with the "hidden" class */
+        .hidden {
+            display: none;
+        }
+    </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="../js/sort.js"></script>
     <script>
@@ -488,6 +543,13 @@
                     }
                 }
             }
+        }
+    </script>
+    <!-- JavaScript to trigger print functionality -->
+    <script>
+        // Function to trigger print functionality
+        function printQRCode() {
+            window.print();
         }
     </script>
 </body>
