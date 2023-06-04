@@ -13,8 +13,6 @@ A capstone project from the University of Antique.
     Antique National School
     San Jose, Antique, Philippines
 
-#
-
 # 📖**Set-up the system**
 
 ## 🧰**Necessary Tools**
@@ -33,8 +31,8 @@ A capstone project from the University of Antique.
 
 ## 📦**Install necessary packages**
 
-- Open the Visual Studio Code and open the project using this key ***Ctrl + K + O*** then select the folder.
-- Open the terminal using this key ***Ctrl + Shift + `***
+- Open the Visual Studio Code and open the project using the key ***Ctrl + K + O*** then select the folder.
+- Open the terminal using the key ***Ctrl + Shift + `***
 - To install [Tailwind CSS](https://tailwindcss.com/docs/installation), follow this steps until Step 4 only.
 - To install [Flowbite](https://flowbite.com/docs/getting-started/quickstart/), follow this steps until Step 3 only.
 
