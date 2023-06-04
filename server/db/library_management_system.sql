@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2023 at 05:22 PM
+-- Generation Time: Jun 04, 2023 at 02:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -49,7 +49,7 @@ CREATE TABLE `books` (
   `category` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `physical_description` varchar(50) DEFAULT NULL,
   `subject` varchar(50) DEFAULT NULL,
-  `status` varchar(10) NOT NULL DEFAULT '0',
+  `status` varchar(10) NOT NULL DEFAULT 'Available',
   `tracing` varchar(50) DEFAULT NULL,
   `archive` smallint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -61,7 +61,7 @@ CREATE TABLE `books` (
 INSERT INTO `books` (`book_ID`, `isbn`, `accession_number`, `date_receive`, `author_number`, `author_lastname`, `author_firstname`, `title`, `copies`, `edition`, `volume`, `pages`, `source_fund`, `cost`, `publisher`, `publication_place`, `copyright_year`, `year_published`, `category`, `physical_description`, `subject`, `status`, `tracing`, `archive`) VALUES
 (1, '978-1420968095', '546,2019', '2019-02-21', 'R546', 'Rizal', 'Jose', 'Noli Me Tangere', 6, 'I Edition', '', 0, 'Donation', '0.00', 'Berliner Buchdruckerei-Aktieng', 'Berlin, Germany', '1887', '1887', 'Filipiniana', '', NULL, 'Available', '', 0),
 (2, '978-1451552058', '851,2016', '2016-09-07', 'S851', 'Shakespeare', 'William', 'Romeo and Juliet', 4, 'IV Edition', '', 0, 'Donation', '0.00', 'Simon & Schuster', 'CreateSpace Independent Publishing Platform', '1596', '1596', 'Fiction', '', NULL, 'Available', '', 0),
-(3, '978-1510761384', '758,2021', '2021-04-13', 'J758', 'Janssen', 'Sarrah', 'The World Almanac and Book of Facts 2021', 1, 'IX Edition', '', 0, 'Donation', '0.00', 'World Almanac', 'United States', '2020', '2020', 'Reference', NULL, NULL, '0', '', 0),
+(3, '978-1510761384', '758,2021', '2021-04-13', 'J758', 'Janssen', 'Sarrah', 'The World Almanac and Book of Facts 2021', 1, 'IX Edition', '', 0, 'Donation', '0.00', 'World Almanac', 'United States', '2020', '2020', 'Reference', NULL, NULL, 'Available', '', 0),
 (4, '978-0824831325', '364,2014', '2014-10-24', 'R364', 'Rizal', 'Jose', 'El Filibusterismo', 7, 'VI Edition', '', 0, 'Donation', '0.00', 'University of Hawaii Press', 'Ghent, Belgium', '1891', '1891', 'Filipiniana', '', NULL, 'Available', '', 0);
 
 -- --------------------------------------------------------
@@ -87,8 +87,11 @@ CREATE TABLE `borrowed_books` (
 --
 
 INSERT INTO `borrowed_books` (`borrow_ID`, `book_ID`, `borrower_ID`, `title`, `copies`, `date_issued`, `due_date`, `returned_date`, `status`) VALUES
-(1, 3, 8, 'The World Almanac and Book of Facts 2021', 1, '2023-05-25', '2023-05-28', NULL, 'Borrowed'),
-(2, 1, 5, 'Noli Me Tangere', 1, '2023-05-13', '2023-05-17', NULL, 'Borrowed');
+(1, 3, 1, '', 0, '2023-05-30', '2023-05-22', '2023-05-30', 'Returned'),
+(2, 2, 1, '', 0, '2023-05-30', '2023-05-31', '2023-05-30', 'Returned'),
+(3, 3, 5, '', 0, '2023-05-30', '2023-06-08', '2023-06-02', 'Returned'),
+(4, 4, 4, '', 0, '2023-05-30', '2023-05-31', '2023-06-02', 'Returned'),
+(5, 2, 8, '', 1, '2023-06-02', '2023-06-08', NULL, 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -121,7 +124,14 @@ INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, 
 (5, '201926584', 'Garfin', 'April Jane', 'A', '', 'Female', 'Student', 1, 0),
 (6, '1568468896', 'Secugal', 'Kenrick Agustin', 'S', '', 'Male', 'Teacher', 1, 0),
 (7, '548921321', 'Alison', 'Ramon', '', 'Jr', 'Male', 'Teacher', 1, 0),
-(8, '54684071', 'Sabino', 'Rustia', 'B', '', 'Female', 'Student', 1, 0);
+(8, '54684071', 'Sabino', 'Rustia', 'B', '', 'Female', 'Student', 1, 0),
+(9, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', 'Student', 1, 1),
+(10, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', 'Student', 0, 0),
+(11, '115296080040', 'Reymaro', 'Kent Ralli', '', '', 'Male', 'Student', 0, 0),
+(13, '158664823654', 'Marin', 'Edward Louie', '', '', 'Male', 'Teacher', 0, 0),
+(14, '115218060084', 'Guillermo', 'Fritzel Joy', 'C', '', 'Female', 'Student', 1, 0),
+(15, '135226489527', 'Elequin', 'Jonas Eric', '', '', 'Male', 'Teacher', 1, 0),
+(16, '264895113564', 'Zamora', 'Cherry Mae', '', '', 'Male', 'Student', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -138,6 +148,7 @@ CREATE TABLE `library_admin` (
   `sex` varchar(6) NOT NULL COMMENT 'Male or Female',
   `role` varchar(10) NOT NULL COMMENT 'Admin or Librarian',
   `status` varchar(10) NOT NULL COMMENT '0 not active, 1 active',
+  `deactivate` int(1) NOT NULL DEFAULT 0,
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -146,11 +157,11 @@ CREATE TABLE `library_admin` (
 -- Dumping data for table `library_admin`
 --
 
-INSERT INTO `library_admin` (`admin_ID`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `role`, `status`, `username`, `password`) VALUES
-(1, 'Banquillo', 'Rieza Marie', 'J', NULL, 'Female', 'Librarian', '1', 'librarian', 'library123'),
-(2, 'Vagilidad', 'Rigel', NULL, NULL, 'Female', 'Librarian', '1', 'rigel.vagilidad', 'rigel12345'),
-(3, 'Gallano', 'Leonil', NULL, NULL, 'Male', 'Admin', '1', 'leonil.gallano', 'leonil12345'),
-(4, 'Miguel', 'Edvenson Jay', 'M', NULL, 'Male', 'Admin', '1', 'admin', 'admin12345');
+INSERT INTO `library_admin` (`admin_ID`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `role`, `status`, `deactivate`, `username`, `password`) VALUES
+(1, 'Gallano', 'Leonil', '', '', 'Male', 'Admin', '1', 0, 'leonil.gallano', 'admin12345'),
+(2, 'Vagilidad', 'Rigel', '', '', 'Female', 'Librarian', '1', 0, 'rigel', 'librarian123'),
+(3, 'Banquillo', 'Rieza', 'J', '', 'Male', 'Librarian', '1', 1, 'riezabanquillo', 'rieza2609'),
+(4, 'Jomolo', 'Roger', '', '', 'Male', 'Admin', '1', 0, 'roger', 'roger12345');
 
 -- --------------------------------------------------------
 
@@ -210,7 +221,71 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (4, 0, '2023-05-28', '16:31:17', '16:34:59'),
 (0, 5, '2023-05-28', '16:38:00', '16:38:20'),
 (4, 0, '2023-05-28', '16:39:22', '16:53:26'),
-(1, 0, '2023-05-28', '16:53:32', NULL);
+(1, 0, '2023-05-28', '16:53:32', NULL),
+(4, 0, '2023-05-29', '07:18:42', '07:38:40'),
+(1, 0, '2023-05-29', '07:38:51', NULL),
+(4, 0, '2023-05-29', '07:42:56', '07:43:16'),
+(1, 0, '2023-05-29', '07:43:24', '08:08:49'),
+(1, 0, '2023-05-29', '08:44:36', NULL),
+(4, 0, '2023-05-29', '10:35:58', '11:01:33'),
+(1, 0, '2023-05-29', '11:01:41', '19:08:54'),
+(4, 0, '2023-05-29', '19:27:24', '19:29:27'),
+(1, 0, '2023-05-29', '19:29:44', '19:35:12'),
+(4, 0, '2023-05-29', '20:21:56', '20:31:11'),
+(1, 0, '2023-05-29', '20:31:37', '21:10:31'),
+(4, 0, '2023-05-29', '21:10:37', '21:37:25'),
+(0, 1, '2023-05-29', '21:39:41', NULL),
+(1, 0, '2023-05-29', '22:21:30', '22:31:49'),
+(0, 8, '2023-05-29', '22:35:47', '22:45:19'),
+(0, 5, '2023-05-29', '22:45:49', '23:09:57'),
+(0, 8, '2023-05-29', '23:10:33', '23:10:54'),
+(0, 1, '2023-05-29', '23:11:18', NULL),
+(4, 0, '2023-05-29', '23:14:49', '23:29:03'),
+(0, 5, '2023-05-29', '23:29:59', '23:31:21'),
+(1, 0, '2023-05-30', '07:52:03', '08:37:08'),
+(4, 0, '2023-05-30', '08:37:14', '08:38:23'),
+(1, 0, '2023-05-30', '08:39:05', '08:39:45'),
+(0, 8, '2023-05-30', '08:42:51', '08:45:43'),
+(1, 0, '2023-05-30', '08:45:52', '10:42:53'),
+(1, 0, '2023-05-30', '11:29:16', NULL),
+(0, 1, '2023-05-30', '11:40:11', '12:09:25'),
+(0, 5, '2023-05-30', '12:10:46', '12:16:41'),
+(4, 0, '2023-05-30', '12:20:27', NULL),
+(0, 5, '2023-05-30', '12:20:48', '12:34:04'),
+(0, 1, '2023-05-30', '12:35:46', '12:36:38'),
+(4, 0, '2023-05-30', '12:52:16', NULL),
+(1, 0, '2023-05-30', '12:56:26', NULL),
+(0, 1, '2023-05-30', '12:57:10', '14:20:24'),
+(4, 0, '2023-05-30', '15:27:47', '15:37:09'),
+(1, 0, '2023-05-30', '15:37:16', NULL),
+(4, 0, '2023-05-31', '06:56:46', '06:57:11'),
+(1, 0, '2023-05-31', '06:57:24', '06:58:34'),
+(0, 5, '2023-05-31', '07:08:31', '07:08:43'),
+(4, 0, '2023-06-01', '17:36:15', '17:42:43'),
+(1, 0, '2023-06-01', '17:42:49', '17:57:04'),
+(0, 4, '2023-06-01', '17:58:15', NULL),
+(4, 0, '2023-06-01', '18:25:30', NULL),
+(0, 5, '2023-06-01', '18:46:25', '18:46:28'),
+(0, 5, '2023-06-01', '18:46:50', '18:48:57'),
+(4, 0, '2023-06-01', '22:23:19', '22:49:18'),
+(1, 0, '2023-06-01', '22:49:30', '23:01:09'),
+(1, 0, '2023-06-01', '23:01:20', NULL),
+(1, 0, '2023-06-01', '23:09:35', '23:10:06'),
+(4, 0, '2023-06-02', '10:36:49', NULL),
+(4, 0, '2023-06-02', '15:08:46', '16:29:25'),
+(3, 0, '2023-06-02', '16:34:17', '16:35:06'),
+(2, 0, '2023-06-02', '17:08:43', '18:06:42'),
+(1, 0, '2023-06-02', '19:34:01', NULL),
+(1, 0, '2023-06-04', '11:48:47', '11:52:26'),
+(2, 0, '2023-06-04', '11:52:44', '14:46:41'),
+(1, 0, '2023-06-04', '14:46:49', '15:38:41'),
+(2, 0, '2023-06-04', '15:40:34', '15:44:33'),
+(0, 5, '2023-06-04', '15:44:39', '15:45:36'),
+(0, 5, '2023-06-04', '15:49:12', '15:49:21'),
+(2, 0, '2023-06-04', '15:49:30', '15:50:05'),
+(1, 0, '2023-06-04', '15:50:20', '16:05:53'),
+(2, 0, '2023-06-04', '16:06:00', '16:12:37'),
+(1, 0, '2023-06-04', '16:12:50', '19:53:58');
 
 --
 -- Indexes for dumped tables
@@ -255,13 +330,13 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `borrowers`
 --
 ALTER TABLE `borrowers`
-  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `library_admin`
