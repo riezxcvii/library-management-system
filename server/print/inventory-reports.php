@@ -7,7 +7,6 @@ require '../db/conDB.php';
 <head>
     <title>Print: Book Inventory</title>
     <link href="../../client/assets/logo.png" type="image/x-icon" rel="shortcut icon">
-    <link href="../../client/global.css" rel="stylesheet">
 </head>
 
 <style>
