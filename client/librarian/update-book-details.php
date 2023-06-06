@@ -62,18 +62,13 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
 
+                        <div>
+                            <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
+                            <input type="text" name="isbn" value="<?php echo $row['isbn']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
+                        </div>
+
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
-                                <input type="text" name="isbn" value="<?php echo $row['isbn']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm font-medium text-gray-900">Scan Barcode</label>
-                                <div class="w-full border-gray-900 border-2">
-
-                                </div>
-                            </div>
-                            <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Edition</label>
                                 <select id="edition" name="edition" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
                                     <option value="<?php if ($row['edition'] == "") {
@@ -99,7 +94,7 @@ if (isset($_GET['id'])) {
                                     <option value="X Edition">X Edition</option>
                                 </select>
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Volume</label>
                                 <select id="volume" name="volume" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
                                     <option value="<?php if ($row['volume'] == "") {

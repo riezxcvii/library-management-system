@@ -68,7 +68,7 @@ require '../db/conDB.php';
             <td id="noC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">ID</td>
             <td id="tdbC14" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">TITLE</td>
             <td id="tdbD14" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">DATE RECEIVED</td>
-            <td id="lbC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">STATUS</td>
+            <td id="lbC14" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">STATUS</td>
             <td id="tabC14" style="font-weight:bold; text-align:center; width:4%; border:1px solid black; padding:6px">TOTAL COPIES [<?php
                                                                                                                                         $sql = "SELECT SUM(copies) as sum FROM `books`";
                                                                                                                                         $res = mysqli_query($conn, $sql);
@@ -93,10 +93,18 @@ require '../db/conDB.php';
                 <td id="no14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['book_ID'] ?></td>
                 <td id="tdb14" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $f_book['title'] ?></td>
                 <td id="Dtdb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['date_receive'] ?> </td>
-                <td id="author6" style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px"><?php echo $f_book['status'] ?></td>
+                <td id="author6" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center;">
+                <?php
+                            if ($total == 0) {
+                                echo '<label style ="color:red;">Not Available</label>';
+                            } else {
+                                echo '<input style ="background:none; border:none; color:black; font-size:16px; width:100%; text-align:center;" name = "status[' . $i . ']" value = "' . $f_book['status'] . '" disabled>';
+                            }
+                            ?>    
+            </td>
                 <td id="tab14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['copies'] ?></td>
                 <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $total ?></td>
-                <?php if ($book['archive'] == 1) {
+                <?php if ($f_book['archive'] == 1) {
                         ?>
                             <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center; color:brown">Yes</td>
                         <?php

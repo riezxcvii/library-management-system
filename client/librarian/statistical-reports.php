@@ -83,13 +83,15 @@ include('navigation-bar.php');
                             <th scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap text-center">
                                 <?php echo $sn++; ?>
                             </th>
-                            <td onclick="openModal(<?php echo $row['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal"><?php $id = $row['book_ID'];
-                                                                                                                                                                                                    $sql1 = "SELECT * FROM `books` WHERE book_ID = $id";
-                                                                                                                                                                                                    $res1 = mysqli_query($conn, $sql1);
-                                                                                                                                                                                                    $row1 = mysqli_fetch_assoc($res1);
-                                                                                                                                                                                                    $title = $row1['title'];
-                                                                                                                                                                                                    echo $title;
-                                                                                                                                                                                                    ?></td>
+                            <td onclick="openModal(<?php echo $row['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                                <?php $id = $row['book_ID'];
+                                $sql1 = "SELECT * FROM `books` WHERE book_ID = $id";
+                                $res1 = mysqli_query($conn, $sql1);
+                                $row1 = mysqli_fetch_assoc($res1);
+                                $title = $row1['title'];
+                                echo $title;
+                                ?>
+                            </td>
                         </tr>
                     <?php
                     }
@@ -173,6 +175,10 @@ include('navigation-bar.php');
 </div>
 
 <div class="flex justify-end pr-4 pb-2">
+    <a href="../../server/print/statistical-reports.php" target="_blank">
+        <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
+            Print
+        </button>
     </a>
     <a href="dashboard.php">
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">

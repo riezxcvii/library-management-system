@@ -39,14 +39,14 @@ require '../db/conDB.php';
 	@page {
 		size: auto;
 		/* auto is the initial value */
-		margin: 0;
+		margin: 5%;
 		/* this affects the margin in the printer settings */
 	}
 </style>
 
 <body>
 	<div>
-		<img src="../../client/assets/logo.png" style="display:block; margin:0 auto 0 auto; width:6%;">
+		<img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:10%;">
 		<h4 style="text-align:center; font-weight:500; margin-top:1%">REPUBLIC OF THE PHILPPINES</h4>
 		<h4 style="text-align:center; font-weight:500; margin-top:-1.5%">ANTIQUE NATIONAL SCHOOL</h4>
 		<h4 style="text-align:center; font-weight:500; margin-top:-1.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
@@ -65,7 +65,7 @@ require '../db/conDB.php';
 
 	<table id="table" class="result10" style="border:1px solid black; border-collapse:collapse; width:100%">
 		<tr>
-			<td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:8%; border:1px solid black; padding:6px">ISBN</td>
+			<td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">ISBN</td>
 			<td id="title10" id="colNo12" style="font-weight:bold; text-align:center; width:15%; border:1px solid black; padding:6px">TITLE</td>
 			<td id="author10" id="colNo12" style="font-weight:bold; text-align:center; width:12%; border:1px solid black; padding:6px">AUTHOR</td>
 			<td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black; padding:6px">CATEGORY</td>

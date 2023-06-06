@@ -38,7 +38,7 @@ require '../db/conDB.php';
     @page {
         size: auto;
         /* auto is the initial value */
-        margin: 0.5in;
+        margin: 5%;
         /* this affects the margin in the printer settings */
         title: none;
     }
@@ -46,7 +46,7 @@ require '../db/conDB.php';
 
 <body>
     <div>
-        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 0 auto; width:9%;">
+        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:10%;">
         <h4 style="text-align:center; font-weight:500; margin-top:1%">REPUBLIC OF THE PHILPPINES</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">ANTIQUE NATIONAL SCHOOL</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
