@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
                         <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
                             <?php echo $freturn['borrow_ID'] ?>
                         </td>
-                        <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                        <td onclick="openModal(<?php echo $id; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
                             <?php
                             $qbook = $conn->query("SELECT * FROM `books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
                             $fbook = $qbook->fetch_array();
