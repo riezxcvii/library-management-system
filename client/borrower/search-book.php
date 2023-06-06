@@ -187,15 +187,13 @@ include('navigation-bar.php');
             column3 = tr[i].getElementsByTagName("td")[2];
             column4 = tr[i].getElementsByTagName("td")[3];
             column5 = tr[i].getElementsByTagName("td")[4];
-            column6 = tr[i].getElementsByTagName("td")[5];
-            if (column1 && column2 && column3 && column4 && column5 && column6) {
+            if (column1 && column2 && column3 && column4 && column5) {
                 column1 = column1.textContent || column1.innerText;
                 column2 = column2.textContent || column2.innerText;
                 column3 = column3.textContent || column3.innerText;
                 column4 = column4.textContent || column4.innerText;
                 column5 = column5.textContent || column5.innerText;
-                column6 = column6.textContent || column6.innerText;
-                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1) {
+                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";
@@ -208,7 +206,7 @@ include('navigation-bar.php');
     // Function to open the modal
     function openModal(id) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '../librarian/get-data.php', true);
+        xhr.open('POST', '../../server/librarian/card-catalog.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function() {

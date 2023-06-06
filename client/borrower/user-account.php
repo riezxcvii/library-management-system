@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
                         <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
                             <?php echo $freturn['borrow_ID'] ?>
                         </td>
-                        <td class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                        <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
                             <?php
                             $qbook = $conn->query("SELECT * FROM `books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
                             $fbook = $qbook->fetch_array();
@@ -143,7 +143,7 @@ if (isset($_GET['id'])) {
 
 <!--card modal-->
 <div id="card-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative w-full max-w-md max-h-full">
+    <div class="relative max-h-full mx-auto flex items-center justify-center w-[55rem]">
         <!--card modal content-->
         <div class="relative bg-gray-200 rounded-lg shadow">
             <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="card-modal">
@@ -153,62 +153,60 @@ if (isset($_GET['id'])) {
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Card Catalog</h3>
                 <form class="space-y-6" action="#" autocomplete="off">
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                        <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required>
-                    </div>
+                    <table>
+                        <tr>
+                            <td id="category" class="text-center px-8 py-1"></td>
+                            <td></td>
+                        </tr>
 
-                    <div class="grid grid-cols-3 gap-4">
-                        <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
-                            <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
-                        </div>
-                        <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">First
-                                Name</label>
-                            <input type="text" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required>
-                        </div>
-                        <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Middle
-                                Initial</label>
-                            <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" required>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                            <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
-                                <option value="" selected>Select Extension</option>
-                                <option value="Jr">Jr</option>
-                                <option value="Sr">Sr</option>
-                                <option value="I">I</option>
-                                <option value="II">II</option>
-                                <option value="III">III</option>
-                                <option value="IV">IV</option>
-                                <option value="V">V</option>
-                                <option value="VI">VI</option>
-                                <option value="VII">VII</option>
-                                <option value="VIII">VIII</option>
-                            </select>
-                        </div>
+                        <tr>
+                            <td id="authorNumber" class="text-center px-8 py-1"></td>
+                            <td></td>
+                        </tr>
 
-                        <div class="flex">
-                            <label class="block text-sm font-medium text-gray-900">Sex</label>
-                            <div class="flex items-center mb-4 mr-4">
-                                <input id="female" type="radio" value="Female" name="female" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]">
-                                <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="male" type="radio" value="Male" name="male" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5">
-                                <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
-                            </div>
-                        </div>
-                    </div>
 
-                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register
-                        Borrower</button>
+                        <tr>
+                            <td></td>
+                            <td id="author" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="title" class="pl-16 px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="publication" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="physical" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="isbn" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="accessionNumber" class="px-8 py-1"></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="subject" class="px-8 py-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td id="tracing" class="px-8 py-1"></td>
+                        </tr>
+                    </table>
                 </form>
             </div>
         </div>
@@ -256,6 +254,40 @@ if (isset($_GET['id'])) {
                 }
             }
         }
+    }
+</script>
+<script>
+    // Function to open the modal
+    function openModal(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../../server/librarian/card-catalog.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+
+                // Update the modal content with the retrieved data
+                document.getElementById('category').textContent = data.category;
+                document.getElementById('authorNumber').textContent = data.author_number
+                document.getElementById('author').textContent = data.author_lastname + ', ' + data.author_firstname;
+                document.getElementById('accessionNumber').textContent = data.accession_number;
+                document.getElementById('title').textContent = data.title + ' / ' + data.author_firstname + ' ' + data.author_lastname;
+                document.getElementById('publication').textContent = data.publisher + ' -- ' + data.publication_place + ', C ' + data.copyright_year;
+                document.getElementById('physical').textContent = data.physical_description;
+                document.getElementById('isbn').textContent = 'ISBN ' + data.isbn;
+                document.getElementById('subject').textContent = data.subject;
+                document.getElementById('tracing').textContent = data.tracing;
+            } else {
+                console.error('Request failed. Status: ' + xhr.status);
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('Request failed. Network error.');
+        };
+
+        xhr.send('id=' + id);
     }
 </script>
 </body>
