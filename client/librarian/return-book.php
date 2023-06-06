@@ -211,11 +211,12 @@
                         while ($freturn = $qreturn->fetch_array()) {
                             $id = $freturn['borrow_ID'];
                             $dueDate = $freturn['due_date'];
+                            $dateReturned = $freturn['returned_date'];
                             $penalty = 0;
 
                             // Calculate the penalty based on the number of days overdue
                             $dueDateTimestamp = strtotime($dueDate);
-                            $currentDateTimestamp = strtotime($date);
+                            $currentDateTimestamp = strtotime($dateReturned);
                             $daysOverdue = floor(($currentDateTimestamp - $dueDateTimestamp) / (60 * 60 * 24));
                             $penalty = $daysOverdue * 5;
                         ?>
