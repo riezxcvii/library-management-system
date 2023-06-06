@@ -62,7 +62,7 @@ include('navigation-bar.php');
 
                 <?php
                 $borrower = $conn->query("SELECT * FROM `library_admin` 
-                WHERE status=1 
+                WHERE deactivate=0 
                 ORDER BY last_name ASC") or die(mysqli_error($conn));
                 while ($name = $borrower->fetch_array()) {
                     $id = $name['admin_ID'];

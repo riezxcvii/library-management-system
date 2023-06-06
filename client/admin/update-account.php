@@ -103,7 +103,7 @@ if (isset($_GET['id'])) {
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo "<script>
-                        window.location.href='librarian-accounts.php'
+                        window.location.href='librarian-registration.php'
                         </script>";
                 }
             }
@@ -113,7 +113,7 @@ if (isset($_GET['id'])) {
 </div>
 
 <div class="flex justify-end pr-4 pb-2 mt-[-0.5rem]">
-    <a href="./librarian-accounts.php">
+    <a href="./librarian-registration.php">
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
         </button>
