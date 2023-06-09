@@ -86,12 +86,12 @@ if (isset($_GET['id'])) {
                 while ($freturn = $qreturn->fetch_array()) {
                     $id = $freturn['borrow_ID'];
                     $dueDate = $freturn['due_date'];
-                    $date = date('y-m-d');
+                    $dateReturned = $freturn['returned_date'];
                     $penalty = 0;
 
                     // Calculate the penalty based on the number of days overdue
                     $dueDateTimestamp = strtotime($dueDate);
-                    $currentDateTimestamp = strtotime($date);
+                    $currentDateTimestamp = strtotime($dateReturned);
                     $daysOverdue = floor(($currentDateTimestamp - $dueDateTimestamp) / (60 * 60 * 24));
                     $penalty = $daysOverdue * 5;
                 ?>
@@ -120,14 +120,19 @@ if (isset($_GET['id'])) {
                         if ($dueDateTimestamp <= $currentDateTimestamp) {
                         ?>
                             <td class="px-6 py-2 select-none text-red-600">
-                                Php. <?php echo $penalty ?>.00
+                                <?php
+                                $query = "SELECT * FROM `borrowed_books` WHERE `borrower_ID` = '$freturn[borrower_ID]'";
+                                $qbook = $conn->query($query) or die(mysqli_error($conn));
+                                $fbook = $qbook->fetch_array();
+                                echo $fbook['penalty'];
+                                ?>
                             </td>
                         <?php
 
                         } else {
                         ?>
                             <td class="px-6 py-2 select-none">
-                                No penalty
+                                
                             </td>
                         <?php
                         }

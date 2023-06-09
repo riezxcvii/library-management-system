@@ -276,7 +276,18 @@
                                     if ($dueDateTimestamp <= $currentDateTimestamp) {
                                     ?>
                                         <td class="px-6 py-2 select-none text-red-600">
-                                            <?php echo $penalty ?>.00
+                                            <?php
+                                            $qbook = $conn->query("UPDATE `borrowed_books` SET `penalty` = '$penalty' WHERE `borrow_ID` = '$freturn[borrow_ID]'") or die(mysqli_error($conn));
+                                            // Assuming `$penalty` holds the penalty amount to be updated
+                                            // Make sure to replace `borrowed_books` with the correct table name in your database
+
+                                            // Check if the query was successful
+                                            if ($qbook) {
+                                                echo $penalty; // Assuming `$penalty` is a valid variable
+                                            } else {
+                                                echo "Error updating penalty: " . mysqli_error($conn);
+                                            }
+                                            ?>
                                         </td>
                                     <?php
 

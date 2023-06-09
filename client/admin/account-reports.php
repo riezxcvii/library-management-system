@@ -47,7 +47,7 @@
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700">
                         <li>
                             <a href="dashboard.php" class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent text-white md:p-0" aria-current="page">
-                            <svg class="w-6 h-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <svg class="w-6 h-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
                                 </svg>
                             </a>
@@ -55,7 +55,7 @@
                         <!--notifications-->
                         <li>
                             <button id="dropdownNavbarLink1" data-dropdown-toggle="dropdownNavbar1" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-white rounded md:border-0 hover:text-blue-400 md:p-0 md:w-auto">
-                            <svg class="w-[1.6rem] h-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <svg class="w-[1.6rem] h-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5"></path>
                                 </svg>
                             </button>
@@ -186,6 +186,14 @@
                                         </svg></a>
                                 </div>
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center">
+                                    Penalty
+                                    <a href="#" onclick="sortTable(6)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                            <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                        </svg></a>
+                                </div>
+                            </th>
                             <th scope="col" class="px-6 py-3 flex justify-center">
                                 Action
                             </th>
@@ -238,6 +246,27 @@
                                 ?>
                                     <td class="px-6 py-2 text-red-600">
                                         Deactivated
+                                    </td>
+                                <?php
+                                }
+                                ?>
+
+                                <?php
+                                $query = "SELECT * FROM `borrowed_books` WHERE `borrower_ID` = '$borrower[borrower_ID]'";
+                                $qbook = $conn->query($query) or die(mysqli_error($conn));
+                                $fbook = $qbook->fetch_array();
+                                ?>
+                                <?php
+                                if ($fbook['penalty'] > 0) {
+                                ?>
+                                    <td class="px-6 py-2 text-red-600">
+                                        <?php echo $fbook['penalty']; ?>
+                                    </td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td class="px-6 py-2">
+
                                     </td>
                                 <?php
                                 }
@@ -320,14 +349,14 @@
                                                                     <label class="block text-sm font-medium text-gray-900">Sex</label>
                                                                     <div class="flex items-center mb-4 mr-4">
                                                                         <input id="female" <?php if ($sex == 'Female') {
-                                                                                     echo 'checked';
-                                                                                  } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
                                                                     </div>
                                                                     <div class="flex items-center mb-4">
                                                                         <input id="male" <?php if ($sex == 'Male') {
-                                                                                  echo 'checked';
-                                                                                } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
                                                                     </div>
                                                                 </div>
@@ -434,14 +463,14 @@
                                                                     <label class="block text-sm font-medium text-gray-900">Sex</label>
                                                                     <div class="flex items-center mb-4 mr-4">
                                                                         <input id="female" <?php if ($sex == 'Female') {
-                                                                                    echo 'checked';
-                                                                                  } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
                                                                     </div>
                                                                     <div class="flex items-center mb-4">
                                                                         <input id="male" <?php if ($sex == 'Male') {
-                                                                                  echo 'checked';
-                                                                                } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
                                                                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
                                                                     </div>
                                                                 </div>
