@@ -207,6 +207,7 @@
                             $id = $freturn['borrow_ID'];
                             $dueDate = $freturn['due_date'];
                             $dateReturned = $freturn['returned_date'];
+                            $fine = $freturn['penalty'];
                             $penalty = 0;
 
                             // Calculate the penalty based on the number of days overdue
@@ -257,32 +258,45 @@
 
                                     <?php
                                     if ($freturn['status'] == 'Returned') {
-                                        echo '<center><button disabled = "disabled" class = "btn btn-primary my-3" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>RETURNED</button></center>';
+                                        echo '<center><button disabled = "disabled" class = "btn btn-primary my-3 flex" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>
+                                        <svg class="w-[1rem] mt-[0.1rem] mr-[0.1rem] h-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"></path>
+                                      </svg>RETURNED</button></center>';
                                     } else {
                                     ?>
                                         <a href="../../server/librarian/return.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
-                                            <button class="flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">RETURN</button>
+                                            <button class="flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">
+                                                <svg class="w-[1rem] h-auto mr-[0.1rem] mt-[0.05rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z"></path>
+                                                </svg>RETURN</button>
                                         </a>
                                     <?php
                                     }
                                     ?>
                                     </td>
+
                                     <?php
                                     if ($dueDateTimestamp <= $currentDateTimestamp) {
                                     ?>
                                         <td class="px-6 py-2 select-none text-red-600">
-                                            <?php
-                                            $qbook = $conn->query("UPDATE `borrowed_books` SET `penalty` = '$penalty' WHERE `borrow_ID` = '$freturn[borrow_ID]'") or die(mysqli_error($conn));
-                                            // Assuming `$penalty` holds the penalty amount to be updated
-                                            // Make sure to replace `borrowed_books` with the correct table name in your database
+                                            <a href="../../server/librarian/pay.php?id=<?php echo $id; ?>" class="flex items-center justify-center w-max">
+                                                <button class="flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">
+                                                    <svg class="w-[1rem] h-auto mr-[0.2rem] mt-[0.05rem]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"></path>
+                                                    </svg>Pay
+                                                    <?php
+                                                    $qbook = $conn->query("UPDATE `borrowed_books` SET `penalty` = '$penalty' WHERE `borrow_ID` = '$freturn[borrow_ID]'") or die(mysqli_error($conn));
+                                                    // Assuming `$penalty` holds the penalty amount to be updated
+                                                    // Make sure to replace `borrowed_books` with the correct table name in your database
 
-                                            // Check if the query was successful
-                                            if ($qbook) {
-                                                echo $penalty; // Assuming `$penalty` is a valid variable
-                                            } else {
-                                                echo "Error updating penalty: " . mysqli_error($conn);
-                                            }
-                                            ?>
+                                                    // Check if the query was successful
+                                                    if ($qbook) {
+                                                        echo ' ' . $penalty . '.00'; // Assuming `$penalty` is a valid variable
+                                                    } else {
+                                                        echo "Error updating penalty: " . mysqli_error($conn);
+                                                    }
+                                                    ?></button>
+                                            </a>
                                         </td>
                                     <?php
 
