@@ -9,6 +9,55 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+
+
+    <!-- CSS for print styles -->
+    <style>
+        /* Styles for printing */
+        @media print {
+            body {
+                margin: 1;
+                padding-left: 4px;
+            }
+
+            @page {
+                margin: 0;
+                /* Set margin to 0 to remove header and footer */
+                size: 2.125in 3.375in;
+            }
+
+            #qr_code {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto 0 auto;
+                text-align: center;
+            }
+
+            /* Hide unnecessary elements in print */
+            form>*:not(#qr_code) {
+                display: none;
+            }
+
+            nav>*:not(#qr_code) {
+                display: none;
+            }
+
+            button>*:not(#qr_code) {
+                display: none;
+            }
+
+            a>*:not(#qr_code) {
+                display: none;
+            }
+        }
+
+        /* Hide the image with the "hidden" class */
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>

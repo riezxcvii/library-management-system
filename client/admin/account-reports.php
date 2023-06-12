@@ -383,107 +383,12 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
                                             </svg>
                                         </a>
-                                        <svg class="w-6 text-black items-center align-middle my-2" data-modal-target="view-modal_<?php echo $id; ?>" data-modal-toggle="view-modal_<?php echo $id; ?>" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <div id="view-modal_<?php echo $id; ?>" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                            <div class="relative w-full max-w-md max-h-full">
-                                                <!--view form modal content-->
-                                                <div class="relative bg-gray-200 rounded-lg shadow">
-                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="view-modal_<?php echo $id; ?>">
-                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                                        </svg>
-                                                        <span class="sr-only">Close modal</span>
-                                                    </button>
-                                                    <div class="px-6 py-6 lg:px-8">
-                                                        <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
-                                                        <form class="space-y-6" action="" autocomplete="off" method="POST">
-
-                                                            <?php
-                                                            // Check if the form is submitted
-                                                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                                                // Get the ID number from the input field
-                                                                $employeeID = $_POST["employeeID"];
-
-                                                                // Set the QR code content (in this example, it's the ID number)
-                                                                $content = $employeeID;
-
-                                                                // Generate the QR code URL
-                                                                $qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?data=' . urlencode($content) . '&size=150x150';
-
-                                                                // Print the QR code on the page
-                                                                echo '<h1 id="qr_code" class="hidden" style="font-size:20px; text-align:center; margin-top:15%; margin-bottom:15%; font-family:Arial,sans-serif; font-weight:900;">ANS Library Management System</h1><img class="hidden" src="' . $qrCodeUrl . '" alt="QR Code" id="qr_code">';
-                                                            }
-                                                            ?>
-
-                                                            <div class="grid grid-cols-2 gap-4 mb-[-1.4rem]">
-                                                                <div>
-                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                                                    <input type="text" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $idNumber ?>">
-                                                                </div>
-
-                                                                <div>
-                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                                                                    <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
-                                                                        <option value="" selected><?php echo $role ?></option>
-                                                                        <option value="Student">Student</option>
-                                                                        <option value="Teacher">Teacher</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="grid grid-cols-3 gap-4 mt-[1.5rem]">
-                                                                <div>
-                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
-                                                                    <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $last ?>">
-                                                                </div>
-                                                                <div>
-                                                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">First
-                                                                        Name</label>
-                                                                    <input type="text" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" disabled value="<?php echo $first ?>">
-                                                                </div>
-                                                                <div>
-                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Middle
-                                                                        Initial</label>
-                                                                    <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $middle ?>">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="grid grid-cols-2 gap-4">
-                                                                <div>
-                                                                    <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                                                                    <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
-                                                                        <option value="" selected><?php echo $extension ?></option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <div class="flex">
-                                                                    <label class="block text-sm font-medium text-gray-900">Sex</label>
-                                                                    <div class="flex items-center mb-4 mr-4">
-                                                                        <input id="female" <?php if ($sex == 'Female') {
-                                                                                                echo 'checked';
-                                                                                            } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" disabled>
-                                                                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Female</label>
-                                                                    </div>
-                                                                    <div class="flex items-center mb-4">
-                                                                        <input id="male" <?php if ($sex == 'Male') {
-                                                                                                echo 'checked';
-                                                                                            } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" disabled>
-                                                                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 mt-5">Male</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex gap-4">
-                                                                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center decline-btn" data-borrower-id="<?php echo $id; ?>">Generate QR Code</button>
-                                                                <button onclick="printQRCode()" class="w-full text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Print QR Code</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a href="./view-details-form.php?id=<?php echo $id ?>">
+                                            <svg class="w-6 text-black items-center align-middle my-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                        </a>
                                     </td>
                                 <?php
                                 }
@@ -512,40 +417,6 @@
             </a>
         </div>
     </div>
-
-    <!-- CSS for print styles -->
-    <style>
-        /* Styles for printing */
-        @media print {
-            body {
-                margin: 1;
-                padding: 5;
-            }
-
-            @page {
-                margin: 0;
-                /* Set margin to 0 to remove header and footer */
-                size: 2.125in 3.375in;
-            }
-
-            #qr_code {
-                width: 70%;
-                height: auto;
-                display: block;
-                margin: auto;
-            }
-
-            /* Hide unnecessary elements in print */
-            body>*:not(#qr_code) {
-                display: none;
-            }
-        }
-
-        /* Hide the image with the "hidden" class */
-        .hidden {
-            display: none;
-        }
-    </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="../js/sort.js"></script>
@@ -577,13 +448,6 @@
                     }
                 }
             }
-        }
-    </script>
-    <!-- JavaScript to trigger print functionality -->
-    <script>
-        // Function to trigger print functionality
-        function printQRCode() {
-            window.print();
         }
     </script>
 </body>
