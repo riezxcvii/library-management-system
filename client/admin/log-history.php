@@ -138,7 +138,7 @@ include('navigation-bar.php');
                         if ($fbook['penalty'] > 0) {
                         ?>
                             <td class="px-6 py-2 text-red-600">
-                                <?php echo $fbook['penalty']; ?>
+                                <?php echo $fbook['penalty']; ?>.00
                             </td>
                         <?php
                         } else {

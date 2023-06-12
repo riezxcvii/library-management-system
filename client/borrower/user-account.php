@@ -124,7 +124,7 @@ if (isset($_GET['id'])) {
                                 $query = "SELECT * FROM `borrowed_books` WHERE `borrower_ID` = '$freturn[borrower_ID]'";
                                 $qbook = $conn->query($query) or die(mysqli_error($conn));
                                 $fbook = $qbook->fetch_array();
-                                echo $fbook['penalty'];
+                                echo $fbook['penalty'] . '.00';
                                 ?>
                             </td>
                         <?php
