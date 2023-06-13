@@ -12,17 +12,79 @@ include('navigation-bar.php');
             <form class="space-y-6" action="#" autocomplete="off" method="POST">
                 <ul>
                     <li>
-                        <!--notif for book due-->
-                        <div class="bg-blue-100 p-4 text-sm rounded-md mb-1">
-                            <h2 class="font-semibold">Book Due</h2>
-                            <h3>Romeo and Juliet borrowed by Rieza Marie Banquillo is already due.</h3>
-                        </div>
-                        <!--notif for book availability-->
-                        <div class="bg-blue-100 p-4 text-sm rounded-md mb-1">
-                            <h2 class="font-semibold">Book Availability</h2>
-                            <h3>Low stock for Romeo and Juliet book.</h3>
-                        </div>
+                        <?php
+                        $sql = "SELECT * FROM borrowers WHERE status = 1";
+                        $result = mysqli_query($conn, $sql);
+
+                        $notifications = []; // Initialize an empty array to store notifications
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $borrowerID = $row['borrower_ID'];
+                                $last_name = $row['last_name'];
+                                $first_name = $row['first_name'];
+
+                                // Retrieve penalties for the user
+                                $currentDate = date('Y-m-d'); // Get the current date
+                                $query = "SELECT b.title, b.due_date
+                                FROM borrowed_books AS b
+                                JOIN books AS bk ON b.book_ID = bk.book_ID
+                                WHERE b.borrower_ID = '$borrowerID' AND b.due_date < '$currentDate' AND b.status = 'Borrowed'"; // Compare with the current date using '<'
+                                $qbook = mysqli_query($conn, $query);
+
+                                if (mysqli_num_rows($qbook) > 0) {
+                                    while ($fbook = mysqli_fetch_assoc($qbook)) {
+                                        $title = $fbook['title'];
+                                        $due_date = $fbook['due_date'];
+
+                                        // Calculate the number of days overdue
+                                        $days_overdue = floor((strtotime($currentDate) - strtotime($due_date)) / (60 * 60 * 24));
+
+                                        // Add notification to the array
+                                        $notification = [
+                                            'first_name' => $first_name,
+                                            'last_name' => $last_name,
+                                            'title' => $title,
+                                            'due_date' => $due_date,
+                                            'days_overdue' => $days_overdue
+                                        ];
+                                        $notifications[] = $notification;
+                                    }
+                                }
+                            }
+
+                            if (!empty($notifications)) {
+                                foreach ($notifications as $notification) {
+                                    // Check if the due date has passed
+                                    if ($notification['due_date'] < $currentDate) {
+                        ?>
+                    <li>
+                        <!-- Notification for pending fines -->
+                        <a href="./return-book.php">
+                            <div class="bg-blue-100 py-3 px-6 text-sm rounded-md mb-1">
+                                <h2 class="font-semibold mb-1">Borrowed book overdue</h2>
+                                <h3><?php echo $notification['first_name'] . ' ' . $notification['last_name']; ?> borrowed the book "<?php echo $notification['title']; ?>", which was due on <?php echo $notification['due_date']; ?>. It is now <?php echo $notification['days_overdue']; ?> days overdue.</h3>
+                            </div>
+                        </a>
                     </li>
+
+    <?php
+                                    }
+                                }
+                            } else {
+                                echo "No notifications.";
+                            }
+                        } else {
+                            echo "No notifications.";
+                        }
+    ?>
+
+    <!--notif for book availability-->
+    <div class="bg-blue-100 p-4 text-sm rounded-md mb-1">
+        <h2 class="font-semibold">Book Availability</h2>
+        <h3>Low stock for Romeo and Juliet book.</h3>
+    </div>
+    </li>
                 </ul>
             </form>
         </div>
