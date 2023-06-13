@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2023 at 04:24 AM
+-- Generation Time: Jun 13, 2023 at 03:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -32,7 +32,7 @@ CREATE TABLE `books` (
   `isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `accession_number` varchar(10) NOT NULL,
   `date_receive` date NOT NULL,
-  `author_number` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author_number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_lastname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_firstname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `books` (
   `edition` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `volume` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pages` int(5) NOT NULL,
-  `source_fund` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source_fund` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cost` decimal(7,2) DEFAULT NULL,
   `publisher` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `publication_place` varchar(50) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `books` (
   `subject` varchar(50) DEFAULT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'Available',
   `tracing` varchar(50) DEFAULT NULL,
-  `archive` smallint(1) NOT NULL DEFAULT 0
+  `archive` smallint(1) NOT NULL DEFAULT 0 COMMENT '0 no, 1 yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -80,21 +80,22 @@ CREATE TABLE `borrowed_books` (
   `due_date` date DEFAULT NULL,
   `returned_date` date DEFAULT NULL,
   `status` varchar(10) NOT NULL COMMENT 'Borrowed or Returned',
-  `penalty` int(11) NOT NULL
+  `penalty` int(10) NOT NULL,
+  `paid` smallint(1) NOT NULL COMMENT '0 no, 1 yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `borrowed_books`
 --
 
-INSERT INTO `borrowed_books` (`borrow_ID`, `book_ID`, `borrower_ID`, `title`, `copies`, `date_issued`, `due_date`, `returned_date`, `status`, `penalty`) VALUES
-(1, 3, 1, '', 0, '2023-05-30', '2023-05-22', '2023-05-30', 'Returned', 40),
-(2, 2, 1, '', 0, '2023-05-30', '2023-05-31', '2023-05-30', 'Returned', 0),
-(3, 3, 5, '', 0, '2023-05-30', '2023-06-08', '2023-06-02', 'Returned', 0),
-(4, 4, 4, '', 0, '2023-05-30', '2023-05-31', '2023-06-02', 'Returned', 10),
-(5, 2, 8, '', 1, '2023-06-02', '2023-06-08', NULL, 'Borrowed', 0),
-(6, 1, 4, '', 1, '2023-06-06', '2023-06-15', NULL, 'Borrowed', 0),
-(7, 3, 9, '', 1, '2023-06-06', '2023-06-13', NULL, 'Borrowed', 0);
+INSERT INTO `borrowed_books` (`borrow_ID`, `book_ID`, `borrower_ID`, `title`, `copies`, `date_issued`, `due_date`, `returned_date`, `status`, `penalty`, `paid`) VALUES
+(1, 3, 1, '', 0, '2023-05-30', '2023-05-22', '2023-05-30', 'Returned', 40, 0),
+(2, 2, 1, '', 0, '2023-05-30', '2023-05-31', '2023-05-30', 'Returned', 0, 0),
+(3, 3, 5, '', 0, '2023-05-30', '2023-06-08', '2023-06-02', 'Returned', 0, 0),
+(4, 4, 4, '', 0, '2023-05-30', '2023-05-31', '2023-06-02', 'Returned', 10, 0),
+(5, 2, 8, '', 1, '2023-06-02', '2023-06-08', NULL, 'Borrowed', 0, 0),
+(6, 1, 4, '', 1, '2023-06-06', '2023-06-15', NULL, 'Borrowed', 0, 0),
+(7, 3, 9, '', -1, '2023-06-06', '2023-06-13', NULL, 'Borrowed', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -111,8 +112,8 @@ CREATE TABLE `borrowers` (
   `name_extension` varchar(4) DEFAULT NULL,
   `sex` varchar(6) NOT NULL COMMENT 'Male or Female',
   `role` varchar(7) NOT NULL COMMENT 'Student or Teacher',
-  `status` int(1) NOT NULL DEFAULT 0 COMMENT '0 not active, 1 active',
-  `deactivate` int(1) NOT NULL DEFAULT 0 COMMENT '0 no, 1 yes'
+  `status` smallint(1) NOT NULL DEFAULT 0 COMMENT '0 not active, 1 active',
+  `deactivate` smallint(1) NOT NULL DEFAULT 0 COMMENT '0 no, 1 yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -131,7 +132,7 @@ INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, 
 (9, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', 'Student', 1, 1),
 (10, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', 'Student', 0, 0),
 (11, '115296080040', 'Reymaro', 'Kent Ralli', '', '', 'Male', 'Student', 0, 0),
-(13, '158664823654', 'Marin', 'Edward Louie', '', '', 'Male', 'Teacher', 0, 0),
+(13, '158664823654', 'Marin', 'Edward Louie', '', '', 'Male', 'Teacher', 1, 0),
 (14, '115218060084', 'Guillermo', 'Fritzel Joy', 'C', '', 'Female', 'Student', 1, 0),
 (15, '135226489527', 'Elequin', 'Jonas Eric', '', '', 'Male', 'Teacher', 1, 0),
 (16, '264895113564', 'Zamora', 'Cherry Mae', '', '', 'Male', 'Student', 1, 0);
@@ -150,8 +151,8 @@ CREATE TABLE `library_admin` (
   `name_extension` varchar(4) DEFAULT NULL,
   `sex` varchar(6) NOT NULL COMMENT 'Male or Female',
   `role` varchar(10) NOT NULL COMMENT 'Admin or Librarian',
-  `status` varchar(10) NOT NULL COMMENT '0 not active, 1 active',
-  `deactivate` int(1) NOT NULL DEFAULT 0,
+  `status` smallint(1) NOT NULL COMMENT '0 not active, 1 active',
+  `deactivate` smallint(1) NOT NULL DEFAULT 0 COMMENT '0 no, 1 yes',
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -161,10 +162,10 @@ CREATE TABLE `library_admin` (
 --
 
 INSERT INTO `library_admin` (`admin_ID`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `role`, `status`, `deactivate`, `username`, `password`) VALUES
-(1, 'Calubiran', 'Kurly Jhon', 'F', '', 'Male', 'Admin', '1', 0, 'admin', 'admin12345'),
-(2, 'Vagilidad', 'Rigel', '', '', 'Female', 'Librarian', '1', 1, 'librarian', 'librarian12345'),
-(3, 'Fernando', 'Loren', 'S', '', 'Female', 'Librarian', '1', 0, 'librarian', 'librarian12345'),
-(4, 'Jomolo', 'Roger', '', '', 'Male', 'Admin', '1', 1, 'roger', 'roger12345');
+(1, 'Calubiran', 'Kurly Jhon', 'F', '', 'Male', 'Admin', 1, 0, 'admin', 'admin12345'),
+(2, 'Vagilidad', 'Rigel', '', '', 'Female', 'Librarian', 1, 1, 'librarian', 'librarian12345'),
+(3, 'Fernando', 'Loren', 'S', '', 'Female', 'Librarian', 1, 0, 'librarian', 'librarian12345'),
+(4, 'Jomolo', 'Roger', '', '', 'Male', 'Admin', 1, 1, 'roger', 'roger12345');
 
 -- --------------------------------------------------------
 
@@ -346,7 +347,23 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (1, 0, '2023-06-09', '17:54:37', '17:55:46'),
 (3, 0, '2023-06-09', '17:56:04', '17:59:23'),
 (1, 0, '2023-06-09', '17:59:27', '18:02:16'),
-(0, 1, '2023-06-09', '18:02:42', '20:13:19');
+(0, 1, '2023-06-09', '18:02:42', '20:13:19'),
+(1, 0, '2023-06-12', '10:33:33', '12:55:08'),
+(3, 0, '2023-06-12', '12:55:14', '14:48:11'),
+(1, 0, '2023-06-12', '14:48:15', '14:49:21'),
+(0, 1, '2023-06-12', '14:49:53', '14:52:11'),
+(1, 0, '2023-06-12', '14:52:27', '14:54:58'),
+(3, 0, '2023-06-12', '14:55:05', '15:04:16'),
+(1, 0, '2023-06-12', '15:04:21', '20:49:23'),
+(3, 0, '2023-06-12', '20:49:30', '21:19:53'),
+(3, 0, '2023-06-13', '16:25:35', '18:07:29'),
+(1, 0, '2023-06-13', '18:07:36', '18:07:50'),
+(3, 0, '2023-06-13', '18:08:29', '18:19:11'),
+(1, 0, '2023-06-13', '19:22:51', '20:02:13'),
+(3, 0, '2023-06-13', '20:03:11', '21:15:21'),
+(0, 1, '2023-06-13', '21:15:50', '21:19:17'),
+(1, 0, '2023-06-13', '21:20:34', '21:26:43'),
+(3, 0, '2023-06-13', '21:26:50', NULL);
 
 --
 -- Indexes for dumped tables
