@@ -25,7 +25,7 @@ include('navigation-bar.php');
                                 <a href="./account-registration.php">
                                     <div class="bg-blue-100 p-4 text-sm rounded-md mb-1">
                                         <h2 class="font-semibold">Pending Registration</h2>
-                                        <h3><?php echo $first; ?> <?php echo $last; ?>wants to be registered in the system.</h3>
+                                        <h3><?php echo $first; ?> <?php echo $last; ?> wants to be registered in the system.</h3>
                                     </div>
                                 </a>
                         <?php
