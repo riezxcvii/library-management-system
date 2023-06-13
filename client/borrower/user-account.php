@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            ID
+                            Title
                             <a href="#" onclick="sortTable(0)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
                                 </svg></a>
@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Title
+                            Borrow Date
                             <a href="#" onclick="sortTable(1)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
                                 </svg></a>
@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Borrow Date
+                            Due Date
                             <a href="#" onclick="sortTable(2)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
                                 </svg></a>
@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Due Date
+                            Return Date
                             <a href="#" onclick="sortTable(3)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
                                 </svg></a>
@@ -60,16 +60,8 @@ if (isset($_GET['id'])) {
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Return Date
-                            <a href="#" onclick="sortTable(4)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center">
                             Fine
-                            <a href="#" onclick="sortTable(5)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                            <a href="#" onclick="sortTable(4)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
                                 </svg></a>
                         </div>
@@ -97,9 +89,6 @@ if (isset($_GET['id'])) {
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
-                        <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
-                            <?php echo $freturn['borrow_ID'] ?>
-                        </td>
                         <td onclick="openModal(<?php echo $id; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
                             <?php
                             $qbook = $conn->query("SELECT * FROM `books` WHERE `book_ID` = '$freturn[book_ID]'") or die(mysqli_error($conn));
@@ -244,15 +233,13 @@ if (isset($_GET['id'])) {
             column3 = tr[i].getElementsByTagName("td")[2];
             column4 = tr[i].getElementsByTagName("td")[3];
             column5 = tr[i].getElementsByTagName("td")[4];
-            column6 = tr[i].getElementsByTagName("td")[5];
-            if (column1 && column2 && column3 && column4 && column5 && column6) {
+            if (column1 && column2 && column3 && column4 && column5) {
                 column1 = column1.textContent || column1.innerText;
                 column2 = column2.textContent || column2.innerText;
                 column3 = column3.textContent || column3.innerText;
                 column4 = column4.textContent || column4.innerText;
                 column5 = column5.textContent || column5.innerText;
-                column6 = column6.textContent || column6.innerText;
-                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1) {
+                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";
