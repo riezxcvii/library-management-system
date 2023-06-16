@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 03:34 PM
+-- Generation Time: Jun 16, 2023 at 11:57 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -89,13 +89,19 @@ CREATE TABLE `borrowed_books` (
 --
 
 INSERT INTO `borrowed_books` (`borrow_ID`, `book_ID`, `borrower_ID`, `title`, `copies`, `date_issued`, `due_date`, `returned_date`, `status`, `penalty`, `paid`) VALUES
-(1, 3, 1, '', 0, '2023-05-30', '2023-05-22', '2023-05-30', 'Returned', 40, 0),
+(1, 3, 1, '', 0, '2023-05-30', '2023-05-22', '2023-05-30', 'Returned', 40, 1),
 (2, 2, 1, '', 0, '2023-05-30', '2023-05-31', '2023-05-30', 'Returned', 0, 0),
 (3, 3, 5, '', 0, '2023-05-30', '2023-06-08', '2023-06-02', 'Returned', 0, 0),
-(4, 4, 4, '', 0, '2023-05-30', '2023-05-31', '2023-06-02', 'Returned', 10, 0),
-(5, 2, 8, '', 1, '2023-06-02', '2023-06-08', NULL, 'Borrowed', 0, 0),
-(6, 1, 4, '', 1, '2023-06-06', '2023-06-15', NULL, 'Borrowed', 0, 0),
-(7, 3, 9, '', -1, '2023-06-06', '2023-06-13', NULL, 'Borrowed', 0, 0);
+(4, 4, 4, '', 0, '2023-05-30', '2023-05-31', '2023-06-02', 'Returned', 10, 1),
+(5, 2, 8, '', 1, '2023-06-02', '2023-06-08', NULL, 'Borrowed', 40, 0),
+(6, 1, 4, '', 1, '2023-06-06', '2023-06-15', NULL, 'Borrowed', 5, 0),
+(7, 3, 9, '', -1, '2023-06-06', '2023-06-13', NULL, 'Borrowed', 15, 0),
+(8, 3, 5, '', 1, '2023-06-14', '2023-06-23', NULL, 'Borrowed', 0, 0),
+(9, 3, 9, '', 0, '2023-06-14', '2023-06-23', '2023-06-14', 'Returned', 0, 0),
+(10, 3, 4, '', 0, '2023-06-14', '2023-06-23', '2023-06-14', 'Returned', 0, 0),
+(11, 1, 8, '', 0, '2023-06-14', '2023-06-21', '2023-06-14', 'Returned', 0, 0),
+(12, 2, 8, '', 1, '2023-06-14', '2023-06-12', NULL, 'Borrowed', 20, 0),
+(13, 3, 2, '', 1, '2023-06-14', '2023-06-16', NULL, 'Borrowed', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +128,7 @@ CREATE TABLE `borrowers` (
 
 INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `role`, `status`, `deactivate`) VALUES
 (1, '115218060036', 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Student', 1, 0),
-(2, '546139921556', 'Barbaza', 'John Vincent', 'N', '', 'Male', 'Teacher', 1, 0),
+(2, '546139921556', 'Barbaza', 'John Vincent', 'N', '', 'Male', 'Teacher', 1, 1),
 (3, '361224985723', 'Hiponia', 'Roneilita', 'H', '', 'Female', 'Teacher', 1, 0),
 (4, '115218060054', 'Miguel', 'Edvenson Jay', 'M', '', 'Male', 'Student', 1, 0),
 (5, '201926584', 'Garfin', 'April Jane', 'A', '', 'Female', 'Student', 1, 0),
@@ -135,7 +141,9 @@ INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, 
 (13, '158664823654', 'Marin', 'Edward Louie', '', '', 'Male', 'Teacher', 1, 0),
 (14, '115218060084', 'Guillermo', 'Fritzel Joy', 'C', '', 'Female', 'Student', 1, 0),
 (15, '135226489527', 'Elequin', 'Jonas Eric', '', '', 'Male', 'Teacher', 1, 0),
-(16, '264895113564', 'Zamora', 'Cherry Mae', '', '', 'Male', 'Student', 1, 0);
+(16, '264895113564', 'Zamora', 'Cherry Mae', '', '', 'Male', 'Student', 1, 0),
+(17, '548964546', 'Nain', 'Cherry', '', '', 'Female', 'Student', 1, 0),
+(18, '432546346345', 'Narzo', 'Joseph', '', '', 'Male', 'Student', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -165,7 +173,8 @@ INSERT INTO `library_admin` (`admin_ID`, `last_name`, `first_name`, `middle_init
 (1, 'Calubiran', 'Kurly Jhon', 'F', '', 'Male', 'Admin', 1, 0, 'admin', 'admin12345'),
 (2, 'Vagilidad', 'Rigel', '', '', 'Female', 'Librarian', 1, 1, 'librarian', 'librarian12345'),
 (3, 'Fernando', 'Loren', 'S', '', 'Female', 'Librarian', 1, 0, 'librarian', 'librarian12345'),
-(4, 'Jomolo', 'Roger', '', '', 'Male', 'Admin', 1, 1, 'roger', 'roger12345');
+(4, 'Jomolo', 'Roger', '', '', 'Male', 'Admin', 1, 1, 'roger', 'roger12345'),
+(5, 'Laude', 'Sufena Joy', '', '', 'Male', 'Librarian', 1, 0, 'sufenajoy', '123456789');
 
 -- --------------------------------------------------------
 
@@ -363,7 +372,65 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (3, 0, '2023-06-13', '20:03:11', '21:15:21'),
 (0, 1, '2023-06-13', '21:15:50', '21:19:17'),
 (1, 0, '2023-06-13', '21:20:34', '21:26:43'),
-(3, 0, '2023-06-13', '21:26:50', NULL);
+(3, 0, '2023-06-13', '21:26:50', '22:43:33'),
+(0, 1, '2023-06-14', '07:43:37', '07:43:46'),
+(1, 0, '2023-06-14', '07:44:00', '07:44:42'),
+(3, 0, '2023-06-14', '07:44:50', '07:45:25'),
+(1, 0, '2023-06-14', '08:30:48', NULL),
+(1, 0, '2023-06-14', '08:34:28', '08:37:32'),
+(3, 0, '2023-06-14', '08:37:39', '08:39:48'),
+(1, 0, '2023-06-14', '08:41:12', '08:44:11'),
+(3, 0, '2023-06-14', '08:44:16', '08:46:20'),
+(0, 1, '2023-06-14', '08:46:32', '08:46:38'),
+(0, 1, '2023-06-14', '08:46:43', '08:47:02'),
+(3, 0, '2023-06-14', '08:47:13', NULL),
+(0, 1, '2023-06-14', '10:16:06', '10:16:46'),
+(3, 0, '2023-06-14', '10:16:53', '10:20:33'),
+(1, 0, '2023-06-14', '10:20:37', '10:24:09'),
+(0, 3, '2023-06-14', '10:24:55', '10:25:57'),
+(1, 0, '2023-06-14', '10:26:26', '10:27:36'),
+(3, 0, '2023-06-14', '10:27:51', '13:21:33'),
+(1, 0, '2023-06-14', '13:22:07', '13:23:30'),
+(3, 0, '2023-06-14', '14:22:16', '14:28:53'),
+(1, 0, '2023-06-14', '14:28:58', '14:30:02'),
+(1, 0, '2023-06-14', '14:30:37', '14:31:20'),
+(0, 1, '2023-06-14', '14:31:31', '14:34:23'),
+(1, 0, '2023-06-14', '15:18:09', NULL),
+(0, 1, '2023-06-14', '15:18:44', '15:21:00'),
+(0, 1, '2023-06-14', '15:22:22', '15:22:51'),
+(3, 0, '2023-06-14', '15:22:59', NULL),
+(3, 0, '2023-06-15', '16:09:00', '16:25:26'),
+(1, 0, '2023-06-15', '16:25:31', '16:25:48'),
+(3, 0, '2023-06-15', '22:12:24', NULL),
+(1, 0, '2023-06-16', '17:38:29', '17:38:47'),
+(3, 0, '2023-06-16', '17:38:54', '17:55:12'),
+(1, 0, '2023-06-16', '17:55:17', '17:57:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL,
+  `borrow_ID` int(10) NOT NULL,
+  `notification_text` varchar(255) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `notif_status` smallint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id`, `borrow_ID`, `notification_text`, `type`, `date`, `notif_status`) VALUES
+(0, 13, 'The book \"The World Almanac and Book of Facts 2021\" borrowed by John Vincent  Barbaza is overdue by 0 day(s).', 'librarian', '2023-06-16', 0),
+(0, 12, 'The book \"Romeo and Juliet\" borrowed by Rustia  Sabino is overdue by 4 day(s).', 'librarian', '2023-06-16', 0),
+(0, 7, 'The book \"The World Almanac and Book of Facts 2021\" borrowed by Vivien  Banquillo is overdue by 3 day(s).', 'librarian', '2023-06-16', 0),
+(0, 6, 'The book \"Noli Me Tangere\" borrowed by Edvenson Jay  Miguel is overdue by 1 day(s).', 'librarian', '2023-06-16', 0),
+(0, 5, 'The book \"Romeo and Juliet\" borrowed by Rustia  Sabino is overdue by 8 day(s).', 'librarian', '2023-06-16', 0);
 
 --
 -- Indexes for dumped tables
@@ -408,19 +475,19 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `borrowers`
 --
 ALTER TABLE `borrowers`
-  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `library_admin`
 --
 ALTER TABLE `library_admin`
-  MODIFY `admin_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `admin_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

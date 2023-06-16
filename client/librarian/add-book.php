@@ -93,7 +93,7 @@ include('navigation-bar.php');
                     </div>
 
                     <div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-3 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Date Received</label>
                                 <input type="date" name="received" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
@@ -101,6 +101,10 @@ include('navigation-bar.php');
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of copies</label>
                                 <input type="number" name="number_of_copies" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
+                                <input type="number" name="number_of_pages" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
                             </div>
                         </div>
 
@@ -171,6 +175,7 @@ include('navigation-bar.php');
                     $volume = $_POST['volume'];
                     $received = $_POST['received'];
                     $number_of_copies = $_POST['number_of_copies'];
+                    $number_of_pages = $_POST['number_of_pages'];
                     $author_number = $_POST['author_number'];
                     $author_first = $_POST['author_first'];
                     $author_last = $_POST['author_last'];
@@ -180,7 +185,7 @@ include('navigation-bar.php');
                     $tracing = $_POST['tracing'];
                     $physical = $_POST['physical'];
 
-                    $sql = "INSERT INTO `books` (category,isbn,accession_number,date_receive,author_number,author_lastname,author_firstname,title,copies,edition,volume,source_fund,cost,publisher,publication_place,copyright_year,year_published,tracing,physical_description)
+                    $sql = "INSERT INTO `books` (category,isbn,accession_number,date_receive,author_number,author_lastname,author_firstname,title,copies,pages,edition,volume,source_fund,cost,publisher,publication_place,copyright_year,year_published,tracing,physical_description)
             VALUES('$book_category',
             '$isbn',
             '$accession_number',
@@ -190,6 +195,7 @@ include('navigation-bar.php');
             '$author_first',
             '$book_title',
             $number_of_copies,
+            $number_of_pages,
             '$edition',
             '$volume',
             '$source_of_fund',

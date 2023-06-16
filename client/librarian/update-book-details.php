@@ -62,9 +62,19 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
 
+                        <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
                             <input type="text" name="isbn" value="<?php echo $row['isbn']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
+                        </div>
+                        <div>
+                        <label class="block mb-1 text-sm font-medium text-gray-900">Book Status</label>
+                                <select id="book_status" name="book_status" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    <option value="">Select book status</option>
+                                    <option value="Defective">Defective</option>
+                                    <option value="Lost">Lost</option>
+                                </select>
+                        </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
@@ -124,7 +134,7 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-3 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Date Received</label>
                                 <input type="date" name="received" value="<?php echo $row['date_receive']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
@@ -132,6 +142,10 @@ if (isset($_GET['id'])) {
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of copies</label>
                                 <input type="number" name="number_of_copies" value="<?php echo $row['copies']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
+                                <input type="number" name="number_of_pages" value="<?php echo $row['pages']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
                             </div>
                         </div>
 
@@ -202,6 +216,7 @@ if (isset($_GET['id'])) {
                     $volume = $_POST['volume'];
                     $received = $_POST['received'];
                     $number_of_copies = $_POST['number_of_copies'];
+                    $number_of_pages = $_POST['number_of_pages'];
                     $author_number = $_POST['author_number'];
                     $author_first = $_POST['author_first'];
                     $author_last = $_POST['author_last'];
@@ -220,6 +235,7 @@ if (isset($_GET['id'])) {
                     title='$book_title',
                     category='$book_category',
                     copies=$number_of_copies,
+                    pages=$number_of_pages,
                     edition='$edition',
                     volume='$volume',
                     source_fund='$source_of_fund',

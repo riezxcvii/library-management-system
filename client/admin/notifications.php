@@ -7,6 +7,9 @@ include('navigation-bar.php');
         <div class="px-4 py-6 lg:px-8">
             <div class="flex justify-between">
                 <h3 class="mb-4 text-xl font-medium text-gray-900">Notifications</h3>
+                <form action="" method="POST">
+                <input type="submit" name="mark_all" class="text-xs text-blue-600 underline mt-[0.3rem]" value="Mark all as read">
+                </form>
             </div>
             <form class="space-y-6" action="#" autocomplete="off" method="POST">
                 <ul>
