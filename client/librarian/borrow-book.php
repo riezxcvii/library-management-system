@@ -35,8 +35,9 @@ include('navigation-bar.php');
         </select>
     </div>
     <div class="flex items-center mt-2">
-        <input type="date" name="due" required class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none" placeholder="Select Due Date">
-    </div>
+    <input type="date" name="due" required id="due-date" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none" placeholder="Select Due Date">
+</div>
+
 
     <button name="save_borrow" class="text-white w-40 bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 items-center justify-center flex border-none mt-4">Lend Book</button>
 
@@ -235,6 +236,25 @@ include('navigation-bar.php');
 <script src="../js/sort.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script src="../js/sort"></script>
+<script>
+    var inputElement = document.getElementById("due-date");
+    
+    // Get the current date
+    var today = new Date();
+    // Set the minimum date to today
+    inputElement.setAttribute("min", today.toISOString().split('T')[0]);
+    
+    // Handle the input event to validate the entered date
+    inputElement.addEventListener('input', function() {
+        var selectedDate = new Date(this.value);
+        
+        if (selectedDate < today) {
+            this.setCustomValidity("Please select a date on or after today.");
+        } else {
+            this.setCustomValidity("");
+        }
+    });
+</script>
 <script>
     function mySearch() {
         // Declare variables
