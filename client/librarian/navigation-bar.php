@@ -41,6 +41,7 @@
                         data: info,
                         success: function(data) {
                             // Handle the response if needed
+                            window.location="all-books.php";
                         }
                     });
                 }

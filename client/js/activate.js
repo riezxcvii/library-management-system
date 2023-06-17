@@ -38,7 +38,7 @@ $(function () {
         url: "../../server/admin/activate.php",
         data: info,
         success: function (data) {
-          // Handle the response if needed
+     
         },
       });
     }

@@ -26,7 +26,7 @@ $(function() {
                 url: "../../server/admin/deactivate.php",
                 data: info,
                 success: function(data) {
-                    // Handle the response if needed
+                    window.location="account-reports.php";
                 }
             });
         }

@@ -39,6 +39,8 @@ $(function () {
         data: info,
         success: function (data) {
           // Handle the response if needed
+          window.location="../../client/admin/librarian-accounts.php"
+
         },
       });
     }

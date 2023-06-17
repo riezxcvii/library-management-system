@@ -13,6 +13,7 @@ $(function() {
                 data: info,
                 success: function(data) {
                     alert(data);
+                   
                 }
             });
             $(this).parents(".record").animate({
@@ -27,6 +28,8 @@ $(function() {
                 data: info,
                 success: function(data) {
                     // Handle the response if needed
+                    window.location="../../client/admin/librarian-accounts.php"
+           
                 }
             });
         }
