@@ -28,7 +28,7 @@ include('navigation-bar.php');
 
 <li>
                         <!-- Notification for pending fines -->
-                        <a href="./return-book.php">
+                        <a href="<?php echo $row['book_ID'] == 0 ? './return-book.php': './all-books.php'?>">
                             <div class="<?php echo $row['notif_status'] == 0 ? 'bg-blue-300' : 'bg-blue-100'  ?> py-3 px-6 text-sm rounded-md mb-1">
                                 <h2 class="font-semibold mb-1"><?php echo $row['book_ID'] == 0? 'Borrowed book overdue': 'Book Availability' ?></h2>
                                 <h3><?php echo $row['notification_text']; ?></h3>
@@ -63,7 +63,7 @@ include('navigation-bar.php');
                         }
                         if(isset($_POST['mark_all']))
                         {
-                            $update=mysqli_query($conn, "UPDATE notification SET notif_status = 1");
+                            $update=mysqli_query($conn, "UPDATE notification SET notif_status = 1 WHERE type= 'librarian'");
                             if($update)
                             {
                                 echo "<script>

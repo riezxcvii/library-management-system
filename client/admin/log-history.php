@@ -135,7 +135,7 @@ include('navigation-bar.php');
                         $fbook = $qbook->fetch_array();
                         ?>
                         <?php
-                        if ($fbook['penalty'] > 0) {
+                        if ($fbook && $fbook['penalty'] > 0) {
                         ?>
                             <td class="px-6 py-2 text-red-600">
                                 <?php echo $fbook['penalty']; ?>.00

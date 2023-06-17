@@ -124,10 +124,17 @@
                         $middle_initial = $_POST['middleInitial'];
                         $extension = $_POST['extension'];
                         $sex = $_POST['sex'];
+                        $currentDate = date("Y-m-d");
 
                         $sql = "INSERT INTO `borrowers` (id_number, first_name,last_name, middle_initial,name_extension,sex,role,status)VALUES('$id', '$first_name','$last_name','$middle_initial','$extension','$sex','$role',0)";
                         $result = mysqli_query($conn, $sql);
                         if ($result) {
+                            $borrowerId = mysqli_insert_id($conn);
+                            $notificationText = "" . $first_name ." ". $last_name . " wants to be registered in the system.";
+            
+                            // Insert the notification into the notifications table
+                            $insertQuery = "INSERT INTO notification (borrower_ID,notification_text,type,date) VALUES ($borrowerId,'$notificationText', 'admin','$currentDate')";
+                            $conn->query($insertQuery);
                             echo "<script>
                         window.location.href='../index2.php'
                         </script>";
