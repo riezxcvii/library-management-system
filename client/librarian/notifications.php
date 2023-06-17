@@ -16,9 +16,8 @@ include('navigation-bar.php');
                 <ul>
                     <li>
                         <?php
-                        $getNotif=mysqli_query($conn, "SELECT * FROM notification n
-                        INNER JOIN borrowed_books b ON n.borrow_ID = b.borrow_ID
-                         WHERE type = 'librarian' ORDER BY n.notif_status ASC");
+                        $getNotif=mysqli_query($conn, "SELECT * FROM notification 
+                         WHERE type = 'librarian' ORDER BY notif_status ASC");
                         $count = mysqli_num_rows($getNotif);
                         if($count != 0)
                         {
@@ -31,7 +30,7 @@ include('navigation-bar.php');
                         <!-- Notification for pending fines -->
                         <a href="./return-book.php">
                             <div class="<?php echo $row['notif_status'] == 0 ? 'bg-blue-300' : 'bg-blue-100'  ?> py-3 px-6 text-sm rounded-md mb-1">
-                                <h2 class="font-semibold mb-1">Borrowed book overdue</h2>
+                                <h2 class="font-semibold mb-1"><?php echo $row['book_ID'] == 0? 'Borrowed book overdue': 'Book Availability' ?></h2>
                                 <h3><?php echo $row['notification_text']; ?></h3>
                                 <form action="" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -90,10 +89,7 @@ include('navigation-bar.php');
                    
 
     <!--notif for book availability-->
-    <div class="bg-blue-100 p-4 text-sm rounded-md mb-1">
-        <h2 class="font-semibold">Book Availability</h2>
-        <h3>Low stock for Romeo and Juliet book.</h3>
-    </div>
+   
     </li>
                 </ul>
             </form>

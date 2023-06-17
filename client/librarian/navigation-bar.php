@@ -120,6 +120,30 @@
                        
                        }
                     }
+                    $q_book = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
+                    while ($f_book = mysqli_fetch_assoc($q_book)) {
+                        $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$f_book[book_ID]'") or die(mysqli_error($conn));
+                        $new_qty = $q_borrow->fetch_array();
+                        $total = $f_book['copies'] - $new_qty['total'];
+
+                        
+                       if ($total <= 5) {
+                        $checkQuery = "SELECT * FROM notification WHERE book_ID = '$f_book[book_ID]' AND date = '$currentDate'";
+                        $checkResult = $conn->query($checkQuery);
+            
+                        // If no notification exists for today, insert the notification
+                        if ($checkResult->num_rows == 0) {
+            
+    
+                            $notificationText = "Low stock for \"" . $f_book['title'] . "\" book.";
+            
+                            // Insert the notification into the notifications table
+                            $insertQuery = "INSERT INTO notification (book_ID,notification_text,type,date) VALUES ($f_book[book_ID],'$notificationText', 'librarian','$currentDate')";
+                            $conn->query($insertQuery);
+                        }
+                    
+                    }
+                    }
 
                 $notifQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM notification WHERE notif_status = 0");
                 $p = mysqli_fetch_assoc($notifQuery);
