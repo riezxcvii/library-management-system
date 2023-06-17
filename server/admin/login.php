@@ -22,7 +22,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         header("Location: ../../client/index.php?error=Password is required!");
         exit();
     } else {
-        $sql = "SELECT * FROM library_admin WHERE username='$username' AND password='$password' AND status='1' AND deactivate='0'";
+        $sql = "SELECT * FROM library_admin WHERE username='$username' AND password='$password' AND status=1 AND deactivate=0";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) === 1) {

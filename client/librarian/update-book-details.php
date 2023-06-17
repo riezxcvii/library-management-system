@@ -226,6 +226,15 @@ if (isset($_GET['id'])) {
                     $tracing = $_POST['tracing'];
                     $physical = $_POST['physical'];
 
+                    if($_POST['book_status']=='Defective' || $_POST['book_status']=='Lost' )
+                    {
+                        $number_of_copies = $_POST['number_of_copies'] - 1;
+                    }
+                    else
+                    {
+                        $number_of_copies = $_POST['number_of_copies'];
+                    }
+
                     $sql = "UPDATE `books` SET isbn='$isbn',
                     accession_number='$accession_number',
                     date_receive='$received',
