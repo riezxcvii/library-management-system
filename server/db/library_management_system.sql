@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 11:25 AM
+-- Generation Time: Jun 18, 2023 at 11:42 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -89,11 +89,8 @@ CREATE TABLE `borrowed_books` (
 --
 
 INSERT INTO `borrowed_books` (`borrow_ID`, `book_ID`, `borrower_ID`, `title`, `copies`, `date_issued`, `due_date`, `returned_date`, `status`, `penalty`, `paid`) VALUES
-(1, 1, 1, '', 1, '2023-06-15', '2023-06-18', NULL, 'Borrowed', 0, 0),
-(2, 3, 8, '', 0, '2023-06-18', '2023-06-21', '2023-06-18', 'Returned', 0, 0),
-(3, 3, 11, '', 0, '2023-06-04', '2023-06-17', '2023-06-18', 'Returned', 5, 0),
-(4, 2, 21, '', 1, '2023-06-05', '2023-06-14', NULL, 'Borrowed', 20, 0),
-(5, 2, 3, '', -1, '2023-06-18', '2023-06-22', NULL, 'Borrowed', 0, 0);
+(1, 2, 6, '', 0, '2023-06-08', '2023-06-15', '2023-06-18', 'Returned', 15, 0),
+(2, 2, 14, '', 1, '2023-06-05', '2023-06-17', NULL, 'Borrowed', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -436,7 +433,9 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (3, 0, '2023-06-18', '13:58:09', NULL),
 (1, 0, '2023-06-18', '14:00:42', '15:50:33'),
 (0, 1, '2023-06-18', '15:50:55', '16:21:01'),
-(6, 0, '2023-06-18', '16:23:42', NULL);
+(6, 0, '2023-06-18', '16:23:42', '17:29:21'),
+(1, 0, '2023-06-18', '17:29:25', '17:31:37'),
+(6, 0, '2023-06-18', '17:31:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -471,13 +470,12 @@ INSERT INTO `notification` (`notification_ID`, `book_ID`, `borrower_ID`, `borrow
 (0, 0, 0, 0, 'Rieza Marie Banquillo who just logged in has a pending fine of 40.00 for not returning book on time.', 'admin', '2023-06-18', 0),
 (0, 2, 0, 0, 'Low stock for \"Romeo and Juliet\" book.', 'librarian', '2023-06-18', 0),
 (0, 3, 0, 0, 'Low stock for \"The World Almanac and Book of Facts 2021\" book.', 'librarian', '2023-06-18', 0),
-(0, 0, 0, 1, 'The book \"Noli Me Tangere\" borrowed by Rieza Marie  Banquillo is overdue by 0 day(s).', 'librarian', '2023-06-18', 0),
-(0, 0, 0, 4, 'The book \"Romeo and Juliet\" borrowed by Mary Jezza  Saballa is overdue by 4 day(s).', 'librarian', '2023-06-18', 0),
 (0, 0, 25, 0, 'King Vegafria wants to be registered in the system.', 'admin', '2023-06-18', 0),
 (0, 0, 26, 0, 'King Vegafria wants to be registered in the system.', 'admin', '2023-06-18', 0),
 (0, 0, 27, 0, 'Manilyn Aurelio wants to be registered in the system.', 'admin', '2023-06-18', 0),
 (0, 0, 28, 0, 'John Michael Lacurom wants to be registered in the system.', 'admin', '2023-06-18', 0),
-(0, 0, 29, 0, 'Benjamin Alejo wants to be registered in the system.', 'admin', '2023-06-18', 0);
+(0, 0, 29, 0, 'Benjamin Alejo wants to be registered in the system.', 'admin', '2023-06-18', 0),
+(0, 0, 0, 2, 'The book \"Romeo and Juliet\" borrowed by Fritzel Joy  Guillermo is overdue by 1 day(s).', 'librarian', '2023-06-18', 0);
 
 --
 -- Indexes for dumped tables
@@ -522,7 +520,7 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `borrowers`
