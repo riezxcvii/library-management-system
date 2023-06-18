@@ -80,7 +80,7 @@ include('navigation-bar.php');
                         <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
                             <?php echo $book['isbn'] ?>
                         </td>
-                        <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
+                        <td onclick="openModal(<?php echo $book['book_ID']; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
                             <?php echo $book['title'] ?>
                         </td>
                         <td class="px-6 py-2 select-none">
