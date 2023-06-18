@@ -68,32 +68,29 @@ include('navigation-bar.php');
 
                 <?php
                 include("../../server/db/conDB.php");
-                $query = $conn->query("SELECT * FROM books WHERE archive = 0 ");
-                while ($result = $query->fetch_object()) {
-                    $isbn = stripslashes($result->isbn);
-                    $ID = stripslashes($result->book_ID);
-                    $title = stripslashes($result->title);
-                    $author_firstname = stripslashes($result->author_firstname);
-                    $author_lastname = stripslashes($result->author_lastname);
-                    $category = stripslashes($result->category);
-                    $copies = stripslashes($result->copies);
+                $i = 0;
+                $books = $conn->query("SELECT * FROM `books` ORDER BY archive ASC") or die(mysqli_error($conn));
+                while ($book = $books->fetch_array()) {
+                    $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$book[book_ID]' && `status` = 'Borrowed'") or die(mysqli_error($conn));
+                    $new_qty = $q_borrow->fetch_array();
+                    $total = $book['copies'] - $new_qty['total'];
                 ?>
 
                     <tr class="bg-white border-b text-black font-semibold">
                         <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap select-none">
-                            <?php echo $isbn; ?>
+                            <?php echo $book['isbn'] ?>
                         </td>
                         <td onclick="openModal(<?php echo $ID; ?>)" class="px-6 py-2 select-none hover:bg-blue-200" data-modal-target="card-modal" data-modal-toggle="card-modal">
-                            <?php echo $title; ?>
+                            <?php echo $book['title'] ?>
                         </td>
                         <td class="px-6 py-2 select-none">
-                            <?php echo $author_firstname; ?> <?php echo $author_lastname; ?>
+                            <?php echo $book['author_firstname'] ?> <?php echo $book['author_lastname'] ?>
                         </td>
                         <td class="px-6 py-2 select-none">
-                            <?php echo $category; ?>
+                            <?php echo $book['category'] ?>
                         </td>
                         <td class="px-6 py-2 select-none">
-                            <?php echo $copies; ?>
+                            <?php echo $total ?>
                         </td>
                     </tr>
                 <?php } ?>
