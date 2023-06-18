@@ -136,6 +136,7 @@
                             $insertQuery = "INSERT INTO notification (borrower_ID,notification_text,type,date) VALUES ($borrowerId,'$notificationText', 'admin','$currentDate')";
                             $conn->query($insertQuery);
                             echo "<script>
+                            alert('Your account is pending for approval.');
                         window.location.href='../index2.php'
                         </script>";
                         }
