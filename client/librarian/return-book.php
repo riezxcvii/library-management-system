@@ -345,14 +345,18 @@ include('navigation-bar.php');
             column4 = tr[i].getElementsByTagName("td")[3];
             column5 = tr[i].getElementsByTagName("td")[4];
             column6 = tr[i].getElementsByTagName("td")[5];
-            if (column1 && column2 && column3 && column4 && column5) {
+            column7 = tr[i].getElementsByTagName("td")[6];
+            column8 = tr[i].getElementsByTagName("td")[7];
+            if (column1 && column2 && column3 && column4 && column5 && column6 && column7 && column8) {
                 column1 = column1.textContent || column1.innerText;
                 column2 = column2.textContent || column2.innerText;
                 column3 = column3.textContent || column3.innerText;
                 column4 = column4.textContent || column4.innerText;
                 column5 = column5.textContent || column5.innerText;
                 column6 = column6.textContent || column6.innerText;
-                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1) {
+                column7 = column7.textContent || column7.innerText;
+                column8 = column8.textContent || column8.innerText;
+                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1 || column7.toUpperCase().indexOf(filter) > -1 || column8.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";

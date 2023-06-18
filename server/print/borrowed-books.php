@@ -12,6 +12,7 @@ require '../db/conDB.php';
 <style>
     body {
         font-family: Arial, sans-serif;
+        margin: 0.5in;
     }
 
     .table {
@@ -40,7 +41,6 @@ require '../db/conDB.php';
         /* auto is the initial value */
         margin: 5%;
         /* this affects the margin in the printer settings */
-        title: none;
     }
 </style>
 

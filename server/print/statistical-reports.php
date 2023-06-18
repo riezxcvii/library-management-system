@@ -12,6 +12,7 @@ require '../db/conDB.php';
 <style>
     body {
         font-family: Arial, sans-serif;
+        margin: 0.5in;
     }
 
     .table {
