@@ -103,6 +103,7 @@ if (isset($_GET['id'])) {
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo "<script>
+                        alert('Account updated successfully.');
                         window.location.href='account-reports.php'
                         </script>";
                 }

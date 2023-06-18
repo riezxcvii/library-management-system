@@ -93,6 +93,7 @@ if (isset($_GET['id'])) {
                 if ($res) {
 
                     echo "<script>
+                        alert('Registration declined successfully.');
                         window.location.href='account-registration.php'
                         </script>";
                 }
@@ -103,6 +104,7 @@ if (isset($_GET['id'])) {
                 if ($res) {
 
                     echo "<script>
+                        alert('Registration approved successfully.');
                         window.location.href='account-registration.php'
                         </script>";
                 }

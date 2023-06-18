@@ -95,6 +95,7 @@ include('navigation-bar.php');
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo "<script>
+                        alert('Account registered successfully.');
                         window.location.href='librarian-accounts.php'
                         </script>";
                 }
