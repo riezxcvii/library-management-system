@@ -26,12 +26,16 @@ include('navigation-bar.php');
 
 <form action="../../server/librarian/borrow.php" class="flex flex-col items-center h-full" method="POST" enctype="multipart/form-data">
     <div class="flex items-center">
-        <select name="borrower_ID" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none">
+        <select name="borrower_ID" class="w-60 bg-white hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center border-none select2">
             <option value="">Select borrower</option>
-            <?php $result =  mysqli_query($conn, "SELECT * FROM borrowers WHERE status=1") or die(mysqli_error($conn));
-            while ($row = mysqli_fetch_array($result)) { ?>
+            <?php
+            $result = mysqli_query($conn, "SELECT * FROM borrowers WHERE status=1") or die(mysqli_error($conn));
+            while ($row = mysqli_fetch_array($result)) {
+            ?>
                 <option value="<?php echo $row['borrower_ID']; ?>"><?php echo $row['first_name'] . " " . $row['last_name']; ?></option>
-            <?php } ?>
+            <?php
+            }
+            ?>
         </select>
     </div>
     <div class="flex items-center mt-2">
@@ -291,38 +295,45 @@ include('navigation-bar.php');
     }
 </script>
 <script>
-    // Function to open the modal
-    function openModal(id) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '../../server/librarian/card-catalog.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var data = JSON.parse(xhr.responseText);
-
-                // Update the modal content with the retrieved data
-                document.getElementById('category').textContent = data.category;
-                document.getElementById('authorNumber').textContent = data.author_number
-                document.getElementById('author').textContent = data.author_lastname + ', ' + data.author_firstname;
-                document.getElementById('accessionNumber').textContent = data.accession_number;
-                document.getElementById('title').textContent = data.title + ' / ' + data.author_firstname + ' ' + data.author_lastname;
-                document.getElementById('publication').textContent = data.publisher + ' -- ' + data.publication_place + ', C ' + data.copyright_year;
-                document.getElementById('physical').textContent = data.physical_description;
-                document.getElementById('isbn').textContent = 'ISBN ' + data.isbn;
-                document.getElementById('subject').textContent = data.subject;
-                document.getElementById('tracing').textContent = data.tracing;
-            } else {
-                console.error('Request failed. Status: ' + xhr.status);
+    $(document).ready(function() {
+        function matchStart(params, data) {
+            // If there are no search terms, return all of the data
+            if ($.trim(params.term) === '') {
+                return data;
             }
-        };
 
-        xhr.onerror = function() {
-            console.error('Request failed. Network error.');
-        };
+            // Skip if there is no 'children' property
+            if (typeof data.children === 'undefined') {
+                return null;
+            }
 
-        xhr.send('id=' + id);
-    }
+            // `data.children` contains the actual options that we are matching against
+            var filteredChildren = [];
+            $.each(data.children, function(idx, child) {
+                if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                    filteredChildren.push(child);
+                }
+            });
+
+            // If we matched any of the timezone group's children, then set the matched children on the group
+            // and return the group object
+            if (filteredChildren.length) {
+                var modifiedData = $.extend({}, data, true);
+                modifiedData.children = filteredChildren;
+
+                // You can return modified objects from here
+                // This includes matching the `children` how you want in nested data sets
+                return modifiedData;
+            }
+
+            // Return `null` if the term should not be displayed
+            return null;
+        }
+
+        $(".js-example-matcher-start").select2({
+            matcher: matchStart
+        });
+    });
 </script>
 </body>
 
