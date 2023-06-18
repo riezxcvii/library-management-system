@@ -210,8 +210,9 @@ include('navigation-bar.php');
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         echo "<script>
-                window.location.href='all-books.php'
-                </script>";
+                        alert('Book added successfully.');
+                        window.location.href='all-books.php'
+                        </script>";
                     } else {
                         echo "Failed to add book!";
                         mysqli_error($conn);

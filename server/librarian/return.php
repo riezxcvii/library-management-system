@@ -9,7 +9,10 @@ if (isset($_GET['id'])) {
 
     $removeNotif = mysqli_query($conn, "DELETE FROM notification WHERE borrow_ID = $id");
     if ($removeNotif) {
-        header('location:../../client/librarian/return-book.php');
+        echo "<script>
+            alert('Book returned successfully.');
+            window.location.href='../../client/librarian/return-book.php'
+            </script>";
     } else {
         echo "Cannot return book.";
     }

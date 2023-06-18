@@ -257,8 +257,9 @@ if (isset($_GET['id'])) {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         echo "<script>
-                window.location.href='all-books.php'
-                </script>";
+                        alert('Book updated successfully.');
+                        window.location.href='all-books.php'
+                        </script>";
                     } else {
                         echo "Update failed!";
                     }
