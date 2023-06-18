@@ -11,8 +11,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-
     <!-- CSS for print styles -->
     <style>
         /* Styles for printing */
@@ -89,8 +87,8 @@
                     $last  =  $row["last_name"];
                 }
 
-                   $currentDate = date("Y-m-d");
-                  
+                $currentDate = date("Y-m-d");
+
 
                 $notifQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM notification WHERE notif_status = 0 and type = 'admin'");
                 $p = mysqli_fetch_assoc($notifQuery);

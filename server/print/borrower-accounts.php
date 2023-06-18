@@ -39,14 +39,14 @@ require '../db/conDB.php';
     @page {
         size: auto;
         /* auto is the initial value */
-        margin: 0;
+        margin: 5%;
         /* this affects the margin in the printer settings */
     }
 </style>
 
 <body>
     <div>
-        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 0 auto; width:6%;">
+        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:10%;">
         <h4 style="text-align:center; font-weight:500; margin-top:1%">REPUBLIC OF THE PHILPPINES</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">ANTIQUE NATIONAL SCHOOL</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
@@ -66,7 +66,6 @@ require '../db/conDB.php';
     <table class="sum12" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tbody>
             <tr>
-                <td id="colNo13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ID</td>
                 <td id="colLRN13" style="font-weight:bold; text-align:center; width:7%; border:1px solid black; padding:6px">ID Number</td>
                 <td id="colNo13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ROLE</td>
                 <td id="colSur13" style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">LAST NAME</td>
@@ -85,7 +84,6 @@ require '../db/conDB.php';
             ?>
 
                 <tr>
-                    <td id="lrn13" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['borrower_ID'] ?></td>
                     <td id="sur13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['id_number'] ?></td>
                     <td id="sur13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['role'] ?></td>
                     <td id="first13" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['last_name'] ?></td>

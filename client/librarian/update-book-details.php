@@ -63,18 +63,18 @@ if (isset($_GET['id'])) {
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
-                            <input type="text" name="isbn" value="<?php echo $row['isbn']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
-                        </div>
-                        <div>
-                        <label class="block mb-1 text-sm font-medium text-gray-900">Book Status</label>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
+                                <input type="text" name="isbn" value="<?php echo $row['isbn']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Book Status</label>
                                 <select id="book_status" name="book_status" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     <option value="">Select book status</option>
                                     <option value="Defective">Defective</option>
                                     <option value="Lost">Lost</option>
                                 </select>
-                        </div>
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
@@ -226,12 +226,9 @@ if (isset($_GET['id'])) {
                     $tracing = $_POST['tracing'];
                     $physical = $_POST['physical'];
 
-                    if($_POST['book_status']=='Defective' || $_POST['book_status']=='Lost' )
-                    {
+                    if ($_POST['book_status'] == 'Defective' || $_POST['book_status'] == 'Lost') {
                         $number_of_copies = $_POST['number_of_copies'] - 1;
-                    }
-                    else
-                    {
+                    } else {
                         $number_of_copies = $_POST['number_of_copies'];
                     }
 

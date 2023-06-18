@@ -22,8 +22,8 @@ if (isset($_GET['id'])) {
                         <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                         <select name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value=""></option>
-                            <option value="Student"<?php echo $row['role'] == 'Student' ? 'selected':'' ?>>Student</option>
-                            <option value="Teacher"<?php echo $row['role'] == 'Teacher' ? 'selected':'' ?>>Teacher</option>
+                            <option value="Student" <?php echo $row['role'] == 'Student' ? 'selected' : '' ?>>Student</option>
+                            <option value="Teacher" <?php echo $row['role'] == 'Teacher' ? 'selected' : '' ?>>Teacher</option>
                         </select>
                     </div>
                 </div>

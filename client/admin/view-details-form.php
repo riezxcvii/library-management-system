@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
             <div class="px-6 py-6 lg:px-8">
                 <form class="space-y-6" action="" autocomplete="off" method="POST">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
-                    <div class="grid grid-cols-2 gap-4 mb-[-1.4rem]">
+                    <div class="grid grid-cols-3 gap-4 mb-[-1.4rem]">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
                             <input type="text" id="employeeID" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['id_number'] ?>">
@@ -46,6 +46,11 @@ if (isset($_GET['id'])) {
                                 <option value="Student">Student</option>
                                 <option value="Teacher">Teacher</option>
                             </select>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Registration Date</label>
+                            <input id="registrationaDate" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date'] ?>">
                         </div>
                     </div>
 

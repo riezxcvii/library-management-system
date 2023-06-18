@@ -13,7 +13,7 @@ $(function () {
     ) {
       $.ajax({
         type: "GET",
-        url: "../../server/admin/activate.php",
+        url: "../../server/admin/activate-borrower.php",
         data: info,
         success: function (data) {
           alert(data);
@@ -35,10 +35,10 @@ $(function () {
         );
       $.ajax({
         type: "GET",
-        url: "../../server/admin/activate.php",
+        url: "../../server/admin/activate-borrower.php",
         data: info,
         success: function (data) {
-     
+          window.location = "account-reports.php";
         },
       });
     }

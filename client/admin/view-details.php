@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
         <div class="px-6 py-6 lg:px-8">
             <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
 
-            <div class="grid grid-cols-2 gap-4 mb-[-0.2rem]">
+            <div class="grid grid-cols-3 gap-4 mb-[-0.2rem]">
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                     <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['username'] ?>">
@@ -27,6 +27,11 @@ if (isset($_GET['id'])) {
                     <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                         <option value="" selected><?php echo $row['role'] ?></option>
                     </select>
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Registered On</label>
+                    <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date']; ?>">
                 </div>
             </div>
 

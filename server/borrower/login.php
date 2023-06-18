@@ -37,22 +37,19 @@ if (isset($_POST['qrcode_text'])) {
                     $qbook = $conn->query($query) or die(mysqli_error($conn));
                     $fbook = mysqli_fetch_assoc($qbook);
                     if ($fbook && $fbook['penalty'] > 0) {
-                        $penalty="".$fbook['penalty'].".00";
+                        $penalty = "" . $fbook['penalty'] . ".00";
                         $borrowerId = mysqli_insert_id($conn);
-                        $notificationText = "" . $row['first_name'] ." ". $row['last_name'] . " who just logged in has a pending fine of ".$penalty." for not returning book on time.";
-        
+                        $notificationText = "" . $row['first_name'] . " " . $row['last_name'] . " who just logged in has a pending fine of " . $penalty . " for not returning book on time.";
+
                         // Insert the notification into the notifications table
                         $insertQuery = "INSERT INTO notification (borrower_ID,notification_text,type,date) VALUES ($borrowerId,'$notificationText', 'admin','$currentDate')";
                         $conn->query($insertQuery);
                         header("Location: ../../client/borrower/search-book.php");
                         exit();
-                    }
-                    else
-                    {
+                    } else {
                         header("Location: ../../client/borrower/search-book.php");
                         exit();
                     }
-                  
                 } else {
                     echo "Error!";
                 }

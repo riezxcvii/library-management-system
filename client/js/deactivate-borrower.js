@@ -13,7 +13,7 @@ $(function () {
     ) {
       $.ajax({
         type: "GET",
-        url: "../../server/admin/deactivate-admin.php",
+        url: "../../server/admin/deactivate-borrower.php",
         data: info,
         success: function (data) {
           alert(data);
@@ -35,11 +35,10 @@ $(function () {
         );
       $.ajax({
         type: "GET",
-        url: "../../server/admin/deactivate-admin.php",
+        url: "../../server/admin/deactivate-borrower.php",
         data: info,
         success: function (data) {
-          // Handle the response if needed
-          window.location = "../../client/admin/librarian-accounts.php";
+          window.location = "account-reports.php";
         },
       });
     }

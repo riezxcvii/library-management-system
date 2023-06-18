@@ -15,7 +15,7 @@
         <!--navigation bar-->
         <nav class="z-10 sticky top-0 bg-black border-gray-200 dark:border-black">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
-                <a href="search-book.php" class="flex items-center">
+                <a href="../index2.php" class="flex items-center">
                     <img src="../assets/logo.png" class="h-12 mr-3" alt="ANS Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">ANS Library
                         Management System</span>
@@ -130,8 +130,8 @@
                         $result = mysqli_query($conn, $sql);
                         if ($result) {
                             $borrowerId = mysqli_insert_id($conn);
-                            $notificationText = "" . $first_name ." ". $last_name . " wants to be registered in the system.";
-            
+                            $notificationText = "" . $first_name . " " . $last_name . " wants to be registered in the system.";
+
                             // Insert the notification into the notifications table
                             $insertQuery = "INSERT INTO notification (borrower_ID,notification_text,type,date) VALUES ($borrowerId,'$notificationText', 'admin','$currentDate')";
                             $conn->query($insertQuery);

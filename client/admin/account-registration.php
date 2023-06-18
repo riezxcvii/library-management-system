@@ -32,7 +32,7 @@ include('navigation-bar.php');
 <!--table-->
 <div class="p-4 h-screen overflow-y-auto ">
     <div id="myTable" class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
-      
+
     </div>
 </div>
 
@@ -95,11 +95,11 @@ include('navigation-bar.php');
     });
 
     $(document).ready(function() {
-      $("#myTable").load("pending.php");
-      setInterval(function() {
         $("#myTable").load("pending.php");
-        refresh();
-      }, 10000);
+        setInterval(function() {
+            $("#myTable").load("pending.php");
+            refresh();
+        }, 5000);
     });
 </script>
 </body>

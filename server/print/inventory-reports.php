@@ -94,27 +94,27 @@ require '../db/conDB.php';
                 <td id="tdb14" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $f_book['title'] ?></td>
                 <td id="Dtdb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['date_receive'] ?> </td>
                 <td id="author6" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center;">
-                <?php
-                            if ($total == 0) {
-                                echo '<label style ="color:red;">Not Available</label>';
-                            } else {
-                                echo '<input style ="background:none; border:none; color:black; font-size:16px; width:100%; text-align:center;" name = "status[' . $i . ']" value = "' . $f_book['status'] . '" disabled>';
-                            }
-                            ?>    
-            </td>
+                    <?php
+                    if ($total == 0) {
+                        echo '<label style ="color:red;">Not Available</label>';
+                    } else {
+                        echo '<input style ="background:none; border:none; color:black; font-size:16px; width:100%; text-align:center;" name = "status[' . $i . ']" value = "' . $f_book['status'] . '" disabled>';
+                    }
+                    ?>
+                </td>
                 <td id="tab14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $f_book['copies'] ?></td>
                 <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $total ?></td>
                 <?php if ($f_book['archive'] == 1) {
-                        ?>
-                            <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center; color:brown">Yes</td>
-                        <?php
-                        } else {
-                        ?>
-                            <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center">No</td>
-                        <?php
-                        }
+                ?>
+                    <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center; color:brown">Yes</td>
+                <?php
+                } else {
+                ?>
+                    <td id="lb14" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center">No</td>
+                <?php
+                }
 
-                        ?>
+                ?>
             </tr>
 
         <?php

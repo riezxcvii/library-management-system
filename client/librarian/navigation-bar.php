@@ -41,7 +41,7 @@
                         data: info,
                         success: function(data) {
                             // Handle the response if needed
-                            window.location="all-books.php";
+                            window.location = "all-books.php";
                         }
                     });
                 }
@@ -81,69 +81,67 @@
                 ?>
 
                 <?php
-                   $currentDate = date("Y-m-d");
-                   $qreturn = $conn->query("SELECT b.*, u.*, br.* 
+                $currentDate = date("Y-m-d");
+                $qreturn = $conn->query("SELECT b.*, u.*, br.* 
                    FROM borrowed_books AS br
                    INNER JOIN books AS b ON br.book_ID = b.book_ID
                    INNER JOIN borrowers AS u ON br.borrower_ID = u.borrower_ID
                    ORDER BY borrow_ID DESC") or die(mysqli_error($con));
-                   while ($freturn = $qreturn->fetch_array()) {
-                       $id = $freturn['borrow_ID'];
-                       $dueDate = $freturn['due_date'];
-                       $dateReturned = $freturn['returned_date'];
-                       $bookId=$freturn['book_ID'];
-                       $firstname=$freturn['first_name'];
-                       $lastname=$freturn['last_name'];
-                       $fine = $freturn['penalty'];
-                       $penalty = 0;
+                while ($freturn = $qreturn->fetch_array()) {
+                    $id = $freturn['borrow_ID'];
+                    $dueDate = $freturn['due_date'];
+                    $dateReturned = $freturn['returned_date'];
+                    $bookId = $freturn['book_ID'];
+                    $firstname = $freturn['first_name'];
+                    $lastname = $freturn['last_name'];
+                    $fine = $freturn['penalty'];
+                    $penalty = 0;
 
-                       $book=mysqli_query($conn, "SELECT * FROM books WHERE book_ID = $bookId");
-                       $rowBook=mysqli_fetch_assoc($book);
-                     $bookName=$rowBook['title'];
+                    $book = mysqli_query($conn, "SELECT * FROM books WHERE book_ID = $bookId");
+                    $rowBook = mysqli_fetch_assoc($book);
+                    $bookName = $rowBook['title'];
 
-                       if (strtotime($dueDate) < time() && $freturn['status'] == 'Borrowed') {
-                           $checkQuery = "SELECT * FROM notification WHERE borrow_ID = '$id' AND date = '$currentDate'";
-                           $checkResult = $conn->query($checkQuery);
-               
-                           // If no notification exists for today, insert the notification
-                           if ($checkResult->num_rows == 0) {
-                               $dueDateTime = strtotime($dueDate);
-                               $currentDateTime = time();
-                               $overdueDays = floor(($currentDateTime - $dueDateTime) / (60 * 60 * 24));
-                    
-                               $notificationText = "The book \"" . $bookName . "\" borrowed by " . $firstname. "  "  .$lastname.  " is overdue by " . $overdueDays . " day(s).";
-               
-                               // Insert the notification into the notifications table
-                               $insertQuery = "INSERT INTO notification (borrow_id,notification_text,type,date) VALUES ($id,'$notificationText', 'librarian','$currentDate')";
-                               $conn->query($insertQuery);
-                           }
-                       
-                       }
-                    }
-                    $q_book = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
-                    while ($f_book = mysqli_fetch_assoc($q_book)) {
-                        $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$f_book[book_ID]'") or die(mysqli_error($conn));
-                        $new_qty = $q_borrow->fetch_array();
-                        $total = $f_book['copies'] - $new_qty['total'];
-
-                        
-                       if ($total <= 5) {
-                        $checkQuery = "SELECT * FROM notification WHERE book_ID = '$f_book[book_ID]' AND date = '$currentDate'";
+                    if (strtotime($dueDate) < time() && $freturn['status'] == 'Borrowed') {
+                        $checkQuery = "SELECT * FROM notification WHERE borrow_ID = '$id' AND date = '$currentDate'";
                         $checkResult = $conn->query($checkQuery);
-            
+
                         // If no notification exists for today, insert the notification
                         if ($checkResult->num_rows == 0) {
-            
-    
+                            $dueDateTime = strtotime($dueDate);
+                            $currentDateTime = time();
+                            $overdueDays = floor(($currentDateTime - $dueDateTime) / (60 * 60 * 24));
+
+                            $notificationText = "The book \"" . $bookName . "\" borrowed by " . $firstname . "  "  . $lastname .  " is overdue by " . $overdueDays . " day(s).";
+
+                            // Insert the notification into the notifications table
+                            $insertQuery = "INSERT INTO notification (borrow_id,notification_text,type,date) VALUES ($id,'$notificationText', 'librarian','$currentDate')";
+                            $conn->query($insertQuery);
+                        }
+                    }
+                }
+                $q_book = $conn->query("SELECT * FROM `books` WHERE archive = 0") or die(mysqli_error($conn));
+                while ($f_book = mysqli_fetch_assoc($q_book)) {
+                    $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$f_book[book_ID]'") or die(mysqli_error($conn));
+                    $new_qty = $q_borrow->fetch_array();
+                    $total = $f_book['copies'] - $new_qty['total'];
+
+
+                    if ($total <= 5) {
+                        $checkQuery = "SELECT * FROM notification WHERE book_ID = '$f_book[book_ID]' AND date = '$currentDate'";
+                        $checkResult = $conn->query($checkQuery);
+
+                        // If no notification exists for today, insert the notification
+                        if ($checkResult->num_rows == 0) {
+
+
                             $notificationText = "Low stock for \"" . $f_book['title'] . "\" book.";
-            
+
                             // Insert the notification into the notifications table
                             $insertQuery = "INSERT INTO notification (book_ID,notification_text,type,date) VALUES ($f_book[book_ID],'$notificationText', 'librarian','$currentDate')";
                             $conn->query($insertQuery);
                         }
-                    
                     }
-                    }
+                }
 
                 $notifQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM notification WHERE notif_status = 0 and type = 'librarian'");
                 $p = mysqli_fetch_assoc($notifQuery);

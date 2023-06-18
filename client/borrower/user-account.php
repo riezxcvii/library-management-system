@@ -121,7 +121,7 @@ if (isset($_GET['id'])) {
                         } else {
                         ?>
                             <td class="px-6 py-2 select-none">
-                                
+
                             </td>
                         <?php
                         }
