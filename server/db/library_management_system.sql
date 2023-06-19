@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2023 at 08:59 AM
+-- Generation Time: Jun 19, 2023 at 10:47 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -108,6 +108,8 @@ CREATE TABLE `borrowers` (
   `middle_initial` char(1) DEFAULT NULL,
   `name_extension` varchar(4) DEFAULT NULL,
   `sex` varchar(6) NOT NULL COMMENT 'Male or Female',
+  `grade_level` varchar(10) NOT NULL,
+  `section` varchar(30) NOT NULL,
   `role` varchar(7) NOT NULL COMMENT 'Student or Teacher',
   `status` smallint(1) NOT NULL DEFAULT 0 COMMENT '0 not active, 1 active',
   `deactivate` smallint(1) NOT NULL DEFAULT 0 COMMENT '0 no, 1 yes',
@@ -119,35 +121,35 @@ CREATE TABLE `borrowers` (
 -- Dumping data for table `borrowers`
 --
 
-INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `role`, `status`, `deactivate`, `registered_date`, `deactivation_date`) VALUES
-(1, '115218060036', 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Student', 1, 1, '2023-05-29', '2023-06-19'),
-(2, '546139921556', 'Barbaza', 'John Vincent', 'N', '', 'Male', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
-(3, '361224985723', 'Hiponia', 'Roneilita', 'H', '', 'Female', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
-(4, '115218060054', 'Miguel', 'Edvenson Jay', 'M', '', 'Male', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(5, '201926584', 'Garfin', 'April Jane', 'A', '', 'Female', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(6, '1568468896', 'Secugal', 'Kenrick Agustin', 'S', '', 'Male', 'Teacher', 1, 1, '0000-00-00', '2023-06-18'),
-(7, '548921321', 'Alison', 'Ramon', '', 'Jr', 'Male', 'Teacher', 1, 1, '0000-00-00', '2023-06-18'),
-(8, '54684071', 'Sabino', 'Rustia', 'B', '', 'Female', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(9, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(10, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(11, '115296080040', 'Reymaro', 'Kent Ralli', '', '', 'Male', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(13, '158664823654', 'Marin', 'Edward Louie', '', '', 'Male', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
-(14, '115218060084', 'Guillermo', 'Fritzel Joy', 'C', '', 'Female', 'Student', 1, 1, '0000-00-00', '2023-06-18'),
-(15, '135226489527', 'Elequin', 'Jonas Eric', '', '', 'Male', 'Teacher', 1, 1, '0000-00-00', '2023-06-18'),
-(16, '264895113564', 'Zamora', 'Cherry Mae', 'P', '', 'Male', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(17, '548964546', 'Nain', 'Cherry', '', '', 'Female', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(18, '432546346345', 'Narzo', 'Joseph', '', '', 'Male', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(19, '115218024869', 'Acero', 'John Paul', 'H', '', 'Male', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(20, '152348685940', 'Pagunsan', 'Jobelle', '', '', 'Female', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
-(21, '115218052348', 'Saballa', 'Mary Jezza', '', '', 'Female', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
-(22, '115218562496', 'Swayer', 'Marivic', '', '', 'Female', 'Student', 1, 0, '2023-06-18', '0000-00-00'),
-(23, '115218658954', 'Dela Cruz', 'Juan', 'P', 'Jr', 'Male', 'Teacher', 2, 0, '2023-06-18', NULL),
-(24, '15236848526', 'Magallanes', 'Faith Hope', '', '', 'Female', 'Teacher', 1, 0, '2023-06-18', NULL),
-(25, '541468400433', 'Vegafria', 'King', '', '', 'Male', 'Teacher', 0, 0, '2023-06-18', NULL),
-(27, '115218352479', 'Aurelio', 'Manilyn', '', '', 'Female', 'Student', 0, 0, '2023-06-18', NULL),
-(28, '115218648221', 'Lacurom', 'John Michael', '', '', 'Male', 'Student', 1, 0, '2023-06-18', NULL),
-(29, '564866147268', 'Alejo', 'Benjamin', '', 'III', 'Male', 'Teacher', 0, 0, '2023-06-18', NULL),
-(30, '2200137', 'Bel-ida', 'Axl John', 'T', '', 'Male', 'Student', 1, 0, '2023-06-19', NULL);
+INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `grade_level`, `section`, `role`, `status`, `deactivate`, `registered_date`, `deactivation_date`) VALUES
+(1, '115218060036', 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Grade 12', 'A', 'Student', 1, 1, '2023-05-29', '2023-06-19'),
+(2, '546139921556', 'Barbaza', 'John Vincent', 'N', '', 'Male', '', '', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
+(3, '361224985723', 'Hiponia', 'Roneilita', 'H', '', 'Female', '', '', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
+(4, '115218060054', 'Miguel', 'Edvenson Jay', 'M', '', 'Male', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(5, '201926584', 'Garfin', 'April Jane', 'A', '', 'Female', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(6, '1568468896', 'Secugal', 'Kenrick Agustin', 'S', '', 'Male', '', '', 'Teacher', 1, 1, '0000-00-00', '2023-06-18'),
+(7, '548921321', 'Alison', 'Ramon', '', 'Jr', 'Male', '', '', 'Teacher', 1, 1, '0000-00-00', '2023-06-18'),
+(8, '54684071', 'Sabino', 'Rustia', 'B', '', 'Female', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(9, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(10, '115218095648', 'Banquillo', 'Vivien', 'J', '', 'Female', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(11, '115296080040', 'Reymaro', 'Kent Ralli', '', '', 'Male', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(13, '158664823654', 'Marin', 'Edward Louie', '', '', 'Male', '', '', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
+(14, '115218060084', 'Guillermo', 'Fritzel Joy', 'C', '', 'Female', '', '', 'Student', 1, 1, '0000-00-00', '2023-06-18'),
+(15, '135226489527', 'Elequin', 'Jonas Eric', '', '', 'Male', '', '', 'Teacher', 1, 1, '0000-00-00', '2023-06-18'),
+(16, '264895113564', 'Zamora', 'Cherry Mae', 'P', '', 'Male', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(17, '548964546', 'Nain', 'Cherry', '', '', 'Female', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(18, '432546346345', 'Narzo', 'Joseph', '', '', 'Male', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(19, '115218024869', 'Acero', 'John Paul', 'H', '', 'Male', 'Grade 11', 'C', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(20, '152348685940', 'Pagunsan', 'Jobelle', '', '', 'Female', '', '', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
+(21, '115218052348', 'Saballa', 'Mary Jezza', '', '', 'Female', '', '', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
+(22, '115218562496', 'Swayer', 'Marivic', '', '', 'Female', '', '', 'Student', 1, 0, '2023-06-18', '0000-00-00'),
+(23, '115218658954', 'Dela Cruz', 'Juan', 'P', 'Jr', 'Male', '', '', 'Teacher', 2, 0, '2023-06-18', NULL),
+(24, '15236848526', 'Magallanes', 'Faith Hope', '', '', 'Female', '', '', 'Teacher', 1, 0, '2023-06-18', NULL),
+(25, '541468400433', 'Vegafria', 'King', '', '', 'Male', '', '', 'Teacher', 0, 0, '2023-06-18', NULL),
+(27, '115218352479', 'Aurelio', 'Manilyn', '', '', 'Female', 'Grade 8', 'Oriole', 'Student', 0, 0, '2023-06-18', NULL),
+(28, '115218648221', 'Lacurom', 'John Michael', '', '', 'Male', '', '', 'Student', 1, 0, '2023-06-18', NULL),
+(29, '564866147268', 'Alejo', 'Benjamin', '', 'III', 'Male', '', '', 'Teacher', 0, 0, '2023-06-18', NULL),
+(30, '2200137', 'Bel-ida', 'Axl John', 'T', '', 'Male', 'Grade 9', 'Hermes', 'Student', 1, 0, '2023-06-19', NULL);
 
 -- --------------------------------------------------------
 
@@ -451,7 +453,8 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (8, 0, '2023-06-19', '08:44:36', NULL),
 (0, 30, '2023-06-19', '09:08:29', '09:08:39'),
 (0, 30, '2023-06-19', '09:08:45', '13:42:09'),
-(6, 0, '2023-06-19', '14:26:29', '14:56:01');
+(6, 0, '2023-06-19', '14:26:29', '14:56:01'),
+(1, 0, '2023-06-19', '15:01:25', NULL);
 
 -- --------------------------------------------------------
 
