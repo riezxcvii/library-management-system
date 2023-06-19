@@ -105,6 +105,7 @@ include('navigation-bar.php');
                 $section = $_POST['section'];
                 $extension = $_POST['extension'];
                 $sex = $_POST['sex'];
+                $currentDate = date("Y-m-d");
 
                 $sql = "INSERT INTO `borrowers` (id_number, first_name,last_name, middle_initial,grade_level,section,name_extension,sex,role,status)VALUES('$id', '$first_name','$last_name','$middle_initial','$grade_level','$section','$extension','$sex','$role',1)";
                 $result = mysqli_query($conn, $sql);
