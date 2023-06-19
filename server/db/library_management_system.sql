@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 11:42 AM
+-- Generation Time: Jun 19, 2023 at 08:59 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -32,7 +32,7 @@ CREATE TABLE `books` (
   `isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `accession_number` varchar(10) NOT NULL,
   `date_receive` date NOT NULL,
-  `author_number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `classification_number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_lastname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_firstname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45,7 +45,6 @@ CREATE TABLE `books` (
   `publisher` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `publication_place` varchar(50) NOT NULL,
   `copyright_year` varchar(4) NOT NULL,
-  `year_published` varchar(4) NOT NULL,
   `category` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `physical_description` varchar(50) DEFAULT NULL,
   `subject` varchar(50) DEFAULT NULL,
@@ -58,11 +57,12 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`book_ID`, `isbn`, `accession_number`, `date_receive`, `author_number`, `author_lastname`, `author_firstname`, `title`, `copies`, `edition`, `volume`, `pages`, `source_fund`, `cost`, `publisher`, `publication_place`, `copyright_year`, `year_published`, `category`, `physical_description`, `subject`, `status`, `tracing`, `archive`) VALUES
-(1, '978-1420968095', '546,2019', '2019-02-21', 'R546', 'Rizal', 'Jose', 'Noli Me Tangere', 8, 'I Edition', '', 66, 'Donation', '0.00', 'Berliner Buchdruckerei-Aktieng', 'Berlin, Germany', '1887', '1887', 'Filipiniana', '', NULL, 'Available', '', 1),
-(2, '978-1451552058', '851,2016', '2016-09-07', 'S851', 'Shakespeare', 'William', 'Romeo and Juliet', 4, 'IV Edition', '', 64, 'Donation', '0.00', 'Simon & Schuster', 'CreateSpace Independent Publishing Platform', '1596', '1596', 'Fiction', '', NULL, 'Available', '', 0),
-(3, '978-1510761384', '758,2021', '2021-04-13', 'J758', 'Janssen', 'Sarrah', 'The World Almanac and Book of Facts 2021', 1, 'IX Edition', '', 113, 'Donation', '0.00', 'World Almanac', 'United States', '2020', '2020', 'Reference', '', NULL, 'Available', '', 0),
-(4, '978-0824831325', '364,2014', '2014-10-24', 'R364', 'Rizal', 'Jose', 'El Filibusterismo', 7, 'VI Edition', '', 0, 'Donation', '0.00', 'University of Hawaii Press', 'Ghent, Belgium', '1891', '1891', 'Filipiniana', '', NULL, 'Available', '', 1);
+INSERT INTO `books` (`book_ID`, `isbn`, `accession_number`, `date_receive`, `classification_number`, `author_lastname`, `author_firstname`, `title`, `copies`, `edition`, `volume`, `pages`, `source_fund`, `cost`, `publisher`, `publication_place`, `copyright_year`, `category`, `physical_description`, `subject`, `status`, `tracing`, `archive`) VALUES
+(1, '978-1420968095', '546,2019', '2019-02-21', 'R546', 'Rizal', 'Jose', 'Noli Me Tangere', 8, 'I Edition', '', 66, 'Donation', '0.00', 'Berliner Buchdruckerei-Aktieng', 'Berlin, Germany', '1887', 'Filipiniana', '', NULL, 'Available', '', 0),
+(2, '978-1451552058', '851,2016', '2016-09-07', 'S851', 'Shakespeare', 'William', 'Romeo and Juliet', 4, 'IV Edition', '', 64, 'Donation', '0.00', 'Simon & Schuster', 'CreateSpace Independent Publishing Platform', '1596', 'Fiction', '', NULL, 'Available', '', 0),
+(3, '978-1510761384', '758,2021', '2021-04-13', 'J758', 'Janssen', 'Sarrah', 'The World Almanac and Book of Facts 2021', 1, 'IX Edition', '', 113, 'Donation', '0.00', 'World Almanac', 'United States', '2020', 'Reference', '', NULL, 'Available', '', 0),
+(4, '978-0824831325', '364,2014', '2014-10-24', 'R364', 'Rizal', 'Jose', 'El Filibusterismo', 7, 'VI Edition', '', 0, 'Donation', '0.00', 'University of Hawaii Press', 'Ghent, Belgium', '1891', 'Filipiniana', '', NULL, 'Available', '', 0),
+(5, '0446611093', '', '2010-01-10', '', 'Kiyosaki', 'Robert', 'Rich dad, poor dad', 1, '', '', 266, 'Donation', '0.00', 'Warner books', 'New York', '1998', 'Fiction', '', NULL, 'Available', '', 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,9 @@ CREATE TABLE `borrowed_books` (
 
 INSERT INTO `borrowed_books` (`borrow_ID`, `book_ID`, `borrower_ID`, `title`, `copies`, `date_issued`, `due_date`, `returned_date`, `status`, `penalty`, `paid`) VALUES
 (1, 2, 6, '', 0, '2023-06-08', '2023-06-15', '2023-06-18', 'Returned', 15, 0),
-(2, 2, 14, '', 1, '2023-06-05', '2023-06-17', NULL, 'Borrowed', 5, 0);
+(2, 2, 14, '', 1, '2023-06-05', '2023-06-17', NULL, 'Borrowed', 10, 0),
+(3, 5, 3, '', 1, '2023-06-19', '2023-06-21', NULL, 'Borrowed', 0, 0),
+(4, 1, 30, '', 1, '2023-06-19', '2023-06-21', NULL, 'Borrowed', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,7 @@ CREATE TABLE `borrowers` (
 --
 
 INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, `middle_initial`, `name_extension`, `sex`, `role`, `status`, `deactivate`, `registered_date`, `deactivation_date`) VALUES
-(1, '115218060036', 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Student', 1, 0, '2023-05-29', '0000-00-00'),
+(1, '115218060036', 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Student', 1, 1, '2023-05-29', '2023-06-19'),
 (2, '546139921556', 'Barbaza', 'John Vincent', 'N', '', 'Male', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
 (3, '361224985723', 'Hiponia', 'Roneilita', 'H', '', 'Female', 'Teacher', 1, 0, '0000-00-00', '0000-00-00'),
 (4, '115218060054', 'Miguel', 'Edvenson Jay', 'M', '', 'Male', 'Student', 1, 0, '0000-00-00', '0000-00-00'),
@@ -144,7 +146,8 @@ INSERT INTO `borrowers` (`borrower_ID`, `id_number`, `last_name`, `first_name`, 
 (25, '541468400433', 'Vegafria', 'King', '', '', 'Male', 'Teacher', 0, 0, '2023-06-18', NULL),
 (27, '115218352479', 'Aurelio', 'Manilyn', '', '', 'Female', 'Student', 0, 0, '2023-06-18', NULL),
 (28, '115218648221', 'Lacurom', 'John Michael', '', '', 'Male', 'Student', 1, 0, '2023-06-18', NULL),
-(29, '564866147268', 'Alejo', 'Benjamin', '', 'III', 'Male', 'Teacher', 0, 0, '2023-06-18', NULL);
+(29, '564866147268', 'Alejo', 'Benjamin', '', 'III', 'Male', 'Teacher', 0, 0, '2023-06-18', NULL),
+(30, '2200137', 'Bel-ida', 'Axl John', 'T', '', 'Male', 'Student', 1, 0, '2023-06-19', NULL);
 
 -- --------------------------------------------------------
 
@@ -179,7 +182,8 @@ INSERT INTO `library_admin` (`admin_ID`, `last_name`, `first_name`, `middle_init
 (4, 'Jomolo', 'Roger', '', '', 'Male', 'Admin', 1, 0, 'roger', 'roger12345', '2023-06-12', NULL),
 (5, 'Laude', 'Sufena Joy', 'L', '', 'Male', 'Admin', 1, 0, 'sufenajoy', '123456789', '2023-06-18', NULL),
 (6, 'Banquillo', 'Rieza Marie', 'J', '', 'Female', 'Librarian', 1, 0, 'rieza.banquillo', 'rieza2609', '2023-06-18', NULL),
-(7, 'Narzo', 'John Joseph', '', '', 'Male', 'Admin', 1, 0, 'napaynarz', 'napay12345', '2023-06-18', NULL);
+(7, 'Narzo', 'John Joseph', '', '', 'Male', 'Admin', 1, 0, 'napaynarz', 'napay12345', '2023-06-18', NULL),
+(8, 'Vagilidad', 'Rigel', '', '', 'Female', 'Librarian', 1, 0, 'ANSlibrary', 'ans12345', '2023-06-19', NULL);
 
 -- --------------------------------------------------------
 
@@ -435,7 +439,19 @@ INSERT INTO `log_history` (`admin_ID`, `borrower_ID`, `date`, `time_in`, `time_o
 (0, 1, '2023-06-18', '15:50:55', '16:21:01'),
 (6, 0, '2023-06-18', '16:23:42', '17:29:21'),
 (1, 0, '2023-06-18', '17:29:25', '17:31:37'),
-(6, 0, '2023-06-18', '17:31:54', NULL);
+(6, 0, '2023-06-18', '17:31:54', '17:46:18'),
+(0, 1, '2023-06-18', '17:46:26', '17:46:45'),
+(6, 0, '2023-06-18', '17:46:55', NULL),
+(0, 1, '2023-06-18', '17:47:07', '18:02:18'),
+(0, 1, '2023-06-19', '06:43:22', '06:46:29'),
+(6, 0, '2023-06-19', '06:46:57', NULL),
+(0, 1, '2023-06-19', '06:48:47', '06:50:54'),
+(1, 0, '2023-06-19', '06:51:01', '06:52:09'),
+(1, 0, '2023-06-19', '08:41:49', NULL),
+(8, 0, '2023-06-19', '08:44:36', NULL),
+(0, 30, '2023-06-19', '09:08:29', '09:08:39'),
+(0, 30, '2023-06-19', '09:08:45', '13:42:09'),
+(6, 0, '2023-06-19', '14:26:29', '14:56:01');
 
 -- --------------------------------------------------------
 
@@ -475,7 +491,11 @@ INSERT INTO `notification` (`notification_ID`, `book_ID`, `borrower_ID`, `borrow
 (0, 0, 27, 0, 'Manilyn Aurelio wants to be registered in the system.', 'admin', '2023-06-18', 0),
 (0, 0, 28, 0, 'John Michael Lacurom wants to be registered in the system.', 'admin', '2023-06-18', 0),
 (0, 0, 29, 0, 'Benjamin Alejo wants to be registered in the system.', 'admin', '2023-06-18', 0),
-(0, 0, 0, 2, 'The book \"Romeo and Juliet\" borrowed by Fritzel Joy  Guillermo is overdue by 1 day(s).', 'librarian', '2023-06-18', 0);
+(0, 0, 0, 2, 'The book \"Romeo and Juliet\" borrowed by Fritzel Joy  Guillermo is overdue by 1 day(s).', 'librarian', '2023-06-18', 0),
+(0, 0, 0, 2, 'The book \"Romeo and Juliet\" borrowed by Fritzel Joy  Guillermo is overdue by 2 day(s).', 'librarian', '2023-06-19', 0),
+(0, 2, 0, 0, 'Low stock for \"Romeo and Juliet\" book.', 'librarian', '2023-06-19', 0),
+(0, 3, 0, 0, 'Low stock for \"The World Almanac and Book of Facts 2021\" book.', 'librarian', '2023-06-19', 0),
+(0, 5, 0, 0, 'Low stock for \"Rich dad, poor dad\" book.', 'librarian', '2023-06-19', 0);
 
 --
 -- Indexes for dumped tables
@@ -514,25 +534,25 @@ ALTER TABLE `library_admin`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `book_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `borrow_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `borrowers`
 --
 ALTER TABLE `borrowers`
-  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `borrower_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `library_admin`
 --
 ALTER TABLE `library_admin`
-  MODIFY `admin_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `admin_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
