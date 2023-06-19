@@ -89,7 +89,6 @@
 
                 $currentDate = date("Y-m-d");
 
-
                 $notifQuery = mysqli_query($conn, "SELECT COUNT(*) AS total FROM notification WHERE notif_status = 0 and type = 'admin'");
                 $p = mysqli_fetch_assoc($notifQuery);
                 $Count = $p['total'];

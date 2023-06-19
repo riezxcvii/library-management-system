@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
                 $qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?data=' . urlencode($row['id_number']) . '&size=150x150';
 
                 // Print the QR code on the page
-                echo '<h1 id="qr_code" class="hidden" style="font-size:18px; text-align:center; margin-top:10%; margin-bottom:20%; font-family:Arial,sans-serif; font-weight:900;">ANS Library Management System</h1><img class="hidden" src="' . $qrCodeUrl . '" alt="QR Code" id="qr_code">';
+                echo '<h1 id="qr_code" class="hidden" style="font-size:18px; text-align:center; margin-top:18%; margin-bottom:20%; font-family:Arial,sans-serif; font-weight:900;">ANS Library Management System</h1><img class="hidden" src="' . $qrCodeUrl . '" alt="QR Code" id="qr_code">';
             }
             ?>
 

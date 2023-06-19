@@ -72,7 +72,7 @@ include('navigation-bar.php');
                 <?php
                 $i = 0;
                 $user = $conn->query("SELECT * FROM `library_admin` 
-                        ORDER BY deactivate ASC") or die(mysqli_error($conn));
+                        ORDER BY deactivate ASC, last_name ASC") or die(mysqli_error($conn));
                 while ($borrower = $user->fetch_array()) {
                     $id = $borrower['admin_ID'];
                     $username = $borrower['username'];
