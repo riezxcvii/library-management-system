@@ -25,7 +25,7 @@ include('navigation-bar.php');
 
                     <li>
                         <!-- Notification for pending fines -->
-                        <a href="<?php echo $row['borrower_ID'] == 0 ? './log-history.php' : './approve-decline.php?id=' . $row['borrower_ID']; ?>">
+                        <a href="<?php echo $row['borrower_ID'] == 0 ? './log-history.php' : './account-registration.php?id=' . $row['borrower_ID']; ?>">
                             <div class="<?php echo $row['notif_status'] == 0 ? 'bg-blue-300' : 'bg-blue-100'  ?> py-3 px-6 text-sm rounded-md mb-1">
                                 <h2 class="font-semibold mb-1"><?php echo $row['borrower_ID'] == 0 ? 'Pending fines' : 'Pending registration' ?></h2>
                                 <h3><?php echo $row['notification_text']; ?></h3>
