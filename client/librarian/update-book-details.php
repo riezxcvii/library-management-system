@@ -46,19 +46,19 @@ if (isset($_GET['id'])) {
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Publisher</label>
-                                <input type="text" name="publisher" value="<?php echo $row['publisher']; ?>" class="mb-1 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Publisher" maxlength="70">
+                                <input type="text" name="publisher" value="<?php echo $row['publisher']; ?>" class="mb-1 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
                             </div>
                             <div>
-                                <label class="block mb-1 text-sm font-medium text-gray-900">Year of Publication</label>
-                                <input type="number" name="year_of_publication" value="<?php echo $row['year_published']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Year of publication" onKeyPress="if(this.value.length==4) return false;">
-                            </div>
-                            <div class=" mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Place of Publication</label>
-                                <input type="text" name="place_of_publication" value="<?php echo $row['publication_place']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Place of publication" maxlength="70">
+                                <input type="text" name="place_of_publication" value="<?php echo $row['publication_place']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
                             </div>
-                            <div class=" mt-[-1rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Copyright</label>
-                                <input type="number" name="copyright" value="<?php echo $row['copyright_year']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Copyright" onKeyPress="if(this.value.length==4) return false;">
+                                <input type="number" name="copyright" value="<?php echo $row['copyright_year']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==4) return false;">
+                            </div>
+                            <div class="mt-[-1rem]">
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
+                                <input type="number" name="number_of_pages" value="<?php echo $row['pages']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
                             </div>
                         </div>
 
@@ -134,7 +134,7 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div>
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Date Received</label>
                                 <input type="date" name="received" value="<?php echo $row['date_receive']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
@@ -143,16 +143,12 @@ if (isset($_GET['id'])) {
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of copies</label>
                                 <input type="number" name="number_of_copies" value="<?php echo $row['copies']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
                             </div>
-                            <div>
-                                <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
-                                <input type="number" name="number_of_pages" value="<?php echo $row['pages']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
-                            </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block mb-1 text-sm font-medium text-gray-900">Author's Number</label>
-                                <input type="text" name="author_number" value="<?php echo $row['author_number']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
+                                <label class="block mb-1 text-sm font-medium text-gray-900">Classification Number</label>
+                                <input type="text" name="classification_number" value="<?php echo $row['classification_number']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Accession Number</label>
@@ -208,7 +204,6 @@ if (isset($_GET['id'])) {
                     $book_title = $_POST['book_title'];
                     $book_category = $_POST['book_category'];
                     $publisher = $_POST['publisher'];
-                    $year_of_publication = $_POST['year_of_publication'];
                     $place_of_publication = $_POST['place_of_publication'];
                     $copyright = $_POST['copyright'];
                     $isbn = $_POST['isbn'];
@@ -217,7 +212,7 @@ if (isset($_GET['id'])) {
                     $received = $_POST['received'];
                     $number_of_copies = $_POST['number_of_copies'];
                     $number_of_pages = $_POST['number_of_pages'];
-                    $author_number = $_POST['author_number'];
+                    $classification_number = $_POST['classification_number'];
                     $author_first = $_POST['author_first'];
                     $author_last = $_POST['author_last'];
                     $accession_number = $_POST['accession_number'];
@@ -235,7 +230,7 @@ if (isset($_GET['id'])) {
                     $sql = "UPDATE `books` SET isbn='$isbn',
                     accession_number='$accession_number',
                     date_receive='$received',
-                    author_number='$author_number',
+                    classification_number='$classification_number',
                     author_lastname='$author_last',
                     author_firstname='$author_first',
                     title='$book_title',
@@ -249,7 +244,6 @@ if (isset($_GET['id'])) {
                     publisher='$publisher',
                     publication_place='$place_of_publication',
                     copyright_year='$copyright',
-                    year_published='$year_of_publication',
                     tracing='$tracing',
                     physical_description='$physical'
                     WHERE book_ID=$id";
