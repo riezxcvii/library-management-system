@@ -256,7 +256,7 @@ include('navigation-bar.php');
 
                 // Update the modal content with the retrieved data
                 document.getElementById('category').textContent = data.category;
-                document.getElementById('authorNumber').textContent = data.author_number
+                document.getElementById('authorNumber').textContent = data.classification_number
                 document.getElementById('author').textContent = data.author_lastname + ', ' + data.author_firstname;
                 document.getElementById('accessionNumber').textContent = data.accession_number;
                 document.getElementById('title').textContent = data.title + ' / ' + data.author_firstname + ' ' + data.author_lastname;

@@ -335,6 +335,40 @@ include('navigation-bar.php');
         });
     });
 </script>
+<script>
+    // Function to open the modal
+    function openModal(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../../server/librarian/card-catalog.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+
+                // Update the modal content with the retrieved data
+                document.getElementById('category').textContent = data.category;
+                document.getElementById('authorNumber').textContent = data.classification_number
+                document.getElementById('author').textContent = data.author_lastname + ', ' + data.author_firstname;
+                document.getElementById('accessionNumber').textContent = data.accession_number;
+                document.getElementById('title').textContent = data.title + ' / ' + data.author_firstname + ' ' + data.author_lastname;
+                document.getElementById('publication').textContent = data.publisher + ' -- ' + data.publication_place + ', C ' + data.copyright_year;
+                document.getElementById('physical').textContent = data.physical_description;
+                document.getElementById('isbn').textContent = 'ISBN ' + data.isbn;
+                document.getElementById('subject').textContent = data.subject;
+                document.getElementById('tracing').textContent = data.tracing;
+            } else {
+                console.error('Request failed. Status: ' + xhr.status);
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('Request failed. Network error.');
+        };
+
+        xhr.send('id=' + id);
+    }
+</script>
 </body>
 
 </html>

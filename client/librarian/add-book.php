@@ -146,8 +146,8 @@ include('navigation-bar.php');
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-8 pr-4 pb-2 mt-[-0.5rem]">
-                    <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                <div class="flex gap-8 pb-2 mt-[-0.5rem]">
+                    <button type="submit" name="submit" class="w-[48.4rem] text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                         Book</button>
                     <a href="./all-books.php" class="w-full">
                         <button type="button" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 w-full items-center justify-center flex">
@@ -208,7 +208,10 @@ include('navigation-bar.php');
                         window.location.href='all-books.php'
                         </script>";
                     } else {
-                        echo "Failed to add book!";
+                        echo "<script>
+                        alert('Failed to add book.');
+                        window.location.href='add-book.php'
+                        </script>";
                         mysqli_error($conn);
                     }
                 }
