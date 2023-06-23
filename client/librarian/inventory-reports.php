@@ -12,7 +12,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript" src="../js/undo-archive.js"></script>
-    <script type="text/javascript" src="../js/archive.js"></script>
 </head>
 
 <body>
@@ -265,6 +264,7 @@
                             $q_borrow = $conn->query("SELECT SUM(copies) as total FROM `borrowed_books` WHERE `book_ID` = '$book[book_ID]' && `status` = 'Borrowed'") or die(mysqli_error($conn));
                             $new_qty = $q_borrow->fetch_array();
                             $total = $book['copies'] - $new_qty['total'];
+                            $archive = $book['archive'];
                         ?>
 
                             <tr class="bg-white border-b text-black font-semibold">
@@ -276,10 +276,12 @@
                                 </td>
                                 <td class="px-6 py-2">
                                     <?php
-                                    if ($total == 0) {
-                                        echo "<label class = 'text-red-600'>Not Available</label>";
+                                    if ($archive == 1) {
+                                        echo "<label class = 'text-red-600'>Archived</label>";
+                                    } elseif ($total == 0) {
+                                        echo "<label class = 'text-orange-600'>Not Available</label>";
                                     } elseif ($total <= 2) {
-                                        echo "<label class = 'text-orange-600'>Low Stock</label>";
+                                        echo "<label class = 'text-blue-600'>Low Stock</label>";
                                     } else {
                                         echo '<input class="bg-white" name = "status[' . $i . ']" value = "' . $book['status'] . '" disabled>';
                                     }
@@ -294,7 +296,7 @@
                                 <?php if ($book['archive'] == 1) {
                                 ?>
                                     <td class="px-6 py-2 text-red-600 flex items-center">Yes
-                                        <a href="#" id="<?php echo $book_ID; ?>" class="actbutton">
+                                        <a href="#" id="<?php echo $book['book_ID']; ?>" class="actbutton">
                                             <svg class="w-[1.6rem] text-black items-center align-middle my-2 ml-[0.6rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"></path>
                                             </svg>
