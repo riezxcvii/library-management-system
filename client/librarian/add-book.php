@@ -12,11 +12,11 @@ include('navigation-bar.php');
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Book Title</label>
-                                <input type="text" name="book_title" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                                <input type="text" name="book_title" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Book Category</label>
-                                <select id="book_category" name="book_category" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <select id="book_category" name="book_category" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                                     <option value="">Select Category</option>
                                     <option value="Circulation">Circulation</option>
                                     <option value="Fiction">Fiction</option>
@@ -30,19 +30,19 @@ include('navigation-bar.php');
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Publisher</label>
-                                <input type="text" name="publisher" class="mb-1 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                                <input type="text" name="publisher" class="mb-1 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Place of Publication</label>
-                                <input type="text" name="place_of_publication" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                                <input type="text" name="place_of_publication" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
                             </div>
                             <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Copyright</label>
-                                <input type="number" name="copyright" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==4) return false;">
+                                <input type="number" name="copyright" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==4) return false;" required>
                             </div>
                             <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
-                                <input type="number" name="number_of_pages" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
+                                <input type="number" name="number_of_pages" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;" required>
                             </div>
                         </div>
 
@@ -100,7 +100,7 @@ include('navigation-bar.php');
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of copies</label>
-                                <input type="number" name="number_of_copies" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
+                                <input type="number" name="number_of_copies" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;" required>
                             </div>
                         </div>
 
@@ -115,11 +115,11 @@ include('navigation-bar.php');
                             </div>
                             <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's First Name</label>
-                                <input type="text" name="author_first" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20">
+                                <input type="text" name="author_first" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
                             </div>
                             <div class="mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's Last Name</label>
-                                <input type="text" name="author_last" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20">
+                                <input type="text" name="author_last" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
                             </div>
                         </div>
 
@@ -189,12 +189,12 @@ include('navigation-bar.php');
             '$author_last',
             '$author_first',
             '$book_title',
-            $number_of_copies,
-            $number_of_pages,
+            '$number_of_copies',
+            '$number_of_pages',
             '$edition',
             '$volume',
             '$source_of_fund',
-            $cost,
+            '$cost',
             '$publisher',
             '$place_of_publication',
             '$copyright',
