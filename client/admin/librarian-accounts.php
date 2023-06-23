@@ -110,8 +110,6 @@ include('navigation-bar.php');
                             </td>
                         <?php
                         } else {
-                            $deactivateDateTime = date('Y-m-d');
-                            $deactivateDate = date('F j, Y', strtotime($deactivateDateTime));
                         ?>
                             <td class="px-6 py-2 text-red-600">
                                 Deactivated on <?php echo $deactivateDate; ?>
