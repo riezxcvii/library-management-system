@@ -119,7 +119,7 @@ if (isset($_GET['id'])) {
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                            <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['id_number'] ?>">
+                            <input type="text" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['id_number'] ?>">
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>

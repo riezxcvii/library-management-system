@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
             <div class="grid grid-cols-3 gap-4 mb-[-0.2rem]">
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                    <input type="number" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['id_number'] ?>">
+                    <input type="text" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['id_number'] ?>">
                 </div>
 
                 <div>
