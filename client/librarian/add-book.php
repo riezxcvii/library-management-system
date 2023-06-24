@@ -179,11 +179,10 @@ include('navigation-bar.php');
                     $cost = $_POST['cost'];
                     $tracing = $_POST['tracing'];
                     $physical = $_POST['physical'];
-                    
-                    $getAccessionNumber = mysqli_query($conn,"SELECT * FROM books WHERE title = '$book_title' and accession_number = '$accession_number'");
 
-                    if(mysqli_num_rows($getAccessionNumber) == 0)
-                    {
+                    $getAccessionNumber = mysqli_query($conn, "SELECT * FROM books WHERE title = '$book_title' and accession_number = '$accession_number'");
+
+                    if (mysqli_num_rows($getAccessionNumber) == 0) {
                         $sql = "INSERT INTO `books` (category,isbn,accession_number,date_receive,classification_number,author_lastname,author_firstname,title,copies,pages,edition,volume,source_fund,cost,publisher,publication_place,copyright_year,tracing,physical_description)
                         VALUES('$book_category',
                         '$isbn',
@@ -205,29 +204,25 @@ include('navigation-bar.php');
                         '$tracing',
                         '$physical'
                         )";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result) {
-                                    echo "<script>
+                        $result = mysqli_query($conn, $sql);
+                        if ($result) {
+                            echo "<script>
                                     alert('Book added successfully.');
                                     window.location.href='all-books.php'
                                     </script>";
-                                } else {
-                                    echo "<script>
+                        } else {
+                            echo "<script>
                                     alert('Failed to add book.');
                                     window.location.href='add-book.php'
                                     </script>";
-                                    mysqli_error($conn);
-                                }
-                    }
-                    else
-                    {
+                            mysqli_error($conn);
+                        }
+                    } else {
                         echo "<script>
                         alert('Book already exist with the same accession number .');
                         window.location.href='add-book.php'
                         </script>";
                     }
-
-                   
                 }
                 ?>
             </p>
