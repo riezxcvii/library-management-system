@@ -11,7 +11,7 @@ include('navigation-bar.php');
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                        <input type="text" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==20) return false;" required>
+                        <input type="text" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onkeypress="return validateEmployeeID(event);" required>
                     </div>
 
                     <div>
@@ -127,6 +127,22 @@ include('navigation-bar.php');
         </button>
     </a>
 </div>
+<script>
+function validateEmployeeID(event) {
+  var key = event.keyCode || event.which;
+  var input = String.fromCharCode(key);
+
+  if (key === 45 || (key >= 48 && key <= 57)) {
+
+    if ((event.target.value + input).length > 20) {
+      return false; 
+    }
+    return true;
+  }
+  
+  return false;
+}
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>
