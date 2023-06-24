@@ -180,7 +180,7 @@ include('navigation-bar.php');
                     $tracing = $_POST['tracing'];
                     $physical = $_POST['physical'];
 
-                    $getAccessionNumber = mysqli_query($conn, "SELECT * FROM books WHERE title = '$book_title' and accession_number = '$accession_number'");
+                    $getAccessionNumber = mysqli_query($conn, "SELECT * FROM books WHERE title = '$book_title' AND accession_number = '$accession_number'");
 
                     if (mysqli_num_rows($getAccessionNumber) == 0) {
                         $sql = "INSERT INTO `books` (category,isbn,accession_number,date_receive,classification_number,author_lastname,author_firstname,title,copies,pages,edition,volume,source_fund,cost,publisher,publication_place,copyright_year,tracing,physical_description)
@@ -219,7 +219,7 @@ include('navigation-bar.php');
                         }
                     } else {
                         echo "<script>
-                        alert('Book already exist with the same accession number .');
+                        alert('Book already exist with the same accession number.');
                         window.location.href='add-book.php'
                         </script>";
                     }

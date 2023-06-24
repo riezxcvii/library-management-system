@@ -137,7 +137,7 @@ if (isset($_GET['id'])) {
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Date Received</label>
-                                <input type="date" name="received" value="<?php echo $row['date_receive']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                                <input type="date" name="received" value="<?php echo $row['date_receive']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of copies</label>
