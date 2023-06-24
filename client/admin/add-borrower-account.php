@@ -128,20 +128,20 @@ include('navigation-bar.php');
     </a>
 </div>
 <script>
-function validateEmployeeID(event) {
-  var key = event.keyCode || event.which;
-  var input = String.fromCharCode(key);
+    function validateEmployeeID(event) {
+        var key = event.keyCode || event.which;
+        var input = String.fromCharCode(key);
 
-  if (key === 45 || (key >= 48 && key <= 57)) {
+        if (key === 45 || (key >= 48 && key <= 57)) {
 
-    if ((event.target.value + input).length > 20) {
-      return false; 
+            if ((event.target.value + input).length > 20) {
+                return false;
+            }
+            return true;
+        }
+
+        return false;
     }
-    return true;
-  }
-  
-  return false;
-}
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
