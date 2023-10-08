@@ -1,78 +1,72 @@
-# 📚💻 **Library Management System**
+<h2>
+    📁Library Management System
+    <img width="13%" style="vertical-align:middle" src="https://badgen.net/badge/status/finished/blue" />
+</h2>
 
-A capstone project from the University of Antique.
+📝A library management system is a sophisticated software solution designed to streamline and automate the various tasks associated with operating a library. It efficiently manages the cataloging of books, handles student registration, and assists in inventory management. This system not only enhances the organization and accessibility of library resources but also enables librarians to monitor library activities and generate reports. It is an indispensable tool for libraries of all sizes, facilitating smoother operations and ensuring student can easily find and borrow the materials they need.
 
-### System Name:
-    ANS Library Management System
+## 💻 Technologies
 
-### System Type:
-    Web-based
-    Local Host
+<p align="left">
+    <img width="5%" align="center" src="https://www.svgrepo.com/show/452228/html-5.svg">
+    <img width="5.2%" align="center" src="https://www.svgrepo.com/show/354431/tailwindcss-icon.svg">
+    <img width="4%" align="center" src="https://www.svgrepo.com/show/349419/javascript.svg">
+    <img width="6%" align="center" src="https://www.svgrepo.com/show/354180/php.svg">
+    <img width="7.8%" align="center" src="https://www.svgrepo.com/show/303251/mysql-logo.svg">
+    <img width="3.6%" align="center" src="https://www.apachefriends.org/images/xampp-logo-ac950edf.svg">
+    <img width="4.4%" align="center" src="https://www.svgrepo.com/show/452129/vs-code.svg">
+</p>
 
-### Client:
-    Antique National School
-    San Jose, Antique, Philippines
+## 📖 Manual
 
-# 📖**Set-up the Library Management System**
+- Set-up XAMPP
 
-## 🧰**Necessary Tools**
+  > - Download the XAMPP application here: https://www.apachefriends.org/download.html
+  > - Install the application.
 
->[XAMPP Control Panel](https://www.apachefriends.org/download.html)
+- Install the project.
 
->[Visual Studio Code](https://code.visualstudio.com/download)
+  > - Navigate to the XAMPP > htdocs file folder.
+  > - Clone this repository inside the htdocs folder: https://github.com/rieza-ix/library-management-system.git
 
-## 📁**Set-up the database**
+  or
 
-- Go to phpMyAdmin
+  > - Download the zip file.
+  > - Unzip the project file in XAMPPS's file folder, XAMPP > htdocs.
+  > - Then paste the library-management-system file folder inside the htdocs folder.
 
-        http://localhost/phpmyadmin/
+- Set-up database
 
-- Create a new database and name it as
+  > - In your http://localhost/phpmyadmin/, create a new database and name it 'library_management_system'
+  > - Select the 'library_management_system'
+  > - Click 'Import' in the tabs.
+  > - Click the 'Choose File' button.
+  > - Then select the file from the project folder located in server > db > library_management_system.sql.
 
->library_management_system
+- Run the project.
+  > - Open the XAMPP Control Panel.
+  > - Start Apache and MySQL.
+  > - For librarians, navigate to this link: http://localhost/library-management-system/client/index.php.
+  > - For students, navigate to this link: http://localhost/library-management-system/client/index2.php.
 
-- Access the .sql database file in ***library-management-system>server>db*** and select all then copy
+## ✨ Features
 
-- In the SQL tab in phpMyAdmin, paste the copied text then select ***Go***
+- QR Code Login for the Students
+  <img width="50%" src="./snapshots/borrower-login-form.png" />
+- Card Catalog
+  <img width="50%" src="./snapshots/card-catalog.png" />
+- Borrow Book
+  <img width="50%" src="./snapshots/borrow-book.png" />
+- Return Book
+  <img width="50%" src="./snapshots/return-book.png" />
+- Book Inventory
+  <img width="50%" src="./snapshots/inventory-reports.png" />
+- Statistical Reports
+  <img width="50%" src="./snapshots/statistical-reports.png" />
 
-## 📁**Set-up the system**
+## 👥 Credits
 
-- Download the zip file of the system through this link
-
-        https://github.com/rieza-ix/library-management-system
-
-- Extract those files to ***XAMPP>htdocs***
-
-## 📦**Install necessary packages**
-
-- Open the Visual Studio Code and open the project using the key ***Ctrl + K + O*** then select the folder.
-- Open the terminal using the key ***Ctrl + Shift + `***
-- To install [Tailwind CSS](https://tailwindcss.com/docs/installation), follow this steps until Step 4 only.
-- To install [Flowbite](https://flowbite.com/docs/getting-started/quickstart/), follow this steps until Step 3 only.
-
-## 🌎**Access the Library Management System**
-
-- Open your browser and go to this link:
-
-- Admin and Librarian
-
-        http://localhost/library-management-system/client/index.php
-
-- Borrower
-
-        http://localhost/library-management-system/client/index2.php
-
-<br>
-
->**BYTE TECHIES**
->
->>Banquillo, Rieza Marie J.
->>
->>Calubiran, Kurly Jhon F.
->>
->>Fernando, Loren S.
->>
->>Laude, Sufena Joy L.
-<br>
-
-    @2021
+- Rieza Marie Banquillo (Project Analyst / Front-end Developer)
+- Loren Fernando (Back-end Developer)
+- Sufena Joy Laude (Documentation)
+- Kurly Jhon Calubiran
