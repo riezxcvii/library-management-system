@@ -3,7 +3,7 @@
     <img width="13%" style="vertical-align:middle" src="https://badgen.net/badge/status/finished/blue" />
 </h2>
 
-📝A library management system is a sophisticated software solution designed to streamline and automate the various tasks associated with operating a library. It efficiently manages the cataloging of books, handles student registration, and assists in inventory management. This system not only enhances the organization and accessibility of library resources but also enables librarians to monitor library activities and generate reports. It is an indispensable tool for libraries of all sizes, facilitating smoother operations and ensuring student can easily find and borrow the materials they need.
+📝A library management system is a sophisticated software solution designed to streamline and automate the various tasks associated with operating a library. It efficiently manages the cataloging of books, handles student registration, and assists in inventory management. This system not only enhances the organization and accessibility of library resources but also enables librarians to monitor library activities and generate reports.
 
 ## 💻 Technologies
 
@@ -68,5 +68,8 @@
 
 - Rieza Marie Banquillo (Project Analyst / Front-end Developer)
 - Loren Fernando (Back-end Developer)
+- Sunny Virgo (Assisted the developers)
 - Sufena Joy Laude (Documentation)
 - Kurly Jhon Calubiran
+
+  > Client: **Antique National School Librarians**
