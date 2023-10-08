@@ -8,13 +8,13 @@
 ## 💻 Technologies
 
 <p align="left">
-    <img width="5%" align="center" src="https://www.svgrepo.com/show/452228/html-5.svg">
-    <img width="5.2%" align="center" src="https://www.svgrepo.com/show/354431/tailwindcss-icon.svg">
-    <img width="4%" align="center" src="https://www.svgrepo.com/show/349419/javascript.svg">
-    <img width="6%" align="center" src="https://www.svgrepo.com/show/354180/php.svg">
+    <img width="4.6%" align="center" src="https://www.svgrepo.com/show/452228/html-5.svg">
+    <img width="4.6%" align="center" src="https://www.svgrepo.com/show/354431/tailwindcss-icon.svg">
+    <img width="3.4%" align="center" src="https://www.svgrepo.com/show/349419/javascript.svg">
+    <img width="5%" align="center" src="https://www.svgrepo.com/show/354180/php.svg">
     <img width="7.8%" align="center" src="https://www.svgrepo.com/show/303251/mysql-logo.svg">
     <img width="3.6%" align="center" src="https://www.apachefriends.org/images/xampp-logo-ac950edf.svg">
-    <img width="4.4%" align="center" src="https://www.svgrepo.com/show/452129/vs-code.svg">
+    <img width="4.2%" align="center" src="https://www.svgrepo.com/show/452129/vs-code.svg">
 </p>
 
 ## 📖 Manual
