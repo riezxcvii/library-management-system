@@ -51,18 +51,18 @@
 
 ## ✨ Features
 
-- QR Code Login for the Students
-  <img width="50%" src="./snapshots/borrower-login-form.png" />
-- Card Catalog
-  <img width="50%" src="./snapshots/card-catalog.png" />
-- Borrow Book
-  <img width="50%" src="./snapshots/borrow-book.png" />
-- Return Book
-  <img width="50%" src="./snapshots/return-book.png" />
-- Book Inventory
-  <img width="50%" src="./snapshots/inventory-reports.png" />
-- Statistical Reports
-  <img width="50%" src="./snapshots/statistical-reports.png" />
+- Students can login using the QR code embedded in their IDs.
+  <img width="60%" src="./snapshots/borrower-login-form.png" />
+- Both students and librarians can access the card catalog by searching for the book and clicking the title.
+  <img display="block" width="60%" src="./snapshots/card-catalog.png" />
+- The librarian can only access this module for validation purposes.
+  <img width="60%" src="./snapshots/borrow-book.png" />
+- The librarian can mark the borrowed book as returned if the borrower has given the book back.
+  <img width="60%" src="./snapshots/return-book.png" />
+- The librarian can manage and monitor all the book details as well as the status of the book in this module.
+  <img width="60%" src="./snapshots/inventory-reports.png" />
+- Here, the librarian can monitor the top borrowers as well as the most borrowed books in the library.
+  <img width="60%" src="./snapshots/statistical-reports.png" />
 
 ## 👥 Credits
 
