@@ -25,7 +25,7 @@ session_start();
                     <img src="./assets/logo.png" class="h-14 mr-3" alt="ANS Logo" />
                     <h1 class="font-extrabold md:text-2xl text-lg">ANS Library Management System</h1>
                 </div>
-                <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 md:mb-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
+                <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</label>
