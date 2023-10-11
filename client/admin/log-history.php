@@ -2,24 +2,24 @@
 include('navigation-bar.php');
 ?>
 
-<!--search bar-->
-<div class="p-4 flex justify-end">
+<!-- Search bar -->
+<div class="p-4 pt-6 flex justify-end">
     <form autocomplete="off">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-        <div class="relative w-96">
+        <div class="relative md:w-96">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <input type="search" id="default-search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-900" placeholder="Search" onkeyup="mySearch()" maxlength="70">
+            <input type="search" id="default-search" class="h-10 border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-900" placeholder="Search" onkeyup="mySearch()" maxlength="70">
         </div>
     </form>
 </div>
 
-<!--table-->
-<div class="p-4 h-screen overflow-y-auto ">
-    <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
+<!-- Table -->
+<div class="px-4 pt-2 pb-6 h-screen overflow-y-auto">
+    <div class="relative overflow-y-auto h-full bg-white shadow-md rounded-lg">
         <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="sticky top-0 text-xs text-white uppercase bg-black">
                 <tr>
@@ -74,6 +74,7 @@ include('navigation-bar.php');
                 </tr>
             </thead>
             <tbody>
+                <!-- SQL Query for displaying the log history in the table -->
                 <?php
                 $sql = "SELECT * FROM `log_history` ORDER BY `date` DESC, `time_in` DESC";
                 $res = mysqli_query($conn, $sql);
@@ -158,14 +159,14 @@ include('navigation-bar.php');
     </div>
 </div>
 
-<div class="flex justify-end pr-4 pb-2">
+<div class="flex justify-end pr-4 pb-4">
     <a href="../../server/print/log-history.php" target="_blank">
-        <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
+        <button type="button" class="mr-2 inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
             Print
         </button>
     </a>
     <a href="dashboard.php">
-        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300">
+        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
         </button>
     </a>
