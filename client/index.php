@@ -18,13 +18,13 @@ session_start();
 
 <body>
     <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
-        <div class="bg-gray-100 shadow-md w-2/5 rounded-lg p-8">
+        <div class="bg-gray-100 shadow-md md:w-2/5 w-80 rounded-lg p-8">
             <form autocomplete="off" action="../server/admin/login.php" method="POST">
                 <div class="flex items-center justify-center mb-4">
-                    <img src="./assets/logo.png" class="h-16 mr-3" alt="ANS Logo" />
-                    <h1 class="font-extrabold text-2xl">ANS Library Management System</h1>
+                    <img src="./assets/logo.png" class="h-14 mr-3" alt="ANS Logo" />
+                    <h1 class="font-extrabold md:text-2xl text-lg">ANS Library Management System</h1>
                 </div>
-                <h1 class="font-semibold text-xl mb-4 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
+                <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 md:mb-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</labxel>
@@ -40,17 +40,17 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="text-right mb-4 text-xs text-blue-600 underline">
+                <div class="text-right mb-6 text-xs text-blue-600 underline">
                     <a href="./admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
 
                 <?php if (isset($_GET['error'])) { ?>
-                    <p class="error text-red-600 font-bold text-center mb-4">
+                    <p class="error text-red-600 font-bold text-center mb-4 md:text-md text-sm">
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
 
-                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-center items-center mx-auto">Sign
+                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-center items-center mx-auto">Sign
                     in</button>
             </form>
         </div>
