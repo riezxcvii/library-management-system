@@ -18,7 +18,6 @@ session_start();
 
 <body>
     <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
-
         <!-- Login Form -->
         <div class="bg-gray-100 shadow-md md:w-2/5 w-80 rounded-lg p-8">
             <form autocomplete="off" action="../server/admin/login.php" method="POST">
@@ -45,14 +44,12 @@ session_start();
                 <div class="text-right mb-6 text-xs text-blue-600 underline">
                     <a href="./admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
-
                 <!-- Display error message when entered credentials does not match any of the data registered in the database. -->
                 <?php if (isset($_GET['error'])) { ?>
                     <p class="error text-red-600 font-bold text-center mb-4 md:text-md text-sm">
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
-
                 <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-center items-center mx-auto">Sign
                     in</button>
             </form>
@@ -61,7 +58,6 @@ session_start();
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="./js/show-hide-password.js"></script>
-
     <!-- Clear input boxes when wrong credentials entered. -->
     <script>
         window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
