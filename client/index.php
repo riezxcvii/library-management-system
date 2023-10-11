@@ -3,7 +3,7 @@ include "../server/db/conDB.php";
 session_start();
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,6 +18,8 @@ session_start();
 
 <body>
     <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
+
+        <!-- Login Form -->
         <div class="bg-gray-100 shadow-md md:w-2/5 w-80 rounded-lg p-8">
             <form autocomplete="off" action="../server/admin/login.php" method="POST">
                 <div class="flex items-center justify-center mb-4">
@@ -27,8 +29,8 @@ session_start();
                 <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 md:mb-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
-                        username</labxel>
-                        <input type="username" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" minlength="5" maxlength="30" required>
+                        username</label>
+                    <input type="username" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" minlength="5" maxlength="30" required>
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Enter
@@ -44,6 +46,7 @@ session_start();
                     <a href="./admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
 
+                <!-- Display error message when entered credentials does not match any of the data registered in the database. -->
                 <?php if (isset($_GET['error'])) { ?>
                     <p class="error text-red-600 font-bold text-center mb-4 md:text-md text-sm">
                         <?php echo $_GET['error']; ?>
@@ -58,6 +61,8 @@ session_start();
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="./js/show-hide-password.js"></script>
+
+    <!-- Clear input boxes when wrong credentials entered. -->
     <script>
         window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
     </script>
