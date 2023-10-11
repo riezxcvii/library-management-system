@@ -46,7 +46,7 @@ session_start();
                 </div>
                 <!-- Display error message when entered credentials does not match any of the data registered in the database. -->
                 <?php if (isset($_GET['error'])) { ?>
-                    <p class="error text-red-600 font-bold text-center mb-4 md:text-md text-sm">
+                    <p class="error text-red-600 font-bold text-center mb-4 md:text-base text-sm">
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
