@@ -9,13 +9,13 @@ if (isset($_GET['id'])) {
 ?>
 
 <div class="flex justify-center items-center">
-    <div class="bg-gray-50 rounded-md md:my-0 my-[5.35rem] md:m-12 m-5 md:mb-8 md:mt-[2.3rem] w-[30rem]">
+    <div class="bg-gray-50 rounded-md md:my-0 my-[4rem] md:m-12 m-3 md:mb-8 md:mt-[2rem] w-[30rem]">
         <!-- Form -->
-        <div class="md:p-8 p-6 md:px-8">
-            <h3 class="mb-4 md:text-xl text-base font-medium text-gray-900 text-center">Update Account Details</h3>
+        <div class="md:p-8 p-7 md:px-8">
+            <h3 class="mb-4 md:text-xl text-lg font-medium text-gray-900 text-center">Update Account Details</h3>
             <form action="#" autocomplete="off" method="POST">
                 <!-- Username and role -->
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 md:my-0 my-4">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                         <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['username'] ?>">
@@ -23,14 +23,14 @@ if (isset($_GET['id'])) {
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                         <select id="nameExtension" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                            <option class="md:text-sm text-xs" value="<?php echo $row['role'] ?>" selected><?php echo $row['role'] ?></option>
-                            <option class="md:text-sm text-xs" value="Admin">Admin</option>
-                            <option class="md:text-sm text-xs" value="Librarian">Librarian</option>
+                            <option value="<?php echo $row['role'] ?>" selected><?php echo $row['role'] ?></option>
+                            <option value="Admin">Admin</option>
+                            <option value="Librarian">Librarian</option>
                         </select>
                     </div>
                 </div>
                 <!-- Last name, first name, and middle name -->
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-3 gap-4 md:mb-0 mb-4">
                     <div>
                         <label class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                         <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required value="<?php echo $row['last_name'] ?>">
@@ -47,11 +47,11 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <!-- Name extension and sex -->
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 md:mb-2 mb-3">
                     <div>
                         <label class="mt-[0.8rem] block mb-2 text-sm font-medium text-gray-900 md:mt-6">Name Extension</label>
                         <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
-                            <option class="md:text-sm text-xs" value="<?php if ($row['name_extension'] == "") {
+                            <option value="<?php if ($row['name_extension'] == "") {
                                                 echo "";
                                             } else {
                                                 echo $row['name_extension'];
@@ -62,16 +62,16 @@ if (isset($_GET['id'])) {
                                     echo $row['name_extension'];
                                 } ?>
                             </option>
-                            <option class="md:text-sm text-xs" value="Jr">Jr</option>
-                            <option class="md:text-sm text-xs" value="Sr">Sr</option>
-                            <option class="md:text-sm text-xs" value="I">I</option>
-                            <option class="md:text-sm text-xs" value="II">II</option>
-                            <option class="md:text-sm text-xs" value="III">III</option>
-                            <option class="md:text-sm text-xs" value="IV">IV</option>
-                            <option class="md:text-sm text-xs" value="V">V</option>
-                            <option class="md:text-sm text-xs" value="VI">VI</option>
-                            <option class="md:text-sm text-xs" value="VII">VII</option>
-                            <option class="md:text-sm text-xs" value="VIII">VIII</option>
+                            <option value="Jr">Jr</option>
+                            <option value="Sr">Sr</option>
+                            <option value="I">I</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                            <option value="V">V</option>
+                            <option value="VI">VI</option>
+                            <option value="VII">VII</option>
+                            <option value="VIII">VIII</option>
                         </select>
                     </div>
                     <div class="flex">
@@ -93,6 +93,7 @@ if (isset($_GET['id'])) {
                 <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 md:mb-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update
                     Account</button>
             </form>
+            <!-- SQL Query for upodating librarian account -->
             <?php
             if (isset($_POST['submit'])) {
                 $username = $_POST['username'];
@@ -116,8 +117,8 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </div>
-
-<div class="flex justify-end pr-4 pb-4">
+<!-- Back button -->
+<div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="./librarian-registration.php">
         <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
