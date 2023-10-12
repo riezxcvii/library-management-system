@@ -5,7 +5,7 @@ include('navigation-bar.php');
 <!-- Button and search bar -->
 <div class="p-4 pt-6 flex justify-end">
     <!-- Add button -->
-    <a href="./add-librarian.php">
+    <a href="./add-librarian-account.php">
         <button type="button" class="h-[2.55rem] md:mr-8b mr-7 inline-flex items-center px-5 py-2.5 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
             Add Account
         </button>
