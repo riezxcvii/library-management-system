@@ -163,12 +163,12 @@ include('navigation-bar.php');
 <!-- Back and print button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="../../server/print/log-history.php" target="_blank">
-        <button type="button" class="mr-2 inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
+        <button type="button" class="mr-2 inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
             Print
         </button>
     </a>
     <a href="dashboard.php">
-        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300">
+        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-400">
             Back
         </button>
     </a>

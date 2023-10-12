@@ -6,7 +6,7 @@ include('navigation-bar.php');
 <div class="p-4 pt-6 flex justify-end">
     <!-- Add button -->
     <a href="./add-librarian-account.php">
-        <button type="button" class="h-[2.55rem] md:mr-8b mr-7 inline-flex items-center md:px-5 px-3 md:py-2.5 py-1 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
+        <button type="button" class="h-[2.55rem] md:mr-8b mr-7 inline-flex items-center md:px-5 px-3 md:py-2.5 py-1 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
             Add Account
         </button>
     </a>
@@ -107,7 +107,7 @@ include('navigation-bar.php');
 <!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="dashboard.php">
-        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-400">
             Back
         </button>
     </a>

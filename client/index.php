@@ -29,13 +29,13 @@ session_start();
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</label>
-                    <input type="username" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" minlength="5" maxlength="30" required>
+                    <input type="username" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mt-2" minlength="5" maxlength="30" required>
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         password</label>
                     <div class="flex">
-                        <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30" minlength="8" required>
+                        <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" maxlength="30" minlength="8" required>
                         <div class=" mt-[0.6rem] ml-[-2rem]">
                             <i class="fa fa-eye" id="eye" aria-hidden="true" onClick="viewPassword()"></i>
                         </div>
@@ -50,7 +50,7 @@ session_start();
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
-                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-center items-center mx-auto">Sign
+                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 flex justify-center items-center mx-auto">Sign
                     in</button>
             </form>
         </div>
