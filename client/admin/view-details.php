@@ -1,40 +1,38 @@
 <?php
 include('navigation-bar.php');
-
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 ?>
 
-<div class="flex justify-center items-center mt-8">
-    <div class="bg-gray-50 rounded-md m-12 my-8 w-[30rem]">
+<div class="flex justify-center items-center">
+    <div class="bg-gray-50 rounded-md md:my-0 my-[6rem] md:m-12 m-3 md:mb-8 md:mt-[2.3rem] w-[30rem]">
         <?php
         $sql = "SELECT * FROM library_admin WHERE admin_ID = $id";
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($res);
         ?>
-        <div class="px-6 py-6 lg:px-8">
-            <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
-
+        <!-- Form -->
+        <div class="md:p-8 p-6 md:px-8">
+            <h3 class="mb-4 md:text-xl text-base font-medium text-gray-900 text-center">Registration Form</h3>
+            <!-- Username, role, and registered on -->
             <div class="grid grid-cols-3 gap-4 mb-[-0.2rem]">
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                     <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['username'] ?>">
                 </div>
-
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                     <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                         <option value="" selected><?php echo $row['role'] ?></option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Registered On</label>
                     <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date']; ?>">
                 </div>
             </div>
-
+            <!-- Last name, first name, and middle name -->
             <div class="grid grid-cols-3 gap-4 mb-[1.5rem]">
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
@@ -51,7 +49,7 @@ if (isset($_GET['id'])) {
                     <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $row['middle_initial'] ?>">
                 </div>
             </div>
-
+            <!-- Name extension and sex -->
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
@@ -59,7 +57,6 @@ if (isset($_GET['id'])) {
                         <option value="" selected><?php echo $row['name_extension'] ?></option>
                     </select>
                 </div>
-
                 <div class="flex">
                     <label class="block text-sm font-medium text-gray-900">Sex</label>
                     <div class="flex items-center mb-4 mr-4">
@@ -80,9 +77,9 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<div class="flex justify-end pr-4 pb-2 mt-[2.9rem]">
+<div class="flex justify-end pr-4 pb-4">
     <a href="librarian-registration.php">
-        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
         </button>
     </a>
