@@ -2,14 +2,14 @@
 include('navigation-bar.php');
 ?>
 
-<div class="flex justify-center items-center md:py-0 py-16">
-    <div class="bg-gray-50 rounded-md md:m-12 m-4 md:mb-0 md:mt-[1rem] w-[30rem]  md:my-0 my-auto">
+<div class="flex justify-center items-center h-full md:mt-[-1rem] mb-0 mt-[-3.5rem]">
+    <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
         <div class="md:p-8 p-6 md:px-8">
-            <h3 class="mb-4 md:text-xl text-lg font-medium text-gray-900 text-center">Registration Form</h3>
-            <form class="space-y-4" action="#" autocomplete="off" method="POST">
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center">Registration Form</h3>
+            <form action="#" autocomplete="off" method="POST">
             <!-- Username and password -->
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 md:mt-4 mt-6 md:mb-0 mb-7">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                         <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="5" required>
@@ -20,7 +20,7 @@ include('navigation-bar.php');
                     </div>
                 </div>
                 <!-- Role -->
-                <div class="mt-[-1rem]">
+                <div class="md:mt-5 mt-[-0.4rem] md:mb-0 mb-4">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                     <select id="role" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         <option value="" selected>Select Role</option>
@@ -29,7 +29,7 @@ include('navigation-bar.php');
                     </select>
                 </div>
                 <!-- Last name, first name, and middle initial -->
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-3 gap-4 md:mb-0 mb-6">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                         <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required maxlength="20" minlength="2">
@@ -46,7 +46,7 @@ include('navigation-bar.php');
                     </div>
                 </div>
                 <!-- Name extension and sex -->
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 md:mb-0 mb-3">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
                         <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
@@ -103,7 +103,7 @@ include('navigation-bar.php');
         </div>
     </div>
 </div>
-
+<!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="./librarian-registration.php">
         <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">

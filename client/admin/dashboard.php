@@ -4,7 +4,7 @@ include('navigation-bar.php');
 
 <!-- Cards -->
 <div class="flex justify-center items-center flex-1 px-9 md:pb-0 pb-6 md:pt-0 pt-9">
-    <div class="inline-flex flex-wrap gap-4 sm:gap-12">
+    <div class="inline-flex flex-wrap gap-3 sm:gap-12">
         <!-- Log history card -->
         <div class="w-full sm:w-72 p-4 bg-black border border-gray-200 rounded-lg shadow sm:p-8 dark:border-gray-700 mb-4 md:mb-0">
             <h5 class="mb-4 md:text-xl text-base text-center font-semibold text-white">Log History</h5>

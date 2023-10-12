@@ -16,9 +16,8 @@ include('navigation-bar.php');
         </div>
     </form>
 </div>
-
 <!-- Table -->
-<div class="px-4 pt-2 pb-6 h-screen overflow-y-auto">
+<div class="px-4 pt-2 pb-20 h-screen overflow-y-auto">
     <div class="relative overflow-y-auto h-full bg-white shadow-md rounded-lg">
         <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="sticky top-0 text-xs text-white uppercase bg-black">
@@ -83,6 +82,7 @@ include('navigation-bar.php');
                 ?>
                     <tr class="bg-white border-b text-black font-semibold">
                         <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                            <!-- SQL Query for displaying the the user name -->
                             <?php
                             if ($row['admin_ID'] == 0) {
                                 $sql1 = "SELECT * FROM `borrowers` WHERE borrower_ID = $row[borrower_ID]";
@@ -99,6 +99,7 @@ include('navigation-bar.php');
                             ?>
                         </td>
                         <td class="px-6 py-2">
+                            <!-- SQL Query for displaying the role of the user -->
                             <?php
                             if ($row['admin_ID'] == 0) {
                                 $sql1 = "SELECT * FROM `borrowers` WHERE borrower_ID = $row[borrower_ID]";
@@ -130,6 +131,7 @@ include('navigation-bar.php');
                             }
                             ?>
                         </td>
+                        <!-- SQL Query for displaying the penalty of the specific user -->
                         <?php
                         $query = "SELECT * FROM `borrowed_books` WHERE `borrower_ID` = '$row[borrower_ID]'";
                         $qbook = $conn->query($query) or die(mysqli_error($conn));
@@ -158,8 +160,8 @@ include('navigation-bar.php');
         </table>
     </div>
 </div>
-
-<div class="flex justify-end pr-4 pb-4">
+<!-- Back and print button -->
+<div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="../../server/print/log-history.php" target="_blank">
         <button type="button" class="mr-2 inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
             Print

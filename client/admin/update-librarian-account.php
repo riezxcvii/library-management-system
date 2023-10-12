@@ -8,8 +8,8 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="flex justify-center items-center">
-    <div class="bg-gray-50 rounded-md md:my-0 my-[4rem] md:m-12 m-3 md:mb-8 md:mt-[2rem] w-[30rem]">
+<div class="flex justify-center items-center h-full">
+    <div class="bg-gray-50 rounded-md md:my-0 my-[4rem] md:mx-12 mx-3 md:mb-8 md:mt-[1rem] mt-[1rem] w-[30rem]">
         <!-- Form -->
         <div class="md:p-8 p-7 md:px-8">
             <h3 class="mb-4 md:text-xl text-lg font-medium text-gray-900 text-center">Update Account Details</h3>
