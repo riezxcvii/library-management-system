@@ -2,20 +2,18 @@
 include('navigation-bar.php');
 ?>
 
-<div class="flex justify-center items-center md:my-0 my-8">
-    <div class="bg-gray-50 rounded-md md:m-12 m-4 md:mb-0 md:mt-[1rem] w-[30rem]">
+<div class="flex justify-center items-center md:py-0 py-16">
+    <div class="bg-gray-50 rounded-md md:m-12 m-4 md:mb-0 md:mt-[1rem] w-[30rem]  md:my-0 my-auto">
         <!-- Form -->
         <div class="md:p-8 p-6 md:px-8">
             <h3 class="mb-4 md:text-xl text-lg font-medium text-gray-900 text-center">Registration Form</h3>
             <form class="space-y-4" action="#" autocomplete="off" method="POST">
-
             <!-- Username and password -->
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                         <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="5" required>
                     </div>
-
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                         <input type="password" name="password" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="8" required>
@@ -80,6 +78,7 @@ include('navigation-bar.php');
                 <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register
                     Account</button>
             </form>
+            <!-- SQL Query for librarian registration -->
             <?php
             if (isset($_POST['submit'])) {
                 $role = $_POST['role'];
