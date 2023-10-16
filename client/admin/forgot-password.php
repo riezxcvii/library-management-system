@@ -22,12 +22,12 @@
                 </div>
                 <h1 class="font-semibold md:text-xl text-lg mb-6 md:mt-0 mt-6 text-center text-gray-900">Change your password</h1 class="font-semibold text-lg">
                 <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Enter
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</label>
-                    <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
+                    <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
                 </div>
                 <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Enter
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         current password</label>
                     <div class="flex">
                         <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Enter
+                    <label for="newPassword" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         new password</label>
                     <div class="flex">
                         <input type="password" id="newPassword" name="newPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" maxlength="30" required>

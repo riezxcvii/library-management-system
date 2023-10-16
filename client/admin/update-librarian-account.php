@@ -17,12 +17,12 @@ if (isset($_GET['id'])) {
                 <!-- Username and role -->
                 <div class="grid grid-cols-2 gap-4 md:my-0 my-4">
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                        <input type="text" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['username'] ?>">
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+                        <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['username'] ?>">
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                        <select id="nameExtension" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                        <select id="role" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="<?php echo $row['role'] ?>" selected><?php echo $row['role'] ?></option>
                             <option value="Admin">Admin</option>
                             <option value="Librarian">Librarian</option>
@@ -32,24 +32,24 @@ if (isset($_GET['id'])) {
                 <!-- Last name, first name, and middle name -->
                 <div class="grid grid-cols-3 gap-4 md:mb-0 mb-4">
                     <div>
-                        <label class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">Last Name</label>
-                        <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required value="<?php echo $row['last_name'] ?>">
+                        <label for="lastName" class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required value="<?php echo $row['last_name'] ?>">
                     </div>
                     <div>
-                        <label for="email" class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">First
+                        <label for="firstName" class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">First
                             Name</label>
-                        <input type="text" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required value="<?php echo $row['first_name'] ?>">
+                        <input type="text" id="firstName" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required value="<?php echo $row['first_name'] ?>">
                     </div>
                     <div>
-                        <label class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">Middle
+                        <label for="middleName" class="md:mt-0 mt-[-0.7rem] block mb-2 text-sm font-medium text-gray-900">Middle
                             Initial</label>
-                        <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" value="<?php echo $row['middle_initial'] ?>">
+                        <input type="text" id="middleName" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" value="<?php echo $row['middle_initial'] ?>">
                     </div>
                 </div>
                 <!-- Name extension and sex -->
                 <div class="grid grid-cols-2 gap-4 md:mb-2 mb-3">
                     <div>
-                        <label class="mt-[0.8rem] block mb-2 text-sm font-medium text-gray-900 md:mt-6">Name Extension</label>
+                        <label for="nameExtension" class="mt-[0.8rem] block mb-2 text-sm font-medium text-gray-900 md:mt-6">Name Extension</label>
                         <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
                             <option value="<?php if ($row['name_extension'] == "") {
                                                 echo "";
@@ -80,13 +80,13 @@ if (isset($_GET['id'])) {
                             <input id="female" type="radio" <?php if ($row['sex'] == 'Female') {
                                                                 echo 'checked';
                                                             } ?> value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]" required>
-                            <label for="default-radio-1" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Female</label>
+                            <label for="female" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Female</label>
                         </div>
                         <div class="flex items-center mb-4 md:mt-6 mt-2">
                             <input id="male" type="radio" <?php if ($row['sex'] == 'Male') {
                                                                 echo 'checked';
                                                             } ?> value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5" required>
-                            <label for="default-radio-1" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Male</label>
+                            <label for="male" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Male</label>
                         </div>
                     </div>
                 </div>

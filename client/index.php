@@ -27,7 +27,7 @@ session_start();
                 </div>
                 <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
                 <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Enter
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</label>
                     <input type="username" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mt-2" minlength="5" maxlength="30" required>
                 </div>
