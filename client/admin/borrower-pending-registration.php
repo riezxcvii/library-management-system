@@ -7,21 +7,14 @@ include('navigation-bar.php');
     <!-- Button -->
     <a href="./borrower-add-account.php">
         <button type="button" class="h-[2.55rem] mr-4 inline-flex items-center md:px-5 px-4 py-2.5 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
-        <span class="md:block hidden">Register a Borrower</span>
-            <span class="md:hidden block">Register</span>
-        </button>
-    </a>
-    <a href="borrower-accounts.php" class="flex mr-4">
-        <button type="button" class="h-[2.55rem] inline-flex items-center md:px-5 px-3 md:py-2.5 py-1 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
-            <span class="md:block hidden">Approved Registration</span>
-            <span class="md:hidden block">Approved</span>
+        Register Borrower
         </button>
     </a>
 
     <!-- Search bar -->
     <form autocomplete="off">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only text-white">Search</label>
-        <div class="relative md:w-96 w-32">
+        <div class="relative md:w-96 w-40">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
