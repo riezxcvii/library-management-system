@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
         <div class="md:p-8 p-6 md:px-8">
-            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-4 md:mb-6">Update Account Details</h3>
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6">Update Account Details</h3>
             <!-- Update account details form for students -->
             <?php
             if ($role === 'Student') {

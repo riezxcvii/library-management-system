@@ -145,9 +145,9 @@ include('navigation-bar.php');
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                         <div class="px-6 py-6 lg:px-8 pb-2">
-                                            <h3 class="mb-6 md:text-xl text-lg font-medium text-gray-900 text-center">Registration Details</h3>
+                                            <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
                                             <form action="#" autocomplete="off">
-                                                <!-- Username, role, and date deactivated -->
+                                                <!-- Username, role, and date registered -->
                                                 <div class="grid grid-cols-3 gap-4 mb-6">
                                                     <div>
                                                         <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
@@ -162,8 +162,8 @@ include('navigation-bar.php');
                                                         </select>
                                                     </div>
                                                     <div>
-                                                        <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Deactivated</label>
-                                                        <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $borrower['deactivation_date']; ?>">
+                                                        <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
+                                                        <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $borrower['registered_date']; ?>">
                                                     </div>
                                                 </div>
                                                 <!-- Last name, first name, and middle initial -->
@@ -401,7 +401,7 @@ include('navigation-bar.php');
                     data: info,
                     success: function(data) {
                         // Handle the response if needed
-                        window.location = "../../client/admin/librarian-accounts.php"
+                        window.location = "../../client/admin/librarian-manage-accounts.php"
 
                     }
                 });
@@ -449,7 +449,7 @@ include('navigation-bar.php');
                     data: info,
                     success: function(data) {
                         // Handle the response if needed
-                        window.location = "../../client/admin/librarian-accounts.php"
+                        window.location = "../../client/admin/librarian-manage-accounts.php"
 
                     },
                 });

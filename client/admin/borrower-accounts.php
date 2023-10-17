@@ -395,8 +395,8 @@
                                                                 </select>
                                                             </div>
                                                             <div>
-                                                                <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Deactivated</label>
-                                                                <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $borrower['deactivation_date']; ?>">
+                                                                <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
+                                                                <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $borrower['registered_date']; ?>">
                                                             </div>
                                                         </div>
                                                         <!-- Last name, first name, and middle name -->
