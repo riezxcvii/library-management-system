@@ -38,7 +38,7 @@ $(function () {
         url: "../../server/admin/deactivate-borrower.php",
         data: info,
         success: function (data) {
-          window.location = "account-reports.php";
+          window.location = "../../client/admin/borrower-accounts.php";
         },
       });
     }

@@ -2,48 +2,51 @@
 include('navigation-bar.php');
 ?>
 
-<!--button and search bar-->
-<div class="p-4 flex justify-end">
-    <!--button-->
-    <a href="./add-borrower-account.php">
-        <button type="button" class="h-full mr-8 inline-flex items-center px-5 py-2.5 text-m font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300" data-modal-target="register-modal" data-modal-toggle="register-modal">
-            Register a borrower
+<!-- Button and search bar -->
+<div class="p-4 pt-6 flex justify-end">
+    <!-- Button -->
+    <a href="./borrower-add-account.php">
+        <button type="button" class="h-[2.55rem] mr-4 inline-flex items-center md:px-5 px-4 py-2.5 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
+        <span class="md:block hidden">Register a Borrower</span>
+            <span class="md:hidden block">Register</span>
         </button>
     </a>
-    <a href="account-reports.php" class="flex mr-8">
-        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
-            Approved Registration
+    <a href="borrower-accounts.php" class="flex mr-4">
+        <button type="button" class="h-[2.55rem] inline-flex items-center md:px-5 px-3 md:py-2.5 py-1 md:text-base text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
+            <span class="md:block hidden">Approved Registration</span>
+            <span class="md:hidden block">Approved</span>
         </button>
     </a>
-    <!--search bar-->
+
+    <!-- Search bar -->
     <form autocomplete="off">
-        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-        <div class="relative w-96">
+        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only text-white">Search</label>
+        <div class="relative md:w-96 w-32">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <input onkeyup="mySearch()" type="search" id="default-search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-500" placeholder="Search">
+            <input onkeyup="mySearch()" type="search" id="default-search" class="h-10 border-0 block md:w-full w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-500 focus:ring-2 focus:ring-blue-500" placeholder="Search">
         </div>
     </form>
 </div>
 
-<!--table-->
-<div class="p-4 h-screen overflow-y-auto ">
-    <div id="myTable" class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
+<!-- Table -->
+<div class="px-4 pt-2 pb-20 h-screen overflow-y-auto">
+    <div id="myTable" class="relative overflow-y-auto h-full bg-white shadow-md rounded-lg">
 
     </div>
 </div>
 
-<div class="flex justify-end pr-4 pb-2">
+<!-- Back button -->
+<div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="dashboard.php">
-        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
+        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
             Back
         </button>
     </a>
 </div>
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
@@ -95,9 +98,9 @@ include('navigation-bar.php');
     });
 
     $(document).ready(function() {
-        $("#myTable").load("pending.php");
+        $("#myTable").load("borrower-pending-list.php");
         setInterval(function() {
-            $("#myTable").load("pending.php");
+            $("#myTable").load("borrower-pending-list.php");
             refresh();
         }, 5000);
     });
