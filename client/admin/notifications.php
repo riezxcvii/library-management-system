@@ -3,7 +3,7 @@ include('navigation-bar.php');
 ?>
 
 <div class="flex justify-center items-center h-full">
-    <div class="bg-gray-50 rounded-md m-8 md:mt-1 mt-[-1.5rem] md:my-4 w-[33rem] overflow-y-auto">
+    <div class="bg-gray-50 rounded-md m-8 md:mt-1 mt-[-1.5rem] md:my-4 w-full md:mx-28 overflow-y-auto">
         <!-- Form -->
         <div class="px-4 py-6 lg:px-8 h-[31rem]">
             <div class="flex justify-between">
