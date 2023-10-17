@@ -2,14 +2,14 @@
 include('navigation-bar.php');
 ?>
 
-<div class="flex justify-center items-center h-full md:mt-[-1rem] mb-0 mt-[-3.5rem]">
+<div class="flex justify-center items-center h-full md:mt-[0rem] mb-0 mt-[-3.2rem]">
     <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
         <div class="md:p-8 p-6 md:px-8">
-            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center">Registration Form</h3>
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center md:mb-6 mb-4">Registration Form</h3>
             <form action="#" autocomplete="off" method="POST">
             <!-- Username and password -->
-                <div class="grid grid-cols-2 gap-4 md:mt-4 mt-6 md:mb-0 mb-7">
+                <div class="grid grid-cols-2 gap-4 mb-6">
                     <div>
                         <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                         <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="5" required>
@@ -20,7 +20,7 @@ include('navigation-bar.php');
                     </div>
                 </div>
                 <!-- Role -->
-                <div class="md:mt-5 mt-[-0.4rem] md:mb-0 mb-4">
+                <div class="md:mb-0 mb-4">
                     <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
                     <select id="role" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         <option value="" selected>Select Role</option>
@@ -29,7 +29,7 @@ include('navigation-bar.php');
                     </select>
                 </div>
                 <!-- Last name, first name, and middle initial -->
-                <div class="grid grid-cols-3 gap-4 md:mb-0 mb-6">
+                <div class="grid grid-cols-3 gap-4 mb-6">
                     <div>
                         <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                         <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required maxlength="20" minlength="2">
@@ -46,7 +46,7 @@ include('navigation-bar.php');
                     </div>
                 </div>
                 <!-- Name extension and sex -->
-                <div class="grid grid-cols-2 gap-4 md:mb-0 mb-3">
+                <div class="grid grid-cols-2 gap-4 mb-1">
                     <div>
                         <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
                         <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
@@ -66,11 +66,11 @@ include('navigation-bar.php');
                     <div class="flex">
                         <label class="block text-sm font-medium text-gray-900">Sex</label>
                         <div class="flex items-center mb-4 md:mr-4 mr-2">
-                            <input id="female" type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]">
+                            <input id="female" type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-600 mt-5 ml-[-1rem]">
                             <label for="female" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Female</label>
                         </div>
                         <div class="flex items-center mb-4">
-                            <input id="male" type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5">
+                            <input id="male" type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-600 mt-5">
                             <label for="male" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Male</label>
                         </div>
                     </div>
@@ -78,6 +78,7 @@ include('navigation-bar.php');
                 <button type="submit" name="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register
                     Account</button>
             </form>
+
             <!-- SQL Query for librarian registration -->
             <?php
             if (isset($_POST['submit'])) {
@@ -103,9 +104,10 @@ include('navigation-bar.php');
         </div>
     </div>
 </div>
+
 <!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
-    <a href="./librarian-registration.php">
+    <a href="./librarian-accounts.php">
         <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-400">
             Back
         </button>

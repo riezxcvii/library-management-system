@@ -8,11 +8,11 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="flex justify-center items-center h-full">
-    <div class="bg-gray-50 rounded-md md:my-0 my-[4rem] md:mx-12 mx-3 md:mb-8 md:mt-[1rem] mt-[1rem] w-[30rem]">
+<div class="flex justify-center items-center h-full md:mt-[0rem] mb-0 mt-[-3.2rem]">
+    <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
-        <div class="md:p-8 p-7 md:px-8">
-            <h3 class="mb-4 md:text-xl text-lg font-medium text-gray-900 text-center">Update Account Details</h3>
+        <div class="md:p-8 p-6 md:px-8">
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6">Update Account Details</h3>
             <form action="#" autocomplete="off" method="POST">
                 <!-- Username and role -->
                 <div class="grid grid-cols-2 gap-4 md:my-0 my-4">
@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <!-- Name extension and sex -->
-                <div class="grid grid-cols-2 gap-4 md:mb-2 mb-3">
+                <div class="grid grid-cols-2 gap-4 mb-2">
                     <div>
                         <label for="nameExtension" class="mt-[0.8rem] block mb-2 text-sm font-medium text-gray-900 md:mt-6">Name Extension</label>
                         <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
@@ -93,6 +93,7 @@ if (isset($_GET['id'])) {
                 <button type="submit" name="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 md:mb-1 text-center">Update
                     Account</button>
             </form>
+
             <!-- SQL Query for upodating librarian account -->
             <?php
             if (isset($_POST['submit'])) {
@@ -109,7 +110,7 @@ if (isset($_GET['id'])) {
                 if ($result) {
                     echo "<script>
                         alert('Account updated successfully.');
-                        window.location.href='librarian-registration.php'
+                        window.location.href='librarian-accounts.php'
                         </script>";
                 }
             }
@@ -117,9 +118,10 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </div>
+
 <!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
-    <a href="./librarian-registration.php">
+    <a href="./librarian-accounts.php">
         <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-400">
             Back
         </button>

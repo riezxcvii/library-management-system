@@ -22,7 +22,7 @@ include('navigation-bar.php');
                 <span class="md:text-base text-sm text-gray-400 font-semiabold">Manage registrations.</span>
             </div>
             <div class="flex gap-4 justify-center mb-1 md:mb-0">
-                <a href="librarian-registration.php" class="w-full">
+                <a href="librarian-accounts.php" class="w-full">
                     <button type="button" class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 md:py-2.5 py-2 inline-flex justify-center w-full sm:text-center">Librarian</button>
                 </a>
                 <a href="borrower-pending-registration.php" class="w-full">
@@ -37,7 +37,7 @@ include('navigation-bar.php');
                 <span class="md:text-base text-sm text-gray-400 font-semiabold">Manage user accounts.</span>
             </div>
             <div class="flex gap-4 justify-center mb-1 md:mb-0">
-                <a href="librarian-accounts.php" class="w-full">
+                <a href="librarian-manage-accounts.php" class="w-full">
                     <button type="button" class="text-white bg-blue-500 hover:bg-blue-500 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 md:py-2.5 py-2 inline-flex justify-center w-full sm:text-center">Librarian</button>
                 </a>
                 <a href="borrower-accounts.php" class="w-full">

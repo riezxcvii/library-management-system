@@ -5,35 +5,37 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="flex justify-center items-center h-screen">
-    <div class="bg-gray-50 rounded-md md:my-0 my-[6rem] md:mx-12 mx-3 md:mb-8 md:mt-[1rem] mt-[2rem] w-[30rem]">
+<div class="flex justify-center items-center h-full md:mt-[-0.4rem] mb-0 mt-[-3.2rem]">
+    <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
+
         <?php
         $sql = "SELECT * FROM library_admin WHERE admin_ID = $id";
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($res);
         ?>
+
         <!-- Form -->
-        <div class="md:p-8 p-4 py-8 md:px-8">
-            <h3 class="mb-4 md:text-xl text-lg font-medium text-gray-900 text-center">Registration Form</h3>
+        <div class="md:p-8 p-6 md:px-8">
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6">Registration Details</h3>
             <!-- Username, role, and registered on -->
-            <div class="grid grid-cols-3 gap-4 md:mt-4 mt-6">
+            <div class="grid grid-cols-3 gap-4 mb-6">
                 <div>
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                     <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['username'] ?>">
                 </div>
                 <div>
                     <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                    <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                    <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                         <option value="" selected><?php echo $row['role'] ?></option>
                     </select>
                 </div>
                 <div>
-                    <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Registered On</label>
-                    <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date']; ?>">
+                    <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
+                    <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date']; ?>">
                 </div>
             </div>
             <!-- Last name, first name, and middle name -->
-            <div class="grid grid-cols-3 gap-4 md:mb-0 mb-6">
+            <div class="grid grid-cols-3 gap-4 mb-6">
                 <div>
                     <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                     <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $row['last_name'] ?>">
@@ -76,9 +78,10 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </div>
+
 <!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
-    <a href="librarian-registration.php">
+    <a href="librarian-accounts.php">
         <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-400">
             Back
         </button>
