@@ -52,6 +52,7 @@ require '../db/conDB.php';
         <h4 style="text-align:center; margin-top:-2%">ANS LIBRARY REPORT</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-2.7%">LIST OF ALL LIBRARY USER</h4>
     </div>
+
     <!-- Date prepared -->
     <br>
     <b style="text-align:right">DATE PREPARED:</b>
@@ -60,6 +61,7 @@ require '../db/conDB.php';
     echo $date;
     ?>
     <br><br>
+
     <!-- Table -->
     <table class="sum12" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tbody>
@@ -73,6 +75,7 @@ require '../db/conDB.php';
                 <td style="font-weight:bold; text-align:center; width:10%; border:1px solid black; padding:6px">GENDER</td>
                 <td style="font-weight:bold; text-align:center; width:10%; border:1px solid black; padding:6px">ACCOUNT STATUS</td>
             </tr>
+            
             <!-- Display all library user with active accounts -->
             <?php
             require '../db/conDB.php';

@@ -42,8 +42,9 @@ require '../db/conDB.php';
 </style>
 
 <body>
+    <!-- Bondpaper header -->
     <div>
-        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:12%; height:8vh;">
+        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:11%; height:7.4vh;">
         <h4 style="text-align:center; font-weight:500; margin-top:1%">REPUBLIC OF THE PHILPPINES</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-2.7%">ANTIQUE NATIONAL SCHOOL</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-2.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
@@ -52,6 +53,7 @@ require '../db/conDB.php';
         <h4 style="text-align:center; font-weight:500; margin-top:-2.7%">LOG HISTORY</h4>
     </div>
 
+    <!-- Date prepared -->
     <br>
     <b style="text-align:right">DATE PREPARED:</b>
     <?php
@@ -60,6 +62,7 @@ require '../db/conDB.php';
     ?>
     <br><br>
 
+    <!-- Table -->
     <table id="table" class="result10" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tr>
             <td style="font-weight:bold; text-align:center; width:16%; border:1px solid black">NAME</td>
@@ -67,6 +70,8 @@ require '../db/conDB.php';
             <td style="font-weight:bold; text-align:center; width:3%; border:1px solid black">TIME IN</td>
             <td style="font-weight:bold; text-align:center; width:4%; border:1px solid black">TIME OUT</td>
         </tr>
+
+        <!-- Display all log history -->
         <?php
         require '../db/conDB.php';
         $sql = "SELECT * FROM `log_history` ORDER BY `date` ASC, `time_in` ASC";
@@ -74,6 +79,7 @@ require '../db/conDB.php';
         $sn = 1;
         while ($row = mysqli_fetch_assoc($res)) {
         ?>
+        
         <tr>
             <td style="border:1px solid black; padding:1.5px; padding-top:3px; padding-left:10px">
                 <?php

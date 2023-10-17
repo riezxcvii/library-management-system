@@ -12,7 +12,6 @@ require '../db/conDB.php';
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 0.5in;
     }
 
     .table {
@@ -37,24 +36,24 @@ require '../db/conDB.php';
     }
 
     @page {
-        size: auto;
-        /* auto is the initial value */
-        margin: 5%;
-        /* this affects the margin in the printer settings */
+        size: auto; /* Bonpaper size */
+        margin: 10%; /* Bonpaper margin */
     }
 </style>
 
 <body>
+    <!-- Bondpaper header -->
     <div>
-        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:10%;">
+        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:11%; height:8vh;">
         <h4 style="text-align:center; font-weight:500; margin-top:1%">REPUBLIC OF THE PHILPPINES</h4>
-        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">ANTIQUE NATIONAL SCHOOL</h4>
-        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
+        <h4 style="text-align:center; font-weight:500; margin-top:-2.7%">ANTIQUE NATIONAL SCHOOL</h4>
+        <h4 style="text-align:center; font-weight:500; margin-top:-2.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
         <br>
-        <h4 style="text-align:center; margin-top:-1.5%">ANS LIBRARY REPORT</h4>
-        <h4 style="text-align:center; font-weight:500; margin-top:-1.5%">LIST OF ALL ADMIN AND LIBRARIAN</h4>
+        <h4 style="text-align:center; margin-top:-2%">ANS LIBRARY REPORT</h4>
+        <h4 style="text-align:center; font-weight:500; margin-top:-2.7%">LIST OF ALL ADMIN AND LIBRARIAN</h4>
     </div>
 
+    <!-- Date prepared -->
     <br>
     <b style="text-align:right">DATE PREPARED:</b>
     <?php
@@ -63,19 +62,21 @@ require '../db/conDB.php';
     ?>
     <br><br>
 
+    <!-- Table -->
     <table class="sum12" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tbody>
             <tr>
-                <td id="colLRN13" style="font-weight:bold; text-align:center; width:7%; border:1px solid black; padding:6px">USERNAME</td>
-                <td id="colNo13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ROLE</td>
-                <td id="colSur13" style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">LAST NAME</td>
-                <td id="colFirst13" style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">FIRST NAME</td>
-                <td id="colMid13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">MIDDLE INITIAL</td>
-                <td id="colExt13" style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">NAME EXTENSION</td>
-                <td id="colGender13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">GENDER</td>
-                <td id="colGender13" style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ACCOUNT STATUS</td>
+                <td style="font-weight:bold; text-align:center; width:7%; border:1px solid black; padding:6px">USERNAME</td>
+                <td style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ROLE</td>
+                <td style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">LAST NAME</td>
+                <td style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">FIRST NAME</td>
+                <td style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">MIDDLE INITIAL</td>
+                <td style="font-weight:bold; text-align:center; width:6%; border:1px solid black; padding:6px">NAME EXTENSION</td>
+                <td style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">GENDER</td>
+                <td style="font-weight:bold; text-align:center; width:5%; border:1px solid black; padding:6px">ACCOUNT STATUS</td>
             </tr>
 
+            <!-- Display all admins and librarians -->
             <?php
             require '../db/conDB.php';
             $query = $conn->query("SELECT * FROM `library_admin` WHERE status = 1");
@@ -83,33 +84,31 @@ require '../db/conDB.php';
                 $deactivate = $fetch['deactivate'];
             ?>
 
-                <tr>
-                    <td id="sur13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['username'] ?></td>
-                    <td id="sur13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['role'] ?></td>
-                    <td id="first13" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['last_name'] ?></td>
-                    <td id="mid13" style="border:1px solid black; padding:1.5px; padding-left:10px; padding-top:3px"><?php echo $fetch['first_name'] ?></td>
-                    <td id="ext13" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['middle_initial'] ?></td>
-                    <td id="gender13" style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['name_extension'] ?></td>
-                    <td id="gender13" style="border:1px solid black; padding-left:10px; padding-top:3px"><?php echo $fetch['sex'] ?></td>
-                    <?php
-                    if ($deactivate == 0) {
-                    ?>
-                        <td id="gender13" style="border:1px solid black; padding-left:5px; padding-top:3px">Active</td>
-                    <?php
-                    } else {
-                    ?>
-                        <td id="gender13" style="border:1px solid black; padding-left:5px; padding-top:3px; color:brown">Deactivated</td>
-                    <?php
-                    }
-                    ?>
-                </tr>
-
+            <tr>
+                <td style="border:1px solid black; padding-left:8px; padding-top:3px"><?php echo $fetch['username'] ?></td>
+                <td style="border:1px solid black; padding-left:8px; padding-top:3px"><?php echo $fetch['role'] ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-left:8px; padding-top:3px"><?php echo $fetch['last_name'] ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-left:8px; padding-top:3px"><?php echo $fetch['first_name'] ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['middle_initial'] ?></td>
+                <td style="border:1px solid black; padding:1.5px; padding-top:3px; text-align:center"><?php echo $fetch['name_extension'] ?></td>
+                <td style="border:1px solid black; padding-left:8px; padding-top:3px"><?php echo $fetch['sex'] ?></td>
+                <?php
+                if ($deactivate == 0) {
+                ?>
+                    <td style="border:1px solid black; padding-left:5px; padding-top:3px">Active</td>
+                <?php
+                } else {
+                ?>
+                    <td style="border:1px solid black; padding-left:5px; padding-top:3px; color:brown">Deactivated</td>
+                <?php
+                }
+                ?>
+            </tr>
             <?php
             }
             ?>
         </tbody>
     </table>
-
 </body>
 
 <script type="text/javascript">
