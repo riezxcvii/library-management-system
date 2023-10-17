@@ -12,7 +12,7 @@ include('navigation-bar.php');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <input type="search" id="default-search" class="h-10 border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-900" placeholder="Search" onkeyup="mySearch()" maxlength="70">
+            <input type="search" id="default-search" class="h-10 border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-900 focus:ring-2 focus:ring-blue-500" placeholder="Search" onkeyup="mySearch()" maxlength="70">
         </div>
     </form>
 </div>

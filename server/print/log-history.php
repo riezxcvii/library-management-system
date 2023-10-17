@@ -43,7 +43,7 @@ require '../db/conDB.php';
 
 <body>
     <div>
-        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:12%; height:8.5vh;">
+        <img src="../../client/assets/logo.png" style="display:block; margin:0 auto 2% auto; width:12%; height:8vh;">
         <h4 style="text-align:center; font-weight:500; margin-top:1%">REPUBLIC OF THE PHILPPINES</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-2.7%">ANTIQUE NATIONAL SCHOOL</h4>
         <h4 style="text-align:center; font-weight:500; margin-top:-2.5%">T.A. FORNIER ST., SAN JOSE, ANTIQUE</h4>
@@ -62,10 +62,10 @@ require '../db/conDB.php';
 
     <table id="table" class="result10" style="border:1px solid black; border-collapse:collapse; width:100%">
         <tr>
-            <td id="ISBN10" id="colNo12" style="font-weight:bold; text-align:center; width:16%; border:1px solid black">NAME</td>
-            <td id="title10" id="colNo12" style="font-weight:bold; text-align:center; width:8%; border:1px solid black">LOG DATE</td>
-            <td id="author10" id="colNo12" style="font-weight:bold; text-align:center; width:3%; border:1px solid black">TIME IN</td>
-            <td id="stat10" id="colNo12" style="font-weight:bold; text-align:center; width:4%; border:1px solid black">TIME OUT</td>
+            <td style="font-weight:bold; text-align:center; width:16%; border:1px solid black">NAME</td>
+            <td style="font-weight:bold; text-align:center; width:8%; border:1px solid black">LOG DATE</td>
+            <td style="font-weight:bold; text-align:center; width:3%; border:1px solid black">TIME IN</td>
+            <td style="font-weight:bold; text-align:center; width:4%; border:1px solid black">TIME OUT</td>
         </tr>
         <?php
         require '../db/conDB.php';
