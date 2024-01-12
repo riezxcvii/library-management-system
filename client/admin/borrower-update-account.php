@@ -12,21 +12,21 @@ if (isset($_GET['id'])) {
 <div class="flex justify-center items-center h-full md:mt-[0rem] mb-0 mt-[-3.2rem]">
     <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
-        <div class="md:p-8 p-6 md:px-8">
-            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6">Update Account Details</h3>
+        <div class="p-6 md:px-8">
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center md:mb-5 mb-6">Update Account Details</h3>
             <!-- Update account details form for students -->
             <?php
             if ($role === 'Student') {
             ?>
                 <form action="#" autocomplete="off" method="POST">
-                    <div class="grid grid-cols-2 gap-4 md:mt-4 mt-6 mb-6">
+                    <div class="grid grid-cols-2 gap-4 md:mt-4 mt-6 md:mb-5 mb-6">
                         <div>
                             <label for="employeeID" class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
                             <input type="number" name="employeeID" id="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" required value="<?php echo $row['id_number'] ?>">
                         </div>
                         <div>
                             <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                            <select name="role" id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select name="role" id="role" class="bg-gray-50 border border-gray-400 text-gray-900 md:mb-5 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value=""></option>
                                 <option value="Student" <?php echo $row['role'] == 'Student' ? 'selected' : '' ?>>Student</option>
                                 <option value="Teacher" <?php echo $row['role'] == 'Teacher' ? 'selected' : '' ?>>Teacher</option>
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
                     <!-- Last name, first name, and middle initial -->
-                    <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="grid grid-cols-3 gap-4 md:mb-5 mb-6">
                         <div class="mt-[-1.7rem]">
                             <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                             <input type="text" name="lastName" id="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required value="<?php echo $row['last_name'] ?>">
@@ -51,10 +51,10 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
                     <!-- Grade level and section -->
-                    <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="grid grid-cols-2 gap-4 md:mb-5 mb-6">
                         <div class="mt-[-0.2rem]">
                             <label for="grade_level" class="block mb-2 text-sm font-medium text-gray-900">Grade Level</label>
-                            <select id="grade_level" name="grade_level" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select id="grade_level" name="grade_level" class="bg-gray-50 border border-gray-400 text-gray-900 md:mb-5 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value=""></option>
                                 <option value="Grade 7" <?php echo $row['grade_level'] == 'Grade 7' ? 'selected' : '' ?>>Grade 7</option>
                                 <option value="Grade 8" <?php echo $row['grade_level'] == 'Grade 8' ? 'selected' : '' ?>>Grade 8</option>
@@ -73,7 +73,7 @@ if (isset($_GET['id'])) {
                     <div class="grid grid-cols-2 gap-4 mb-1">
                         <div class="mt-[-1.7rem]">
                             <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                            <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
+                            <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 md:mb-5 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
                                 <option value="<?php if ($row['name_extension'] == "") {
                                                     echo "";
                                                 } else {
@@ -127,7 +127,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                            <select name="role" id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select name="role" id="role" class="bg-gray-50 border border-gray-400 text-gray-900 md:mb-5 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value=""></option>
                                 <option value="Student" <?php echo $row['role'] == 'Student' ? 'selected' : '' ?>>Student</option>
                                 <option value="Teacher" <?php echo $row['role'] == 'Teacher' ? 'selected' : '' ?>>Teacher</option>
@@ -155,7 +155,7 @@ if (isset($_GET['id'])) {
                     <div class="grid grid-cols-2 gap-4 mt-[-0.6rem] mb-[-1rem]">
                         <div class="mt-8">
                             <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                            <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
+                            <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 md:mb-5 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
                                 <option value="<?php if ($row['name_extension'] == "") {
                                                     echo "";
                                                 } else {

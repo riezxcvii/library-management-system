@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
         ?>
 
         <!-- Form -->
-        <div class="md:p-8 p-6 md:px-8">
+        <div class="p-6 md:px-8">
             <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6">Registration Details</h3>
             <!-- Username, role, and registered on -->
             <div class="grid grid-cols-3 gap-4 mb-6">

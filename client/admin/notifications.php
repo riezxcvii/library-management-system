@@ -5,7 +5,7 @@ include('navigation-bar.php');
 <div class="flex justify-center items-center h-full">
     <div class="bg-gray-50 rounded-md m-8 md:mt-1 mt-[-1.5rem] md:my-4 w-full md:mx-28 overflow-y-auto">
         <!-- Form -->
-        <div class="px-4 py-6 lg:px-8 h-[31rem]">
+        <div class="px-4 py-6 lg:px-8 h-[80vh]">
             <div class="flex justify-between">
                 <h3 class="mb-4 text-xl font-medium text-gray-900">Notifications</h3>
                 <form action="" method="POST">
@@ -31,7 +31,7 @@ include('navigation-bar.php');
                                     <h2 class="font-semibold mb-1"><?php echo $row['borrower_ID'] == 0 ? 'Pending fines' : 'Pending registration' ?></h2>
                                     <h3><?php echo $row['notification_text']; ?></h3>
                                     <form action="" method="POST">
-                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <input type="hidden" name="id" value="<?php echo $row['notification_ID']; ?>">
                                     </form>
                                 </div>
                             </a>

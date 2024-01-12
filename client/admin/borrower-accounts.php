@@ -21,7 +21,8 @@
             }
 
             @page {
-                margin: 0; /* Set margin to 0 to remove header and footer */
+                margin: 0;
+                /* Set margin to 0 to remove header and footer */
                 size: 2.125in 3.375in;
             }
 
@@ -187,7 +188,7 @@
             ?>
             <a href="borrower-pending-registration.php" class="flex">
                 <button type="button" class="h-[2.55rem] mr-4 inline-flex items-center px-5 py-2.5 text-base font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
-                <span class="md:block hidden">Pending Registration</span>
+                    <span class="md:block hidden">Pending Registration</span>
                     <span class="md:hidden block">Pending</span>
                     <span class="inline-flex items-center justify-center w-6 h-6 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full"><?php echo $p['total']; ?></span>
                 </button>
@@ -291,190 +292,191 @@
 
                         ?>
 
-                        <tr class="bg-white border-b text-black font-semibold">
-                            <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
-                                <?php echo $borrower['role'] ?>
-                            </td>
-                            <td class="px-6 py-2">
-                                <?php echo $borrower['last_name'] ?>
-                            </td>
-                            <td class="px-6 py-2">
-                                <?php echo $borrower['first_name'] ?>
-                            </td>
-                            <td class="px-6 py-2">
-                                <?php echo $borrower['middle_initial'] ?>
-                            </td>
-                            <td class="px-6 py-2">
-                                <?php echo $borrower['name_extension'] ?>
-                            </td>
-                            <!-- SQL Query to to display whether an account is active or deactivated -->
-                            <?php
-                            if ($status == '0') {
-                            ?>
+                            <tr class="bg-white border-b text-black font-semibold">
+                                <td scope="row" class="px-6 py-2 font-semibold text-black whitespace-nowrap">
+                                    <?php echo $borrower['role'] ?>
+                                </td>
                                 <td class="px-6 py-2">
-                                    Active
+                                    <?php echo $borrower['last_name'] ?>
                                 </td>
-                            <?php
-                            } else {
-                            ?>
-                                <td class="px-6 py-2 text-red-600">
-                                    Deactivated on <?php echo $deactivateDate; ?>
-                                </td>
-                            <?php
-                            }
-                            ?>
-                            <!-- SQL Query to display whether a borrower has a pending penalty or none -->
-                            <?php
-                            $query = "SELECT * FROM `borrowed_books` WHERE `borrower_ID` = '$borrower[borrower_ID]'";
-                            $qbook = $conn->query($query) or die(mysqli_error($conn));
-                            $fbook = $qbook->fetch_array();
-                            ?>
-                            <?php
-                            if ($fbook['penalty'] > 0) {
-                            ?>
-                                <td class="px-6 py-2 text-red-600">
-                                    <?php echo $fbook['penalty']; ?>.00
-                                </td>
-                            <?php
-                            } else {
-                            ?>
                                 <td class="px-6 py-2">
-
+                                    <?php echo $borrower['first_name'] ?>
                                 </td>
-                            <?php
-                            }
-                            ?>
-                            <!-- Display activate button if the account has been deactivate -->
-                            <?php
-                            if ($status == '1') {
-                            ?>
-                                <td class="px-6 py-2 justify-center flex">
-                                    <!-- Activate button -->
-                                    <a href="#" id="<?php echo $id; ?>" class="actbutton">
-                                        <svg class="w-[1.6rem] text-black items-center align-middle my-2 mr-[1rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </a>
-                                    <!-- Update button -->
-                                    <a href="./borrower-update-account.php?id=<?php echo $id ?>">
-                                        <svg class="w-6 text-black items-center align-middle my-2 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
-                                        </svg>
-                                    </a>
-                                    <!-- View button -->
-                                    <svg class="w-6 text-black items-center align-middle my-2" data-modal-target="view-modal_<?php echo $id; ?>" data-modal-toggle="view-modal_<?php echo $id; ?>" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-
-                                    <div id="view-modal_<?php echo $id; ?>" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                        <div class="relative w-full max-w-md max-h-full">
-                                            <!-- View form modal content -->
-                                            <div class="relative bg-gray-200 rounded-lg shadow">
-                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="view-modal_<?php echo $id; ?>">
-                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span class="sr-only">Close modal</span>
-                                                </button>
-                                                <div class="px-6 pt-6 pb-2 lg:px-8">
-                                                    <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
-                                                    <form class="space-y-6" action="#" autocomplete="off">
-                                                        <!-- ID number, role, and date registered -->
-                                                        <div class="grid grid-cols-3 gap-4 mb-[-1.4rem]">
-                                                            <div>
-                                                                <label for="employeeID" class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
-                                                                <input type="number" id="employeeID" name="employeeID" id="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $borrower['id_number'] ?>">
-                                                            </div>
-                                                            <div>
-                                                                <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                                                                <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
-                                                                    <option value="" selected><?php echo $role ?></option>
-                                                                    <option value="Student">Student</option>
-                                                                    <option value="Teacher">Teacher</option>
-                                                                </select>
-                                                            </div>
-                                                            <div>
-                                                                <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
-                                                                <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $borrower['registered_date']; ?>">
-                                                            </div>
-                                                        </div>
-                                                        <!-- Last name, first name, and middle name -->
-                                                        <div class="grid grid-cols-3 gap-4 mt-[1.5rem]">
-                                                            <div>
-                                                                <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
-                                                                <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $last ?>">
-                                                            </div>
-                                                            <div>
-                                                                <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">First
-                                                                    Name</label>
-                                                                <input type="text" id="firstName" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" disabled value="<?php echo $first ?>">
-                                                            </div>
-                                                            <div>
-                                                                <label for="middleInitial" class="block mb-2 text-sm font-medium text-gray-900">Middle
-                                                                    Initial</label>
-                                                                <input type="text" id="middleInitial" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $middle ?>">
-                                                            </div>
-                                                        </div>
-                                                        <!-- Name extension and sex -->
-                                                        <div class="grid grid-cols-2 gap-4">
-                                                            <div>
-                                                                <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                                                                <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
-                                                                    <option value="" selected><?php echo $extension ?></option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="flex">
-                                                                <label class="block text-sm font-medium text-gray-900">Sex</label>
-                                                                <div class="flex items-center mb-4 md:mr-4 mr-2">
-                                                                    <input id="female" <?php if ($sex == 'Female') {
-                                                                                            echo 'checked';
-                                                                                        } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mt-5 ml-[-1rem]" disabled>
-                                                                    <label for="female" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Female</label>
-                                                                </div>
-                                                                <div class="flex items-center mb-4">
-                                                                    <input id="male" <?php if ($sex == 'Male') {
-                                                                                            echo 'checked';
-                                                                                        } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mt-5" disabled>
-                                                                    <label for="male" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Male</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <td class="px-6 py-2">
+                                    <?php echo $borrower['middle_initial'] ?>
                                 </td>
-                            <?php
-                            // Display deactivate button if the account has been deactivateis active
-                            } else {
-                            ?>
-                                <td class="px-6 py-2 justify-center flex">
-                                    <!-- Deactivate button -->
-                                    <a href="#" id="<?php echo $id; ?>" class="delbutton">
-                                        <svg class="w-6 text-black items-center align-middle my-2 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
-                                        </svg>
-                                    </a>
-                                    <!-- Update button -->
-                                    <a href="./borrower-update-account.php?id=<?php echo $id ?>">
-                                        <svg class="w-6 text-black items-center align-middle my-2 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
-                                        </svg>
-                                    </a>
-                                    <!-- View button -->
-                                    <a href="./borrower-view-account.php?id=<?php echo $id ?>">
-                                        <svg class="w-6 text-black items-center align-middle my-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <td class="px-6 py-2">
+                                    <?php echo $borrower['name_extension'] ?>
+                                </td>
+                                <!-- SQL Query to to display whether an account is active or deactivated -->
+                                <?php
+                                if ($status == '0') {
+                                ?>
+                                    <td class="px-6 py-2">
+                                        Active
+                                    </td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td class="px-6 py-2 text-red-600">
+                                        Deactivated on <?php echo $deactivateDate; ?>
+                                    </td>
+                                <?php
+                                }
+                                ?>
+                                <!-- SQL Query to display whether a borrower has a pending penalty or none -->
+                                <?php
+                                $query = "SELECT * FROM `borrowed_books` WHERE `borrower_ID` = '$borrower[borrower_ID]'";
+                                $qbook = $conn->query($query) or die(mysqli_error($conn));
+                                $fbook = $qbook->fetch_array();
+                                ?>
+                                <?php
+                                if ($fbook !== null && isset($fbook['penalty']) && $fbook['penalty'] > 0) {
+                                ?>
+                                    <td class="px-6 py-2 text-red-600">
+                                        <?php echo $fbook['penalty']; ?>.00
+                                    </td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td class="px-6 py-2">
+
+                                    </td>
+                                <?php
+                                }
+                                ?>
+
+                                <!-- Display activate button if the account has been deactivate -->
+                                <?php
+                                if ($status == '1') {
+                                ?>
+                                    <td class="px-6 py-2 justify-center flex">
+                                        <!-- Activate button -->
+                                        <a href="#" id="<?php echo $id; ?>" class="actbutton">
+                                            <svg class="w-[1.6rem] text-black items-center align-middle my-2 mr-[1rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </a>
+                                        <!-- Update button -->
+                                        <a href="./borrower-update-account.php?id=<?php echo $id ?>">
+                                            <svg class="w-6 text-black items-center align-middle my-2 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+                                            </svg>
+                                        </a>
+                                        <!-- View button -->
+                                        <svg class="w-6 text-black items-center align-middle my-2" data-modal-target="view-modal_<?php echo $id; ?>" data-modal-toggle="view-modal_<?php echo $id; ?>" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                         </svg>
-                                    </a>
-                                </td>
-                            <?php
-                            }
-                            ?>
-                        </tr>
+
+                                        <div id="view-modal_<?php echo $id; ?>" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative w-full max-w-md max-h-full">
+                                                <!-- View form modal content -->
+                                                <div class="relative bg-gray-200 rounded-lg shadow">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="view-modal_<?php echo $id; ?>">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                    <div class="px-6 pt-6 pb-2 lg:px-8">
+                                                        <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
+                                                        <form class="space-y-6" action="#" autocomplete="off">
+                                                            <!-- ID number, role, and date registered -->
+                                                            <div class="grid grid-cols-3 gap-4 mb-[-1.4rem]">
+                                                                <div>
+                                                                    <label for="employeeID" class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
+                                                                    <input type="number" id="employeeID" name="employeeID" id="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $borrower['id_number'] ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                                                    <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                                                        <option value="" selected><?php echo $role ?></option>
+                                                                        <option value="Student">Student</option>
+                                                                        <option value="Teacher">Teacher</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div>
+                                                                    <label for="DATE" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
+                                                                    <input id="DATE" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $borrower['registered_date']; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Last name, first name, and middle name -->
+                                                            <div class="grid grid-cols-3 gap-4 mt-[1.5rem]">
+                                                                <div>
+                                                                    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
+                                                                    <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $last ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">First
+                                                                        Name</label>
+                                                                    <input type="text" id="firstName" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" disabled value="<?php echo $first ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="middleInitial" class="block mb-2 text-sm font-medium text-gray-900">Middle
+                                                                        Initial</label>
+                                                                    <input type="text" id="middleInitial" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1" disabled value="<?php echo $middle ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Name extension and sex -->
+                                                            <div class="grid grid-cols-2 gap-4">
+                                                                <div>
+                                                                    <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
+                                                                    <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                                                        <option value="" selected><?php echo $extension ?></option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="flex">
+                                                                    <label class="block text-sm font-medium text-gray-900">Sex</label>
+                                                                    <div class="flex items-center mb-4 md:mr-4 mr-2">
+                                                                        <input id="female" <?php if ($sex == 'Female') {
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mt-5 ml-[-1rem]" disabled>
+                                                                        <label for="female" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Female</label>
+                                                                    </div>
+                                                                    <div class="flex items-center mb-4">
+                                                                        <input id="male" <?php if ($sex == 'Male') {
+                                                                                                echo 'checked';
+                                                                                            } ?> type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mt-5" disabled>
+                                                                        <label for="male" class="md:ml-2 ml-1 text-sm font-medium text-gray-900 mt-5">Male</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                <?php
+                                    // Display deactivate button if the account has been deactivateis active
+                                } else {
+                                ?>
+                                    <td class="px-6 py-2 justify-center flex">
+                                        <!-- Deactivate button -->
+                                        <a href="#" id="<?php echo $id; ?>" class="delbutton">
+                                            <svg class="w-6 text-black items-center align-middle my-2 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
+                                            </svg>
+                                        </a>
+                                        <!-- Update button -->
+                                        <a href="./borrower-update-account.php?id=<?php echo $id ?>">
+                                            <svg class="w-6 text-black items-center align-middle my-2 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+                                            </svg>
+                                        </a>
+                                        <!-- View button -->
+                                        <a href="./borrower-view-account.php?id=<?php echo $id ?>">
+                                            <svg class="w-6 text-black items-center align-middle my-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                <?php
+                                }
+                                ?>
+                            </tr>
                         <?php
                         }
                         ?>
@@ -483,7 +485,7 @@
             </div>
         </div>
 
-        <!-- Back and print button -->      
+        <!-- Back and print button -->
         <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
             <a href="../../server/print/borrower-accounts.php" target="_blank">
                 <button id="print" type="button" class="mr-2 inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
@@ -501,38 +503,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="../js/sort.js"></script>
     <script>
-    function mySearch() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("default-search");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("table");
-        tr = table.getElementsByTagName("tr");
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 1; i < tr.length; i++) {
-            column1 = tr[i].getElementsByTagName("td")[0];
-            column2 = tr[i].getElementsByTagName("td")[1];
-            column3 = tr[i].getElementsByTagName("td")[2];
-            column4 = tr[i].getElementsByTagName("td")[3];
-            column5 = tr[i].getElementsByTagName("td")[4];
-            column6 = tr[i].getElementsByTagName("td")[5];
-            column7 = tr[i].getElementsByTagName("td")[6];
-            if (column1 && column2 && column3 && column4 && column5 && column6) {
-                column1 = column1.textContent || column1.innerText;
-                column2 = column2.textContent || column2.innerText;
-                column3 = column3.textContent || column3.innerText;
-                column4 = column4.textContent || column4.innerText;
-                column5 = column5.textContent || column5.innerText;
-                column6 = column6.textContent || column6.innerText;
-                column7 = column7.textContent || column7.innerText;
-                if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1 || column7.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+        function mySearch() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("default-search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 1; i < tr.length; i++) {
+                column1 = tr[i].getElementsByTagName("td")[0];
+                column2 = tr[i].getElementsByTagName("td")[1];
+                column3 = tr[i].getElementsByTagName("td")[2];
+                column4 = tr[i].getElementsByTagName("td")[3];
+                column5 = tr[i].getElementsByTagName("td")[4];
+                column6 = tr[i].getElementsByTagName("td")[5];
+                column7 = tr[i].getElementsByTagName("td")[6];
+                if (column1 && column2 && column3 && column4 && column5 && column6) {
+                    column1 = column1.textContent || column1.innerText;
+                    column2 = column2.textContent || column2.innerText;
+                    column3 = column3.textContent || column3.innerText;
+                    column4 = column4.textContent || column4.innerText;
+                    column5 = column5.textContent || column5.innerText;
+                    column6 = column6.textContent || column6.innerText;
+                    column7 = column7.textContent || column7.innerText;
+                    if (column1.toUpperCase().indexOf(filter) > -1 || column2.toUpperCase().indexOf(filter) > -1 || column3.toUpperCase().indexOf(filter) > -1 || column4.toUpperCase().indexOf(filter) > -1 || column5.toUpperCase().indexOf(filter) > -1 || column6.toUpperCase().indexOf(filter) > -1 || column7.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
             }
         }
-    }
     </script>
 </body>
 

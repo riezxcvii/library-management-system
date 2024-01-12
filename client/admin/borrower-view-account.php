@@ -25,21 +25,21 @@ if (isset($_GET['id'])) {
             }
             ?>
 
-            <div class="px-6 py-6 lg:px-8">
+            <div class="px-6 py-6 md:px-8">
                 <?php
                 if ($role === 'Student') {
                 ?>
                     <form action="" autocomplete="off" method="POST">
-                        <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
+                        <h3 class="mb-6 md:mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
                         <!-- ID number, role, and date registered -->
-                        <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="grid grid-cols-3 gap-4 mb-6 md:mb-4">
                             <div>
                                 <label for="employeeID" class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
                                 <input type="text" id="employeeID" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['id_number'] ?>">
                             </div>
                             <div>
                                 <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                                <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                                     <option value="<?php echo $row['role'] ?>" selected><?php echo $row['role'] ?></option>
                                     <option value="Student">Student</option>
                                     <option value="Teacher">Teacher</option>
@@ -47,11 +47,11 @@ if (isset($_GET['id'])) {
                             </div>
                             <div>
                                 <label for="registrationaDate" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
-                                <input id="registrationaDate" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date'] ?>">
+                                <input id="registrationaDate" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date'] ?>">
                             </div>
                         </div>
                         <!-- Last name, first name, and middle initial -->
-                        <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="grid grid-cols-3 gap-4 mb-6 md:mb-4">
                             <div class="mt-[-1.7rem]">
                                 <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                                 <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $row['last_name'] ?>">
@@ -68,10 +68,10 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                         <!-- Grade level and section -->
-                        <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="grid grid-cols-2 gap-4 mb-6 md:mb-4">
                             <div class="mt-[-0.2rem]">
                                 <label for="grade_level" class="block mb-2 text-sm font-medium text-gray-900">Grade Level</label>
-                                <select id="grade_level" name="grade_level" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5" disabled>
+                                <select id="grade_level" name="grade_level" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5" disabled>
                                     <option value="<?php echo $row['grade_level'] ?>" selected><?php echo $row['grade_level'] ?></option>
                                 </select>
                             </div>
@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
                         <div class="grid grid-cols-2 gap-4 mb-1">
                             <div class="mt-[-1.7rem]">
                                 <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                                <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                                     <option value="<?php echo $row['name_extension'] ?>" selected><?php echo $row['name_extension'] ?></option>
                                 </select>
                             </div>
@@ -114,16 +114,16 @@ if (isset($_GET['id'])) {
                 } else {
                 ?>
                     <form action="" autocomplete="off" method="POST">
-                        <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
+                        <h3 class="mb-6 md:mb-4 text-xl font-medium text-gray-900 text-center">Registration Details</h3>
                         <!-- ID number, role, and date registered -->
-                        <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="grid grid-cols-3 gap-4 mb-6 md:mb-4">
                             <div>
                                 <label for="employeeID" class="block mb-2 text-sm font-medium text-gray-900">ID Number</label>
                                 <input type="text" id="employeeID" name="employeeID" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==15) return false;" disabled value="<?php echo $row['id_number'] ?>">
                             </div>
                             <div>
                                 <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                                <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                <select id="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                                     <option value="<?php echo $row['role'] ?>" selected><?php echo $row['role'] ?></option>
                                     <option value="Student">Student</option>
                                     <option value="Teacher">Teacher</option>
@@ -131,11 +131,11 @@ if (isset($_GET['id'])) {
                             </div>
                             <div>
                                 <label for="registrationaDate" class="block mb-2 text-sm font-medium text-gray-900">Registered</label>
-                                <input id="registrationaDate" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date'] ?>">
+                                <input id="registrationaDate" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled value="<?php echo $row['registered_date'] ?>">
                             </div>
                         </div>
                         <!-- Last name, first name, and middle initial -->
-                        <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="grid grid-cols-3 gap-4 mb-6 md:mb-4">
                             <div class="mt-[-1.4rem]">
                                 <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                                 <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5" maxlength="20" disabled value="<?php echo $row['last_name'] ?>">
@@ -155,7 +155,7 @@ if (isset($_GET['id'])) {
                         <div class="grid grid-cols-2 gap-4 mb-1">
                             <div>
                                 <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                                <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
+                                <select id="nameExtension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 text-center" disabled>
                                     <option value="<?php echo $row['name_extension'] ?>" selected><?php echo $row['name_extension'] ?></option>
                                 </select>
                             </div>

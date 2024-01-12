@@ -5,11 +5,11 @@ include('navigation-bar.php');
 <div class="flex justify-center items-center h-full md:mt-[0rem] mb-0 mt-[-3.2rem]">
     <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
-        <div class="md:p-8 p-6 md:px-8">
-            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6">Registration Form</h3>
+        <div class="p-6 md:px-8">
+            <h3 class="md:text-xl text-lg font-medium text-gray-900 text-center mb-6 md:mb-4">Registration Form</h3>
             <form action="#" autocomplete="off" method="POST">
             <!-- Username and password -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="grid grid-cols-2 gap-4 mb-6 md:mb-4">
                     <div>
                         <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                         <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="5" required>
@@ -22,14 +22,14 @@ include('navigation-bar.php');
                 <!-- Role -->
                 <div class="md:mb-0 mb-4">
                     <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                    <select id="role" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                    <select id="role" name="role" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         <option value="" selected>Select Role</option>
                         <option value="Admin">Admin</option>
                         <option value="Librarian">Librarian</option>
                     </select>
                 </div>
                 <!-- Last name, first name, and middle initial -->
-                <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="grid grid-cols-3 gap-4 mb-6 md:mb-4">
                     <div>
                         <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                         <input type="text" id="lastName" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required maxlength="20" minlength="2">
@@ -49,7 +49,7 @@ include('navigation-bar.php');
                 <div class="grid grid-cols-2 gap-4 mb-1">
                     <div>
                         <label for="nameExtension" class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
-                        <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
+                        <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 md:mb-4 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
                             <option value="" selected>Select Extension</option>
                             <option value="Jr">Jr</option>
                             <option value="Sr">Sr</option>
