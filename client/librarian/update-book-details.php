@@ -8,14 +8,16 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="flex justify-center items-center my-4">
-    <div class="bg-gray-50 rounded-md m-12 my-2 w-[55rem] h-full">
-        <div class="px-4 py-4 lg:px-8">
+<div class="flex justify-center items-center my-auto py-4">
+    <div class="bg-gray-50 rounded-md md:w-[55rem] h-full">
+        <!-- Form -->
+        <div class="px-6 py-6 lg:px-8 md:w-full w-[20.5rem]">
             <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Edit Book Details</h3>
             <form class="space-y-4" action="" autocomplete="off" method="POST">
-                <div class="grid grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-0">
                     <div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Book title and book category -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:md:gap-4 gap-0 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Book Title</label>
                                 <input type="text" name="book_title" value="<?php echo $row['title']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
@@ -42,27 +44,27 @@ if (isset($_GET['id'])) {
                                 </select>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Publisher, place of publication, copyright, and number of pages -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Publisher</label>
-                                <input type="text" name="publisher" value="<?php echo $row['publisher']; ?>" class="mb-1 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
+                                <input type="text" name="publisher" value="<?php echo $row['publisher']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Place of Publication</label>
                                 <input type="text" name="place_of_publication" value="<?php echo $row['publication_place']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Copyright</label>
                                 <input type="number" name="copyright" value="<?php echo $row['copyright_year']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==4) return false;">
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
                                 <input type="number" name="number_of_pages" value="<?php echo $row['pages']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- ISBN and book status -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
                                 <input type="text" name="isbn" value="<?php echo $row['isbn']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
@@ -76,8 +78,8 @@ if (isset($_GET['id'])) {
                                 </select>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Edition and volume -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Edition</label>
                                 <select id="edition" name="edition" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
@@ -132,9 +134,9 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                     </div>
-
+                    <!-- Date received and number of copies -->
                     <div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Date Received</label>
                                 <input type="date" name="received" value="<?php echo $row['date_receive']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -144,8 +146,8 @@ if (isset($_GET['id'])) {
                                 <input type="number" name="number_of_copies" value="<?php echo $row['copies']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;">
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Classification number, accession number and author's first name and last name -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Classification Number</label>
                                 <input type="text" name="classification_number" value="<?php echo $row['classification_number']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
@@ -154,17 +156,17 @@ if (isset($_GET['id'])) {
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Accession Number</label>
                                 <input type="text" name="accession_number" value="<?php echo $row['accession_number']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's First Name</label>
                                 <input type="text" name="author_first" value="<?php echo $row['author_firstname']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20">
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's Last Name</label>
                                 <input type="text" name="author_last" value="<?php echo $row['author_lastname']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20">
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Source of fund and cost -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Source of Fund</label>
                                 <input type="text" name="source_of_fund" value="<?php echo $row['source_fund']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30">
@@ -174,8 +176,8 @@ if (isset($_GET['id'])) {
                                 <input type="text" name="cost" value="<?php echo $row['cost']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="6">
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Physical description and tracing -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Physical Description</label>
                                 <input type="text" name="physical" value="<?php echo $row['physical_description']; ?>" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
@@ -187,8 +189,9 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-8 pb-2 mt-[-0.5rem]">
-                    <button type="submit" name="submit" class="w-[48.4rem] text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update
+                <!-- Update and back buttons -->
+                <div class="flex md:gap-8 gap-4 pb-2 mt-[-0.5rem]">
+                    <button type="submit" name="submit" class="md:w-[48.4rem] w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update
                         Book</button>
                     <a href="./all-books.php" class="w-full">
                         <button type="button" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 w-full items-center justify-center flex">
@@ -197,6 +200,7 @@ if (isset($_GET['id'])) {
                     </a>
                 </div>
             </form>
+            
             <p class="text-center mt-2 text-red-500 font-bold">
                 <?php
                 include("../../server/db/conDB.php");

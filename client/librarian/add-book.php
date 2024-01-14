@@ -2,14 +2,16 @@
 include('navigation-bar.php');
 ?>
 
-<div class="flex justify-center items-center my-4">
-    <div class="bg-gray-50 rounded-md m-12 my-2 w-[55rem] h-full">
-        <div class="px-4 py-4 lg:px-8">
+<div class="flex justify-center items-center my-auto py-4">
+    <div class="bg-gray-50 rounded-md md:w-[55rem] h-full">
+        <!-- Form -->
+        <div class="px-6 py-6 lg:px-8 md:w-full w-[20.5rem]">
             <h3 class="mb-6 text-xl font-medium text-gray-900 text-center">Add Book</h3>
             <form class="space-y-4" action="" autocomplete="off" method="POST">
-                <div class="grid grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-0">
                     <div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Book title and book category -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Book Title</label>
                                 <input type="text" name="book_title" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
@@ -26,27 +28,27 @@ include('navigation-bar.php');
                                 </select>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Publisher, place of publication, copyright, and number of pages -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Publisher</label>
-                                <input type="text" name="publisher" class="mb-1 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
+                                <input type="text" name="publisher" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Place of Publication</label>
                                 <input type="text" name="place_of_publication" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70" required>
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Copyright</label>
                                 <input type="number" name="copyright" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==4) return false;" required>
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Number of pages</label>
                                 <input type="number" name="number_of_pages" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;" required>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- ISBN, edition and volume -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Book ISBN</label>
                                 <input type="text" name="isbn" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
@@ -57,7 +59,7 @@ include('navigation-bar.php');
                                 </div>
                                 <div id="result" class="h-0"></div>
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Edition</label>
                                 <select id="edition" name="edition" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
                                     <option value="">Select Edition</option>
@@ -73,7 +75,7 @@ include('navigation-bar.php');
                                     <option value="X Edition">X Edition</option>
                                 </select>
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Volume</label>
                                 <select id="volume" name="volume" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="15">
                                     <option value="">Select Volume</option>
@@ -91,9 +93,9 @@ include('navigation-bar.php');
                             </div>
                         </div>
                     </div>
-
+                    <!-- Date received and number of copies -->
                     <div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Date Received</label>
                                 <input type="date" name="received" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -103,8 +105,8 @@ include('navigation-bar.php');
                                 <input type="number" name="number_of_copies" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onKeyPress="if(this.value.length==5) return false;" required>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Classification number, accession number and author's first name and last name -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Classification Number</label>
                                 <input type="text" name="classification_number" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
@@ -113,17 +115,17 @@ include('navigation-bar.php');
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Accession Number</label>
                                 <input type="text" name="accession_number" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="10">
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's First Name</label>
                                 <input type="text" name="author_first" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
                             </div>
-                            <div class="mt-[-1rem]">
+                            <div class="md:mt-[-1rem]">
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Author's Last Name</label>
                                 <input type="text" name="author_last" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Source of fund and cost -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Source of Fund</label>
                                 <input type="text" name="source_of_fund" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="30">
@@ -133,8 +135,8 @@ include('navigation-bar.php');
                                 <input type="text" name="cost" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="6" value="0.00">
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- Physical description and tracing -->
+                        <div class="grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-0">
                             <div>
                                 <label class="block mb-1 text-sm font-medium text-gray-900">Physical Description</label>
                                 <input type="text" name="physical" class="mb-2 bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="70">
@@ -146,8 +148,9 @@ include('navigation-bar.php');
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-8 pb-2 mt-[-0.5rem]">
-                    <button type="submit" name="submit" class="w-[48.4rem] text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                <!-- Add and back buttons -->
+                <div class="flex md:gap-8 gap-4 pb-2 mt-[-0.5rem]">
+                    <button type="submit" name="submit" class="md:w-[48.4rem] w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                         Book</button>
                     <a href="./all-books.php" class="w-full">
                         <button type="button" class="px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 w-full items-center justify-center flex">
@@ -156,6 +159,7 @@ include('navigation-bar.php');
                     </a>
                 </div>
             </form>
+            
             <p class="text-center mt-2 text-red-500 font-bold">
                 <?php
                 include("../../server/db/conDB.php");

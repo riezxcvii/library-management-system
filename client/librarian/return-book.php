@@ -2,32 +2,32 @@
 include('navigation-bar.php');
 ?>
 
-<!--button and search bar-->
-<div class="p-4 flex justify-end">
-    <!--button-->
-    <a href="borrow-book.php" class="flex mr-8">
-        <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300">
-            Borrow a book
+<!-- Button and search bar -->
+<div class="p-4 pt-6 flex justify-end">
+    <!-- Add button -->
+    <a href="borrow-book.php">
+        <button type="button" class="h-[2.55rem] mr-4 inline-flex items-center px-5 py-2.5 text-base font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-400">
+            Borrow Book
         </button>
     </a>
-    <!--search bar-->
+    <!-- Search bar -->
     <form autocomplete="off">
-        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-        <div class="relative w-96">
+        <label for="default-search" class="mb-2 text-sm font-medium sr-only text-white">Search</label>
+        <div class="relative md:w-96 w-40">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <input type="search" id="default-search" class="border-0 block w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-500" placeholder="Search" required onkeyup="mySearch()">
+            <input type="search" id="default-search" class="h-10 border-0 block md:w-full w-full p-4 pl-10 text-sm text-black rounded-lg bg-white focus:border-gray-500 focus:ring-2 focus:ring-blue-500" placeholder="Search" required onkeyup="mySearch()">
         </div>
     </form>
 </div>
 
-<!--table-->
-<div class="p-4 h-screen overflow-y-auto">
-    <div class="relative overflow-y-auto h-full bg-white shadow-md sm:rounded-lg">
-        <table id="table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+<!-- Table -->
+<div class="px-4 pt-2 pb-20 h-screen overflow-y-auto ">
+    <div class="relative overflow-y-auto h-full bg-white shadow-md rounded-lg">
+        <table id="table" class="w-full text-sm text-left text-gray-500">
             <thead class="sticky top-0 text-xs text-white uppercase bg-black">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -35,7 +35,8 @@ include('navigation-bar.php');
                             Borrower
                             <a href="#" onclick="sortTable(0)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -43,7 +44,8 @@ include('navigation-bar.php');
                             Title
                             <a href="#" onclick="sortTable(1)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -51,7 +53,8 @@ include('navigation-bar.php');
                             Status
                             <a href="#" onclick="sortTable(2)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -59,7 +62,8 @@ include('navigation-bar.php');
                             Date Borrowed
                             <a href="#" onclick="sortTable(3)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -67,7 +71,8 @@ include('navigation-bar.php');
                             Date Returned
                             <a href="#" onclick="sortTable(4)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -75,7 +80,8 @@ include('navigation-bar.php');
                             Due Date
                             <a href="#" onclick="sortTable(5)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-5 flex justify-center">
@@ -83,7 +89,8 @@ include('navigation-bar.php');
                             Action
                             <a href="#" onclick="sortTable(6)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -91,7 +98,8 @@ include('navigation-bar.php');
                             Fine
                             <a href="#" onclick="sortTable(7)"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </th>
             </thead>
@@ -115,7 +123,6 @@ include('navigation-bar.php');
                     $book = mysqli_query($conn, "SELECT * FROM books WHERE book_ID = $bookId");
                     $rowBook = mysqli_fetch_assoc($book);
                     $bookName = $rowBook['title'];
-
 
                     // Calculate the penalty based on the number of days overdue
                     $dueDateTimestamp = strtotime($dueDate);
@@ -144,99 +151,98 @@ include('navigation-bar.php');
                         <td class="px-6 py-2">
                             <?php echo $freturn['returned_date'] ?>
                         </td>
+
                         <?php
                         if ($dueDate >= $date) {
                         ?>
                             <td onselectstart="return false"><?php echo $freturn['due_date']; ?></td>
 
                             <td>
-                            <?php
-
+                        <?php
                         } else {
-                            ?>
+                        ?>
                             <td class="text-red-600">
                                 <?php echo $freturn['due_date'] ?>
                             </td>
 
                             <td class="px-6 py-2 flex justify-center">
-                            <?php
+                        <?php
                         }
+                        ?>
 
-                            ?>
+                        <?php
+                        if ($freturn['status'] == 'Returned') {
+                            echo '<center><button disabled = "disabled" class = "btn btn-primary py-3 inline-flex" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>
+                                    <svg class="w-[1rem] mt-[0.1rem] mr-[0.1rem] h-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"></path>
+                                    </svg>RETURNED</button></center>';
+                        } else {
+                        ?>
+                            <a href="../../server/librarian/return.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
+                                <button class="flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">
+                                    <svg class="w-[1rem] h-auto mr-[0.1rem] mt-[0.05rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z"></path>
+                                    </svg>RETURN</button>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                        </td>
 
-                            <?php
-                            if ($freturn['status'] == 'Returned') {
-                                echo '<center><button disabled = "disabled" class = "btn btn-primary py-3 inline-flex" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>
-                                        <svg class="w-[1rem] mt-[0.1rem] mr-[0.1rem] h-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"></path>
-                                      </svg>RETURNED</button></center>';
-                            } else {
-                            ?>
-                                <a href="../../server/librarian/return.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
-                                    <button class="flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2">
-                                        <svg class="w-[1rem] h-auto mr-[0.1rem] mt-[0.05rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z"></path>
-                                        </svg>RETURN</button>
-                                </a>
-                            <?php
-                            }
-                            ?>
-                            </td>
+                        <?php
+                        if ($dueDate < $date) {
+                        ?>
+                            <td class="px-6 py-2 select-none">
+                                <div class="flex items-center">
+                                    <?php
+                                    if ($freturn['paid'] == 1) {
+                                        echo '<center><button disabled = "disabled" class = "mr-1 btn btn-primary flex" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>
+                                                <svg class="w-[1rem] h-auto mr-[0.2rem] mt-[0.15rem]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"></path>
+                                            </svg>PAID</button></center>';
+                                    } else {
+                                    ?>
 
-                            <?php
-                            if ($dueDate < $date) {
-                            ?>
-                                <td class="px-6 py-2 select-none">
-                                    <div class="flex items-center">
-                                        <?php
-                                        if ($freturn['paid'] == 1) {
-                                            echo '<center><button disabled = "disabled" class = "mr-1 btn btn-primary flex" type = "button" href = "#" id="returned6" data-toggle = "modal" data-target = "#return"><span class = "glyphicon glyphicon-check"></span>
-                                                    <svg class="w-[1rem] h-auto mr-[0.2rem] mt-[0.15rem]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <?php
+                                    if ($freturn['paid'] != 1 && $freturn['status'] != 'Borrowed') {
+                                    ?>
+                                        <a href="../../server/librarian/pay.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
+                                            <button class="flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2 mr-1">
+                                                <svg class="w-[1rem] h-auto mr-[0.2rem] mt-[0.05rem]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"></path>
-                                                </svg>PAID</button></center>';
+                                                </svg>PAY
+                                            </button>
+                                        </a>
+                                    <?php
                                         } else {
-                                        ?>
-                                            <?php
-                                            if ($freturn['paid'] != 1 && $freturn['status'] != 'Borrowed') {
-                                            ?>
-                                                <a href="../../server/librarian/pay.php?id=<?php echo $id; ?>" class="flex items-center justify-center">
-                                                    <button class="flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 focus:ring-2 focus:outline-none focus:ring-blue-300 my-2 mr-1">
-                                                        <svg class="w-[1rem] h-auto mr-[0.2rem] mt-[0.05rem]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"></path>
-                                                        </svg>PAY</button>
-                                                </a>
-
-                                        <?php
-                                            } else {
-                                            }
                                         }
+                                    }
 
-                                        $qbook = $conn->query("UPDATE `borrowed_books` SET `penalty` = '$penalty' WHERE `borrow_ID` = '$freturn[borrow_ID]' and status = 'Borrowed'") or die(mysqli_error($conn));
-                                        $qbook1 = $conn->query("SELECT penalty FROM `borrowed_books` WHERE `borrow_ID` = '$freturn[borrow_ID]'") or die(mysqli_error($conn));
-                                        $rows = mysqli_fetch_assoc($qbook1);
-                                        // Assuming `$penalty` holds the penalty amount to be updated
-                                        // Make sure to replace `borrowed_books` with the correct table name in your database
+                                    $qbook = $conn->query("UPDATE `borrowed_books` SET `penalty` = '$penalty' WHERE `borrow_ID` = '$freturn[borrow_ID]' and status = 'Borrowed'") or die(mysqli_error($conn));
+                                    $qbook1 = $conn->query("SELECT penalty FROM `borrowed_books` WHERE `borrow_ID` = '$freturn[borrow_ID]'") or die(mysqli_error($conn));
+                                    $rows = mysqli_fetch_assoc($qbook1);
+                                    // Assuming `$penalty` holds the penalty amount to be updated
+                                    // Make sure to replace `borrowed_books` with the correct table name in your database
 
-                                        // Check if the query was successful
-                                        if ($qbook1) {
-                                            echo ' ' . $rows['penalty'] . '.00'; // Assuming `$penalty` is a valid variable
-                                        } else {
-                                            echo "Error updating penalty: " . mysqli_error($conn);
-                                        }
-                                        ?>
+                                    // Check if the query was successful
+                                    if ($qbook1) {
+                                        echo ' ' . $rows['penalty'] . '.00'; // Assuming `$penalty` is a valid variable
+                                    } else {
+                                        echo "Error updating penalty: " . mysqli_error($conn);
+                                    }
+                                    ?>
+                                </div>
+                            </td>
+                        <?php
 
-                                    </div>
-                                </td>
-                            <?php
+                        } else {
+                        ?>
+                            <td class="px-6 py-2 select-none">
 
-                            } else {
-                            ?>
-                                <td class="px-6 py-2 select-none">
-
-                                </td>
-                            <?php
-                            }
-                            ?>
+                            </td>
+                        <?php
+                        }
+                        ?>
                     </tr>
                 <?php
                 }
@@ -246,10 +252,10 @@ include('navigation-bar.php');
     </div>
 </div>
 
-<!--card modal-->
+<!-- Card catalog modal -->
 <div id="card-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative max-h-full mx-auto flex items-center justify-center w-[55rem]">
-        <!--card modal content-->
+    <div class="relative max-h-full mx-auto flex items-center justify-center w-[40rem]">
+        <!-- Card catalog modal content -->
         <div class="relative bg-gray-200 rounded-lg shadow">
             <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="card-modal">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -265,48 +271,38 @@ include('navigation-bar.php');
                             <td id="category" class="text-center px-8 py-1"></td>
                             <td></td>
                         </tr>
-
                         <tr>
                             <td id="authorNumber" class="text-center px-8 py-1"></td>
                             <td></td>
                         </tr>
-
-
                         <tr>
                             <td></td>
                             <td id="author" class="px-8 py-1"></td>
                         </tr>
-
                         <tr>
                             <td></td>
                             <td id="title" class="pl-16 px-8 py-1"></td>
                         </tr>
-
                         <tr>
                             <td></td>
                             <td id="publication" class="px-8 py-1"></td>
                         </tr>
-
                         <tr>
                             <td></td>
                             <td id="physical" class="px-8 py-1"></td>
                         </tr>
-
                         <tr>
                             <td></td>
                             <td id="isbn" class="px-8 py-1"></td>
                         </tr>
-
                         <tr>
                             <td id="accessionNumber" class="px-8 py-1"></td>
                             <td></td>
                         </tr>
-
                         <tr>
                             <td></td>
                             <td id="subject" class="px-8 py-1"></td>
                         </tr>
-
                         <tr>
                             <td></td>
                             <td id="tracing" class="px-8 py-1"></td>
@@ -318,7 +314,8 @@ include('navigation-bar.php');
     </div>
 </div>
 
-<div class="flex justify-end pr-4 pb-2">
+<!-- Back and print button -->
+<div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="../../server/print/returned-books.php" target="_blank">
         <button type="button" class="mr-2 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-500">
             Print
