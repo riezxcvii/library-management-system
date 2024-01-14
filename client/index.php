@@ -41,15 +41,19 @@ session_start();
                         </div>
                     </div>
                 </div>
+                <!-- Links -->
                 <div class="text-right mb-6 text-xs text-blue-600 underline">
                     <a href="./admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
+
                 <!-- Display error message when entered credentials does not match any of the data registered in the database. -->
                 <?php if (isset($_GET['error'])) { ?>
                     <p class="error text-red-600 font-bold text-center mb-4 md:text-base text-sm">
                         <?php echo $_GET['error']; ?>
                     </p>
                 <?php } ?>
+
+                <!-- Button -->
                 <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 flex justify-center items-center mx-auto">Sign
                     in</button>
             </form>
