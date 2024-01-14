@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
         <div class="md:px-2 md:py-1">
-
+            
             <?php
             // Check if the form is submitted
             if ($_SERVER["REQUEST_METHOD"] == "POST") {

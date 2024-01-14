@@ -92,6 +92,7 @@
                 $p = mysqli_fetch_assoc($notifQuery);
                 $Count = $p['total'];
                 ?>
+                
                 <!-- Navigation Links -->
                 <div class="hidden w-full md:block md:w-auto flex justify-end" id="navbar-dropdown">
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700 md:w-auto w-fit">

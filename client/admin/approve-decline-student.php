@@ -90,6 +90,7 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
             </div>
+
             <!-- Approve and decline buttons -->
             <form class="space-y-6" action="" autocomplete="off" method="POST">
                 <div class="flex gap-4">
@@ -99,6 +100,7 @@ if (isset($_GET['id'])) {
                     <span class="md:hidden block">Approve</span></button>
                 </div>
             </form>
+            
             <!-- SQL Query for approve and decline button -->
             <?php
             if (isset($_POST['decline'])) {

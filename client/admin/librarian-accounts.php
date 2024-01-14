@@ -62,7 +62,6 @@ include('navigation-bar.php');
                     </th>
             </thead>
             <tbody>
-
                 <!-- SQL Query for dispalying data in the table -->
                 <?php
                 $borrower = $conn->query("SELECT * FROM `library_admin` WHERE deactivate=0 ORDER BY last_name ASC") or die(mysqli_error($conn));

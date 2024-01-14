@@ -21,8 +21,7 @@
             }
 
             @page {
-                margin: 0;
-                /* Set margin to 0 to remove header and footer */
+                margin: 0; /* Set margin to 0 to remove header and footer */
                 size: 2.125in 3.375in;
             }
 
@@ -95,12 +94,14 @@
                 $p = mysqli_fetch_assoc($notifQuery);
                 $Count = $p['total'];
                 ?>
+
                 <!-- Count the total unread notifications for notification badge -->
                 <?php
                 $pendingQuery = mysqli_query($conn, "SELECT COUNT(status) AS total FROM borrowers WHERE status = '0'");
                 $p = mysqli_fetch_assoc($pendingQuery);
                 $pendingCount = $p['total'];
                 ?>
+                
                 <!-- Display penalty of the user -->
                 <?php
                 $penaltyQuery = mysqli_query($conn, "SELECT COUNT(penalty) AS total FROM borrowed_books WHERE penalty > '0'");

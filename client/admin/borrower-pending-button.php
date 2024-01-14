@@ -1,6 +1,6 @@
 <?php include "../../server/db/conDB.php";
-$pending = mysqli_query($conn, "SELECT COUNT(status) AS total FROM borrowers WHERE status = '0'");
-$p = mysqli_fetch_assoc($pending)
+    $pending = mysqli_query($conn, "SELECT COUNT(status) AS total FROM borrowers WHERE status = '0'");
+    $p = mysqli_fetch_assoc($pending)
 ?>
 
 <a href="./borrower-pending-registration.php" class="flex mr-8">

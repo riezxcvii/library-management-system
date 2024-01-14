@@ -214,7 +214,6 @@ include('navigation-bar.php');
                             </div>
                         </td>
                     <?php
-
                     } else { // Activated account
                     ?>
                         <td class="px-6 py-2 justify-center flex">
@@ -311,11 +310,9 @@ include('navigation-bar.php');
                     }
                     ?>
                 </tr>
-
                 <?php
                 }
                 ?>
-
             </tbody>
         </table>
     </div>

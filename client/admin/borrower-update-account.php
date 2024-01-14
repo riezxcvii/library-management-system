@@ -1,14 +1,15 @@
 <!-- Get borrower id to update their account details -->
 <?php
-include('navigation-bar.php');
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM `borrowers` WHERE borrower_ID = $id";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $role = $row['role'];
-}
+    include('navigation-bar.php');
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM `borrowers` WHERE borrower_ID = $id";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $role = $row['role'];
+    }
 ?>
+
 <div class="flex justify-center items-center h-full md:mt-[0rem] mb-0 mt-[-3.2rem]">
     <div class="bg-gray-50 rounded-md md:mx-12 mx-4 mb-0 w-[30rem]">
         <!-- Form -->
@@ -114,6 +115,7 @@ if (isset($_GET['id'])) {
                     <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update
                         Details</button>
                 </form>
+
             <?php
             // Update account details form for teachers
             } else {
@@ -196,7 +198,8 @@ if (isset($_GET['id'])) {
                     <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-600 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update
                         Details</button>
                 </form>
-                <!-- SQL Query for updating borrower account details -->
+
+            <!-- SQL Query for updating borrower account details -->
             <?php
             }
             ?>
@@ -225,6 +228,7 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </div>
+
 <!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a href="./borrower-accounts.php">

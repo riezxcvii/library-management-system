@@ -10,7 +10,6 @@ include('navigation-bar.php');
         Register Borrower
         </button>
     </a>
-
     <!-- Search bar -->
     <form autocomplete="off">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only text-white">Search</label>

@@ -75,6 +75,7 @@ include('navigation-bar.php');
         </div>
     </div>
 </div>
+
 <!-- Back button -->
 <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
     <a onclick="history.back()">
