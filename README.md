@@ -1,6 +1,6 @@
 <h2>
     📁Library Management System
-    <img width="13%" style="vertical-align:middle" src="https://badgen.net/badge/status/finished/blue" />
+    <img width="13%" style="vertical-align:middle" src="https://badgen.net/badge/status/deployed/green" />
 </h2>
 
 📝A library management system is a sophisticated software solution designed to streamline and automate the various tasks associated with operating a library. It efficiently manages the cataloging of books, handles student registration, and assists in inventory management. This system not only enhances the organization and accessibility of library resources but also enables librarians to monitor library activities and generate reports.
