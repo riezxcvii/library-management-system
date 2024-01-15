@@ -45,9 +45,14 @@ session_start();
                     </p>
                 <?php } ?>
 
-                <!-- Link -->
-                <div class="underline text-blue-700 text-center mt-4 w-full md:text-base text-sm">
+                <!-- Sign up -->
+                <div class="underline text-blue-700 text-center mt-4 w-full text-sm">
                     <a href="./client/borrower/create-account.php">No library account yet? Sign up!</a>
+                </div>
+
+                <!-- Sign in as admin link -->
+                <div class="text-center mt-2 text-sm text-blue-600 underline">
+                    <a href="./index.php" class="text-left">Sign in as Admin</a>
                 </div>
             </form>
         </div>

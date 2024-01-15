@@ -25,7 +25,7 @@ session_start();
                     <img src="./client/assets/logo.png" class="h-14 mr-3" alt="ANS Logo" />
                     <h1 class="font-extrabold md:text-2xl text-lg">ANS Library Management System</h1>
                 </div>
-                <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
+                <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 mb-6 text-center text-gray-900">Sign in as Admin</h1 class="font-semibold text-lg">
                 <div class="mb-6">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Enter
                         username</label>
@@ -41,7 +41,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- Change password -->
                 <div class="text-right mb-6 text-xs text-blue-600 underline">
                     <a href="./client/admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
@@ -54,8 +54,12 @@ session_start();
                 <?php } ?>
 
                 <!-- Button -->
-                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 flex justify-center items-center mx-auto">Sign
-                    in</button>
+                <button type="submit" name="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 flex justify-center items-center mx-auto">Sign in</button>
+
+                <!-- Sign in as borrower link -->
+                <div class="text-center mt-4 text-sm text-blue-600 underline">
+                    <a href="./index2.php" class="text-left">Sign in as Borrower</a>
+                </div>
             </form>
         </div>
     </div>
