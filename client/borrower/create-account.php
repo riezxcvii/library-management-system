@@ -33,7 +33,7 @@
                         <li>
                             <a href="../../index2.php" class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-white md:p-0">
                                 <svg class="w-6 h-auto hidden md:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L22.55 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
                                 </svg>
                                 <span class="self-center font-semibold whitespace-nowrap text-white text-sm md:hidden block">Home</span>
                             </a>
@@ -48,7 +48,7 @@
                 <!-- Form -->
                 <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Registration Form</h3>
-                    <form class="space-y-6" action="#" autocomplete="off" method="POST">
+                    <form class="space-y-1" action="#" autocomplete="off" method="POST">
                         <!-- ID number -->
                         <div class="grid grid-cols-2 gap-4">
                             <div>
@@ -67,16 +67,16 @@
                         </div>
                         <!-- Last, first, and middle name -->
                         <div class="grid grid-cols-3 gap-4">
-                            <div class="mt-[-1.7rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
                                 <input type="text" name="lastName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="20" required maxlength="20" minlength="2">
                             </div>
-                            <div class="mt-[-1.7rem]">
+                            <div class="mt-[-1rem]">
                                 <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">First
                                     Name</label>
                                 <input type="text" name="firstName" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="25" required maxlength="20" minlength="2">
                             </div>
-                            <div class="mt-[-1.7rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Middle
                                     Initial</label>
                                 <input type="text" name="middleInitial" class="text-center bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" maxlength="1">
@@ -84,7 +84,7 @@
                         </div>
                         <!-- Grade level and section -->
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="mt-[-0.2rem]">
+                            <div class="mt-[0.5rem]">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Grade Level (for students only)</label>
                                 <select id="grade_level" name="grade_level" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     <option value="" selected>Select Grade Level</option>
@@ -96,14 +96,14 @@
                                     <option value="Grade 12">Grade 12</option>
                                 </select>
                             </div>
-                            <div class="mt-[-0.2rem]">
+                            <div class="mt-[0.5rem]">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Section (for students only)</label>
                                 <input type="text" name="section" class="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="1" maxlength="15">
                             </div>
                         </div>
                         <!-- Name extension -->
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="mt-[-1.7rem]">
+                            <div class="mt-[-1rem]">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Name Extension</label>
                                 <select id="nameExtension" name="extension" class="bg-gray-50 border border-gray-400 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
                                     <option value="" selected>Select Extension</option>
@@ -120,7 +120,7 @@
                                 </select>
                             </div>
                             <!-- Sex -->
-                            <div class="flex mt-[-1.7rem]">
+                            <div class="flex mt-[-1rem]">
                                 <label class="block text-sm font-medium text-gray-900">Sex</label>
                                 <div class="flex items-center mb-4 mr-4">
                                     <input id="female" type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 focus:ring-blue-500 dark:focus:ring-blue-600 mt-5 ml-[-1rem]">
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                         <!-- Button -->
-                        <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
+                        <button type="submit" name="submit" class="mt-[-1rem] w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
                     </form>
                     <?php
                     include "../../server/db/conDB.php";

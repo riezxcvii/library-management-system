@@ -14,7 +14,7 @@
 <body>
     <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
         <!-- Forgot Password Form -->
-        <div class="bg-gray-100 shadow-md md:w-2/5 w-80 rounded-lg p-8">
+        <div class="bg-gray-100 shadow-md md:w-5/12 w-80 rounded-lg p-8">
             <form autocomplete="off" method="POST" action="../../server/admin/forgot.php">
                 <div class="flex items-center justify-center mb-4">
                     <img src="../assets/logo.png" class="h-14 mr-3" alt="ANS Logo" />
