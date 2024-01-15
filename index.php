@@ -1,5 +1,5 @@
 <?php
-include "../server/db/conDB.php";
+include "./server/db/conDB.php";
 session_start();
 ?>
 
@@ -10,7 +10,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign in</title>
-    <link href="./assets/logo.png" type="image/x-icon" rel="shortcut icon">
+    <link href="./client/assets/logo.png" type="image/x-icon" rel="shortcut icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
@@ -20,9 +20,9 @@ session_start();
     <div class="h-screen flex-col bg-gradient-to-b from-blue-400 to-white flex justify-center items-center">
         <!-- Login Form -->
         <div class="bg-gray-100 shadow-md md:w-2/5 w-80 rounded-lg p-8">
-            <form autocomplete="off" action="../server/admin/login.php" method="POST">
+            <form autocomplete="off" action="./server/admin/login.php" method="POST">
                 <div class="flex items-center justify-center mb-4">
-                    <img src="./assets/logo.png" class="h-14 mr-3" alt="ANS Logo" />
+                    <img src="./client/assets/logo.png" class="h-14 mr-3" alt="ANS Logo" />
                     <h1 class="font-extrabold md:text-2xl text-lg">ANS Library Management System</h1>
                 </div>
                 <h1 class="font-semibold md:text-xl text-lg md:mt-0 mt-6 mb-6 text-center text-gray-900">Sign in to your account</h1 class="font-semibold text-lg">
@@ -43,7 +43,7 @@ session_start();
                 </div>
                 <!-- Links -->
                 <div class="text-right mb-6 text-xs text-blue-600 underline">
-                    <a href="./admin/forgot-password.php" class="text-left">Change password?</a>
+                    <a href="./client/admin/forgot-password.php" class="text-left">Change password?</a>
                 </div>
 
                 <!-- Display error message when entered credentials does not match any of the data registered in the database. -->

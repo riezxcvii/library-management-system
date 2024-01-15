@@ -15,7 +15,7 @@ if (isset($_POST['qrcode_text'])) {
     $qrcode_text = validate($_POST['qrcode_text']);
 
     if (empty($qrcode_text)) {
-        header("Location: ../../client/index2.php?error=ID number is required!");
+        header("Location: ../../index2.php?error=ID number is required!");
         exit();
     } else {
         $sql = "SELECT * FROM borrowers WHERE id_number='$qrcode_text' AND status='1' AND deactivate='0'";
@@ -54,15 +54,15 @@ if (isset($_POST['qrcode_text'])) {
                     echo "Error!";
                 }
             } else {
-                header("Location: ../../client/index2.php?error=Invalid credentials!");
+                header("Location: ../../index2.php?error=Invalid credentials!");
                 exit();
             }
         } else {
-            header("Location: ../../client/index2.php?error=Account does not exist.");
+            header("Location: ../../index2.php?error=Account does not exist.");
             exit();
         }
     }
 } else {
-    header("Location: ../../client/index2.php");
+    header("Location: ../../index2.php");
     exit();
 }

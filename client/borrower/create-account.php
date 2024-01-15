@@ -31,7 +31,7 @@
                 <div class="hidden w-full md:block md:w-auto flex justify-end" id="navbar-dropdown">
                     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:border-gray-700 md:w-auto w-fit">
                         <li>
-                            <a href="../index2.php" class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-white md:p-0">
+                            <a href="../../index2.php" class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-white md:p-0">
                                 <svg class="w-6 h-auto hidden md:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
                                 </svg>
@@ -161,7 +161,7 @@
                             $conn->query($insertQuery);
                             echo "<script>
                             alert('Your account is pending for approval.');
-                        window.location.href='../index2.php'
+                        window.location.href='../../index2.php'
                         </script>";
                         }
                     }
@@ -172,7 +172,7 @@
 
         <!-- Back and print button -->
         <div class="flex justify-end pr-4 pb-4 fixed bottom-0 right-0">
-            <a href="../index2.php">
+            <a href="../../index2.php">
                 <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300">
                     Back
                 </button>

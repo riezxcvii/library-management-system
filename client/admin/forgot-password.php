@@ -59,7 +59,7 @@
                     </p>
                 <?php } ?>
                 <div class="flex gap-4">
-                    <a href="../index.php" class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-2 focus:outline-none focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <a href="../../index.php" class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-2 focus:outline-none focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <button type="button">Return to Login</button>
                     </a>
                     <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-600 focus:ring-2 focus:outline-none focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Change

@@ -16,10 +16,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = validate($_POST['password']);
 
     if (empty($username)) {
-        header("Location: ../../client/index.php?error=Username is required!");
+        header("Location: ../../index.php?error=Username is required!");
         exit();
     } else if (empty($password)) {
-        header("Location: ../../client/index.php?error=Password is required!");
+        header("Location: ../../index.php?error=Password is required!");
         exit();
     } else {
         $sql = "SELECT * FROM library_admin WHERE username='$username' AND password='$password' AND status=1 AND deactivate=0";
@@ -53,15 +53,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     exit();
                 }
             } else {
-                header("Location: ../../client/index.php");
+                header("Location: ../../index.php");
                 exit();
             }
         } else {
-            header("Location: ../../client/index.php?error=Invalid credentials!");
+            header("Location: ../../index.php?error=Invalid credentials!");
             exit();
         }
     }
 } else {
-    header("Location: ../../client/index.php");
+    header("Location: ../../index.php");
     exit();
 }
